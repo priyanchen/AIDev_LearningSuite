@@ -344,8 +344,32 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/file/d/1y4Gu-9clZxYqt4vMWoKmqu_HigTDi1sl/view'],
     },
   },
+  // Session 7 — Functions finished, then the terminal and Git begin — fully authored
+  {
+    slug: 'session-07-python-4',
+    number: 7,
+    moduleId: '03-python',
+    numberInModule: 4,
+    date: '2026-07-19',
+    format: 'zoom',
+    title: {
+      en: 'Functions, Finished — Then the Terminal and Git Begin',
+      he: 'פונקציות, סיום — ואז מתחילים טרמינל וגיט',
+    },
+    headline: {
+      en: 'The last function tools — *args, **kwargs, and scope — close out Python’s foundations, and the session pivots to the terminal and Git, the shell every future AI agent will actually run inside.',
+      he: 'הכלים האחרונים של פונקציות — *args, **kwargs וטווח (scope) — סוגרים את היסודות של פייתון, והמפגש עובר לטרמינל ול-Git, המעטפת שכל סוכן AI עתידי ירוץ בתוכה בפועל.',
+    },
+    status: 'complete',
+    concepts: ['*args & **kwargs', 'Local vs Global Scope', 'lambda / map / filter', 'Terminal & Shell', 'Git Staging & Commit'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1kbLpmKg-PiBVvTGyWH4TYpIqjvTqPXNU/view',
+      chat: 'https://drive.google.com/file/d/1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi/view',
+      slides: ['https://drive.google.com/file/d/1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku/view'],
+    },
+  },
   ...([
-    { n: 7,  m: 4, date: '2026-07-19', rec: '1kbLpmKg-PiBVvTGyWH4TYpIqjvTqPXNU', chat: '1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi', slide: '1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku' },
     { n: 8,  m: 5, date: '2026-07-26', rec: '1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG', chat: '110CtrUDROYRw18WoKLNCn-uEt6XVBCAz' },
     { n: 9,  m: 6, date: '2026-07-29', rec: '1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV', chat: '1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1' },
     { n: 10, m: 7, date: '2026-08-02', rec: '1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O', chat: '1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF' },
@@ -367,7 +391,6 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: `https://drive.google.com/file/d/${s.rec}/view`,
       chat: `https://drive.google.com/file/d/${s.chat}/view`,
-      slides: s.slide ? [`https://drive.google.com/file/d/${s.slide}/view`] : undefined,
     },
   }))),
 
