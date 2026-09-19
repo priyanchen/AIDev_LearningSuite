@@ -393,8 +393,31 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/110CtrUDROYRw18WoKLNCn-uEt6XVBCAz/view',
     },
   },
+  // Session 9 — Unpacking, decorators, and the arrival of Claude Code — fully authored
+  {
+    slug: 'session-09-python-6',
+    number: 9,
+    moduleId: '03-python',
+    numberInModule: 6,
+    date: '2026-07-29',
+    format: 'zoom',
+    title: {
+      en: 'Unpacking, Decorators, and the Arrival of Claude Code',
+      he: 'Unpacking, Decorators, והגעתו של Claude Code',
+    },
+    headline: {
+      en: 'Two small Python patterns — unpacking and decorators — both boil down to naming a shape so you never repeat it, right before the session pivots to Claude Code: CLAUDE.md as memory, plan mode as discipline, and sub-agents as delegation.',
+      he: 'שני דפוסי פייתון קטנים — unpacking ו-decorators — שניהם מצטמצמים לתת שם לצורה כדי שלא תצטרכי לחזור עליה, ממש לפני שהמפגש עובר ל-Claude Code: CLAUDE.md כזיכרון, מצב תכנון כמשמעת, וסוכני-משנה כהאצלה.',
+    },
+    status: 'complete',
+    concepts: ['Unpacking (*)', 'Decorators', 'try/except', 'CLAUDE.md', 'Plan Mode & Thinking Levels', 'Sub-Agents'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV/view',
+      chat: 'https://drive.google.com/file/d/1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1/view',
+    },
+  },
   ...([
-    { n: 9,  m: 6, date: '2026-07-29', rec: '1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV', chat: '1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1' },
     { n: 10, m: 7, date: '2026-08-02', rec: '1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O', chat: '1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF' },
     { n: 11, m: 8, date: '2026-08-05', rec: '1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl', chat: '1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO' },
     { n: 12, m: 9, date: '2026-08-09', rec: '1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF', chat: '11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM' },
