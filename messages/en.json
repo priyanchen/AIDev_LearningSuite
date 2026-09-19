@@ -54,7 +54,11 @@
     "openChat": "Open Chat Log",
     "openSlides": "Open Slides",
     "materialsNote": "Original instructor materials are hosted by the course provider. Access may require enrollment.",
-    "awaitingSource": "This session is awaiting source material. It will be populated as the course progresses."
+    "awaitingSource": "This session is awaiting source material. It will be populated as the course progresses.",
+    "lessonVideo": "Lesson Video",
+    "watchLecture": "Watch the Lecture Recording",
+    "watchTirgul": "Watch the Tirgul (Practice Session)",
+    "videoNote": "Recordings are hosted on Zoom by the course provider and open in a new tab. Some may require a meeting passcode."
   },
   "cards": {
     "printCard": "Print / Save PDF",

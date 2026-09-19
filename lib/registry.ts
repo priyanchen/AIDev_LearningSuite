@@ -17,6 +17,11 @@ export type SourceLinks = {
   slides?: string[];
 };
 
+export type VideoLinks = {
+  lecture?: string;
+  tirgul?: string;
+};
+
 export type Module = {
   id: string;                     // "04-intro-to-ds"
   number: number;                 // 4
@@ -40,6 +45,7 @@ export type Session = {
   status: SessionStatus;
   concepts?: string[];
   sourceLinks?: SourceLinks;
+  videoLinks?: VideoLinks;
   hasCardDeck?: boolean;
   hasProject?: boolean;
   projectFile?: string;
@@ -222,6 +228,9 @@ export const sessions: Session[] = [
         'https://drive.google.com/file/d/1cgitSOfqYu-xwawhr46S4Eso_rxrdAs-/view',
       ],
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/rq0l_0lrNkfDz2av-7Ns51I8i9ZcyvUCquFM2HBUliWFfXVF9o-y87AGmxEbeqmF.gceHVDCl0hd_N635',
+    },
   },
 
   // ────────── Module 2 · n8n ──────────
@@ -247,6 +256,9 @@ export const sessions: Session[] = [
         'https://drive.google.com/file/d/1H5YJVS9z9_gWPoVX6taPr6TztEeSolkM/view',
         'https://drive.google.com/file/d/1ozYT7DD80ZcsiMPiaqGshINTSukoSKDU/view',
       ],
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/g_VSkgpaXUGhr6OWNyYgDOrkMG4NUIHO19EPKwNRy26v6C_15RbYN9S4uTD8JYe_.MQNeJ3tDj_qKKuiF',
     },
   },
 
@@ -275,6 +287,10 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1xecAGWY0d6xUBNx_UWQXCPwza24TFHQx/view',
       slides: ['https://drive.google.com/file/d/1ok4a3Yae14i6zkavUj3gW0V2MUkgcFlX/view'],
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/-0_d6XVckP9Qr-INBzcbesgawgffeTC_NMO-TjdU67nfSIMQJKjT0fFjQdtvA90L.03Bq6nBYbPjv3on5',
+      tirgul: 'https://us06web.zoom.us/rec/share/JicRCImsoyMzflJFjDai5qNsVCWqXBsXubenB6WOnSbmjqxdeMU18sT5GtKyRM67.fXq34rgeeTbs5CdN',
+    },
   },
   // Session 4 — Objects revisited across strings, lists, tuples, dictionaries — fully authored
   {
@@ -299,6 +315,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1S0I4S2WsESpnFRWvoie-OryIOYn_SrfQ/view',
       chat: 'https://drive.google.com/file/d/1hIhHEwKyjsIwXm2HNYGcaycFLu7fYhwD/view',
       slides: ['https://drive.google.com/file/d/1yHnwLkNgMEBgK9F8SePWqQfgUAUWgRuA/view'],
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/hZDzpoA6T7V2fPXNogz8QgKYhgx9XO7iwI6fJoq220v056Hhuwh1STx9hG7ACkxD.tbcX3jaIXqG5ploi',
+      tirgul: 'https://us06web.zoom.us/rec/share/54TBYLeQIgs6QnZy6q9O_HruEmHyksqXGWQgtqMpF70bZ4D8Qx7GLY1fOZATfgof.zZajNd58b2l9Nc35',
     },
   },
   // Session 5 — Conditionals, loops, and reading code fluently — fully authored
@@ -325,6 +345,10 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1LbXEkmTiIUU1HmF4RhuYfAcDEpRPRxHb/view',
       slides: ['https://drive.google.com/file/d/1U7ryg_zfCQ7-GyJX1zxZ07v6-eXnDCi7/view'],
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/_o_nfXQfGjuuF82TUo-_AdT-310GUjB9M4CYDNvBss4BOZWYJGzeUJf5-OaJqMs5.xBp8EVZo3FpzyA2P',
+      tirgul: 'https://us06web.zoom.us/rec/share/kQQOF9aZycUntqJjirwueqKuuzHUNwOWl1jlp67WkJehbtnP4reX-3pExQv1yGPc.ZAKvqpnjrpfgOYGu',
+    },
   },
   // Session 6 — Two group-built games arrive at functions — fully authored
   {
@@ -349,6 +373,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1FqSo5qLcuWDW4wXGLDnzQGUjKriZkmjJ/view',
       chat: 'https://drive.google.com/file/d/1f_aO9Z0UYWXPq4sayy0qr_be-GoxAsRO/view',
       slides: ['https://drive.google.com/file/d/1y4Gu-9clZxYqt4vMWoKmqu_HigTDi1sl/view'],
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/9DE5cUgukg4QJIYytlMdMR6lKYATHCyGt1ZNPr11Q18EvSDf5T9q5tAKLxnv2p3o.avRebiwpNVMqr3AY',
+      tirgul: 'https://us06web.zoom.us/rec/share/h8Bc-wz7ZIeLAWQIMvZmSJ0qWSk0xHDTcRN0BlKohVtDOxW8TZet0v3YJCaS8dtt.RCbEe-WehL3COMXZ',
     },
   },
   // Session 7 — Functions finished, then the terminal and Git begin — fully authored
@@ -375,6 +403,10 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi/view',
       slides: ['https://drive.google.com/file/d/1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku/view'],
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/CCFRMNVCFYrh6r0hHqmPcT0IjwqdWoNpOOEbSuRrUT_nIPzo4wvlOOICSbpyGTG5._fdTST5ljIKt8P0W',
+      tirgul: 'https://us06web.zoom.us/rec/share/JZd8tqrgdGAw6jKfUqrNoWl_ECbqxl3fsiRILlMiF7hxJSkdrYYxnlVZhrU-4RJU.Uh0q3DpnMieNKvKV',
+    },
   },
   // Session 8 — From an empty folder to a public GitHub repository — fully authored
   {
@@ -398,6 +430,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG/view',
       chat: 'https://drive.google.com/file/d/110CtrUDROYRw18WoKLNCn-uEt6XVBCAz/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/1p920Qjb4KBk-5eaUGVfBvRPZziZVYnBsJSKe3wLtAp4Zo3pEmofCnrAw31silmk.I3doHYEJtlIjFb6O',
+      tirgul: 'https://us06web.zoom.us/rec/share/lXfqpu8bD_Jjll9ZZkI2MYQM3ZbpbwwnViQAZjqZVT36WWGkJen3J7NTvcH911QT.TMvX5TyEUI1aYcb5',
     },
   },
   // Session 9 — Unpacking, decorators, and the arrival of Claude Code — fully authored
@@ -423,6 +459,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV/view',
       chat: 'https://drive.google.com/file/d/1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/2PYaaR8vp_z2rK_s-8mmHt0IawXsddTlPkK9wGe-z5PgT7eVieI7QkZTeD0wQS_Z.5A0mAqYl22UB6VzA',
+      tirgul: 'https://us06web.zoom.us/rec/share/e8LrHP7K0qKhV_kUxGcBYLLuXvXOBpu9rqONF7ONpOMUZammiwZG2RmGNNuqAlcN.OCHdczXK6qGf26oZ',
+    },
   },
   // Session 10 — Two kinds of agent, and working as a team — fully authored
   {
@@ -446,6 +486,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O/view',
       chat: 'https://drive.google.com/file/d/1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/vs_TCV6F6BGWQn-3-mTZKME7E4maohP3-1k1YnpvAzBUmh7UHXR9vj_V3J03HZRe.ntHedOES3UD3u9ud',
+      tirgul: 'https://us06web.zoom.us/rec/share/xtOVHuu7L9Q0_fXOZujLqYyQlS_cGMsIAyF4AhmL13p6LgfZwT3FgWETVZf8YlCX.eRI0Ol6HsdRDJvZU',
     },
   },
   // Session 11 — Classes, objects, and the blueprint behind everything — fully authored
@@ -471,6 +515,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl/view',
       chat: 'https://drive.google.com/file/d/1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/7reHLqN5jHF9_dORUg-pAHQLKthmfgo25Yr0By53U5X40i48lZzBeDCY1MKtt6lg.mXr4vh6MJ9ELySWG',
+      tirgul: 'https://us06web.zoom.us/rec/share/QqSH-VfXVp4W63Mookh3MoYFfZAXF8O5WLdB-H0gB8IU0KZChZorVhgfM72rdvFU.wvaiubKgIMcY3y82',
+    },
   },
   // Session 12 — Modules, packages, and virtual environments — fully authored
   {
@@ -494,6 +542,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF/view',
       chat: 'https://drive.google.com/file/d/11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/sLDgerhmI4YmTSNGVxoPZLygPxeXyRKbbQTovKER7L7JZb9rCtEB_6zOs1yxiPDM.G_wdX6NiE33hD6iG',
+      tirgul: 'https://us06web.zoom.us/rec/share/W7KVAfpGl3Uz3Wi2UnLPpfRVZJx0ii2_QfROlESiWCk-yYhJXG10KY96RM6lbRYK.jiPT_bERRm92qlFs',
     },
   },
 
@@ -521,6 +573,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1NPJiyQPndVkzHC4WHe7KMR44dQeEwJ3L/view',
       chat: 'https://drive.google.com/file/d/1nv2A5AkYhajEL23hlwAl8AgoHuo_heac/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/k8PNFPY4BrgB5ka5rExftl6T39EkQzBzqD-3qF-Vdo9LJiE2Pa_nPeEAYUKjPEc.ZnApUYZUnKpnk1tS',
+      tirgul: 'https://us06web.zoom.us/rec/share/Ic-fabS06qSPqp39_dVU7oS5YUdq0dhWwHSWQIR_AqoW8bMebmEtSaJo3lGTLXzT.QxiQWaR8sMZMuQOe',
+    },
   },
   // Session 14 — NumPy, pandas, Series/DataFrame, and a Streamlit dashboard — fully authored
   {
@@ -546,6 +602,10 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1n8RICV842tgqpjdbwy4-IZKjb02Vgj1V/view',
       slides: ['https://drive.google.com/drive/folders/1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN'],
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/XwjsMl0ablei90AhzoDVc_R_08ATMXIEokMNPTBmmy9SDChttNtm5YVdbuD9GS6F.nml5N8btLGVHHLQz',
+      tirgul: 'https://us06web.zoom.us/rec/share/rsmhsGZ1fcCl8qjQs1eofxxZ2axPCWnDDb-geApBtjQscRX-caqUtDkn7mD2MIs1.GwLcgtzAu27Bd5pc',
+    },
   },
   // Session 15 — SQL, SQLite, primary/foreign keys, and building a DB with an agent — fully authored
   {
@@ -569,6 +629,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1Mh4LM12fCAtI9lSSXCHd7aihujGz6QJp/view',
       chat: 'https://drive.google.com/file/d/1s0zadlZu7-mkUD__VoVilAaUq85xxVYe/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/pLzutJFFc_svvx95PmSqzlGqXDsgnCgM-vYm78_YTjOhrKm77HA2nN9H65OoIa5B.QaQQMB8iE5ZNpw_s',
+      tirgul: 'https://us06web.zoom.us/rec/share/sd7aAwxLXRYTvaYvSPDVcYQb2RvzZl1uKWZDA6Cg3aKksMSMgHnIiyBzaHHAmgA.egfDUicbS80zPIZC',
     },
   },
   // Session 16 — Supabase, cloud databases, RLS, anon/service_role keys, auth mechanics — fully authored
@@ -594,6 +658,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e/view',
       chat: 'https://drive.google.com/file/d/13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/sU8SZFU26SzLbmVOVGZXQSgLVaMJS-iKNBWQIra4b-oU20Xgh3HnL4YGlE2HSc36.Zcb7MvIsCQdGUNUD',
+      tirgul: 'https://us06web.zoom.us/rec/share/1tk2c0lqsJALT8VutZQ3vk4b50usMyKntQwvgHs_TYA299dHYrW2PlXdtsj5UcU.2-gV3aNRkRhGrsvt',
+    },
   },
   // Session 17 — ML foundations: model families, linear regression, gradient descent, project characterization — fully authored
   {
@@ -618,6 +686,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI/view',
       chat: 'https://drive.google.com/file/d/1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/PqpGLG4G2H-l3vWUKvBthZxglocRiSEA3l3HW4RBL7KJ6VWY5UdtyYiv0at49QGC.saszl7h4ZcXi3xG_',
+      tirgul: 'https://us06web.zoom.us/rec/share/fYYp0Mvn6hSIOSLnp8pFWa-rP1udCPKCMTW_6-Zn8RvSdkCsh6nQPIsRnK2dnC5H.9aWyOmnrw-PCvIfJ',
+    },
   },
   // Session 18 — multivariate regression, R²/RMSE/MAE evaluation, multicollinearity — fully authored
   {
@@ -641,6 +713,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H/view',
       chat: 'https://drive.google.com/file/d/1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/iBmDYck8Cyc6jAo0cv3q_m4FB36v5toN0DXeCyDjuh-ujNh749S2MPwPoRbE_q_1.0q4LKrtZYyHTXmRI',
+      tirgul: 'https://us06web.zoom.us/rec/share/Il3FRl5560mKelEXHcLghMzXG0tRyV_0F_94YKJXiJZvfsDg34XmrbLsfKs60X9f.E84iVteULrcyTfcb',
     },
   },
 
@@ -669,6 +745,10 @@ export const sessions: Session[] = [
       recording: 'https://drive.google.com/file/d/1GMs9h5OTLeLsrdI6Blnjygfip1ASMXqH/view',
       chat: 'https://drive.google.com/file/d/1ESEJy3fSQ-tpYrB-I6Xs1TF8oKdX4xXs/view',
     },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/xM0_TepWZobH-25boAj6BxlCLirY1RF1wlyrJ9cp0NaCCscBGbUOXKVM9Ddj1mT2.0kyHfs08PFbNWbqF',
+      tirgul: 'https://us06web.zoom.us/rec/share/qvn5OXkLJWtufhsiKXKtGuXVIowEgmV0E7npgChw4faajmwMDCEbp5F4bxpgP5ZJ.qCXlMSsEHZgjCzDB',
+    },
   },
 
   // Session 20 deferred (no recording)
@@ -687,6 +767,10 @@ export const sessions: Session[] = [
     status: 'deferred',
     sourceLinks: {
       chat: 'https://drive.google.com/file/d/1wPSaRU0hDPb1UvOZ6Ia1nRYY9OANvfkn/view',
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/b71O_CAYm7hzIb5Zuu0obiev22M8J_WOjn5WwoX7oisFIAYrzd4jnI589I4O-Atf.PPM31UsLANv9xzt0',
+      tirgul: 'https://us06web.zoom.us/rec/share/TmnF16GWIKne5D7BXoHJmBPFwc1O1u7S_6I0dB_Wr9aC7xIybKt7Lg_LTm45sJ3d.jZLoFO5B8lKpdT6i',
     },
   },
 
@@ -712,6 +796,10 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1LQvSJuRFG_yUtcE8yvJ7NRWh1COKazAZ/view',
       slides: ['https://drive.google.com/file/d/1wYHdxAsRol7c7NigOlUoBozS7y67Vz_s/view'],
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/cmQm9i6YX97gEjBXmwRZQspZLk2fxkmHemrHMaFo6fhOB3RBJfI-tDGJA19gEtUb.t02uFmQ6TRKZ4qPi',
+      tirgul: 'https://us06web.zoom.us/rec/share/PYXJXreqE1JzuishmLuM5Lt_t583usuqxnKAdJwVQNSOeloz12fibR-dhTHyyIXO.MRVRulZS0IDQWaC6',
     },
   },
 
@@ -742,6 +830,10 @@ export const sessions: Session[] = [
         'https://drive.google.com/drive/folders/1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN',
         'https://drive.google.com/drive/folders/1WktwIgKnEN8NPyYeHolldKIG59q9W3yY',
       ],
+    },
+    videoLinks: {
+      lecture: 'https://us06web.zoom.us/rec/share/y7PZL6CmCLIsiF2N3CwUEXp_uS2tBRsNSQUjvqT8rxBLKSferM5ZzmTPBZ3YbULh.fuWl-LCNMfWRx_tV',
+      tirgul: 'https://drive.google.com/file/d/1JJS3dF4o1a5HP93HHiueP-Zgd9zmWVt2/view?usp=sharing',
     },
   },
 
