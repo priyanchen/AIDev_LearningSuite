@@ -515,8 +515,32 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1nv2A5AkYhajEL23hlwAl8AgoHuo_heac/view',
     },
   },
+  // Session 14 — NumPy, pandas, Series/DataFrame, and a Streamlit dashboard — fully authored
+  {
+    slug: 'session-14-ds-1',
+    number: 14,
+    moduleId: '04-intro-to-ds',
+    numberInModule: 1,
+    date: '2026-08-16',
+    format: 'zoom',
+    title: {
+      en: 'Pandas and NumPy — Vectorized Data, and the Grammar You Already Know',
+      he: 'Pandas ו-NumPy — נתונים וקטוריים, והדקדוק שכבר מכירות',
+    },
+    headline: {
+      en: `A plain Python list can't do the arithmetic you'd expect — that failure motivates NumPy and pandas, the package behind Series, DataFrame, .loc filtering, and a real Streamlit dashboard built with an agent and shipped straight to the web.`,
+      he: `רשימת פייתון רגילה לא יכולה לעשות את החשבון שהיית מצפה לו — הכשל הזה מניע את NumPy ו-pandas, החבילה שמאחורי Series, DataFrame, סינון עם .loc, ודשבורד Streamlit אמיתי שנבנה עם סוכן ונשלח ישר לרשת.`,
+    },
+    status: 'complete',
+    concepts: ['NumPy Vectorization', 'Series & DataFrame', '.loc vs .iloc', 'Boolean Masking', 'describe()', 'Streamlit Deployment'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1tJM8ZI2pZrna65F9yNSYFegKZTzPWuSp/view',
+      chat: 'https://drive.google.com/file/d/1n8RICV842tgqpjdbwy4-IZKjb02Vgj1V/view',
+      slides: ['https://drive.google.com/drive/folders/1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN'],
+    },
+  },
   ...([
-    { n: 14, m: 1, date: '2026-08-16', rec: '1tJM8ZI2pZrna65F9yNSYFegKZTzPWuSp', chat: '1n8RICV842tgqpjdbwy4-IZKjb02Vgj1V', slideFolder: '1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN' },
     { n: 15, m: 2, date: '2026-08-19', rec: '1Mh4LM12fCAtI9lSSXCHd7aihujGz6QJp', chat: '1s0zadlZu7-mkUD__VoVilAaUq85xxVYe' },
     { n: 16, m: 3, date: '2026-08-23', rec: '1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e', chat: '13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq' },
     { n: 17, m: 4, date: '2026-08-26', rec: '1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI', chat: '1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1' },
@@ -537,7 +561,6 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: `https://drive.google.com/file/d/${s.rec}/view`,
       chat: `https://drive.google.com/file/d/${s.chat}/view`,
-      slides: s.slideFolder ? [`https://drive.google.com/drive/folders/${s.slideFolder}`] : undefined,
     },
   }))),
 
