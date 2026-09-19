@@ -491,8 +491,31 @@ export const sessions: Session[] = [
   },
 
   // ────────── Module 4 · Intro to DS ──────────
+  // Session 13 — Statistics foundations for the Data Science module — fully authored
+  {
+    slug: 'session-13-ds-0',
+    number: 13,
+    moduleId: '04-intro-to-ds',
+    numberInModule: 0,
+    date: '2026-08-12',
+    format: 'zoom',
+    title: {
+      en: 'Statistics — Measures, Distributions, and the Discipline of Doubting Numbers',
+      he: 'סטטיסטיקה — מדדים, התפלגויות, ומשמעת הספק במספרים',
+    },
+    headline: {
+      en: `Module 4 opens with the statistics every model evaluation will lean on — central tendency and dispersion built from first principles, correlation without causation, two real stories about biased data, and a proper .env fix for the API key problem from Session 12.`,
+      he: `מודול 4 נפתח בסטטיסטיקה שכל הערכת מודל תישען עליה — מיקום מרכזי ופיזור בנויים מעקרונות ראשונים, קורלציה בלי סיבתיות, שני סיפורים אמיתיים על נתונים מוטים, ותיקון .env אמיתי לבעיית מפתח ה-API ממפגש 12.`,
+    },
+    status: 'complete',
+    concepts: ['EDA', 'Variable Types', 'Mean / Median / Mode', 'Variance & Std Dev', 'IQR & Outliers', 'Correlation vs Causation', 'Sampling Bias', '.env & dotenv'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1NPJiyQPndVkzHC4WHe7KMR44dQeEwJ3L/view',
+      chat: 'https://drive.google.com/file/d/1nv2A5AkYhajEL23hlwAl8AgoHuo_heac/view',
+    },
+  },
   ...([
-    { n: 13, m: 0, date: '2026-08-12', rec: '1NPJiyQPndVkzHC4WHe7KMR44dQeEwJ3L', chat: '1nv2A5AkYhajEL23hlwAl8AgoHuo_heac' },
     { n: 14, m: 1, date: '2026-08-16', rec: '1tJM8ZI2pZrna65F9yNSYFegKZTzPWuSp', chat: '1n8RICV842tgqpjdbwy4-IZKjb02Vgj1V', slideFolder: '1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN' },
     { n: 15, m: 2, date: '2026-08-19', rec: '1Mh4LM12fCAtI9lSSXCHd7aihujGz6QJp', chat: '1s0zadlZu7-mkUD__VoVilAaUq85xxVYe' },
     { n: 16, m: 3, date: '2026-08-23', rec: '1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e', chat: '13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq' },
