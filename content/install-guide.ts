@@ -69,8 +69,8 @@ export const installGuide: InstallCategory[] = [
         },
         commands: {
           mac: [
-            'pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib',
-            'pip freeze > requirements.txt',
+            'pip3 install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib',
+            'pip3 freeze > requirements.txt',
           ],
           windows: [
             'pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib',
@@ -94,7 +94,7 @@ export const installGuide: InstallCategory[] = [
             'brew install --cask visual-studio-code',
             'brew install --cask cursor',
             'brew install --cask pycharm-ce',
-            'pip install jupyter',
+            'pip3 install jupyter',
           ],
           windows: [
             'winget install -e --id Microsoft.VisualStudioCode',
@@ -152,7 +152,7 @@ export const installGuide: InstallCategory[] = [
           he: `שרשרת ההיגיינה המלאה, שהודגמה בשידור חי: (1) לבקש מהסוכן ליצור \`.env\` ולטעון את המפתח דרך python-dotenv במקום לקבע אותו; (2) לוודא ש-\`.env\` נמצא ב-\`.gitignore\` לפני ה-commit הראשון — השלב שבאמת חשוב, כי מפתח מוסתר שעדיין נכנס ל-commit הוא לא מוגן; (3) ליצור \`.env.example\` עם אותם שמות משתנים אבל בלי ערכים אמיתיים, כך שמשתפי פעולה יודעים מה למלא בלי לראות את המפתח האמיתי; (4) לבקש מהסוכן לכתוב README ו-\`requirements.txt\` כך שהסביבה תהיה ברת-שחזור. זה בא ישירות בעקבות תקרית-כמעט חיה שבה מפתח API אמיתי הודבק ישירות לתוך סקריפט כדי שהדגמה תעבוד, ואז סומן במקום: הקובץ הזה לעולם לא צריך להיות משותף כמו שהוא.`,
         },
         commands: {
-          mac: ['pip install python-dotenv', 'echo ".env" >> .gitignore'],
+          mac: ['pip3 install python-dotenv', 'echo ".env" >> .gitignore'],
           windows: ['pip install python-dotenv', 'echo .env >> .gitignore'],
         },
       },
@@ -173,7 +173,7 @@ export const installGuide: InstallCategory[] = [
           he: `כל אובייקט pandas עוקב אחר אותה דקדוק של "תכונות ומתודות" שכבר נלמד עבור מחרוזות, רשימות, ומחלקות — שום דבר חדש מבחינה מבנית ללמוד, רק שמות תכונות חדשים (\`index\`, \`values\`, \`dtype\`, \`name\`).`,
         },
         commands: {
-          mac: ['pip install numpy pandas'],
+          mac: ['pip3 install numpy pandas'],
           windows: ['pip install numpy pandas'],
         },
       },
@@ -189,7 +189,7 @@ export const installGuide: InstallCategory[] = [
           he: `כשמבקשים מסוכן לבנות איתו, לכנות כל שלב עיבוד מקדים במפורש ובסדר — ערכים חסרים, ואז נרמול, ואז קידוד קטגוריאלי, ואז הסרת חריגים, ואז אילו מדדים לחשב. prompt מעורפל בשורה אחת מייצר מודל שחסרים בו חלקים סטנדרטיים, לא אחד חכם יותר.`,
         },
         commands: {
-          mac: ['pip install scikit-learn'],
+          mac: ['pip3 install scikit-learn'],
           windows: ['pip install scikit-learn'],
         },
       },
@@ -201,7 +201,7 @@ export const installGuide: InstallCategory[] = [
           he: `מכונים בשורת ההתקנה של הקורס (\`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`) כבני-לוויה סטנדרטיים לערימת מדעי הנתונים — עבור גרפים וסריאליזציה של מודלים.`,
         },
         commands: {
-          mac: ['pip install matplotlib seaborn joblib'],
+          mac: ['pip3 install matplotlib seaborn joblib'],
           windows: ['pip install matplotlib seaborn joblib'],
         },
       },
@@ -217,7 +217,7 @@ export const installGuide: InstallCategory[] = [
           he: `רצף המשלוח האמיתי: תיקייה + קובץ נתונים → לבקש מסוכן לבנות את הדשבורד בשפה פשוטה, לא מתוכנן תא-אחרי-תא → להריץ מקומית כדי לאשר שזה עובד → לדחוף ל-GitHub → לחבר את share.streamlit.io לאותו מאגר, שקורא את הקובץ ישירות מ-GitHub ולא שומר שום נתונים בעצמו. סטודנטים שניסו להעלות קבצים ידנית דרך ממשק הדפדפן של Streamlit במקום דרך GitHub נתקלו בשגיאות חבילה חסרה בכל פעם — התיקון תמיד היה לתת לסוכן לטפל בחיבור ל-GitHub ישירות, כי בפריסות אמיתיות המסירה הזו אוטומטית, לא ידנית.`,
         },
         commands: {
-          mac: ['pip install streamlit', 'streamlit run app.py'],
+          mac: ['pip3 install streamlit', 'streamlit run app.py'],
           windows: ['pip install streamlit', 'streamlit run app.py'],
         },
       },
@@ -234,7 +234,7 @@ export const installGuide: InstallCategory[] = [
           he: `עושה bootstrap גם לשורות וגם לעמודות עבור כל עץ — Random Forest דוגם רק שורות — מה שכופה על האנסמבל לגלות דפוסים מגוונים יותר במקום להתכנס לאותם פיצ'רים. מדלג על נרמול לגמרי, כי עצים מפצלים על סף ולא מרחקים, אבל עדיין צריך קידוד קטגוריאלי.`,
         },
         commands: {
-          mac: ['pip install xgboost'],
+          mac: ['pip3 install xgboost'],
           windows: ['pip install xgboost'],
         },
       },
@@ -246,7 +246,7 @@ export const installGuide: InstallCategory[] = [
           he: `מקבץ ערכים רציפים לדליים לפני חיפוש נקודות פיצול, כך שהוא בודק רק גבולות בין כמה דליים במקום כל ערך גולמי — אותו רעיון בסיסי כמו XGBoost, מחושב בהרבה פחות עלות. מיוחס למאמר המקורי של Microsoft.`,
         },
         commands: {
-          mac: ['pip install lightgbm'],
+          mac: ['pip3 install lightgbm'],
           windows: ['pip install lightgbm'],
         },
       },
@@ -262,7 +262,7 @@ export const installGuide: InstallCategory[] = [
           he: `גדר הבטיחות המפורשת — ציטוט של ביטוי מהמורה של המרצה עצמו — "אל תשתמשי בתותח כדי להרוג יתוש." אם למערך נתונים בקושי יש עמודות קטגוריאליות, היתרון המרכזי של CatBoost לא רלוונטי; XGBoost היא ברירת המחדל הפשוטה יותר, ותקפה באותה מידה.`,
         },
         commands: {
-          mac: ['pip install catboost'],
+          mac: ['pip3 install catboost'],
           windows: ['pip install catboost'],
         },
       },
