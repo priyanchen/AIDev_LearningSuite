@@ -294,9 +294,33 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/file/d/1yHnwLkNgMEBgK9F8SePWqQfgUAUWgRuA/view'],
     },
   },
+  // Session 6 — Two group-built games arrive at functions — fully authored
+  {
+    slug: 'session-06-python-3',
+    number: 6,
+    moduleId: '03-python',
+    numberInModule: 3,
+    date: '2026-07-15',
+    format: 'zoom',
+    title: {
+      en: 'From Pseudocode to Functions — Building Two Games',
+      he: 'מפסאודוקוד לפונקציות — בונים שני משחקים',
+    },
+    headline: {
+      en: 'Two group-built games — a number-guessing game and a shuffle-and-find game — turn conditionals and loops into working programs and arrive, by necessity, at functions.',
+      he: 'שני משחקים שנבנו בקבוצות — משחק ניחוש מספרים ומשחק ערבוב וחיפוש — הופכים תנאים ולולאות לתוכניות עובדות ומגיעים, מתוך צורך, לפונקציות.',
+    },
+    status: 'complete',
+    concepts: ['Decomposition', 'random & abs()', 'while/for Loops', 'List Comprehensions', 'Functions', 'print vs return', 'Parameters & Arguments'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1FqSo5qLcuWDW4wXGLDnzQGUjKriZkmjJ/view',
+      chat: 'https://drive.google.com/file/d/1f_aO9Z0UYWXPq4sayy0qr_be-GoxAsRO/view',
+      slides: ['https://drive.google.com/file/d/1y4Gu-9clZxYqt4vMWoKmqu_HigTDi1sl/view'],
+    },
+  },
   ...([
     { n: 5,  m: 2, date: '2026-07-12', rec: '14ka3nhd-BtPIOlnt9gtOVpbT2neNaRsK', chat: '1LbXEkmTiIUU1HmF4RhuYfAcDEpRPRxHb', slide: '1U7ryg_zfCQ7-GyJX1zxZ07v6-eXnDCi7' },
-    { n: 6,  m: 3, date: '2026-07-15', rec: '1FqSo5qLcuWDW4wXGLDnzQGUjKriZkmjJ', chat: '1f_aO9Z0UYWXPq4sayy0qr_be-GoxAsRO', slide: '1y4Gu-9clZxYqt4vMWoKmqu_HigTDi1sl' },
     { n: 7,  m: 4, date: '2026-07-19', rec: '1kbLpmKg-PiBVvTGyWH4TYpIqjvTqPXNU', chat: '1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi', slide: '1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku' },
     { n: 8,  m: 5, date: '2026-07-26', rec: '1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG', chat: '110CtrUDROYRw18WoKLNCn-uEt6XVBCAz' },
     { n: 9,  m: 6, date: '2026-07-29', rec: '1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV', chat: '1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1' },
