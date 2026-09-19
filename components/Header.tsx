@@ -34,6 +34,9 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/cards`} className="hover:text-accent transition">
             {t('cards')}
           </Link>
+          <Link href={`/${locale}/install`} className="hover:text-accent transition">
+            {t('install')}
+          </Link>
           <Link
             href={otherPath}
             className="border border-ink px-3 py-1 text-[10px] tracking-brand uppercase font-sans hover:bg-ink hover:text-paper transition"

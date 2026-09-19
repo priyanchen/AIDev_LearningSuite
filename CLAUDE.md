@@ -19,10 +19,10 @@ Next.js 14 App Router site delivering a bilingual (EN/HE) course curriculum thro
 
 **Data flow:** `lib/registry.ts` defines `modules[]` and `sessions[]` (the syllabus skeleton: dates, titles, source links, status) → `content/cards/index.ts` maps a session `slug` to an optional `CardContent[]` deck defined in `content/cards/session{N}.ts` → pages in `app/[locale]/` read both and render.
 
-- **`lib/registry.ts`** is the single source of truth for the 10-module / 35-session structure. Every session has a `status` (`complete` | `planned` | `deferred`) and a `moduleId`. Modules 6–10 are `visibility: 'hidden'` until material arrives — hidden modules/sessions still exist in the data but are filtered out by `getVisibleModules()`. Session numbers are fixed syllabus numbers (e.g. session 2 = n8n, session 19 = logistic regression) — never renumber.
+- **`lib/registry.ts`** is the single source of truth for the 10-module / 35-session structure. Every session has a `status` (`complete` | `planned` | `deferred`) and a `moduleId`. Modules 6–10 are `visibility: 'hidden'` until material arrives — hidden modules/sessions still exist in the data but are filtered out by `getVisibleModules()`. Session numbers are fixed syllabus numbers (e.g. session 2 = n8n, session 19 = logistic regression) — never renumber. `sourceLinks` (Drive recording/chat/slides used for ingestion) and `videoLinks` (`{ lecture?, tirgul? }`, Zoom share URLs for the public-facing "Lesson Video" section) are separate fields with separate provenance — don't conflate them.
 - **`content/cards/`** holds the actual lesson content: one file per ingested session, each exporting an array of `CardContent` objects (`content/cards/types.ts`). Every card has bilingual (`{ en, he }`) `title`, `subtitle`, `sections[]`, and a closing `principle`. A session only gets a page with content once its deck is added to `cardDecks` in `content/cards/index.ts` — the registry's `hasCardDeck: true` flag is set manually in tandem with that.
 - **Bilingual content** is stored as inline `{ en, he }` objects (the `Bilingual` type in `lib/registry.ts`) directly in the data files — not via `next-intl` message catalogs. `messages/en.json` and `messages/he.json` are only for UI chrome strings (nav, buttons), wired through `next-intl` via `i18n.ts` and `middleware.ts`. Locale routing uses `localePrefix: 'always'` (`/en/...`, `/he/...`); `app/page.tsx` at the true root just redirects to `/en`.
-- **Routing:** `app/[locale]/modules/[id]` (module landing), `app/[locale]/lessons/[slug]` (single session + its card deck), `app/[locale]/cards` (cumulative card library across all ingested sessions). `app/[locale]/layout.tsx` owns the `<html lang dir>` shell and flips `dir="rtl"` for `he`.
+- **Routing:** `app/[locale]/modules/[id]` (module landing), `app/[locale]/lessons/[slug]` (single session + its card deck), `app/[locale]/cards` (cumulative card library across all ingested sessions). `app/[locale]/layout.tsx` owns the `<html lang dir>` shell and flips `dir="rtl"` for `he`. The session page's "Lesson Video" section (bottom of page, just before prev/next nav) is link-out buttons to Zoom recordings, not an embedded player — Zoom's share pages block iframe embedding, so don't attempt to embed them.
 
 ## Ingestion protocol (adding a new session)
 
@@ -33,7 +33,7 @@ When asked to ingest a session, follow the README's protocol exactly:
 4. Update the matching entry in `lib/registry.ts`: `status: 'complete'`, `hasCardDeck: true`, real `title`/`headline`/`concepts`.
 5. If a runnable project accompanies the session, add the zip to `public/downloads/` and set `hasProject` / `projectFile` on the session.
 
-Ingestion order is chronological (session 3 → session 22), with session 1 backfilled last.
+All 22 sessions of Volume I (Modules 1–5) are complete, ingested chronologically (session 3 → session 22) with session 1 backfilled last from its two original slide decks — no recording survives for session 1, so it's the one exception to step 1 above. Session 20 is intentionally `deferred` (no transcript exists, only a chat log — not enough to ground a deck). Sessions 23–35 (Modules 6–10) are placeholders awaiting future course dates; don't build them until real source material is linked in the registry.
 
 ## Aesthetic tokens
 
