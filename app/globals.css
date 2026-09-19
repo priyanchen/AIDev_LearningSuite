@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --rule: #d4d0c8;
+  --accent: #8b2a2a;
+  --paper: #faf8f3;
+  --codebg: #efece5;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+[dir='rtl'] body {
+  font-family: 'Frank Ruhl Libre', 'David', Georgia, serif;
+}
+[dir='rtl'] .brand { letter-spacing: 0.15em; }
+
+h1, h2, h3, h4 { font-weight: normal; }
+.small-caps { font-variant: small-caps; letter-spacing: 0.05em; }
+
+.ornament::before, .ornament::after {
+  content: '❦';
+  color: var(--accent);
+  margin: 0 0.5em;
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .card { page-break-inside: avoid; box-shadow: none !important; }
+  @page { size: A4; margin: 12mm; }
+}
+
+pre {
+  background: var(--codebg);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  overflow-x: auto;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+code {
+  font-family: Consolas, Monaco, monospace;
+  background: var(--codebg);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+pre code { background: transparent; padding: 0; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }

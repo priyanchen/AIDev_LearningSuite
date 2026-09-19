@@ -1,0 +1,68 @@
+{
+  "site": {
+    "title": "AI Developer Course",
+    "tagline": "A discipline for building models that survive contact with reality",
+    "brand": "Neoclassical Pop Art · Studio",
+    "author": "Sri PriYa N. Chen"
+  },
+  "nav": {
+    "home": "Home",
+    "modules": "Modules",
+    "sessions": "Sessions",
+    "cards": "Card Library",
+    "about": "About",
+    "downloadProject": "Download Project",
+    "sourceMaterials": "Course Materials",
+    "previousSession": "Previous",
+    "nextSession": "Next",
+    "backToCourse": "Back to Course",
+    "backToModule": "Back to Module"
+  },
+  "home": {
+    "hero": "Machine Learning Discipline",
+    "subtitle": "A thirty-five session journey through the craft of building AI systems",
+    "intro": "This site transforms a working AI developer curriculum into a durable reference architecture. Each session is delivered as a set of cards, a runnable project where applicable, and a link to source materials — designed for teaching, practice, and long consultation.",
+    "startLearning": "Begin the Course",
+    "browseAll": "Browse all modules",
+    "modulesCount": "modules",
+    "sessionsCount": "sessions",
+    "cardsPerSession": "cards per session"
+  },
+  "module": {
+    "sessionsInModule": "Sessions in this Module",
+    "moduleOverview": "Module Overview",
+    "arc": "Arc",
+    "practiceCompanion": "Practice Companion",
+    "practicePlaceholder": "The practice companion for this module will be added once all lecture sessions are ingested."
+  },
+  "session": {
+    "session": "Session",
+    "moduleSession": "Module Session",
+    "duration": "Duration",
+    "format": "Format",
+    "zoom": "Zoom",
+    "inPerson": "In-Person",
+    "outcomes": "Learning Outcomes",
+    "prerequisites": "Prerequisites",
+    "concepts": "Core Concepts",
+    "cardDeck": "The Card Deck",
+    "project": "Runnable Project",
+    "materials": "Source Materials",
+    "downloadCards": "Download All Cards",
+    "downloadProject": "Download Project",
+    "openRecording": "Open Recording",
+    "openChat": "Open Chat Log",
+    "openSlides": "Open Slides",
+    "materialsNote": "Original instructor materials are hosted by the course provider. Access may require enrollment.",
+    "awaitingSource": "This session is awaiting source material. It will be populated as the course progresses."
+  },
+  "cards": {
+    "printCard": "Print / Save PDF",
+    "expandCard": "Expand",
+    "collapseCard": "Collapse"
+  },
+  "footer": {
+    "rights": "Original teaching materials · Course concepts adapted from source curriculum",
+    "credit": "Built with discipline"
+  }
+}
