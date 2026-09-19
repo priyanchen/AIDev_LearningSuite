@@ -465,26 +465,30 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO/view',
     },
   },
-  ...([
-    { n: 12, m: 9, date: '2026-08-09', rec: '1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF', chat: '11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM' },
-  ].map(s => ({
-    slug: `session-${String(s.n).padStart(2, '0')}-python-${s.m}`,
-    number: s.n,
+  // Session 12 — Modules, packages, and virtual environments — fully authored
+  {
+    slug: 'session-12-python-9',
+    number: 12,
     moduleId: '03-python',
-    numberInModule: s.m,
-    date: s.date,
-    format: 'zoom' as SessionFormat,
-    title: { en: `Python · Module Session ${s.m}`, he: `פייתון · מפגש ${s.m} במודול` },
+    numberInModule: 9,
+    date: '2026-08-09',
+    format: 'zoom',
+    title: {
+      en: 'Modules, Packages, and Virtual Environments',
+      he: 'מודולים, חבילות, וסביבות וירטואליות',
+    },
     headline: {
-      en: 'Awaiting ingestion — the transcript, chat, and slides are in place.',
-      he: 'ממתין לעיבוד — התמלול, הצ׳אט והמצגות במקום.',
+      en: `The Python module closes on how files reach across each other — import versus use, pip and PyPI, and the sterile virtual environment that keeps one project's package versions from ever touching another's.`,
+      he: `מודול הפייתון נסגר על איך שקבצים מושיטים יד אחד לשני — ייבוא מול שימוש, pip ו-PyPI, והסביבה הווירטואלית הסטרילית ששומרת שגרסאות החבילות של פרויקט אחד לעולם לא ייגעו באלו של אחר.`,
     },
-    status: 'planned' as SessionStatus,
+    status: 'complete',
+    concepts: ['import vs from-import', 'pip & PyPI', 'Virtual Environments', '__name__ == "__main__"', 'ModuleNotFoundError', 'API Key Hygiene'],
+    hasCardDeck: true,
     sourceLinks: {
-      recording: `https://drive.google.com/file/d/${s.rec}/view`,
-      chat: `https://drive.google.com/file/d/${s.chat}/view`,
+      recording: 'https://drive.google.com/file/d/1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF/view',
+      chat: 'https://drive.google.com/file/d/11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM/view',
     },
-  }))),
+  },
 
   // ────────── Module 4 · Intro to DS ──────────
   ...([
