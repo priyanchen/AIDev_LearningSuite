@@ -2,7 +2,7 @@ import type { CardContent } from './types';
 
 // Session 2 · n8n · 01.07.2026
 // Cards authored from transcript analysis. Original teaching material.
-// The instructor's specific framings (workflow-as-Lego, honest warnings about
+// Dr. Zuari's specific framings (workflow-as-Lego, honest warnings about
 // no-code marketing hype, the insurance-call example) are captured in
 // paraphrased, structural form — not reproduced verbatim.
 
@@ -18,8 +18,8 @@ export const session02Cards: CardContent[] = [
       {
         heading: { en: 'Why n8n Before Code', he: 'למה n8n לפני קוד' },
         body: {
-          en: 'The lecturer is explicit: n8n is not the goal of the course. It is a scaffold. The concepts learned here — trigger, node, workflow, credentials, integration — will return when we write real code. Learning them visually first makes the code layer easier to absorb.',
-          he: 'המרצה ברור בעניין: n8n אינו יעד הקורס. זהו פיגום. המושגים הנלמדים כאן — טריגר, נוד, תהליך עבודה, אישורים, אינטגרציה — יחזרו כשנכתוב קוד אמיתי. למידתם ויזואלית תחילה עושה את שכבת הקוד לקלה יותר לקליטה.',
+          en: 'Dr. Zuari is explicit: n8n is not the goal of the course. It is a scaffold. The concepts learned here — trigger, node, workflow, credentials, integration — will return when we write real code. Learning them visually first makes the code layer easier to absorb.',
+          he: 'ד״ר זוארי ברור בעניין: n8n אינו יעד הקורס. זהו פיגום. המושגים הנלמדים כאן — טריגר, נוד, תהליך עבודה, אישורים, אינטגרציה — יחזרו כשנכתוב קוד אמיתי. למידתם ויזואלית תחילה עושה את שכבת הקוד לקלה יותר לקליטה.',
         },
       },
       {
@@ -53,8 +53,8 @@ export const session02Cards: CardContent[] = [
       {
         heading: { en: 'Workflow as Chain of Vertices', he: 'תהליך העבודה כשרשרת של קודקודים' },
         body: {
-          en: "The lecturer offered the Lego metaphor. A workflow is a chain of nodes, each performing one job, connected in a directed sequence. Data flows down the chain. When a downstream node fails, the failure is localized — the earlier nodes' work is preserved. This structure will reappear as functions calling functions in code.",
-          he: 'המרצה הציע מטאפורת הלגו. תהליך עבודה הוא שרשרת של צמתים, כל אחד מבצע עבודה אחת, מחוברים ברצף מכוון. נתונים זורמים במורד השרשרת. כשצומת במורד נכשל, הכשל ממוקד — עבודת הצמתים הקודמים נשמרת. המבנה הזה יופיע שוב כפונקציות שקוראות לפונקציות בקוד.',
+          en: "Dr. Zuari offered the Lego metaphor. A workflow is a chain of nodes, each performing one job, connected in a directed sequence. Data flows down the chain. When a downstream node fails, the failure is localized — the earlier nodes' work is preserved. This structure will reappear as functions calling functions in code.",
+          he: 'ד״ר זוארי הציע מטאפורת הלגו. תהליך עבודה הוא שרשרת של צמתים, כל אחד מבצע עבודה אחת, מחוברים ברצף מכוון. נתונים זורמים במורד השרשרת. כשצומת במורד נכשל, הכשל ממוקד — עבודת הצמתים הקודמים נשמרת. המבנה הזה יופיע שוב כפונקציות שקוראות לפונקציות בקוד.',
         },
       },
       {
@@ -226,7 +226,7 @@ export const session02Cards: CardContent[] = [
         },
       },
       {
-        heading: { en: 'The Reality the Lecturer Gave', he: 'המציאות שהמרצה נתן' },
+        heading: { en: 'The Reality Dr. Zuari Gave', he: 'המציאות שד״ר זוארי נתן' },
         body: {
           en: 'Serious enterprises rarely build production systems on n8n. When companies have real automation needs, they hire developers to write proper code. n8n is used for personal workflows, prototypes, small-team tools — not mission-critical infrastructure. Understanding this saves you from chasing a false career path.',
           he: 'ארגונים רציניים לעיתים רחוקות בונים מערכות ייצור על n8n. כשלחברות יש צרכי אוטומציה אמיתיים, הן שוכרות מפתחים כדי לכתוב קוד נאות. n8n משמש לתהליכי עבודה אישיים, אבות טיפוס, כלים לצוותים קטנים — לא לתשתית קריטית למשימה. הבנת זה חוסכת ממך מרדף אחר מסלול קריירה שקרי.',
@@ -305,8 +305,8 @@ export const session02Cards: CardContent[] = [
       {
         heading: { en: 'The Insurance Call Pattern', he: 'תבנית שיחת הביטוח' },
         body: {
-          en: 'The lecturer walked through this concrete example. A phone call is recorded. A transcription node converts audio to text. The AI Agent node reads the transcript, summarizes the conversation, extracts key points, flags problematic tones. The output writes to a Google Sheet and sends a Telegram alert. One workflow, five node types, a real quality-monitoring system.',
-          he: 'המרצה עבר דרך הדוגמה הקונקרטית הזו. שיחת טלפון מוקלטת. צומת תמלול ממיר שמע לטקסט. צומת סוכן ה-AI קורא את התמלול, מסכם את השיחה, מחלץ נקודות מפתח, מסמן טונים בעייתיים. הפלט נכתב ל-Google Sheet ושולח התראת טלגרם. תהליך עבודה אחד, חמישה סוגי צמתים, מערכת ניטור איכות אמיתית.',
+          en: 'Dr. Zuari walked through this concrete example. A phone call is recorded. A transcription node converts audio to text. The AI Agent node reads the transcript, summarizes the conversation, extracts key points, flags problematic tones. The output writes to a Google Sheet and sends a Telegram alert. One workflow, five node types, a real quality-monitoring system.',
+          he: 'ד״ר זוארי עבר דרך הדוגמה הקונקרטית הזו. שיחת טלפון מוקלטת. צומת תמלול ממיר שמע לטקסט. צומת סוכן ה-AI קורא את התמלול, מסכם את השיחה, מחלץ נקודות מפתח, מסמן טונים בעייתיים. הפלט נכתב ל-Google Sheet ושולח התראת טלגרם. תהליך עבודה אחד, חמישה סוגי צמתים, מערכת ניטור איכות אמיתית.',
         },
       },
       {
@@ -333,8 +333,8 @@ export const session02Cards: CardContent[] = [
       {
         heading: { en: 'The Debugging Cliff', he: 'צוק ניפוי הבאגים' },
         body: {
-          en: 'The lecturer stated it plainly: when something breaks in n8n at any scale, debugging is painful. Visual tools obscure the exact state of data at each step. Error messages are often generic. Reproducing a failure is difficult when the trigger was a one-time event. Code offers logs, breakpoints, unit tests — n8n does not.',
-          he: 'המרצה אמר זאת בברור: כשמשהו נשבר ב-n8n בכל קנה מידה, ניפוי הבאגים כואב. כלים ויזואליים מטשטשים את המצב המדויק של הנתונים בכל שלב. הודעות שגיאה לרוב גנריות. שחזור כשל קשה כשהטריגר היה אירוע חד-פעמי. קוד מציע לוגים, נקודות עצירה, בדיקות יחידה — n8n לא.',
+          en: 'Dr. Zuari stated it plainly: when something breaks in n8n at any scale, debugging is painful. Visual tools obscure the exact state of data at each step. Error messages are often generic. Reproducing a failure is difficult when the trigger was a one-time event. Code offers logs, breakpoints, unit tests — n8n does not.',
+          he: 'ד״ר זוארי אמר זאת בברור: כשמשהו נשבר ב-n8n בכל קנה מידה, ניפוי הבאגים כואב. כלים ויזואליים מטשטשים את המצב המדויק של הנתונים בכל שלב. הודעות שגיאה לרוב גנריות. שחזור כשל קשה כשהטריגר היה אירוע חד-פעמי. קוד מציע לוגים, נקודות עצירה, בדיקות יחידה — n8n לא.',
         },
       },
       {

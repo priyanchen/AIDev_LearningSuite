@@ -232,8 +232,8 @@ export const session09Cards: CardContent[] = [
     number: '08',
     title: { en: `Read the Plan Before You Say Yes`, he: `קראי את התכנון לפני שאת אומרת כן` },
     subtitle: {
-      en: `An honest, self-aware moment — the instructor admits to skipping his own advice during a live demo`,
-      he: `רגע כן ומודע לעצמו — המרצה מודה שהוא מדלג על העצה שלו במהלך הדגמה חיה`,
+      en: `An honest, self-aware moment — Dr. Zuari admits to skipping his own advice during a live demo`,
+      he: `רגע כן ומודע לעצמו — ד״ר זוארי מודה שהוא מדלג על העצה שלו במהלך הדגמה חיה`,
     },
     sections: [
       {

@@ -43,8 +43,8 @@ export const session06Cards: CardContent[] = [
       {
         heading: { en: `The Instruction`, he: `ההוראה` },
         body: {
-          en: `Before writing a single line of code for the guessing game, the class was told explicitly: no AI tools, no code yet — first take the problem and break it into its smallest units, written in plain language. The lecturer named this directly as no less challenging than writing the code itself.`,
-          he: `לפני שנכתבה שורת קוד אחת למשחק הניחוש, הכיתה קיבלה הוראה מפורשת: בלי כלי AI, עוד בלי קוד — קודם לקחת את הבעיה ולפרק אותה ליחידות הכי קטנות שלה, בשפה פשוטה. המרצה אמר זאת במפורש: זה לא פחות מאתגר מכתיבת הקוד עצמו.`,
+          en: `Before writing a single line of code for the guessing game, the class was told explicitly: no AI tools, no code yet — first take the problem and break it into its smallest units, written in plain language. Dr. Zuari named this directly as no less challenging than writing the code itself.`,
+          he: `לפני שנכתבה שורת קוד אחת למשחק הניחוש, הכיתה קיבלה הוראה מפורשת: בלי כלי AI, עוד בלי קוד — קודם לקחת את הבעיה ולפרק אותה ליחידות הכי קטנות שלה, בשפה פשוטה. ד״ר זוארי אמר זאת במפורש: זה לא פחות מאתגר מכתיבת הקוד עצמו.`,
         },
       },
       {

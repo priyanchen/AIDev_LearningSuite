@@ -43,8 +43,8 @@ export const session05Cards: CardContent[] = [
       {
         heading: { en: `The Doubt, Named Out Loud`, he: `הספק, נאמר בקול` },
         body: {
-          en: `A student pushed back directly: her goal is strategy and architecture, not writing code line by line — so why does the syntax matter? The lecturer's answer did not defend syntax for its own sake. He agreed she'd barely write functions from memory. The disagreement was about what "not writing code" actually requires.`,
-          he: `סטודנטית דחפה בחזרה ישירות: המטרה שלה היא אסטרטגיה וארכיטקטורה, לא כתיבת קוד שורה אחר שורה — אז למה שהתחביר יהיה חשוב? התשובה של המרצה לא הגנה על התחביר לשם עצמו. הוא הסכים שהיא בקושי תכתוב פונקציות מהזיכרון. חוסר ההסכמה היה על מה "לא לכתוב קוד" באמת דורש.`,
+          en: `A student pushed back directly: her goal is strategy and architecture, not writing code line by line — so why does the syntax matter? Dr. Zuari's answer did not defend syntax for its own sake. He agreed she'd barely write functions from memory. The disagreement was about what "not writing code" actually requires.`,
+          he: `סטודנטית דחפה בחזרה ישירות: המטרה שלה היא אסטרטגיה וארכיטקטורה, לא כתיבת קוד שורה אחר שורה — אז למה שהתחביר יהיה חשוב? התשובה של ד״ר זוארי לא הגנה על התחביר לשם עצמו. הוא הסכים שהיא בקושי תכתוב פונקציות מהזיכרון. חוסר ההסכמה היה על מה "לא לכתוב קוד" באמת דורש.`,
         },
       },
       {

@@ -43,8 +43,8 @@ export const session04Cards: CardContent[] = [
       {
         heading: { en: `The Promise`, he: `ההבטחה` },
         body: {
-          en: `The lecturer stated it directly: everything learned about indexing, slicing, and dot-access will be completely identical across every object type still to come. This is not a simplification for beginners — it is a literal description of how Python is built.`,
-          he: `המרצה אמר את זה במפורש: כל מה שנלמד על אינדוקסים, פרוסות (slicing) וגישה בנקודה יהיה זהה לחלוטין בכל סוגי האובייקטים שעוד יבואו. זו לא הפשטה למתחילות — זו תיאור מדויק של איך פייתון בנויה.`,
+          en: `Dr. Zuari stated it directly: everything learned about indexing, slicing, and dot-access will be completely identical across every object type still to come. This is not a simplification for beginners — it is a literal description of how Python is built.`,
+          he: `ד״ר זוארי אמר את זה במפורש: כל מה שנלמד על אינדוקסים, פרוסות (slicing) וגישה בנקודה יהיה זהה לחלוטין בכל סוגי האובייקטים שעוד יבואו. זו לא הפשטה למתחילות — זו תיאור מדויק של איך פייתון בנויה.`,
         },
       },
       {
@@ -85,8 +85,8 @@ export const session04Cards: CardContent[] = [
       {
         heading: { en: `Pick One Editor`, he: `בחרי כלי אחד` },
         body: {
-          en: `Students who split time between Cursor and VS Code hit friction each time: keyboard shortcuts differ silently by OS, saved notebook cells stopped appearing after switching tools, and interpreter selection had to be redone. The lecturer's advice was explicit — pick one editor and stay in it for the course.`,
-          he: `סטודנטיות שחילקו זמן בין Cursor ל-VS Code נתקלו בחיכוך בכל פעם: קיצורי מקלדת משתנים בשקט לפי מערכת ההפעלה, תאים שמורים במחברת הפסיקו להופיע אחרי מעבר בין כלים, ובחירת המפרש (interpreter) הייתה צריכה להיעשות מחדש. עצת המרצה הייתה מפורשת — לבחור עורך אחד ולהישאר בו לאורך הקורס.`,
+          en: `Students who split time between Cursor and VS Code hit friction each time: keyboard shortcuts differ silently by OS, saved notebook cells stopped appearing after switching tools, and interpreter selection had to be redone. Dr. Zuari's advice was explicit — pick one editor and stay in it for the course.`,
+          he: `סטודנטיות שחילקו זמן בין Cursor ל-VS Code נתקלו בחיכוך בכל פעם: קיצורי מקלדת משתנים בשקט לפי מערכת ההפעלה, תאים שמורים במחברת הפסיקו להופיע אחרי מעבר בין כלים, ובחירת המפרש (interpreter) הייתה צריכה להיעשות מחדש. עצת ד״ר זוארי הייתה מפורשת — לבחור עורך אחד ולהישאר בו לאורך הקורס.`,
         },
       },
       {
@@ -176,15 +176,15 @@ export const session04Cards: CardContent[] = [
       {
         heading: { en: `Position or Name?`, he: `מיקום או שם?` },
         body: {
-          en: `If items will be retrieved by their position in an order — first, last, third — reach for a list or tuple. If items will be retrieved by a meaningful label instead of a position, reach for a dictionary. The lecturer's own example was a stock-price lookup: nobody wants to remember that a company's price sits at "whichever index happens to be thirty-seven."`,
-          he: `אם פריטים ייאספו לפי מיקום בסדר — ראשון, אחרון, שלישי — פונות לרשימה או ל-Tuple. אם פריטים ייאספו לפי תווית משמעותית ולא לפי מיקום, פונות למילון. הדוגמה של המרצה עצמו הייתה חיפוש מחיר מניה: אף אחד לא רוצה לזכור שהמחיר של חברה יושב ב"איזה שהוא אינדקס שבמקרה הוא שלושים ושבע".`,
+          en: `If items will be retrieved by their position in an order — first, last, third — reach for a list or tuple. If items will be retrieved by a meaningful label instead of a position, reach for a dictionary. Dr. Zuari's own example was a stock-price lookup: nobody wants to remember that a company's price sits at "whichever index happens to be thirty-seven."`,
+          he: `אם פריטים ייאספו לפי מיקום בסדר — ראשון, אחרון, שלישי — פונות לרשימה או ל-Tuple. אם פריטים ייאספו לפי תווית משמעותית ולא לפי מיקום, פונות למילון. הדוגמה של ד״ר זוארי עצמו הייתה חיפוש מחיר מניה: אף אחד לא רוצה לזכור שהמחיר של חברה יושב ב"איזה שהוא אינדקס שבמקרה הוא שלושים ושבע".`,
         },
       },
       {
         heading: { en: `Changeable or Protected?`, he: `ניתן לשינוי או מוגן?` },
         body: {
-          en: `If the collection should stay editable after creation, choose a list. If the goal is specifically to prevent any later line of code — yours or someone else's — from accidentally changing the values, choose a tuple. The lecturer named this directly: a tuple is a protective mechanism, not a smaller list.`,
-          he: `אם האוסף צריך להישאר ניתן לעריכה אחרי היצירה, בוחרות ברשימה. אם המטרה היא בדיוק למנוע משורת קוד מאוחרת — שלך או של מישהי אחרת — לשנות בטעות את הערכים, בוחרות ב-Tuple. המרצה אמר את זה במפורש: Tuple הוא מנגנון הגנה, לא רשימה קטנה יותר.`,
+          en: `If the collection should stay editable after creation, choose a list. If the goal is specifically to prevent any later line of code — yours or someone else's — from accidentally changing the values, choose a tuple. Dr. Zuari named this directly: a tuple is a protective mechanism, not a smaller list.`,
+          he: `אם האוסף צריך להישאר ניתן לעריכה אחרי היצירה, בוחרות ברשימה. אם המטרה היא בדיוק למנוע משורת קוד מאוחרת — שלך או של מישהי אחרת — לשנות בטעות את הערכים, בוחרות ב-Tuple. ד״ר זוארי אמר את זה במפורש: Tuple הוא מנגנון הגנה, לא רשימה קטנה יותר.`,
         },
       },
     ],
@@ -309,8 +309,8 @@ export const session04Cards: CardContent[] = [
       {
         heading: { en: `Python Chooses Your Type For You`, he: `פייתון בוחרת עבורך את הטיפוס` },
         body: {
-          en: `Unlike statically typed languages such as Java, Python never requires declaring what kind of value a variable will hold — it infers the type the moment a value is assigned. The lecturer framed this as Python "doing you a favor," trading some of the up-front rigor of typed languages for speed of writing — a tradeoff, not a simplification without cost.`,
-          he: `בניגוד לשפות טיפוסים סטטיים כמו ג'אווה, פייתון אף פעם לא דורשת להצהיר מראש איזה סוג ערך משתנה יחזיק — היא מסיקה את הטיפוס ברגע ההצבה. המרצה תיאר את זה כפייתון ש"עושה לך טובה", ומחליפה חלק מהקפדנות המוקדמת של שפות מוקלדות במהירות כתיבה — עסקת חליפין, לא הפשטה בלי מחיר.`,
+          en: `Unlike statically typed languages such as Java, Python never requires declaring what kind of value a variable will hold — it infers the type the moment a value is assigned. Dr. Zuari framed this as Python "doing you a favor," trading some of the up-front rigor of typed languages for speed of writing — a tradeoff, not a simplification without cost.`,
+          he: `בניגוד לשפות טיפוסים סטטיים כמו ג'אווה, פייתון אף פעם לא דורשת להצהיר מראש איזה סוג ערך משתנה יחזיק — היא מסיקה את הטיפוס ברגע ההצבה. ד״ר זוארי תיאר את זה כפייתון ש"עושה לך טובה", ומחליפה חלק מהקפדנות המוקדמת של שפות מוקלדות במהירות כתיבה — עסקת חליפין, לא הפשטה בלי מחיר.`,
         },
       },
     ],

@@ -1,7 +1,7 @@
 import type { CardContent } from './types';
 
 // Session 3 · Python (Module Opener) · 05.07.2026
-// The lecturer explicitly framed this as the slowest session of the course.
+// Dr. Zuari explicitly framed this as the slowest session of the course.
 // Content emphasis: hardware, memory hierarchy, binary, bits/bytes, ASCII.
 // Not a coding session — a foundations session before any code is written.
 
@@ -17,8 +17,8 @@ export const session03Cards: CardContent[] = [
       {
         heading: { en: 'What This Session Is', he: 'מה המפגש הזה' },
         body: {
-          en: 'The Python module begins not with code but with the substrate code runs on. The lecturer stated it explicitly: this will be the slowest session of the course. That slowness is deliberate — the concepts here return in every session that follows.',
-          he: 'מודול הפייתון מתחיל לא בקוד אלא במצע שהקוד רץ עליו. המרצה אמר זאת במפורש: זה יהיה המפגש האיטי ביותר בקורס. האיטיות הזו מכוונת — המושגים כאן חוזרים בכל מפגש שבא בהמשך.',
+          en: 'The Python module begins not with code but with the substrate code runs on. Dr. Zuari stated it explicitly: this will be the slowest session of the course. That slowness is deliberate — the concepts here return in every session that follows.',
+          he: 'מודול הפייתון מתחיל לא בקוד אלא במצע שהקוד רץ עליו. ד״ר זוארי אמר זאת במפורש: זה יהיה המפגש האיטי ביותר בקורס. האיטיות הזו מכוונת — המושגים כאן חוזרים בכל מפגש שבא בהמשך.',
         },
       },
       {
@@ -36,7 +36,7 @@ export const session03Cards: CardContent[] = [
   },
   {
     number: '01',
-    title: { en: 'The Instructor\'s Pacing Pact', he: 'הסכם הקצב של המרצה' },
+    title: { en: `Dr. Zuari's Pacing Pact`, he: `הסכם הקצב של ד״ר זוארי` },
     subtitle: {
       en: 'Why the first session moves deliberately, and what to do when things break',
       he: 'למה המפגש הראשון מתקדם בכוונה, ומה לעשות כשדברים נשברים',
@@ -45,8 +45,8 @@ export const session03Cards: CardContent[] = [
       {
         heading: { en: 'The Explicit Warning', he: 'האזהרה המפורשת' },
         body: {
-          en: 'The lecturer opened by naming this session the slowest of the course. That framing is a gift — it prevents students from mistaking the pace for the standard, or from panicking when things do not work on their machine within seconds.',
-          he: 'המרצה פתח בכך שקרא למפגש הזה האיטי ביותר בקורס. המסגור הזה הוא מתנה — הוא מונע מסטודנטים לטעות בקצב בתור הסטנדרט, או להיכנס לפאניקה כשדברים לא עובדים במכונה שלהם תוך שניות.',
+          en: 'Dr. Zuari opened by naming this session the slowest of the course. That framing is a gift — it prevents students from mistaking the pace for the standard, or from panicking when things do not work on their machine within seconds.',
+          he: 'ד״ר זוארי פתח בכך שקרא למפגש הזה האיטי ביותר בקורס. המסגור הזה הוא מתנה — הוא מונע מסטודנטים לטעות בקצב בתור הסטנדרט, או להיכנס לפאניקה כשדברים לא עובדים במכונה שלהם תוך שניות.',
         },
       },
       {
@@ -66,7 +66,7 @@ export const session03Cards: CardContent[] = [
     ],
     principle: {
       en: 'Follow the teacher, not the error message',
-      he: 'עקבי אחר המורה, לא אחר הודעת השגיאה',
+      he: 'עקבי אחר ד״ר זוארי, לא אחר הודעת השגיאה',
     },
   },
   {
@@ -318,8 +318,8 @@ export const session03Cards: CardContent[] = [
       {
         heading: { en: 'The Question That Fails', he: 'השאלה שנכשלת' },
         body: {
-          en: 'Do not ask an LLM to "install Python for me" or "fix my PATH error." The LLM cannot see your machine. It will invent commands that may not match your operating system, your Python version, or your specific error. For installation issues, ask a human, ask the instructor, or paste the exact error text and ask what it means — not what to do about it.',
-          he: 'אל תבקשי מ-LLM "התקן לי Python" או "תקן את שגיאת ה-PATH שלי". ה-LLM לא יכול לראות את המכונה שלך. הוא ימציא פקודות שאולי לא מתאימות למערכת ההפעלה שלך, לגרסת Python שלך, או לשגיאה הספציפית שלך. לבעיות התקנה, שאלי בן אדם, שאלי את המרצה, או הדביקי את טקסט השגיאה המדויק ושאלי מה זה אומר — לא מה לעשות עם זה.',
+          en: 'Do not ask an LLM to "install Python for me" or "fix my PATH error." The LLM cannot see your machine. It will invent commands that may not match your operating system, your Python version, or your specific error. For installation issues, ask a human, ask Dr. Zuari, or paste the exact error text and ask what it means — not what to do about it.',
+          he: 'אל תבקשי מ-LLM "התקן לי Python" או "תקן את שגיאת ה-PATH שלי". ה-LLM לא יכול לראות את המכונה שלך. הוא ימציא פקודות שאולי לא מתאימות למערכת ההפעלה שלך, לגרסת Python שלך, או לשגיאה הספציפית שלך. לבעיות התקנה, שאלי בן אדם, שאלי את ד״ר זוארי, או הדביקי את טקסט השגיאה המדויק ושאלי מה זה אומר — לא מה לעשות עם זה.',
         },
       },
     ],

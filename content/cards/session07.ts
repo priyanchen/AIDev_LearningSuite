@@ -190,8 +190,8 @@ export const session07Cards: CardContent[] = [
       {
         heading: { en: `The Rule, Restated`, he: `הכלל, מנוסח מחדש` },
         body: {
-          en: `Reassigning a variable inside a function — even one with the same name as something outside it — does not change the outside value, unless the result is explicitly returned and reassigned. The lecturer's phrase for this: functions behave like a sandbox, protecting the outside world from accidental interference by default.`,
-          he: `הצבה מחדש של משתנה בתוך פונקציה — אפילו אחד עם אותו שם כמו משהו מחוצה לה — לא משנה את הערך שבחוץ, אלא אם התוצאה מוחזרת ומוצבת מחדש במפורש. הביטוי של המרצה לזה: פונקציות מתנהגות כמו sandbox, ומגנות על העולם החיצון מהתערבות מקרית כברירת מחדל.`,
+          en: `Reassigning a variable inside a function — even one with the same name as something outside it — does not change the outside value, unless the result is explicitly returned and reassigned. Dr. Zuari's phrase for this: functions behave like a sandbox, protecting the outside world from accidental interference by default.`,
+          he: `הצבה מחדש של משתנה בתוך פונקציה — אפילו אחד עם אותו שם כמו משהו מחוצה לה — לא משנה את הערך שבחוץ, אלא אם התוצאה מוחזרת ומוצבת מחדש במפורש. הביטוי של ד״ר זוארי לזה: פונקציות מתנהגות כמו sandbox, ומגנות על העולם החיצון מהתערבות מקרית כברירת מחדל.`,
         },
       },
       {
