@@ -709,6 +709,7 @@ export const sessions: Session[] = [
   },
 
   // ────────── Module 5 · Computer Vision ──────────
+  // Session 22 — Ultralytics/YOLO ecosystem, detection vs segmentation vs pose estimation, live pose-coach build — fully authored
   {
     slug: 'session-22-computer-vision',
     number: 22,
@@ -716,12 +717,17 @@ export const sessions: Session[] = [
     numberInModule: 0,
     date: '2026-09-16',
     format: 'zoom',
-    title: { en: 'Computer Vision · Opening', he: 'ראייה ממוחשבת · פתיחה' },
-    headline: {
-      en: 'Awaiting ingestion — full source material available.',
-      he: 'ממתין לעיבוד — חומר מקור מלא זמין.',
+    title: {
+      en: `Computer Vision — Four Models, One Ecosystem, and the Line Between Detecting and Understanding`,
+      he: `ראייה ממוחשבת — ארבעה מודלים, מערכת אקולוגית אחת, והקו בין זיהוי להבנה`,
     },
-    status: 'planned',
+    headline: {
+      en: `A new module opens with the Ultralytics/YOLO ecosystem — four separate specialized models for detection, classification, segmentation, and pose estimation, why the newest model isn't always the right one, and the sharp line between what a vision model detects and what it actually understands.`,
+      he: `מודול חדש נפתח עם המערכת האקולוגית של Ultralytics/YOLO — ארבעה מודלים מתמחים נפרדים לזיהוי, סיווג, סגמנטציה, ואומדן תנוחה, למה המודל החדש ביותר הוא לא תמיד הנכון, והקו החד בין מה שמודל ראייה מזהה למה שהוא באמת מבין.`,
+    },
+    status: 'complete',
+    concepts: ['Ultralytics / YOLO', 'Object Detection', 'Segmentation', 'Pose Estimation', 'Model Selection', 'Conda Environments'],
+    hasCardDeck: true,
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1ay7_D-ZpSqoMg5zj9aVFFzHOoGk49MnB/view',
       chat: 'https://drive.google.com/file/d/1ffc9_v_Dqr6cN4vqbBcYpadMwwCUIlFA/view',
