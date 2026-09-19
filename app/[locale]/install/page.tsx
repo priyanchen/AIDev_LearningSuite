@@ -63,9 +63,30 @@ export default async function InstallGuidePage({
                   </div>
                 </div>
 
-                <p className="text-sm leading-relaxed mb-3">
+                <p className="text-sm leading-relaxed mb-4">
                   {item.whatItDoes[locale]}
                 </p>
+
+                {item.commands && (
+                  <div className="grid sm:grid-cols-2 gap-4 mb-1">
+                    <div>
+                      <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
+                        {locale === 'he' ? 'Mac' : 'Mac'}
+                      </div>
+                      <pre className="bg-ink text-paper text-xs font-mono p-3 overflow-x-auto whitespace-pre-wrap break-all" dir="ltr">
+                        {item.commands.mac.join('\n')}
+                      </pre>
+                    </div>
+                    <div>
+                      <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
+                        {locale === 'he' ? 'Windows' : 'Windows'}
+                      </div>
+                      <pre className="bg-ink text-paper text-xs font-mono p-3 overflow-x-auto whitespace-pre-wrap break-all" dir="ltr">
+                        {item.commands.windows.join('\n')}
+                      </pre>
+                    </div>
+                  </div>
+                )}
 
                 {item.tips && (
                   <div className="border-t border-rule pt-3 mt-3">

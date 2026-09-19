@@ -1,10 +1,16 @@
 import type { Bilingual } from '@/lib/registry';
 
+export type InstallCommands = {
+  mac: string[];
+  windows: string[];
+};
+
 export type InstallItem = {
   name: string;
   sessions: number[];         // syllabus session numbers where this came up
   whatItDoes: Bilingual;
   tips?: Bilingual;           // installation-sequence tips, gotchas, warnings — grounded in the card content
+  commands?: InstallCommands; // actual install commands, one array entry per terminal line
 };
 
 export type InstallCategory = {
@@ -29,6 +35,10 @@ export const installGuide: InstallCategory[] = [
           en: `Download from python.org, latest stable release (3.12+). On Windows, the "Add Python to PATH" checkbox during install is not optional — skip it and the terminal won't find Python at all; the Mac installer handles this automatically. Verify with \`python --version\`. If install breaks mid-lesson, the standing rule was: don't chase it live — note the error, keep following along, debug after.`,
           he: `הורידו מ-python.org, הגרסה היציבה האחרונה (3.12+). בווינדוס, תיבת הסימון "Add Python to PATH" בזמן ההתקנה היא לא אופציונלית — דלגו עליה והטרמינל לא ימצא את פייתון בכלל; מתקין ה-Mac מטפל בזה אוטומטית. אמתו עם \`python --version\`. אם ההתקנה נשברת באמצע השיעור, הכלל שנקבע היה: לא לרדוף אחריה בשידור חי — לרשום את השגיאה, להמשיך להקשיב, ולנפות אחר כך.`,
         },
+        commands: {
+          mac: ['brew install python@3.12', 'python3 --version'],
+          windows: ['winget install -e --id Python.Python.3.12', 'python --version'],
+        },
       },
       {
         name: 'venv',
@@ -40,6 +50,10 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `The exact three-step order matters, and skipping any step breaks the isolation silently: (1) create it — "Python: Create Environment" from the command palette, choose venv and a Python version, this builds a \`.venv\` folder; (2) confirm activation by checking the bottom status bar for the \`.venv\` dotted path before running \`pip install\` — this is the only reliable confirmation the environment is active; (3) actually run the script on the venv's interpreter, not the general one — the step most people skip. A successful \`pip install\` proves nothing about which Python actually received the package. A \`ModuleNotFoundError\` right after a clean install is never a package problem — it's always an environment-identity problem. The command-line version: \`python -m venv venv\`, then activate it before installing anything — never install project packages into system Python.`,
           he: `הסדר המדויק של שלושת השלבים חשוב, ודילוג על כל שלב שובר את הבידוד בשקט: (1) יוצרות אותה — "Python: Create Environment" מפלטת הפקודות, בוחרות venv וגרסת פייתון, זה בונה תיקיית \`.venv\`; (2) מאשרות הפעלה על ידי בדיקת שורת הסטטוס התחתונה לנתיב המנוקד של \`.venv\` לפני הרצת \`pip install\` — זה האישור האמין היחיד שהסביבה פעילה; (3) בפועל מריצות את הסקריפט על המתורגמן של ה-venv, לא הכללי — השלב שהכי הרבה אנשים מדלגים עליו. \`pip install\` מוצלח לא מוכיח כלום לגבי איזה פייתון בעצם קיבל את החבילה. \`ModuleNotFoundError\` מייד אחרי התקנה נקייה הוא לעולם לא בעיית חבילה — הוא תמיד בעיית זהות-סביבה. גרסת שורת הפקודה: \`python -m venv venv\`, ואז להפעיל אותה לפני שמתקינים כל דבר — לעולם לא להתקין חבילות פרויקט על הפייתון של המערכת.`,
+        },
+        commands: {
+          mac: ['python3 -m venv .venv', 'source .venv/bin/activate'],
+          windows: ['python -m venv .venv', '.venv\\Scripts\\activate'],
         },
       },
       {
@@ -53,6 +67,16 @@ export const installGuide: InstallCategory[] = [
           en: `A real install line from the course: \`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`, followed by \`pip freeze > requirements.txt\` to lock exact versions for reproducibility. The core warning ties back to venv: pip succeeding is not proof the script itself can see the package — always check which interpreter is actually running.`,
           he: `שורת התקנה אמיתית מהקורס: \`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`, ואחריה \`pip freeze > requirements.txt\` כדי לנעול גרסאות מדויקות לצורך שחזוריות. האזהרה המרכזית נקשרת בחזרה ל-venv: הצלחת pip היא לא הוכחה שהסקריפט עצמו יכול לראות את החבילה — תמיד לבדוק איזה מתורגמן בפועל רץ.`,
         },
+        commands: {
+          mac: [
+            'pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib',
+            'pip freeze > requirements.txt',
+          ],
+          windows: [
+            'pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib',
+            'pip freeze > requirements.txt',
+          ],
+        },
       },
       {
         name: 'VS Code / Cursor / PyCharm / Jupyter',
@@ -64,6 +88,20 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `A recurring class confusion — files "disappearing" — was always caused by opening a single file instead of using Open Folder on the whole project directory. Explicit advice: pick one editor (Cursor or VS Code) and stay in it for the entire course; switching mid-course silently breaks keyboard shortcuts by OS, loses saved notebook cells, and forces the interpreter to be re-selected. Every fresh Jupyter notebook needs its Python 3 kernel reselected individually — it doesn't persist per-project.`,
           he: `בלבול חוזר בכיתה — קבצים "נעלמים" — נגרם תמיד מפתיחת קובץ בודד במקום שימוש ב-Open Folder על כל תיקיית הפרויקט. עצה מפורשת: לבחור עורך אחד (Cursor או VS Code) ולהישאר בו לכל הקורס; החלפה באמצע הקורס שוברת בשקט קיצורי מקלדת לפי מערכת הפעלה, מאבדת תאי מחברת שנשמרו, ומכריחה בחירה מחדש של המתורגמן. כל מחברת Jupyter חדשה צריכה שהליבה של Python 3 שלה תיבחר מחדש בנפרד — היא לא נשמרת לכל פרויקט.`,
+        },
+        commands: {
+          mac: [
+            'brew install --cask visual-studio-code',
+            'brew install --cask cursor',
+            'brew install --cask pycharm-ce',
+            'pip install jupyter',
+          ],
+          windows: [
+            'winget install -e --id Microsoft.VisualStudioCode',
+            '# Cursor: download the installer from cursor.com',
+            'winget install -e --id JetBrains.PyCharm.Community',
+            'pip install jupyter',
+          ],
         },
       },
       {
@@ -77,6 +115,14 @@ export const installGuide: InstallCategory[] = [
           en: `The seven-step rhythm: new empty folder → "create a repository" in GitHub Desktop pointed at it → edit a file → stage (+) → write a specific commit message → commit → sync/push. First publish triggers a one-time OAuth browser sign-in (same email as the local Git username) that grants push permission going forward. Public/private is asked at first publish but stays revisitable later. Core discipline: never work directly on \`main\` — branch first, since \`main\` is what the client sees.`,
           he: `הקצב בן שבעת השלבים: תיקייה ריקה חדשה → "create a repository" ב-GitHub Desktop שמצביע עליה → עריכת קובץ → staging (+) → כתיבת הודעת commit ספציפית → commit → sync/push. פרסום ראשון מפעיל כניסת OAuth חד-פעמית בדפדפן (אותו אימייל כמו שם המשתמש המקומי של Git) שמעניקה הרשאת push מכאן ואילך. ציבורי/פרטי נשאל בפרסום הראשון אבל נשאר ניתן לשינוי אחר כך. משמעת ליבה: לעולם לא לעבוד ישירות על \`main\` — לענף קודם, כי \`main\` הוא מה שהלקוח רואה.`,
         },
+        commands: {
+          mac: ['brew install git', 'brew install --cask github', 'git --version'],
+          windows: [
+            'winget install -e --id Git.Git',
+            'winget install -e --id GitHub.GitHubDesktop',
+            'git --version',
+          ],
+        },
       },
       {
         name: 'GitHub CLI (gh)',
@@ -89,6 +135,10 @@ export const installGuide: InstallCategory[] = [
           en: `Install, then run \`gh auth login\` — the same pattern as the Supabase CLI, done right after it, because pushing the finished project to GitHub is part of the same automated agent-driven flow.`,
           he: `להתקין, ואז להריץ \`gh auth login\` — אותו דפוס כמו Supabase CLI, נעשה מייד אחריו, כי דחיפת הפרויקט הגמור ל-GitHub היא חלק מאותו תהליך מונע-סוכן אוטומטי.`,
         },
+        commands: {
+          mac: ['brew install gh', 'gh auth login'],
+          windows: ['winget install -e --id GitHub.cli', 'gh auth login'],
+        },
       },
       {
         name: 'python-dotenv + .env',
@@ -100,6 +150,10 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `The full hygiene chain, demonstrated live: (1) have the agent create \`.env\` and load the key via python-dotenv rather than hardcoding it; (2) confirm \`.env\` is in \`.gitignore\` before the first commit — the step that actually matters, since a hidden key that still gets committed is unprotected; (3) create \`.env.example\` with the same variable names but no real values, so collaborators know what to fill in without seeing the real key; (4) have the agent write a README and \`requirements.txt\` so the environment is reproducible. This directly followed a live near-miss where a real API key was pasted straight into a script to get a demo working, then flagged on the spot: that file must never be shared as-is.`,
           he: `שרשרת ההיגיינה המלאה, שהודגמה בשידור חי: (1) לבקש מהסוכן ליצור \`.env\` ולטעון את המפתח דרך python-dotenv במקום לקבע אותו; (2) לוודא ש-\`.env\` נמצא ב-\`.gitignore\` לפני ה-commit הראשון — השלב שבאמת חשוב, כי מפתח מוסתר שעדיין נכנס ל-commit הוא לא מוגן; (3) ליצור \`.env.example\` עם אותם שמות משתנים אבל בלי ערכים אמיתיים, כך שמשתפי פעולה יודעים מה למלא בלי לראות את המפתח האמיתי; (4) לבקש מהסוכן לכתוב README ו-\`requirements.txt\` כך שהסביבה תהיה ברת-שחזור. זה בא ישירות בעקבות תקרית-כמעט חיה שבה מפתח API אמיתי הודבק ישירות לתוך סקריפט כדי שהדגמה תעבוד, ואז סומן במקום: הקובץ הזה לעולם לא צריך להיות משותף כמו שהוא.`,
+        },
+        commands: {
+          mac: ['pip install python-dotenv', 'echo ".env" >> .gitignore'],
+          windows: ['pip install python-dotenv', 'echo .env >> .gitignore'],
         },
       },
     ],
@@ -118,6 +172,10 @@ export const installGuide: InstallCategory[] = [
           en: `Every pandas object follows the same "attributes and methods" grammar already taught for strings, lists, and classes — nothing structurally new to learn, just new attribute names (\`index\`, \`values\`, \`dtype\`, \`name\`).`,
           he: `כל אובייקט pandas עוקב אחר אותה דקדוק של "תכונות ומתודות" שכבר נלמד עבור מחרוזות, רשימות, ומחלקות — שום דבר חדש מבחינה מבנית ללמוד, רק שמות תכונות חדשים (\`index\`, \`values\`, \`dtype\`, \`name\`).`,
         },
+        commands: {
+          mac: ['pip install numpy pandas'],
+          windows: ['pip install numpy pandas'],
+        },
       },
       {
         name: 'scikit-learn',
@@ -130,6 +188,10 @@ export const installGuide: InstallCategory[] = [
           en: `When prompting an agent to build with it, name every preprocessing stage explicitly and in order — missing values, then normalization, then categorical encoding, then outlier removal, then which metrics to compute. A vague one-line prompt produces a model missing standard pieces, not a smarter one.`,
           he: `כשמבקשים מסוכן לבנות איתו, לכנות כל שלב עיבוד מקדים במפורש ובסדר — ערכים חסרים, ואז נרמול, ואז קידוד קטגוריאלי, ואז הסרת חריגים, ואז אילו מדדים לחשב. prompt מעורפל בשורה אחת מייצר מודל שחסרים בו חלקים סטנדרטיים, לא אחד חכם יותר.`,
         },
+        commands: {
+          mac: ['pip install scikit-learn'],
+          windows: ['pip install scikit-learn'],
+        },
       },
       {
         name: 'matplotlib, seaborn, joblib',
@@ -137,6 +199,10 @@ export const installGuide: InstallCategory[] = [
         whatItDoes: {
           en: `Named in the course's install line (\`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`) as standard companions to the data science stack — for plotting and model serialization.`,
           he: `מכונים בשורת ההתקנה של הקורס (\`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`) כבני-לוויה סטנדרטיים לערימת מדעי הנתונים — עבור גרפים וסריאליזציה של מודלים.`,
+        },
+        commands: {
+          mac: ['pip install matplotlib seaborn joblib'],
+          windows: ['pip install matplotlib seaborn joblib'],
         },
       },
       {
@@ -149,6 +215,10 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `The real ship sequence: folder + data file → ask an agent to build the dashboard in plain language, not planned cell-by-cell → run it locally to confirm it works → push to GitHub → connect share.streamlit.io to that repo, which reads the file straight from GitHub and stores no data itself. Students who tried uploading files manually through the Streamlit browser UI instead of via GitHub hit missing-package errors every time — the fix was always letting the agent handle the GitHub connection directly, since in real deployments this handoff is automated, not manual.`,
           he: `רצף המשלוח האמיתי: תיקייה + קובץ נתונים → לבקש מסוכן לבנות את הדשבורד בשפה פשוטה, לא מתוכנן תא-אחרי-תא → להריץ מקומית כדי לאשר שזה עובד → לדחוף ל-GitHub → לחבר את share.streamlit.io לאותו מאגר, שקורא את הקובץ ישירות מ-GitHub ולא שומר שום נתונים בעצמו. סטודנטים שניסו להעלות קבצים ידנית דרך ממשק הדפדפן של Streamlit במקום דרך GitHub נתקלו בשגיאות חבילה חסרה בכל פעם — התיקון תמיד היה לתת לסוכן לטפל בחיבור ל-GitHub ישירות, כי בפריסות אמיתיות המסירה הזו אוטומטית, לא ידנית.`,
+        },
+        commands: {
+          mac: ['pip install streamlit', 'streamlit run app.py'],
+          windows: ['pip install streamlit', 'streamlit run app.py'],
         },
       },
     ],
@@ -163,6 +233,10 @@ export const installGuide: InstallCategory[] = [
           en: `Bootstrap-samples both rows and columns for every tree — Random Forest only samples rows — forcing the ensemble to discover more varied patterns instead of converging on the same features. Skips normalization entirely, since trees split on thresholds not distances, but still needs categorical encoding.`,
           he: `עושה bootstrap גם לשורות וגם לעמודות עבור כל עץ — Random Forest דוגם רק שורות — מה שכופה על האנסמבל לגלות דפוסים מגוונים יותר במקום להתכנס לאותם פיצ'רים. מדלג על נרמול לגמרי, כי עצים מפצלים על סף ולא מרחקים, אבל עדיין צריך קידוד קטגוריאלי.`,
         },
+        commands: {
+          mac: ['pip install xgboost'],
+          windows: ['pip install xgboost'],
+        },
       },
       {
         name: 'LightGBM',
@@ -170,6 +244,10 @@ export const installGuide: InstallCategory[] = [
         whatItDoes: {
           en: `Bins continuous values into buckets before searching for split points, so it only checks boundaries between a handful of buckets instead of every raw value — the same underlying idea as XGBoost, computed far more cheaply. Credited to Microsoft's original paper.`,
           he: `מקבץ ערכים רציפים לדליים לפני חיפוש נקודות פיצול, כך שהוא בודק רק גבולות בין כמה דליים במקום כל ערך גולמי — אותו רעיון בסיסי כמו XGBoost, מחושב בהרבה פחות עלות. מיוחס למאמר המקורי של Microsoft.`,
+        },
+        commands: {
+          mac: ['pip install lightgbm'],
+          windows: ['pip install lightgbm'],
         },
       },
       {
@@ -182,6 +260,10 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `The explicit guardrail — quoting a phrase from the instructor's own teacher — "don't use a cannon to kill a mosquito." If a dataset barely has categorical columns, CatBoost's main advantage doesn't apply; XGBoost is the simpler, equally valid default.`,
           he: `גדר הבטיחות המפורשת — ציטוט של ביטוי מהמורה של המרצה עצמו — "אל תשתמשי בתותח כדי להרוג יתוש." אם למערך נתונים בקושי יש עמודות קטגוריאליות, היתרון המרכזי של CatBoost לא רלוונטי; XGBoost היא ברירת המחדל הפשוטה יותר, ותקפה באותה מידה.`,
+        },
+        commands: {
+          mac: ['pip install catboost'],
+          windows: ['pip install catboost'],
         },
       },
     ],
@@ -200,6 +282,20 @@ export const installGuide: InstallCategory[] = [
           en: `The single clearest install-discipline moment in the whole course: install via conda, not bare pip. Multiple students hit live failures with pip directly — packages that wouldn't resolve, silent environment-creation failures, cryptic dependency errors. Ultralytics pulls a long dependency chain, and a conda environment ships with a large baseline of already-resolved compatible packages that sidesteps most of that chain; bare pip means resolving it by hand, one cryptic error at a time. Set up conda before touching the install itself. Separately: always check a model's trained object classes before building on it — it can only ever recognize categories it was actually trained on.`,
           he: `רגע המשמעת ההתקנתית הברור ביותר בכל הקורס: להתקין דרך conda, לא pip גולמי. כמה סטודנטים נתקלו בכשלים חיים עם pip ישירות — חבילות שלא נפתרו, כשלי יצירת סביבה שקטים, שגיאות תלות מסתוריות. Ultralytics מושכת שרשרת תלויות ארוכה, וסביבת conda מגיעה עם בסיס גדול של חבילות תואמות שכבר נפתרו שעוקף את רוב השרשרת הזו; pip גולמי אומר לפתור אותה ידנית, שגיאה מסתורית אחת בכל פעם. להקים conda לפני שנוגעים בהתקנה עצמה. בנפרד: תמיד לבדוק את קטגוריות האובייקטים המאומנות של מודל לפני שבונים עליו — הוא יכול לזהות רק קטגוריות שהוא באמת אומן עליהן.`,
         },
+        commands: {
+          mac: [
+            'brew install --cask miniconda',
+            'conda create -n yolo python=3.11 -y',
+            'conda activate yolo',
+            'pip install ultralytics',
+          ],
+          windows: [
+            'winget install -e --id Anaconda.Miniconda3',
+            'conda create -n yolo python=3.11 -y',
+            'conda activate yolo',
+            'pip install ultralytics',
+          ],
+        },
       },
     ],
   },
@@ -217,6 +313,16 @@ export const installGuide: InstallCategory[] = [
           en: `A fresh \`.db\` file, opened directly, shows nothing — no table, no error, just silence. This confused students until they installed SQLite Viewer specifically, since nothing else renders it. Wrap connections in \`with sqlite3.connect('file.db') as conn:\` to guarantee the connection closes automatically — the same open-write-close discipline as a plain text file.`,
           he: `קובץ \`.db\` טרי, שנפתח ישירות, לא מראה כלום — לא טבלה, לא שגיאה, רק שקט. זה בלבל סטודנטים עד שהם התקינו את SQLite Viewer ספציפית, כי שום דבר אחר לא מציג אותו. לעטוף חיבורים ב-\`with sqlite3.connect('file.db') as conn:\` כדי להבטיח שהחיבור נסגר אוטומטית — אותה משמעת פתיחה-כתיבה-סגירה כמו קובץ טקסט רגיל.`,
         },
+        commands: {
+          mac: [
+            '# sqlite3 ships with Python — nothing to install',
+            'code --install-extension qwtel.sqlite-viewer',
+          ],
+          windows: [
+            '# sqlite3 ships with Python — nothing to install',
+            'code --install-extension qwtel.sqlite-viewer',
+          ],
+        },
       },
       {
         name: 'Supabase CLI',
@@ -228,6 +334,14 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `Install via scoop (Windows) or brew (Mac), then the step that actually matters is running \`supabase login\` to link the CLI to the account. Free tier caps at 2 organizations / 2 projects. Critical security note: the service_role key bypasses Row Level Security entirely — anyone holding it can read, modify, or delete every customer's data across the whole app. Never in GitHub, never in the front end, never anywhere a browser or public repo could reach it — a leak is treated as a legal event, not just a technical one. Litmus test for whether an app even needs it: does it have a "belly" — backend logic, agents needing cross-user data? A brochure site has none and needs no service_role key at all.`,
           he: `להתקין דרך scoop (Windows) או brew (Mac), ואז השלב שבאמת חשוב הוא הרצת \`supabase login\` כדי לקשר את ה-CLI לחשבון. שכבת החינם מוגבלת ל-2 ארגונים / 2 פרויקטים. הערת אבטחה קריטית: מפתח service_role עוקף Row Level Security לגמרי — כל מי שמחזיק בו יכול לקרוא, לשנות, או למחוק את הנתונים של כל לקוח על פני כל האפליקציה. לעולם לא ב-GitHub, לעולם לא בפרונט, לעולם לא בשום מקום שדפדפן או מאגר ציבורי יכולים להגיע אליו — דליפה מטופלת כאירוע משפטי, לא רק טכני. מבחן הליטמוס לשאלה אם אפליקציה בכלל צריכה אותו: האם יש לה "בטן" — לוגיקת backend, סוכנים שצריכים נתונים חוצי-משתמשים? אתר חוברת אין לו כזה ולא צריך מפתח service_role בכלל.`,
+        },
+        commands: {
+          mac: ['brew install supabase/tap/supabase', 'supabase login'],
+          windows: [
+            'scoop bucket add supabase https://github.com/supabase/scoop-bucket.git',
+            'scoop install supabase',
+            'supabase login',
+          ],
         },
       },
     ],
@@ -246,6 +360,10 @@ export const installGuide: InstallCategory[] = [
           en: `Cloud (n8n.io, pay-per-execution) versus self-hosted (local, offline) — the course used cloud because scheduled auto-execution requires it. Credentials (OAuth / API key / service account) are how n8n acts on your behalf on a third-party service — never paste credentials into workflows, never screenshot credential screens, never commit them to a repo; if one leaks, revoke it immediately at the source service. Explicit warning: serious enterprises rarely build production systems on n8n — it's for personal workflows and prototypes, not mission-critical infrastructure, since debugging a broken workflow at scale has no logs, no breakpoints, no unit tests.`,
           he: `ענן (n8n.io, תשלום-לפי-הרצה) מול אירוח-עצמי (מקומי, לא מקוון) — הקורס השתמש בענן כי הרצה אוטומטית מתוזמנת דורשת את זה. אישורים (OAuth / מפתח API / חשבון שירות) הם איך ש-n8n פועל בשמך על שירות צד-שלישי — לעולם לא להדביק אישורים לתוך תהליכי עבודה, לעולם לא לצלם מסך של מסכי אישורים, לעולם לא להכניס אותם ל-commit במאגר; אם אחד דולף, לבטל אותו מייד בשירות המקור. אזהרה מפורשת: ארגונים רציניים לעיתים רחוקות בונים מערכות ייצור על n8n — הוא לתהליכי עבודה אישיים ואבי-טיפוס, לא תשתית קריטית-משימה, כי ניפוי תהליך עבודה שבור בקנה מידה חסר לוגים, נקודות עצירה, ובדיקות יחידה.`,
         },
+        commands: {
+          mac: ['# Cloud: sign up at n8n.io — no install needed', '# Self-hosted (optional): npx n8n'],
+          windows: ['# Cloud: sign up at n8n.io — no install needed', '# Self-hosted (optional): npx n8n'],
+        },
       },
     ],
   },
@@ -262,6 +380,10 @@ export const installGuide: InstallCategory[] = [
         tips: {
           en: `The course deliberately teaches the terminal first, despite it being the least visually friendly option, because it's the only interface with no functionality held back — the others are constrained versions of it. Recommended rhythm for any nontrivial request: enter plan mode first (produces a full outline with no execution), review and approve it, then let it run — approving a plan you haven't read isn't delegation, it's just hoping. CLAUDE.md acts as the project's constitution — re-injected into every single prompt, not consulted occasionally, because the agent has no persistent memory of its own. Cost note: the flat monthly Claude subscription only covers usage inside a Claude Code session (planning, building, running sub-agents) — an agent embedded inside a deployed app talking to real end-users runs on a completely separate, uncapped pay-per-token API key.`,
           he: `הקורס במכוון מלמד את הטרמינל קודם, למרות שהוא האפשרות הכי פחות ידידותית חזותית, כי הוא הממשק היחיד בלי שום פונקציונליות שמוחזקת בצד — האחרים הם גרסאות מוגבלות שלו. קצב מומלץ לכל בקשה לא-טריוויאלית: להיכנס תחילה למצב תכנון (מייצר מתאר מלא בלי הרצה), לבדוק ולאשר אותו, ואז לתת לו לרוץ — אישור תוכנית שלא קראת הוא לא האצלה, זו רק תקווה. CLAUDE.md משמש כחוקת הפרויקט — מוזרק מחדש לכל prompt בודד, לא נדרש מדי פעם, כי לסוכן אין זיכרון מתמיד משלו. הערת עלות: המנוי החודשי השטוח של Claude מכסה רק שימוש בתוך session של Claude Code (תכנון, בנייה, הרצת תת-סוכנים) — סוכן שמוטמע בתוך אפליקציה שפרוסה ומדברת עם משתמשי קצה אמיתיים רץ על מפתח API נפרד לגמרי, בתשלום-לפי-טוקן וללא תקרה.`,
+        },
+        commands: {
+          mac: ['npm install -g @anthropic-ai/claude-code', 'claude'],
+          windows: ['npm install -g @anthropic-ai/claude-code', 'claude'],
         },
       },
     ],
