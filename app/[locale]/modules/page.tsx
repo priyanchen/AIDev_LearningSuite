@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getVisibleModules, getSessionsForModule } from '@/lib/registry';
 import ModuleBand from '@/components/ModuleBand';
 import type { Locale } from '@/i18n';
@@ -8,6 +8,7 @@ export default async function ModulesIndexPage({
 }: {
   params: { locale: Locale };
 }) {
+  setRequestLocale(locale);
   const nav = await getTranslations('nav');
   const visibleModules = getVisibleModules();
 

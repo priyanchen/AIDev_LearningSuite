@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { modules, getModule, getSessionsForModule } from '@/lib/registry';
 import type { Locale } from '@/i18n';
 
@@ -13,6 +13,7 @@ export default async function ModulePage({
 }: {
   params: { locale: Locale; id: string };
 }) {
+  setRequestLocale(locale);
   const module = getModule(id);
   if (!module || module.visibility === 'hidden') notFound();
 

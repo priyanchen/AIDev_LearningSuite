@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import {
   sessions,
   getSession,
@@ -20,6 +20,7 @@ export default async function SessionPage({
 }: {
   params: { locale: Locale; slug: string };
 }) {
+  setRequestLocale(locale);
   const session = getSession(slug);
   if (!session) notFound();
 

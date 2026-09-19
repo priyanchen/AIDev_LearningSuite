@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { modules, sessions, getSessionsForModule, getVisibleModules } from '@/lib/registry';
 import ModuleBand from '@/components/ModuleBand';
 import type { Locale } from '@/i18n';
@@ -9,6 +9,7 @@ export default async function HomePage({
 }: {
   params: { locale: Locale };
 }) {
+  setRequestLocale(locale);
   const t = await getTranslations('home');
   const site = await getTranslations('site');
 

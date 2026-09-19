@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { sessions } from '@/lib/registry';
 import { cardDecks } from '@/content/cards';
 import type { Locale } from '@/i18n';
@@ -9,6 +9,7 @@ export default async function CardsLibraryPage({
 }: {
   params: { locale: Locale };
 }) {
+  setRequestLocale(locale);
   const nav = await getTranslations('nav');
   const populatedSessions = sessions.filter((s) => s.hasCardDeck && cardDecks[s.slug]);
 
