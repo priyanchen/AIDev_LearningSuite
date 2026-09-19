@@ -151,7 +151,7 @@ export default async function SessionPage({
               </a>
             )}
             {session.sourceLinks.slides &&
-              session.sourceLinks.slides.map((slideLink, i) => (
+              session.sourceLinks.slides.map((slideLink, i, slides) => (
                 <a
                   key={i}
                   href={slideLink}
@@ -159,7 +159,7 @@ export default async function SessionPage({
                   rel="noopener noreferrer"
                   className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
                 >
-                  {t('openSlides')} {session.sourceLinks.slides!.length > 1 ? i + 1 : ''} ↗
+                  {t('openSlides')} {slides.length > 1 ? i + 1 : ''} ↗
                 </a>
               ))}
           </div>
