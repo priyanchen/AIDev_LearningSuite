@@ -441,8 +441,31 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF/view',
     },
   },
+  // Session 11 — Classes, objects, and the blueprint behind everything — fully authored
+  {
+    slug: 'session-11-python-8',
+    number: 11,
+    moduleId: '03-python',
+    numberInModule: 8,
+    date: '2026-08-05',
+    format: 'zoom',
+    title: {
+      en: 'Classes, Objects, and the Blueprint Behind Everything',
+      he: 'מחלקות, אובייקטים, והתבנית שמאחורי הכול',
+    },
+    headline: {
+      en: 'The “everything is an object” idea from Session 3 finally gets its blueprint: classes, instances, inheritance with three real options, and one attribute that holds not a value but another object entirely.',
+      he: 'הרעיון "הכול הוא אובייקט" ממפגש 3 סוף סוף מקבל את התבנית שלו: מחלקות, מופעים, הורשה עם שלוש אפשרויות אמיתיות, ותכונה אחת שמחזיקה לא ערך אלא אובייקט שלם אחר.',
+    },
+    status: 'complete',
+    concepts: ['Classes & Objects', '__init__ & self', 'Inheritance', 'Method Overriding', 'Composition'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl/view',
+      chat: 'https://drive.google.com/file/d/1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO/view',
+    },
+  },
   ...([
-    { n: 11, m: 8, date: '2026-08-05', rec: '1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl', chat: '1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO' },
     { n: 12, m: 9, date: '2026-08-09', rec: '1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF', chat: '11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM' },
   ].map(s => ({
     slug: `session-${String(s.n).padStart(2, '0')}-python-${s.m}`,
