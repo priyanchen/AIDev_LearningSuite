@@ -588,8 +588,31 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq/view',
     },
   },
+  // Session 17 — ML foundations: model families, linear regression, gradient descent, project characterization — fully authored
+  {
+    slug: 'session-17-ds-4',
+    number: 17,
+    moduleId: '04-intro-to-ds',
+    numberInModule: 4,
+    date: '2026-08-26',
+    format: 'zoom',
+    title: {
+      en: `Machine Learning Foundations — Gradient Descent and the Discipline of Characterization`,
+      he: `יסודות למידת מכונה — ירידת גרדיאנט ומשמעת האפיון`,
+    },
+    headline: {
+      en: `Machine learning finally arrives — model families, linear regression built up to gradient descent, the four-step preprocessing pipeline, and a live demo of using an adversarial ChatGPT persona to stress-test a project before writing a line of code.`,
+      he: `למידת מכונה סוף סוף מגיעה — משפחות מודלים, רגרסיה ליניארית בנויה עד ירידת גרדיאנט, צנרת העיבוד המקדים בת ארבעת השלבים, והדגמה חיה של שימוש בפרסונת ChatGPT יריבית כדי לבחון פרויקט לפני כתיבת שורת קוד אחת.`,
+    },
+    status: 'complete',
+    concepts: ['Supervised/Unsupervised/Reinforcement', 'Linear Regression', 'Gradient Descent', 'Data Preprocessing', 'Overfitting', 'Project Characterization'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI/view',
+      chat: 'https://drive.google.com/file/d/1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1/view',
+    },
+  },
   ...([
-    { n: 17, m: 4, date: '2026-08-26', rec: '1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI', chat: '1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1' },
     { n: 18, m: 5, date: '2026-08-30', rec: '1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H', chat: '1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c' },
   ].map(s => ({
     slug: `session-${String(s.n).padStart(2, '0')}-ds-${s.m}`,
