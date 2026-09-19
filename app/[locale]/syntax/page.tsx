@@ -31,9 +31,17 @@ export default async function SyntaxGuidePage({
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="text-4xl small-caps tracking-wide mb-2 text-center">
+      <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-4">
         {nav('syntax')}
+      </div>
+      <h1 className="text-3xl md:text-4xl small-caps tracking-wide mb-2 text-center">
+        {locale === 'he'
+          ? 'פייתון היא שפת תכנות מונחית עצמים'
+          : 'Python Is an Object-Oriented Programming Language'}
       </h1>
+      <p className="text-center text-xs tracking-brand uppercase text-muted font-sans mb-2">
+        {locale === 'he' ? '— ד״ר יונתן זוארי' : '— Dr. Jonathan Zuari'}
+      </p>
       <div className="ornament text-xl text-accent text-center mb-8"></div>
 
       <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
