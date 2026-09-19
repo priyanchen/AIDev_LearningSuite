@@ -612,26 +612,30 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1/view',
     },
   },
-  ...([
-    { n: 18, m: 5, date: '2026-08-30', rec: '1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H', chat: '1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c' },
-  ].map(s => ({
-    slug: `session-${String(s.n).padStart(2, '0')}-ds-${s.m}`,
-    number: s.n,
+  // Session 18 — multivariate regression, R²/RMSE/MAE evaluation, multicollinearity — fully authored
+  {
+    slug: 'session-18-ds-5',
+    number: 18,
     moduleId: '04-intro-to-ds',
-    numberInModule: s.m,
-    date: s.date,
-    format: 'zoom' as SessionFormat,
-    title: { en: `Data Science · Module Session ${s.m}`, he: `מדעי הנתונים · מפגש ${s.m} במודול` },
+    numberInModule: 5,
+    date: '2026-08-30',
+    format: 'zoom',
+    title: {
+      en: `Model Evaluation — R², RMSE, and the Discipline of Distrusting a Great Score`,
+      he: `הערכת מודל — R², RMSE, ומשמעת אי-האמון בציון מעולה`,
+    },
     headline: {
-      en: 'Awaiting ingestion — source material available.',
-      he: 'ממתין לעיבוד — חומר מקור זמין.',
+      en: `Last session's theory becomes real code — a multivariate regression model built in two lines, evaluated against a "dumb" baseline via R², RMSE, and MAE, with a live demonstration of why a near-perfect score should worry you and why an unintuitive negative weight usually means multicollinearity.`,
+      he: `התיאוריה של המפגש הקודם הופכת לקוד אמיתי — מודל רגרסיה מרובת-משתנים שנבנה בשתי שורות, מוערך מול בייסליין "טיפש" באמצעות R², RMSE, ו-MAE, עם הדגמה חיה של למה ציון כמעט-מושלם צריך לדאוג אותך ולמה משקל שלילי לא-אינטואיטיבי בדרך כלל אומר מולטיקוליניאריות.`,
     },
-    status: 'planned' as SessionStatus,
+    status: 'complete',
+    concepts: ['Multivariate Regression', 'train_test_split', 'R² / RMSE / MAE', 'Adjusted R²', 'Data Leakage', 'Multicollinearity'],
+    hasCardDeck: true,
     sourceLinks: {
-      recording: `https://drive.google.com/file/d/${s.rec}/view`,
-      chat: `https://drive.google.com/file/d/${s.chat}/view`,
+      recording: 'https://drive.google.com/file/d/1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H/view',
+      chat: 'https://drive.google.com/file/d/1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c/view',
     },
-  }))),
+  },
 
   // Session 19 — the one we've already processed
   {
