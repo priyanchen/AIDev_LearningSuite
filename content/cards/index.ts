@@ -1,4 +1,5 @@
 import type { CardContent } from './types';
+import { session01Cards } from './session01';
 import { session02Cards } from './session02';
 import { session03Cards } from './session03';
 import { session04Cards } from './session04';
@@ -21,6 +22,7 @@ import { session21Cards } from './session21';
 import { session22Cards } from './session22';
 
 export const cardDecks: Record<string, CardContent[]> = {
+  'session-01-intro': session01Cards,
   'session-02-n8n': session02Cards,
   'session-03-python-0': session03Cards,
   'session-04-python-1': session04Cards,

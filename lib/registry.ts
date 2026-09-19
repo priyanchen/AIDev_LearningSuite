@@ -194,6 +194,9 @@ export const modules: Module[] = [
 
 export const sessions: Session[] = [
   // ────────── Module 1 · Intro ──────────
+  // Session 1 — the German Tank Problem, AI history, AI ethics, course orientation — fully authored
+  // Note: no recording/transcript survives for this session (source link was dead); built from Dr. Zuari's
+  // own two original slide decks instead (the German Tank Problem lecture + the course orientation deck).
   {
     slug: 'session-01-intro',
     number: 1,
@@ -201,14 +204,18 @@ export const sessions: Session[] = [
     numberInModule: 0,
     date: '2026-06-28',
     format: 'in-person',
-    title: { en: 'Course Opening', he: 'פתיחת הקורס' },
-    headline: {
-      en: 'Orientation, tools, expectations — what the next thirty-five sessions will build.',
-      he: 'התמצאות, כלים, ציפיות — מה שלושים וחמישה המפגשים הבאים יבנו.',
+    title: {
+      en: `The German Tank Problem — What Five Numbers Can Honestly Tell You`,
+      he: `בעיית הטנקים הגרמנים — מה חמישה מספרים יכולים לומר לך באמת`,
     },
-    status: 'planned',
+    headline: {
+      en: `The course opens with a real statistical puzzle before ever mentioning a model, moves through AI's real boom-bust history and its concrete ethical failures — Amazon's biased hiring model, real accountability gaps in autonomous vehicles — and closes with the course's own explicit guidance on how to actually succeed in it.`,
+      he: `הקורס נפתח בחידה סטטיסטית אמיתית לפני שמזכירים בכלל מודל, עובר דרך ההיסטוריה האמיתית של פריחה-שפל של AI והכשלים האתיים הקונקרטיים שלו — מודל הגיוס המוטה של אמזון, פערי אחריות אמיתיים ברכבים אוטונומיים — ונסגר בהנחיה המפורשת של הקורס עצמו לגבי איך באמת להצליח בו.`,
+    },
+    status: 'complete',
+    concepts: ['Statistical Estimation', 'AI History', 'AI Ethics', 'Algorithmic Bias', 'Human in the Loop', 'Course Orientation'],
+    hasCardDeck: true,
     sourceLinks: {
-      recording: 'https://drive.google.com/file/d/1FUkwovO8ql0KZHjH6sOvFr3rWpvlnVe8/view',
       chat: 'https://drive.google.com/file/d/1l_WMQ9_ZUIbXfdfXX8wi4MmSDS4QEwmn/view',
       slides: [
         'https://drive.google.com/file/d/1HFeezeeimXYhXz-xy78acoTVwBWJJzYk/view',
