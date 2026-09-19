@@ -269,8 +269,32 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/file/d/1ok4a3Yae14i6zkavUj3gW0V2MUkgcFlX/view'],
     },
   },
+  // Session 4 — Objects revisited across strings, lists, tuples, dictionaries — fully authored
+  {
+    slug: 'session-04-python-1',
+    number: 4,
+    moduleId: '03-python',
+    numberInModule: 1,
+    date: '2026-07-08',
+    format: 'zoom',
+    title: {
+      en: 'Objects Everywhere — Strings, Lists, Tuples, and Dictionaries',
+      he: 'אובייקטים בכל מקום — מחרוזות, רשימות, Tuples ומילונים',
+    },
+    headline: {
+      en: 'The same dot-and-bracket grammar learned on strings turns out to be the whole language — proven live across four data structures and the course’s first error.',
+      he: 'אותו דקדוק של נקודה וסוגריים שנלמד על מחרוזות מתגלה כשפה כולה — מוכח בזמן אמת על פני ארבעה מבני נתונים והשגיאה הראשונה של הקורס.',
+    },
+    status: 'complete',
+    concepts: ['Indexing & Slicing', 'Mutability', 'Variables', 'Lists', 'Tuples', 'Dictionaries', 'AI Agent Landing Page'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1S0I4S2WsESpnFRWvoie-OryIOYn_SrfQ/view',
+      chat: 'https://drive.google.com/file/d/1hIhHEwKyjsIwXm2HNYGcaycFLu7fYhwD/view',
+      slides: ['https://drive.google.com/file/d/1yHnwLkNgMEBgK9F8SePWqQfgUAUWgRuA/view'],
+    },
+  },
   ...([
-    { n: 4,  m: 1, date: '2026-07-08', rec: '1S0I4S2WsESpnFRWvoie-OryIOYn_SrfQ', chat: '1hIhHEwKyjsIwXm2HNYGcaycFLu7fYhwD', slide: '1yHnwLkNgMEBgK9F8SePWqQfgUAUWgRuA' },
     { n: 5,  m: 2, date: '2026-07-12', rec: '14ka3nhd-BtPIOlnt9gtOVpbT2neNaRsK', chat: '1LbXEkmTiIUU1HmF4RhuYfAcDEpRPRxHb', slide: '1U7ryg_zfCQ7-GyJX1zxZ07v6-eXnDCi7' },
     { n: 6,  m: 3, date: '2026-07-15', rec: '1FqSo5qLcuWDW4wXGLDnzQGUjKriZkmjJ', chat: '1f_aO9Z0UYWXPq4sayy0qr_be-GoxAsRO', slide: '1y4Gu-9clZxYqt4vMWoKmqu_HigTDi1sl' },
     { n: 7,  m: 4, date: '2026-07-19', rec: '1kbLpmKg-PiBVvTGyWH4TYpIqjvTqPXNU', chat: '1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi', slide: '1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku' },
