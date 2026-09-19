@@ -13,6 +13,7 @@ import { session12Cards } from './session12';
 import { session13Cards } from './session13';
 import { session14Cards } from './session14';
 import { session15Cards } from './session15';
+import { session16Cards } from './session16';
 import { session19Cards } from './session19';
 
 export const cardDecks: Record<string, CardContent[]> = {
@@ -30,6 +31,7 @@ export const cardDecks: Record<string, CardContent[]> = {
   'session-13-ds-0': session13Cards,
   'session-14-ds-1': session14Cards,
   'session-15-ds-2': session15Cards,
+  'session-16-ds-3': session16Cards,
   'session-19-logistic-regression': session19Cards,
 };
 

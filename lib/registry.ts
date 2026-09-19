@@ -564,8 +564,31 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1s0zadlZu7-mkUD__VoVilAaUq85xxVYe/view',
     },
   },
+  // Session 16 — Supabase, cloud databases, RLS, anon/service_role keys, auth mechanics — fully authored
+  {
+    slug: 'session-16-ds-3',
+    number: 16,
+    moduleId: '04-intro-to-ds',
+    numberInModule: 3,
+    date: '2026-08-23',
+    format: 'zoom',
+    title: {
+      en: `Supabase — Moving to the Cloud, RLS, and the Keys That Guard It`,
+      he: `Supabase — מעבר לענן, RLS, והמפתחות ששומרים עליו`,
+    },
+    headline: {
+      en: `Last session's local database moves to the cloud with Supabase — the anon-key/service-role-key security split, Row Level Security, how authentication really works under the hood, and a small reservation app built and verified live in the cloud.`,
+      he: `בסיס הנתונים המקומי של המפגש הקודם עובר לענן עם Supabase — הפיצול בין מפתח anon למפתח service_role, אבטחת ברמת שורה, איך אימות באמת עובד מתחת למכסה המנוע, ואפליקציית הזמנות קטנה שנבנתה ואומתה בשידור חי בענן.`,
+    },
+    status: 'complete',
+    concepts: ['Supabase', 'Anon vs Service Role Key', 'Row Level Security', 'Frontend/Server/Backend', 'Auth & Password Hashing', 'Cloud Storage'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e/view',
+      chat: 'https://drive.google.com/file/d/13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq/view',
+    },
+  },
   ...([
-    { n: 16, m: 3, date: '2026-08-23', rec: '1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e', chat: '13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq' },
     { n: 17, m: 4, date: '2026-08-26', rec: '1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI', chat: '1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1' },
     { n: 18, m: 5, date: '2026-08-30', rec: '1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H', chat: '1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c' },
   ].map(s => ({
