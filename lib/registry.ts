@@ -369,8 +369,31 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/file/d/1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku/view'],
     },
   },
+  // Session 8 — From an empty folder to a public GitHub repository — fully authored
+  {
+    slug: 'session-08-python-5',
+    number: 8,
+    moduleId: '03-python',
+    numberInModule: 5,
+    date: '2026-07-26',
+    format: 'zoom',
+    title: {
+      en: 'Push, Pull, and the Discipline of Branches',
+      he: 'Push, Pull, ומשמעת הענפים',
+    },
+    headline: {
+      en: 'A full first repository, from empty folder to a public GitHub page, and the deeper discipline underneath it: isolate risky work on a branch, and only merge into main once it’s proven safe.',
+      he: 'repository ראשון מלא, מתיקייה ריקה ועד עמוד GitHub ציבורי, והמשמעת העמוקה שמתחת לזה: לבודד עבודה מסוכנת בענף, ולמזג ל-main רק אחרי שהוכח שהוא בטוח.',
+    },
+    status: 'complete',
+    concepts: ['Push, Pull & Sync', 'Fork vs Clone', 'Reading a Diff', 'Branches & Merging', 'README & License'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG/view',
+      chat: 'https://drive.google.com/file/d/110CtrUDROYRw18WoKLNCn-uEt6XVBCAz/view',
+    },
+  },
   ...([
-    { n: 8,  m: 5, date: '2026-07-26', rec: '1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG', chat: '110CtrUDROYRw18WoKLNCn-uEt6XVBCAz' },
     { n: 9,  m: 6, date: '2026-07-29', rec: '1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV', chat: '1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1' },
     { n: 10, m: 7, date: '2026-08-02', rec: '1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O', chat: '1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF' },
     { n: 11, m: 8, date: '2026-08-05', rec: '1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl', chat: '1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO' },
