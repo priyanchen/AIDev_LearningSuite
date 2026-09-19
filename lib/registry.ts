@@ -294,6 +294,31 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/file/d/1yHnwLkNgMEBgK9F8SePWqQfgUAUWgRuA/view'],
     },
   },
+  // Session 5 — Conditionals, loops, and reading code fluently — fully authored
+  {
+    slug: 'session-05-python-2',
+    number: 5,
+    moduleId: '03-python',
+    numberInModule: 2,
+    date: '2026-07-12',
+    format: 'zoom',
+    title: {
+      en: 'Conditions, Loops, and Why Reading Code Matters More Than Writing It',
+      he: 'תנאים, לולאות, ולמה קריאת קוד חשובה יותר מכתיבתו',
+    },
+    headline: {
+      en: 'Comparison operators, branching, and loops arrive together, but the session’s real destination is a harder claim: the goal was never to memorize syntax, but to read code fluently enough to direct and verify it.',
+      he: 'אופרטורי השוואה, הסתעפויות ולולאות מגיעים יחד, אבל היעד האמיתי של המפגש הוא טענה קשה יותר: המטרה מעולם לא הייתה לשנן תחביר, אלא לקרוא קוד בשטף מספיק כדי לכוון ולוודא אותו.',
+    },
+    status: 'complete',
+    concepts: ['Comparison Operators', 'if/elif/else', 'while Loops', 'break/continue/pass', 'Sets & None', 'Boolean Logic'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/14ka3nhd-BtPIOlnt9gtOVpbT2neNaRsK/view',
+      chat: 'https://drive.google.com/file/d/1LbXEkmTiIUU1HmF4RhuYfAcDEpRPRxHb/view',
+      slides: ['https://drive.google.com/file/d/1U7ryg_zfCQ7-GyJX1zxZ07v6-eXnDCi7/view'],
+    },
+  },
   // Session 6 — Two group-built games arrive at functions — fully authored
   {
     slug: 'session-06-python-3',
@@ -320,7 +345,6 @@ export const sessions: Session[] = [
     },
   },
   ...([
-    { n: 5,  m: 2, date: '2026-07-12', rec: '14ka3nhd-BtPIOlnt9gtOVpbT2neNaRsK', chat: '1LbXEkmTiIUU1HmF4RhuYfAcDEpRPRxHb', slide: '1U7ryg_zfCQ7-GyJX1zxZ07v6-eXnDCi7' },
     { n: 7,  m: 4, date: '2026-07-19', rec: '1kbLpmKg-PiBVvTGyWH4TYpIqjvTqPXNU', chat: '1ym-zhXtJw5FvSBZCRfug12jx88Z_KjXi', slide: '1zvgETG_GueHJ6hoXu9Mx7Bkwy9AXvpku' },
     { n: 8,  m: 5, date: '2026-07-26', rec: '1L7uoa0N74Fr-xo7YFRImMrycHyg2KaNG', chat: '110CtrUDROYRw18WoKLNCn-uEt6XVBCAz' },
     { n: 9,  m: 6, date: '2026-07-29', rec: '1hoVWOl_yzfCgRuipi32nAeBTDo_l8WcV', chat: '1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1' },
