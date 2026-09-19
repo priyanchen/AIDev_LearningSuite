@@ -17,6 +17,7 @@ import { session16Cards } from './session16';
 import { session17Cards } from './session17';
 import { session18Cards } from './session18';
 import { session19Cards } from './session19';
+import { session21Cards } from './session21';
 
 export const cardDecks: Record<string, CardContent[]> = {
   'session-02-n8n': session02Cards,
@@ -37,6 +38,7 @@ export const cardDecks: Record<string, CardContent[]> = {
   'session-17-ds-4': session17Cards,
   'session-18-ds-5': session18Cards,
   'session-19-logistic-regression': session19Cards,
+  'session-21-ds-8': session21Cards,
 };
 
 export function getDeck(slug: string): CardContent[] | undefined {

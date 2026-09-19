@@ -683,7 +683,7 @@ export const sessions: Session[] = [
     },
   },
 
-  // Session 21
+  // Session 21 — cross-validation, hyperparameters vs parameters, Grid Search, LightGBM/CatBoost, live CRM project — fully authored
   {
     slug: 'session-21-ds-8',
     number: 21,
@@ -691,12 +691,17 @@ export const sessions: Session[] = [
     numberInModule: 8,
     date: '2026-09-09',
     format: 'zoom',
-    title: { en: 'Data Science · Module Session 8', he: 'מדעי הנתונים · מפגש 8 במודול' },
-    headline: {
-      en: 'Awaiting ingestion — transcript and slides available.',
-      he: 'ממתין לעיבוד — תמלול ומצגות זמינים.',
+    title: {
+      en: `Cross-Validation, Hyperparameters, and Three Ways to Build a Faster Forest`,
+      he: `אימות-הצלבה, היפר-פרמטרים, ושלוש דרכים לבנות יער מהיר יותר`,
     },
-    status: 'planned',
+    headline: {
+      en: `The model-family roadmap gets its missing pieces — why a single train/test split can lie, the real difference between parameters and hyperparameters, Grid Search as brute-force tuning, LightGBM and CatBoost as two different fixes for XGBoost's weak spots, and a live group project building a full lead-scoring CRM.`,
+      he: `מפת הדרכים של משפחות המודלים מקבלת את החלקים החסרים — למה פיצול אימון/בדיקה בודד יכול לשקר, ההבדל האמיתי בין פרמטרים להיפר-פרמטרים, Grid Search ככוונון בכוח גס, LightGBM ו-CatBoost כשני תיקונים שונים לנקודות התורפה של XGBoost, ופרויקט קבוצתי חי שבונה מערכת CRM מלאה לניקוד לידים.`,
+    },
+    status: 'complete',
+    concepts: ['Cross-Validation', 'Parameters vs Hyperparameters', 'Grid Search', 'LightGBM', 'CatBoost', 'Feature Importance'],
+    hasCardDeck: true,
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1LQvSJuRFG_yUtcE8yvJ7NRWh1COKazAZ/view',
       slides: ['https://drive.google.com/file/d/1wYHdxAsRol7c7NigOlUoBozS7y67Vz_s/view'],
