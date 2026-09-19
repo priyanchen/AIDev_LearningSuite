@@ -417,8 +417,31 @@ export const sessions: Session[] = [
       chat: 'https://drive.google.com/file/d/1RRa6R4vJypoXEsnL6YkuVtztUuCF7Ic1/view',
     },
   },
+  // Session 10 — Two kinds of agent, and working as a team — fully authored
+  {
+    slug: 'session-10-python-7',
+    number: 10,
+    moduleId: '03-python',
+    numberInModule: 7,
+    date: '2026-08-02',
+    format: 'zoom',
+    title: {
+      en: 'Two Kinds of Agent, and Working as a Team',
+      he: 'שני סוגי סוכן, ועבודה כצוות',
+    },
+    headline: {
+      en: 'Sub-agents graduate into team agents that coordinate in parallel, but the session’s sharpest lesson is a distinction: the agent that helps you write an app and the agent you embed inside it to serve real users are not the same thing, and not billed the same way.',
+      he: 'סוכני-משנה משדרגים לסוכני-צוות שמתאמים במקביל, אבל השיעור החד ביותר של המפגש הוא הבחנה: הסוכן שעוזר לך לכתוב אפליקציה והסוכן שאת מטמיעה בתוכה כדי לשרת משתמשים אמיתיים אינם אותו דבר, ולא מחויבים באותו אופן.',
+    },
+    status: 'complete',
+    concepts: ['Sub-Agents vs Team Agents', 'Coding Agent vs In-App Agent', 'API vs Subscription Billing', 'CLAUDE.md Maintenance', 'Permission Prompts'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O/view',
+      chat: 'https://drive.google.com/file/d/1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF/view',
+    },
+  },
   ...([
-    { n: 10, m: 7, date: '2026-08-02', rec: '1FdFMt4bEG632vDY15cEgSTeTrYv8Qw9O', chat: '1CqnUfpHiWCeIVqMyn5lvZ8zBCLqV2jCF' },
     { n: 11, m: 8, date: '2026-08-05', rec: '1GAkKP5CXoY89LBR_a0RbP-u-HxJPsjIl', chat: '1uj82xIKF6nT_L-bkr_yT2OxtogUnLjGO' },
     { n: 12, m: 9, date: '2026-08-09', rec: '1y0I7MB7pkwDXewx-Sn4LFe2wjxHoEMaF', chat: '11umNAEI1l1-sf5Ol-bkJFloa0g9lQWsM' },
   ].map(s => ({
