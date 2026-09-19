@@ -540,8 +540,31 @@ export const sessions: Session[] = [
       slides: ['https://drive.google.com/drive/folders/1mFzbuvYR8jHJwlcfZOs2_Tce2opPyQmN'],
     },
   },
+  // Session 15 — SQL, SQLite, primary/foreign keys, and building a DB with an agent — fully authored
+  {
+    slug: 'session-15-ds-2',
+    number: 15,
+    moduleId: '04-intro-to-ds',
+    numberInModule: 2,
+    date: '2026-08-19',
+    format: 'zoom',
+    title: {
+      en: `SQL and SQLite — The Language Behind Every App's Memory`,
+      he: `SQL ו-SQLite — השפה שמאחורי הזיכרון של כל אפליקציה`,
+    },
+    headline: {
+      en: `Databases finally enter the picture — DBMS concepts, primary and foreign keys, the full sqlite3-in-Python workflow, and a small reservation-system database built end to end with an agent.`,
+      he: `בסיסי נתונים סוף סוף נכנסים לתמונה — מושגי DBMS, מפתחות ראשיים וזרים, כל זרימת העבודה של sqlite3 בפייתון, ובסיס נתונים קטן למערכת הזמנות שנבנה מקצה לקצה עם סוכן.`,
+    },
+    status: 'complete',
+    concepts: ['DBMS', 'SQL Syntax', 'Primary & Foreign Keys', 'sqlite3 in Python', 'Table Normalization', 'CREATE/INSERT/UPDATE/DELETE'],
+    hasCardDeck: true,
+    sourceLinks: {
+      recording: 'https://drive.google.com/file/d/1Mh4LM12fCAtI9lSSXCHd7aihujGz6QJp/view',
+      chat: 'https://drive.google.com/file/d/1s0zadlZu7-mkUD__VoVilAaUq85xxVYe/view',
+    },
+  },
   ...([
-    { n: 15, m: 2, date: '2026-08-19', rec: '1Mh4LM12fCAtI9lSSXCHd7aihujGz6QJp', chat: '1s0zadlZu7-mkUD__VoVilAaUq85xxVYe' },
     { n: 16, m: 3, date: '2026-08-23', rec: '1L5eZb-ii37PDL5UwrgP1kLL2hrldCi8e', chat: '13SnqJ_Bi_e5PcHiV26ZwHkU7_-6vIIjq' },
     { n: 17, m: 4, date: '2026-08-26', rec: '1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI', chat: '1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1' },
     { n: 18, m: 5, date: '2026-08-30', rec: '1fIn2iqYHEOk72Fpek0r2Y8hBPTYuMc6H', chat: '1DwQhauVlhQhkC-TqTPiXyM51LwtqO3_c' },
