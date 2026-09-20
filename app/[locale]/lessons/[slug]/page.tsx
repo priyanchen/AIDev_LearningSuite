@@ -139,6 +139,48 @@ export default async function SessionPage({
         </section>
       )}
 
+      {/* Lesson Video */}
+      {session.videoLinks && (session.videoLinks.lecture || session.videoLinks.tirgul) && (
+        <section className="mb-12">
+          <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-6">
+            {t('lessonVideo')}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {session.videoLinks.lecture && (
+              <a
+                href={session.videoLinks.lecture}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-ink p-6 hover:bg-ink hover:text-paper transition group"
+              >
+                <div className="text-[10px] tracking-brand uppercase text-accent group-hover:text-paper font-sans mb-2">
+                  {t('session')} {String(session.number).padStart(2, '0')}
+                </div>
+                <div className="small-caps tracking-wide text-lg">
+                  {t('watchLecture')} →
+                </div>
+              </a>
+            )}
+            {session.videoLinks.tirgul && (
+              <a
+                href={session.videoLinks.tirgul}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-ink p-6 hover:bg-ink hover:text-paper transition group"
+              >
+                <div className="text-[10px] tracking-brand uppercase text-accent group-hover:text-paper font-sans mb-2">
+                  {t('moduleSession')}
+                </div>
+                <div className="small-caps tracking-wide text-lg">
+                  {t('watchTirgul')} →
+                </div>
+              </a>
+            )}
+          </div>
+          <p className="text-xs italic text-muted mt-4">{t('videoNote')}</p>
+        </section>
+      )}
+
       {/* Card Deck */}
       {cards && (
         <section className="mb-16">
@@ -214,48 +256,6 @@ export default async function SessionPage({
                 </a>
               ))}
           </div>
-        </section>
-      )}
-
-      {/* Lesson Video */}
-      {session.videoLinks && (session.videoLinks.lecture || session.videoLinks.tirgul) && (
-        <section className="mb-12">
-          <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-6">
-            {t('lessonVideo')}
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {session.videoLinks.lecture && (
-              <a
-                href={session.videoLinks.lecture}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block border border-ink p-6 hover:bg-ink hover:text-paper transition group"
-              >
-                <div className="text-[10px] tracking-brand uppercase text-accent group-hover:text-paper font-sans mb-2">
-                  {t('session')} {String(session.number).padStart(2, '0')}
-                </div>
-                <div className="small-caps tracking-wide text-lg">
-                  {t('watchLecture')} →
-                </div>
-              </a>
-            )}
-            {session.videoLinks.tirgul && (
-              <a
-                href={session.videoLinks.tirgul}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block border border-ink p-6 hover:bg-ink hover:text-paper transition group"
-              >
-                <div className="text-[10px] tracking-brand uppercase text-accent group-hover:text-paper font-sans mb-2">
-                  {t('moduleSession')}
-                </div>
-                <div className="small-caps tracking-wide text-lg">
-                  {t('watchTirgul')} →
-                </div>
-              </a>
-            )}
-          </div>
-          <p className="text-xs italic text-muted mt-4">{t('videoNote')}</p>
         </section>
       )}
 
