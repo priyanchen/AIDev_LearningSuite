@@ -1,11 +1,18 @@
 import type { Bilingual } from '@/lib/registry';
 
 export type SyntaxTopic = {
-  number: string;            // matches the source notebook's own numbering (03–19)
+  number: string;            // matches the source notebook's own numbering (03–19) for Python; a language-prefixed id otherwise
   title: Bilingual;
-  sourceNotebook: string;    // filename, for citation only
+  source: string;    // filename or session/card citation, for citation only
   points: Bilingual[];
   keyTakeaway?: Bilingual;
+};
+
+export type SyntaxLanguageSection = {
+  id: string;
+  language: Bilingual;
+  note: Bilingual;   // honesty/scope note — how much of this language the course actually covered
+  topics: SyntaxTopic[];
 };
 
 // Sourced from the end-of-notebook summary cells in the course's own Jupyter notebooks
@@ -15,7 +22,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '03',
     title: { en: 'Variables', he: 'משתנים' },
-    sourceNotebook: '03-Variables.ipynb',
+    source: '03-Variables.ipynb',
     points: [
       { en: `Assignment uses \`=\`: \`variable_name = value\`.`, he: `הצבה עם \`=\`: \`variable_name = value\`.` },
       { en: `Naming rules: start with a letter or underscore, no spaces (use \`_\`), only letters/numbers/underscores, snake_case, avoid Python keywords.`, he: `כללי כינוי: מתחילים באות או קו תחתון, בלי רווחים (משתמשות ב-\`_\`), רק אותיות/מספרים/קווים תחתונים, snake_case, נמנעות ממילים שמורות של פייתון.` },
@@ -29,7 +36,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '04',
     title: { en: 'Lists', he: 'רשימות' },
-    sourceNotebook: '04-Lists.ipynb',
+    source: '04-Lists.ipynb',
     points: [
       { en: `Creating: square brackets \`[item1, item2, item3]\`, can mix types; \`len()\` for length.`, he: `יצירה: סוגריים מרובעים \`[item1, item2, item3]\`, יכולה לערבב טיפוסים; \`len()\` לאורך.` },
       { en: `Indexing/slicing: \`list[0]\`, \`list[-1]\`, \`list[start:stop:step]\`.`, he: `אינדוקס/פרוסה: \`list[0]\`, \`list[-1]\`, \`list[start:stop:step]\`.` },
@@ -44,7 +51,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '05',
     title: { en: 'Tuples', he: 'טאפלים' },
-    sourceNotebook: '05-Tuples.ipynb',
+    source: '05-Tuples.ipynb',
     points: [
       { en: `Creating: parentheses \`(item1, item2, item3)\` or bare commas; single-element needs a comma \`(item,)\`; empty \`()\`.`, he: `יצירה: סוגריים \`(item1, item2, item3)\` או פסיקים בלבד; איבר בודד צריך פסיק \`(item,)\`; ריק \`()\`.` },
       { en: `Indexing/slicing: same as lists.`, he: `אינדוקס/פרוסה: כמו ברשימות.` },
@@ -62,7 +69,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '06',
     title: { en: 'Dictionaries', he: 'מילונים' },
-    sourceNotebook: '06-Dictionaries.ipynb',
+    source: '06-Dictionaries.ipynb',
     points: [
       { en: `Creating: curly braces \`{key: value}\`; keys must be immutable/unique; values can be any type.`, he: `יצירה: סוגריים מסולסלים \`{key: value}\`; מפתחות חייבים להיות בלתי-ניתנים-לשינוי/ייחודיים; ערכים יכולים להיות מכל סוג.` },
       { en: `Accessing: \`dict[key]\`; \`.get()\` is safer, returns None or a default if missing.`, he: `גישה: \`dict[key]\`; \`.get()\` בטוח יותר, מחזיר None או ברירת מחדל אם חסר.` },
@@ -79,7 +86,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '07',
     title: { en: 'Sets', he: 'קבוצות' },
-    sourceNotebook: '07-Sets.ipynb',
+    source: '07-Sets.ipynb',
     points: [
       { en: `Creating: curly braces \`{1, 2, 3}\`; \`set()\` for an empty set or to convert from a list; duplicates are removed automatically.`, he: `יצירה: סוגריים מסולסלים \`{1, 2, 3}\`; \`set()\` לקבוצה ריקה או להמרה מרשימה; כפילויות מוסרות אוטומטית.` },
       { en: `Adding: \`.add(element)\` for one, \`.update(iterable)\` for several.`, he: `הוספה: \`.add(element)\` לאיבר אחד, \`.update(iterable)\` למספר איברים.` },
@@ -95,7 +102,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '08',
     title: { en: 'Comparison Operators', he: 'אופרטורי השוואה' },
-    sourceNotebook: '08-Comparison Operators.ipynb',
+    source: '08-Comparison Operators.ipynb',
     points: [
       { en: `Operators: \`==\`, \`!=\`, \`>\`, \`<\`, \`>=\`, \`<=\` — all return True/False.`, he: `אופרטורים: \`==\`, \`!=\`, \`>\`, \`<\`, \`>=\`, \`<=\` — כולם מחזירים True/False.` },
       { en: `Critical distinction: \`=\` is assignment, \`==\` is comparison.`, he: `הבחנה קריטית: \`=\` היא הצבה, \`==\` היא השוואה.` },
@@ -106,7 +113,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '09',
     title: { en: 'if / elif / else Statements', he: 'משפטי if / elif / else' },
-    sourceNotebook: '09 -if, elif, and else Statements.ipynb',
+    source: '09 -if, elif, and else Statements.ipynb',
     points: [
       { en: `\`if\` executes only if the condition is True: \`if condition:\`.`, he: `\`if\` מבוצע רק אם התנאי הוא True: \`if condition:\`.` },
       { en: `\`else\` executes when the \`if\` is False: \`else:\`.`, he: `\`else\` מבוצע כש-\`if\` הוא False: \`else:\`.` },
@@ -118,7 +125,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '10',
     title: { en: 'for Loops', he: 'לולאות for' },
-    sourceNotebook: '10-for Loops.ipynb',
+    source: '10-for Loops.ipynb',
     points: [
       { en: `Syntax: \`for item in sequence:\` — loops through lists, strings, tuples, dicts, and ranges.`, he: `תחביר: \`for item in sequence:\` — עוברת על רשימות, מחרוזות, טאפלים, מילונים, וטווחים.` },
       { en: `\`range(a, b)\` gives numbers from a up to b-1.`, he: `\`range(a, b)\` נותן מספרים מ-a עד b-1.` },
@@ -132,7 +139,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '11',
     title: { en: 'while Loops', he: 'לולאות while' },
-    sourceNotebook: '11-while Loops.ipynb',
+    source: '11-while Loops.ipynb',
     points: [
       { en: `Syntax: \`while condition: # code\`.`, he: `תחביר: \`while condition: # code\`.` },
       { en: `\`while\` with \`else\`: the else block runs when the loop ends normally, without a \`break\`.`, he: `\`while\` עם \`else\`: בלוק ה-else רץ כשהלולאה מסתיימת כרגיל, בלי \`break\`.` },
@@ -149,7 +156,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '12',
     title: { en: 'List Comprehensions', he: 'הבנות רשימה' },
-    sourceNotebook: '12-List Comprehensions.ipynb',
+    source: '12-List Comprehensions.ipynb',
     points: [
       { en: `Basic syntax: \`[expression for item in iterable]\`.`, he: `תחביר בסיסי: \`[expression for item in iterable]\`.` },
       { en: `With a condition: \`[expression for item in iterable if condition]\`.`, he: `עם תנאי: \`[expression for item in iterable if condition]\`.` },
@@ -165,7 +172,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '13',
     title: { en: 'Functions', he: 'פונקציות' },
-    sourceNotebook: '13-Functions.ipynb',
+    source: '13-Functions.ipynb',
     points: [
       { en: `Syntax: \`def function_name(parameters): '''Docstring''' # code; return result\`.`, he: `תחביר: \`def function_name(parameters): '''Docstring''' # code; return result\`.` },
       { en: `\`def\` defines a function; call it with \`()\`; it can accept parameters; \`return\` sends a value back — not \`print\`.`, he: `\`def\` מגדיר פונקציה; קוראים לה עם \`()\`; היא יכולה לקבל פרמטרים; \`return\` שולח ערך בחזרה — לא \`print\`.` },
@@ -181,7 +188,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '14',
     title: { en: '*args and **kwargs', he: '*args ו-**kwargs' },
-    sourceNotebook: '14-args kwargs.ipynb',
+    source: '14-args kwargs.ipynb',
     points: [
       { en: `\`*args\` lets a function accept any number of positional arguments, collected as a tuple — replaces needing a fixed parameter for each value: \`def myfunc(*args): return sum(args) * .05\`.`, he: `\`*args\` מאפשר לפונקציה לקבל כל מספר של ארגומנטים מיקומיים, נאספים כטאפל — מחליף את הצורך בפרמטר קבוע לכל ערך: \`def myfunc(*args): return sum(args) * .05\`.` },
       { en: `\`**kwargs\` collects arbitrary keyword arguments into a dictionary, loopable with \`.items()\`, accessed like a normal dict (\`kwargs["key"]\`); check for a specific key with \`if 'fruit' in kwargs:\`.`, he: `\`**kwargs\` אוסף ארגומנטים במילות מפתח כלשהם למילון, ניתן לעבור עליו עם \`.items()\`, גישה כמו למילון רגיל (\`kwargs["key"]\`); בדיקת מפתח ספציפי עם \`if 'fruit' in kwargs:\`.` },
@@ -191,7 +198,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '15',
     title: { en: 'Nested Statements and Scope', he: 'משפטים מקוננים והיקף (Scope)' },
-    sourceNotebook: '15-Nested Statements and Scope.ipynb',
+    source: '15-Nested Statements and Scope.ipynb',
     points: [
       { en: `Names resolve by the LEGB rule: Local → Enclosing → Global → Built-in.`, he: `שמות נפתרים לפי כלל LEGB: מקומי (Local) ← מקיף (Enclosing) ← גלובלי (Global) ← מובנה (Built-in).` },
       { en: `Assigning inside a function creates a local name by default.`, he: `הצבה בתוך פונקציה יוצרת שם מקומי כברירת מחדל.` },
@@ -204,7 +211,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '16',
     title: { en: 'Functional Programming', he: 'תכנות פונקציונלי' },
-    sourceNotebook: '16-FunctionalPro.ipynb',
+    source: '16-FunctionalPro.ipynb',
     points: [
       { en: `Imperative style describes how (explicit loops); functional style describes what.`, he: `סגנון אימפרטיבי מתאר איך (לולאות מפורשות); סגנון פונקציונלי מתאר מה.` },
       { en: `\`lambda\` writes a small anonymous function inline: \`lambda x: x ** 2\`.`, he: `\`lambda\` כותב פונקציה אנונימית קטנה בשורה: \`lambda x: x ** 2\`.` },
@@ -216,7 +223,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '17',
     title: { en: 'Unpacking, Decorators & Exception Handling', he: 'פירוק, דקורטורים, וטיפול בחריגות' },
-    sourceNotebook: '17-unpack_deco_exceptions.ipynb',
+    source: '17-unpack_deco_exceptions.ipynb',
     points: [
       { en: `Unpacking: \`*\` unpacks a list into positional args for a function call (\`add(*values)\`); \`[*list1, *list2]\` merges lists (more flexible than \`+\`); \`**dict\` unpacks a dict as keyword arguments (\`greet(**person)\`); \`{**dict1, **dict2}\` merges dicts; extended unpacking \`first, *middle, last = numbers\`.`, he: `פירוק: \`*\` מפרק רשימה לארגומנטים מיקומיים בקריאה לפונקציה (\`add(*values)\`); \`[*list1, *list2]\` ממזג רשימות (גמיש יותר מ-\`+\`); \`**dict\` מפרק מילון כארגומנטים במילות מפתח (\`greet(**person)\`); \`{**dict1, **dict2}\` ממזג מילונים; פירוק מורחב \`first, *middle, last = numbers\`.` },
       { en: `Decorators: \`@decorator_name\` wraps a function to extend its behavior; a decorator is itself a function returning an inner \`wrapper\` that calls the original; generic decorators use \`def wrapper(*args, **kwargs):\` to work with any function signature — demonstrated for logging, timing (\`time.time()\` before/after), and error-catching wrappers.`, he: `דקורטורים: \`@decorator_name\` עוטף פונקציה כדי להרחיב את ההתנהגות שלה; דקורטור הוא בעצמו פונקציה שמחזירה \`wrapper\` פנימי שקורא למקורית; דקורטורים גנריים משתמשים ב-\`def wrapper(*args, **kwargs):\` כדי לעבוד עם כל חתימת פונקציה — הודגם עבור לוגים, מדידת זמן (\`time.time()\` לפני/אחרי), ועטיפות תופסות-שגיאות.` },
@@ -226,7 +233,7 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '18',
     title: { en: 'Object-Oriented Programming — Part 1', he: 'תכנות מונחה-עצמים — חלק 1' },
-    sourceNotebook: '18-OOP.ipynb',
+    source: '18-OOP.ipynb',
     points: [
       { en: `Class basics: \`class Car:\` with \`__init__(self, ...)\` to set instance attributes; methods are defined inside the class.`, he: `יסודות מחלקה: \`class Car:\` עם \`__init__(self, ...)\` להגדרת תכונות מופע; מתודות מוגדרות בתוך המחלקה.` },
       { en: `\`self\` refers to the instance — written in the method definition, but passed automatically by Python when the method is called.`, he: `\`self\` מתייחס למופע — נכתב בהגדרת המתודה, אבל מועבר אוטומטית על ידי פייתון כשהמתודה נקראת.` },
@@ -240,12 +247,124 @@ export const syntaxGuide: SyntaxTopic[] = [
   {
     number: '19',
     title: { en: 'Object-Oriented Programming — Part 2', he: 'תכנות מונחה-עצמים — חלק 2' },
-    sourceNotebook: '19-OOP2.ipynb',
+    source: '19-OOP2.ipynb',
     points: [
       { en: `Continues the Car class from Part 1 (make/model/year, \`get_descriptive_name()\`, \`read_odometer()\`, \`update_odometer()\`, \`increment_odometer()\`).`, he: `ממשיך את מחלקת Car מחלק 1 (יצרן/דגם/שנה, \`get_descriptive_name()\`, \`read_odometer()\`, \`update_odometer()\`, \`increment_odometer()\`).` },
       { en: `Inheritance walkthrough: \`class Animal:\` with \`__init__(name, age)\` and \`describe()\`; \`class Dog(Animal):\` adds \`dog_color\`, calls \`super().__init__(name, age)\`, and adds its own \`bark()\` method.`, he: `הליכה מודרכת בירושה: \`class Animal:\` עם \`__init__(name, age)\` ו-\`describe()\`; \`class Dog(Animal):\` מוסיף \`dog_color\`, קורא ל-\`super().__init__(name, age)\`, ומוסיף מתודת \`bark()\` משלו.` },
       { en: `Object composition (the notebook's main new idea): a Car class holds an Engine instance as an attribute (\`self.engine = Engine(horse_power)\`), then delegates to it (\`my_car.engine.describe_engine()\`) — built up iteratively, ending with \`Car.__init__\` taking \`horse_power\` with a default value and constructing the Engine internally.`, he: `הרכבת אובייקטים (הרעיון החדש המרכזי של המחברת): מחלקת Car מחזיקה מופע Engine כתכונה (\`self.engine = Engine(horse_power)\`), ואז מאצילה אליו (\`my_car.engine.describe_engine()\`) — נבנה בהדרגה, ומסתיים עם \`Car.__init__\` שמקבל \`horse_power\` עם ברירת מחדל ובונה את ה-Engine פנימית.` },
       { en: `Also demonstrates type coercion inside \`__init__\` (\`self.year = int(year)\`, \`self.horse_power = int(horse_power)\`) to guard against string inputs.`, he: `מדגים גם המרת סוג בתוך \`__init__\` (\`self.year = int(year)\`, \`self.horse_power = int(horse_power)\`) כדי להתגונן מפני קלט מחרוזתי.` },
+    ],
+  },
+];
+
+// Every non-Python language or format the course actually touched, sourced from the same
+// card decks as the rest of the site (see content/cards/session{N}.ts) — not generic
+// external documentation. Each section's note states honestly how much ground was covered.
+export const otherLanguages: SyntaxLanguageSection[] = [
+  {
+    id: 'sql',
+    language: { en: 'SQL — via SQLite', he: 'SQL — דרך SQLite' },
+    note: {
+      en: `Session 15 taught SQL specifically through SQLite — no MySQL or PostgreSQL was covered, so what follows is SQLite's dialect, not a generic SQL reference.`,
+      he: `מפגש 15 לימד SQL ספציפית דרך SQLite — MySQL או PostgreSQL לא כוסו, אז מה שבא בהמשך הוא הדיאלקט של SQLite, לא מדריך SQL כללי.`,
+    },
+    topics: [
+      {
+        number: 'sql-01',
+        title: { en: 'Reading a Query — SELECT / FROM / WHERE', he: 'קריאת שאילתה — SELECT / FROM / WHERE' },
+        source: 'Session 15 · Cards 01, 09',
+        points: [
+          { en: `A full query reads as a sentence: \`SELECT columns FROM table WHERE condition\` — recognizable from the English words alone, before any formal rule is taught.`, he: `שאילתה מלאה נקראת כמשפט: \`SELECT columns FROM table WHERE condition\` — ניתנת לזיהוי מהמילים באנגלית בלבד, לפני שנלמד כלל פורמלי אחד.` },
+          { en: `Written order is fixed syntax and isn't the same as evaluation order — the engine conceptually resolves \`FROM\` first, then \`WHERE\`, and only at the end decides which columns \`SELECT\` displays.`, he: `סדר הכתיבה הוא תחביר קבוע והוא לא אותו דבר כמו סדר ההערכה — המנוע מבחינה מושגית פותר קודם \`FROM\`, אחר כך \`WHERE\`, ורק בסוף מחליט אילו עמודות \`SELECT\` מציגה.` },
+          { en: `\`CREATE\`, \`INSERT\`, \`UPDATE\`, \`DELETE\` are the four statements that build and change a table — \`CREATE TABLE ... (...)\`, \`INSERT INTO table VALUES (...)\`, \`UPDATE table SET col = value WHERE ...\`, \`DELETE FROM table WHERE ...\`.`, he: `\`CREATE\`, \`INSERT\`, \`UPDATE\`, \`DELETE\` הן ארבע ההוראות שבונות ומשנות טבלה — \`CREATE TABLE ... (...)\`, \`INSERT INTO table VALUES (...)\`, \`UPDATE table SET col = value WHERE ...\`, \`DELETE FROM table WHERE ...\`.` },
+        ],
+        keyTakeaway: {
+          en: `Most SQL you'll meet will be agent-generated — the goal isn't fluent recall from memory, it's never feeling panic when you have to check a query someone else wrote.`,
+          he: `רוב ה-SQL שתפגשי יהיה מיוצר על ידי סוכן — המטרה היא לא שטף מהזיכרון, היא לעולם לא להרגיש פאניקה כשצריך לבדוק שאילתה שמישהו אחר כתב.`,
+        },
+      },
+      {
+        number: 'sql-02',
+        title: { en: 'sqlite3 in Python — Connect, Cursor, Execute, Commit, Close', he: 'sqlite3 בפייתון — Connect, Cursor, Execute, Commit, Close' },
+        source: 'Session 15 · Card 03',
+        points: [
+          { en: `\`sqlite3.connect('file.db')\` creates a brand-new empty database if the file doesn't exist yet, or reconnects to the one already there.`, he: `\`sqlite3.connect('file.db')\` יוצרת בסיס נתונים חדש וריק אם הקובץ עוד לא קיים, או מתחברת מחדש לזה שכבר קיים.` },
+          { en: `A \`cursor\`, pulled from that connection (\`conn.cursor()\`), is the object that actually carries SQL commands back and forth via \`cursor.execute('...')\`.`, he: `\`cursor\`, שנשלף מהחיבור (\`conn.cursor()\`), הוא האובייקט שבפועל נושא פקודות SQL הלוך ושוב דרך \`cursor.execute('...')\`.` },
+          { en: `\`conn.commit()\` is a separate, required step — running \`CREATE TABLE\` or \`INSERT\` only changes an in-progress state until commit actually saves it to the file.`, he: `\`conn.commit()\` הוא שלב נפרד ונדרש — הרצת \`CREATE TABLE\` או \`INSERT\` משנה רק מצב באמצע תהליך עד ש-commit באמת שומר אותו לקובץ.` },
+          { en: `\`with sqlite3.connect('file.db') as conn:\` closes the connection automatically at the end of the block — the same open-write-close discipline as a plain text file.`, he: `\`with sqlite3.connect('file.db') as conn:\` סוגרת את החיבור אוטומטית בסוף הבלוק — אותה משמעת פתח-כתוב-סגור כמו קובץ טקסט רגיל.` },
+        ],
+      },
+      {
+        number: 'sql-03',
+        title: { en: 'Primary Keys, Foreign Keys & Normalization', he: 'מפתחות ראשיים, מפתחות זרים ונרמול' },
+        source: 'Session 15 · Cards 04, 05, 08',
+        points: [
+          { en: `A foreign key value points to another table's row by its \`id\` — not to a final answer. \`address_id = 2\` means "the address row whose own \`id\` is 2," and that row's \`city_id\` is what actually names the city; skipping a hop and matching digits by eye is how a whole class gets it wrong.`, he: `ערך מפתח זר מצביע על שורה בטבלה אחרת לפי ה-\`id\` שלה — לא על תשובה סופית. \`address_id = 2\` אומר "שורת הכתובת שה-\`id\` שלה עצמה הוא 2," ועמודת \`city_id\` של אותה שורה היא זו שבאמת קובעת את העיר; לדלג על קפיצה ולהתאים ספרות במבט זו הדרך שכיתה שלמה טועה.` },
+          { en: `Splitting repeated data into its own small table, referenced by a foreign key, is normalization — a typo repeated across 200 rows needs 200 fixes in one big table, but exactly one fix once it's normalized.`, he: `פיצול נתונים חוזרים לטבלה קטנה משלהם, מופנית אליה במפתח זר, הוא נרמול — טעות הקלדה שחוזרת ב-200 שורות דורשת 200 תיקונים בטבלה גדולה אחת, אבל בדיוק תיקון אחד אחרי שנרמל.` },
+          { en: `Check a generated \`CREATE TABLE\` statement's column definitions, not just its table names — whether \`id\` is marked primary key and set to auto-increment, and whether each foreign key references the right table and column.`, he: `בודקים את הגדרות העמודות של הצהרת \`CREATE TABLE\` שנוצרה, לא רק את שמות הטבלאות — האם \`id\` מסומן כמפתח ראשי ומוגדר להעלות את עצמו אוטומטית, והאם כל מפתח זר מפנה לטבלה ולעמודה הנכונות.` },
+        ],
+      },
+      {
+        number: 'sql-04',
+        title: { en: 'A Duplicate-Insert Gotcha', he: 'מלכודת הכנסה כפולה' },
+        source: 'Session 15 · Card 06',
+        points: [
+          { en: `SQLite has no memory of "this insert already ran" — re-running a cell that inserts rows creates a brand-new, independent set of rows every single time, with no error.`, he: `ל-SQLite אין זיכרון של "ההכנסה הזו כבר רצה" — הרצה חוזרת של תא שמכניס שורות יוצרת סט חדש ועצמאי לגמרי של שורות בכל פעם, בלי שגיאה.` },
+          { en: `An auto-incrementing primary key happily hands out a fresh ID to every duplicate, so the failure shows up as extra rows, not as a crash.`, he: `מפתח ראשי שמעלה את עצמו אוטומטית מוסר בשמחה מזהה טרי לכל כפילות, אז הכשל מופיע כשורות נוספות, לא כקריסה.` },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'cli',
+    language: { en: 'Command Line (Terminal)', he: 'שורת פקודה (טרמינל)' },
+    note: {
+      en: `Session 7 introduced the terminal as the room every AI coding agent actually works in — the goal stated explicitly was recognition, not memorizing a full command vocabulary. What follows is the handful of commands the course actually used.`,
+      he: `מפגש 7 הציג את הטרמינל כחדר שבו כל סוכן קידוד AI באמת עובד — המטרה שהוצהרה במפורש הייתה זיהוי, לא שינון אוצר מילים מלא של פקודות. מה שבא בהמשך הן הפקודות הבודדות שהקורס בפועל השתמש בהן.`,
+    },
+    topics: [
+      {
+        number: 'cli-01',
+        title: { en: 'Opening & Navigating a Terminal', he: 'פתיחה וניווט בטרמינל' },
+        source: 'Session 7 · Card 02',
+        points: [
+          { en: `Windows: searching "Command Prompt" opens the older shell; searching "PowerShell" (or just "Terminal") opens the newer, Unix-aware one. Mac: Cmd+Space, then type "Terminal".`, he: `Windows: חיפוש "Command Prompt" פותח את המעטפת הישנה יותר; חיפוש "PowerShell" (או סתם "Terminal") פותח את החדשה יותר, המודעת ל-Unix. Mac: Cmd+Space, ואז הקלדת "Terminal".` },
+          { en: `\`ls\` (Mac) or \`dir\` (Windows) lists everything in the current folder.`, he: `\`ls\` (ב-Mac) או \`dir\` (ב-Windows) מציגה רשימה של הכול בתיקייה הנוכחית.` },
+          { en: `\`cd <folder>\` moves into a folder — a forward slash on Mac, a backslash on Windows, exactly the mismatch PowerShell papers over.`, he: `\`cd <folder>\` עוברת לתוך תיקייה — קו נטוי קדימה ב-Mac, קו נטוי אחורה ב-Windows, בדיוק אי-ההתאמה ש-PowerShell מגשרת עליה.` },
+          { en: `\`clear\` (Mac/PowerShell) or \`cls\` (Command Prompt) wipes the screen without affecting anything that already ran.`, he: `\`clear\` (Mac/PowerShell) או \`cls\` (Command Prompt) מנקה את המסך בלי להשפיע על שום דבר שכבר רץ.` },
+        ],
+        keyTakeaway: {
+          en: `The terminal has no icons to click — every action is a sentence you type and mean.`,
+          he: `לטרמינל אין אייקונים ללחוץ עליהם — כל פעולה היא משפט שמקלידים ומתכוונים אליו.`,
+        },
+      },
+      {
+        number: 'cli-02',
+        title: { en: 'A Shortcut Worth Knowing — `code .`', he: 'קיצור שכדאי לדעת — `code .`' },
+        source: 'Session 15 · Card 07',
+        points: [
+          { en: `Opening a terminal inside a project folder and typing \`code .\` opens that exact folder in the editor directly — a small shortcut called out as worth learning early, instead of manually navigating the editor's own open-project menu.`, he: `פתיחת טרמינל בתוך תיקיית פרויקט והקלדת \`code .\` פותחת את אותה תיקייה בדיוק בעורך ישירות — קיצור קטן שצוין ככדאי ללמוד מוקדם, במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'json',
+    language: { en: 'JSON', he: 'JSON' },
+    note: {
+      en: `JSON was never taught directly as its own topic — no notebook or card walked through \`json.load\`/\`json.dumps\` or JSON syntax rules. It showed up only in passing, in Session 2's n8n material, as the format underneath two real things — kept deliberately thin here rather than padded with generic JSON documentation.`,
+      he: `JSON מעולם לא נלמד ישירות כנושא בפני עצמו — אף מחברת או כרטיס לא עברו על \`json.load\`/\`json.dumps\` או כללי תחביר JSON. הוא הופיע רק דרך אגב, בחומר ה-n8n של מפגש 2, כפורמט שמתחת לשני דברים אמיתיים — נשאר כאן דק בכוונה במקום מרופד בתיעוד JSON כללי.`,
+    },
+    topics: [
+      {
+        number: 'json-01',
+        title: { en: 'Where JSON Actually Showed Up', he: 'איפה JSON בעצם הופיע' },
+        source: 'Session 2 · n8n',
+        points: [
+          { en: `A service account — a robot account used for server-to-server integrations — authenticates with its own JSON credentials file, distinct from an OAuth login or a plain API-key string.`, he: `חשבון שירות — חשבון רובוט המשמש לאינטגרציות שרת-לשרת — מתאמת עם קובץ אישורי JSON משלו, שונה מהתחברות OAuth או ממחרוזת מפתח API פשוטה.` },
+          { en: `Data passed between n8n nodes is structured, key-value data — when a node produces output, the next node references any field from it by name (via drag-drop or expression syntax) rather than by copying values manually.`, he: `נתונים שעוברים בין צמתי n8n הם נתוני מפתח-ערך מובנים — כשצומת מייצר פלט, הצומת הבא מפנה לכל שדה ממנו לפי שם (דרך גרירה-שחרור או תחביר ביטוי) במקום להעתיק ערכים ידנית.` },
+        ],
+      },
     ],
   },
 ];

@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { syntaxGuide } from '@/content/syntax-guide';
+import { syntaxGuide, otherLanguages, type SyntaxTopic } from '@/content/syntax-guide';
 import type { Locale } from '@/i18n';
 
 // Renders `code` spans as real inline code — this page is a syntax reference,
@@ -18,6 +18,44 @@ function renderWithCode(text: string) {
     ) : (
       <span key={i}>{part}</span>
     )
+  );
+}
+
+function TopicCard({ topic, locale }: { topic: SyntaxTopic; locale: Locale }) {
+  return (
+    <div id={`topic-${topic.number}`} className="border border-rule p-6 bg-codebg/30">
+      <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-rule">
+        <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold">
+          {topic.number}
+        </span>
+        <h2 className="small-caps tracking-wide text-xl flex-1">
+          {topic.title[locale]}
+        </h2>
+        <span className="text-[9px] tracking-brand uppercase text-muted font-sans font-mono">
+          {topic.source}
+        </span>
+      </div>
+
+      <ul className="grid gap-2 mb-4">
+        {topic.points.map((point, i) => (
+          <li key={i} className="text-sm leading-relaxed flex gap-2">
+            <span className="text-accent flex-shrink-0">·</span>
+            <span>{renderWithCode(point[locale])}</span>
+          </li>
+        ))}
+      </ul>
+
+      {topic.keyTakeaway && (
+        <div className="border-t border-rule pt-3 mt-3">
+          <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
+            {locale === 'he' ? 'תובנת מפתח' : 'Key Takeaway'}
+          </div>
+          <p className="text-xs italic text-muted leading-relaxed">
+            {renderWithCode(topic.keyTakeaway[locale])}
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -52,41 +90,28 @@ export default async function SyntaxGuidePage({
 
       <div className="grid gap-8">
         {syntaxGuide.map((topic) => (
-          <div key={topic.number} id={`topic-${topic.number}`} className="border border-rule p-6 bg-codebg/30">
-            <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-rule">
-              <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold">
-                {topic.number}
-              </span>
-              <h2 className="small-caps tracking-wide text-xl flex-1">
-                {topic.title[locale]}
-              </h2>
-              <span className="text-[9px] tracking-brand uppercase text-muted font-sans font-mono">
-                {topic.sourceNotebook}
-              </span>
-            </div>
-
-            <ul className="grid gap-2 mb-4">
-              {topic.points.map((point, i) => (
-                <li key={i} className="text-sm leading-relaxed flex gap-2">
-                  <span className="text-accent flex-shrink-0">·</span>
-                  <span>{renderWithCode(point[locale])}</span>
-                </li>
-              ))}
-            </ul>
-
-            {topic.keyTakeaway && (
-              <div className="border-t border-rule pt-3 mt-3">
-                <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
-                  {locale === 'he' ? 'תובנת מפתח' : 'Key Takeaway'}
-                </div>
-                <p className="text-xs italic text-muted leading-relaxed">
-                  {renderWithCode(topic.keyTakeaway[locale])}
-                </p>
-              </div>
-            )}
-          </div>
+          <TopicCard key={topic.number} topic={topic} locale={locale} />
         ))}
       </div>
+
+      {otherLanguages.map((section) => (
+        <section key={section.id} className="mt-20">
+          <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
+            {locale === 'he' ? 'שפה נוספת' : 'Additional Language'}
+          </div>
+          <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-4 text-center">
+            {section.language[locale]}
+          </h2>
+          <p className="text-center italic text-muted max-w-2xl mx-auto mb-10 text-sm">
+            {section.note[locale]}
+          </p>
+          <div className="grid gap-8">
+            {section.topics.map((topic) => (
+              <TopicCard key={topic.number} topic={topic} locale={locale} />
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

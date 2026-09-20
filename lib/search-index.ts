@@ -1,7 +1,7 @@
 import { sessions, modules, type Bilingual } from '@/lib/registry';
 import { cardDecks } from '@/content/cards';
 import { installGuide } from '@/content/install-guide';
-import { syntaxGuide } from '@/content/syntax-guide';
+import { syntaxGuide, otherLanguages } from '@/content/syntax-guide';
 import { recommendationCategories } from '@/content/recommendations';
 
 export type SearchResultType = 'module' | 'session' | 'card' | 'install' | 'syntax' | 'recommendation';
@@ -85,6 +85,18 @@ export function buildSearchIndex(locale: 'en' | 'he'): SearchResult[] {
       href: `/${locale}/syntax#topic-${topic.number}`,
       haystack: `${topic.title[locale]} ${topic.points.map((p) => p[locale]).join(' ')}`.toLowerCase(),
     });
+  }
+
+  for (const section of otherLanguages) {
+    for (const topic of section.topics) {
+      results.push({
+        type: 'syntax',
+        title: `${topic.title[locale]} (${section.language[locale]})`,
+        subtitle: topic.keyTakeaway?.[locale],
+        href: `/${locale}/syntax#topic-${topic.number}`,
+        haystack: `${section.language[locale]} ${topic.title[locale]} ${topic.points.map((p) => p[locale]).join(' ')}`.toLowerCase(),
+      });
+    }
   }
 
   for (const category of recommendationCategories) {
