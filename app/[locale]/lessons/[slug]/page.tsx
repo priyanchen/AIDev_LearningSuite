@@ -27,6 +27,13 @@ const internalLinks: Record<string, { path: string; label: Bilingual }> = {
       he: 'מדריך התקנת פייתון מלא, שלב אחר שלב (Mac ו-Windows)',
     },
   },
+  '.env & dotenv': {
+    path: '/install#dotenv',
+    label: {
+      en: 'Full step-by-step .env & python-dotenv guide (Mac & Windows)',
+      he: 'מדריך .env ו-python-dotenv מלא, שלב אחר שלב (Mac ו-Windows)',
+    },
+  },
 };
 
 export default async function SessionPage({

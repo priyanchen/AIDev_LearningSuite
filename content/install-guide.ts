@@ -233,6 +233,7 @@ export const installGuide: InstallCategory[] = [
         },
       },
       {
+        id: 'dotenv',
         name: 'python-dotenv + .env',
         officialUrl: 'https://pypi.org/project/python-dotenv/',
         sessions: [12, 13],
@@ -247,6 +248,96 @@ export const installGuide: InstallCategory[] = [
         commands: {
           mac: ['pip3 install python-dotenv', 'echo ".env" >> .gitignore'],
           windows: ['pip install python-dotenv', 'echo .env >> .gitignore'],
+        },
+        steps: {
+          mac: [
+            {
+              title: { en: '1. Install python-dotenv', he: '1. התקיני את python-dotenv' },
+              detail: {
+                en: `In Terminal, inside your project's virtual environment: \`pip3 install python-dotenv\`.`,
+                he: `ב-Terminal, בתוך הסביבה הווירטואלית של הפרויקט: \`pip3 install python-dotenv\`.`,
+              },
+            },
+            {
+              title: { en: '2. Create the .env file', he: '2. צרי את קובץ ה-.env' },
+              detail: {
+                en: `In the project's root folder: \`touch .env\`. Or simply ask the agent to create it — this is the pattern demonstrated live: a single request produced the whole chain at once.`,
+                he: `בתיקיית השורש של הפרויקט: \`touch .env\`. או פשוט לבקש מהסוכן ליצור אותו — זה הדפוס שהודגם בשידור חי: בקשה אחת ייצרה את כל השרשרת בבת אחת.`,
+              },
+            },
+            {
+              title: { en: '3. Add the real secret', he: '3. הוסיפי את הסוד האמיתי' },
+              detail: {
+                en: `Open \`.env\` in the editor and add one line per secret, no quotes, no spaces around \`=\`: \`OPENAI_API_KEY=sk-...\`. Never let an agent read this value back to you — if one echoes a raw key by accident, rotate it immediately.`,
+                he: `פתחי את \`.env\` בעורך והוסיפי שורה אחת לכל סוד, בלי מרכאות, בלי רווחים סביב \`=\`: \`OPENAI_API_KEY=sk-...\`. לעולם אל תני לסוכן להקריא לך את הערך הזה בחזרה — אם אחד מהדהד מפתח גולמי בטעות, מחליפים אותו מיד.`,
+              },
+            },
+            {
+              title: { en: '4. Load it in Python', he: '4. טעני אותו בפייתון' },
+              detail: {
+                en: `\`from dotenv import load_dotenv\`, \`import os\`, then \`load_dotenv()\` followed by \`api_key = os.getenv("OPENAI_API_KEY")\` — never hardcode the key string directly in the script.`,
+                he: `\`from dotenv import load_dotenv\`, \`import os\`, ואז \`load_dotenv()\` ואחריו \`api_key = os.getenv("OPENAI_API_KEY")\` — לעולם לא לקבע את מחרוזת המפתח ישירות בסקריפט.`,
+              },
+            },
+            {
+              title: { en: '5. Gitignore it before the first commit', he: '5. תני לה gitignore לפני ה-commit הראשון' },
+              detail: {
+                en: `\`echo ".env" >> .gitignore\`, then confirm it's there before running \`git add\` for the first time — a hidden key that still gets committed is not protected at all.`,
+                he: `\`echo ".env" >> .gitignore\`, ואז לאשר שהוא שם לפני הרצת \`git add\` בפעם הראשונה — מפתח מוסתר שעדיין נכנס ל-commit הוא לא מוגן בכלל.`,
+              },
+            },
+            {
+              title: { en: '6. Create .env.example', he: '6. צרי .env.example' },
+              detail: {
+                en: `\`cp .env .env.example\`, then delete the real values, keeping only the variable names — \`OPENAI_API_KEY=\`. This is the file that does get committed, so a collaborator knows exactly what to fill in without ever seeing the real key.`,
+                he: `\`cp .env .env.example\`, ואז מחקי את הערכים האמיתיים, ושמרי רק את שמות המשתנים — \`OPENAI_API_KEY=\`. זה הקובץ שכן נכנס ל-commit, כך שמשתפת פעולה יודעת בדיוק מה למלא בלי לראות את המפתח האמיתי אף פעם.`,
+              },
+            },
+          ],
+          windows: [
+            {
+              title: { en: '1. Install python-dotenv', he: '1. התקיני את python-dotenv' },
+              detail: {
+                en: `In PowerShell, inside your project's virtual environment: \`pip install python-dotenv\`.`,
+                he: `ב-PowerShell, בתוך הסביבה הווירטואלית של הפרויקט: \`pip install python-dotenv\`.`,
+              },
+            },
+            {
+              title: { en: '2. Create the .env file', he: '2. צרי את קובץ ה-.env' },
+              detail: {
+                en: `In the project's root folder: \`New-Item .env\`. Or simply ask the agent to create it — this is the pattern demonstrated live: a single request produced the whole chain at once.`,
+                he: `בתיקיית השורש של הפרויקט: \`New-Item .env\`. או פשוט לבקש מהסוכן ליצור אותו — זה הדפוס שהודגם בשידור חי: בקשה אחת ייצרה את כל השרשרת בבת אחת.`,
+              },
+            },
+            {
+              title: { en: '3. Add the real secret', he: '3. הוסיפי את הסוד האמיתי' },
+              detail: {
+                en: `Open \`.env\` in the editor and add one line per secret, no quotes, no spaces around \`=\`: \`OPENAI_API_KEY=sk-...\`. Never let an agent read this value back to you — if one echoes a raw key by accident, rotate it immediately.`,
+                he: `פתחי את \`.env\` בעורך והוסיפי שורה אחת לכל סוד, בלי מרכאות, בלי רווחים סביב \`=\`: \`OPENAI_API_KEY=sk-...\`. לעולם אל תני לסוכן להקריא לך את הערך הזה בחזרה — אם אחד מהדהד מפתח גולמי בטעות, מחליפים אותו מיד.`,
+              },
+            },
+            {
+              title: { en: '4. Load it in Python', he: '4. טעני אותו בפייתון' },
+              detail: {
+                en: `\`from dotenv import load_dotenv\`, \`import os\`, then \`load_dotenv()\` followed by \`api_key = os.getenv("OPENAI_API_KEY")\` — never hardcode the key string directly in the script.`,
+                he: `\`from dotenv import load_dotenv\`, \`import os\`, ואז \`load_dotenv()\` ואחריו \`api_key = os.getenv("OPENAI_API_KEY")\` — לעולם לא לקבע את מחרוזת המפתח ישירות בסקריפט.`,
+              },
+            },
+            {
+              title: { en: '5. Gitignore it before the first commit', he: '5. תני לה gitignore לפני ה-commit הראשון' },
+              detail: {
+                en: `\`echo .env >> .gitignore\`, then confirm it's there before running \`git add\` for the first time — a hidden key that still gets committed is not protected at all.`,
+                he: `\`echo .env >> .gitignore\`, ואז לאשר שהוא שם לפני הרצת \`git add\` בפעם הראשונה — מפתח מוסתר שעדיין נכנס ל-commit הוא לא מוגן בכלל.`,
+              },
+            },
+            {
+              title: { en: '6. Create .env.example', he: '6. צרי .env.example' },
+              detail: {
+                en: `\`copy .env .env.example\`, then delete the real values, keeping only the variable names — \`OPENAI_API_KEY=\`. This is the file that does get committed, so a collaborator knows exactly what to fill in without ever seeing the real key.`,
+                he: `\`copy .env .env.example\`, ואז מחקי את הערכים האמיתיים, ושמרי רק את שמות המשתנים — \`OPENAI_API_KEY=\`. זה הקובץ שכן נכנס ל-commit, כך שמשתפת פעולה יודעת בדיוק מה למלא בלי לראות את המפתח האמיתי אף פעם.`,
+              },
+            },
+          ],
         },
       },
     ],
