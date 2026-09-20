@@ -58,7 +58,7 @@ export default async function CardsLibraryPage({
                   className="border border-rule p-4 hover:border-ink hover:bg-codebg transition"
                 >
                   <div className="text-[9px] tracking-brand uppercase text-accent font-sans mb-2">
-                    {locale === 'he' ? `כרטיס ${card.number}` : `Card ${card.number}`}
+                    <span aria-hidden="true">💡</span> {locale === 'he' ? `כרטיס ${card.number}` : `Card ${card.number}`}
                   </div>
                   <div className="small-caps tracking-wide font-bold text-sm mb-1">
                     {card.title[locale]}

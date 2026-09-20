@@ -31,7 +31,7 @@ export default function Card({ card, locale, total }: Props) {
     >
       <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
         <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
-          {locale === 'he' ? `כרטיס ${card.number}` : `Card ${card.number}`}
+          <span aria-hidden="true">💡</span> {locale === 'he' ? `כרטיס ${card.number}` : `Card ${card.number}`}
         </span>
         <span className="text-[9px] tracking-brand uppercase text-muted font-sans">
           {card.number} / {String(total).padStart(2, '0')}
