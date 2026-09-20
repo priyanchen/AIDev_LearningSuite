@@ -57,6 +57,9 @@ export const recommendationCategories: RecommendationCategory[] = [
           he: `הוצע כהפניה למי שרצתה ללכת עמוק יותר משתי ההערכות מבוססות-הממוצע ומבוססות-הפער של הרצאת בעיית הטנקים עצמה.`,
         },
         verified: true,
+        links: [
+          { label: 'Magnes Press — official page (print + ebook)', url: 'https://www.magnespress.co.il/book/%D7%97%D7%95%D7%A9%D7%91%D7%99%D7%9D_%D7%90%D7%97%D7%A8%D7%AA-6010' },
+        ],
       },
     ],
   },
