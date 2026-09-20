@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import SearchBox from './SearchBox';
 
 export default function Header({ locale }: { locale: string }) {
   const t = useTranslations('nav');
@@ -43,6 +44,7 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/recommended`} className="hover:text-accent transition">
             {t('recommended')}
           </Link>
+          <SearchBox locale={locale === 'he' ? 'he' : 'en'} />
           <Link
             href={otherPath}
             className="border border-ink px-3 py-1 text-[10px] tracking-brand uppercase font-sans hover:bg-ink hover:text-paper transition"
