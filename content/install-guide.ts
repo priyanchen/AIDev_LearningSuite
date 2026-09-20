@@ -13,6 +13,7 @@ export type InstallStep = {
 export type InstallItem = {
   id?: string;                 // anchor id, for deep-linking from a session's concept tag
   name: string;
+  officialUrl?: string;        // the tool's own official install/download page — verified live, never guessed
   sessions: number[];         // syllabus session numbers where this came up
   whatItDoes: Bilingual;
   tips?: Bilingual;           // installation-sequence tips, gotchas, warnings — grounded in the card content
@@ -34,6 +35,7 @@ export const installGuide: InstallCategory[] = [
       {
         id: 'python',
         name: 'Python',
+        officialUrl: 'https://www.python.org/downloads/',
         sessions: [3],
         whatItDoes: {
           en: `Not a single thing — it's an interpreter (a program that reads Python code and executes it) plus a standard library of built-in tools.`,
@@ -126,6 +128,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'venv',
+        officialUrl: 'https://docs.python.org/3/library/venv.html',
         sessions: [3, 12, 19],
         whatItDoes: {
           en: `An isolated, per-project Python installation — so package versions never collide across projects.`,
@@ -142,6 +145,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'pip',
+        officialUrl: 'https://pip.pypa.io/en/stable/installation/',
         sessions: [12, 19],
         whatItDoes: {
           en: `Installs third-party packages into whichever Python environment is currently active.`,
@@ -164,6 +168,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'VS Code / Cursor / PyCharm / Jupyter',
+        officialUrl: 'https://code.visualstudio.com/download',
         sessions: [3, 4],
         whatItDoes: {
           en: `Different ways to interact with the same underlying Python interpreter. VS Code was the course's recommended default; PyCharm is heavier and more feature-rich; Jupyter is interactive and cell-based.`,
@@ -190,6 +195,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'Git & GitHub Desktop',
+        officialUrl: 'https://desktop.github.com/',
         sessions: [7, 8],
         whatItDoes: {
           en: `Version control. GitHub Desktop is the GUI the course walks through, rather than raw git commands.`,
@@ -210,6 +216,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'GitHub CLI (gh)',
+        officialUrl: 'https://cli.github.com/',
         sessions: [16],
         whatItDoes: {
           en: `Lets an agent authenticate and push to GitHub from the terminal without a browser.`,
@@ -226,6 +233,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'python-dotenv + .env',
+        officialUrl: 'https://pypi.org/project/python-dotenv/',
         sessions: [12, 13],
         whatItDoes: {
           en: `Loads secrets from a \`.env\` file via \`os.getenv()\` instead of hardcoding them directly in scripts.`,
@@ -247,6 +255,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'NumPy & pandas',
+        officialUrl: 'https://numpy.org/install/',
         sessions: [14],
         whatItDoes: {
           en: `NumPy enables real vectorized arithmetic — a plain Python list can't do the arithmetic you'd expect from a column of numbers. pandas, described as mandatory for everything the course builds from here on, provides the Series and DataFrame objects with pandas-specific \`.loc\`/\`.iloc\` indexing.`,
@@ -263,6 +272,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'scikit-learn',
+        officialUrl: 'https://scikit-learn.org/stable/install.html',
         sessions: [18, 19],
         whatItDoes: {
           en: `Supplies ready-made model classes like LinearRegression — the straight-line formula, the cost function, and gradient descent all collapse into importing the class, creating an instance, and calling \`.fit()\`.`,
@@ -279,6 +289,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'matplotlib, seaborn, joblib',
+        officialUrl: 'https://matplotlib.org/stable/users/installing/index.html',
         sessions: [19],
         whatItDoes: {
           en: `Named in the course's install line (\`pip install pandas numpy scikit-learn matplotlib seaborn streamlit jupyter joblib\`) as standard companions to the data science stack — for plotting and model serialization.`,
@@ -291,6 +302,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'Streamlit',
+        officialUrl: 'https://docs.streamlit.io/get-started/installation',
         sessions: [14],
         whatItDoes: {
           en: `Turns a DataFrame into a shareable, live dashboard.`,
@@ -312,6 +324,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'XGBoost',
+        officialUrl: 'https://xgboost.readthedocs.io/en/stable/install.html',
         sessions: [21],
         whatItDoes: {
           en: `Bootstrap-samples both rows and columns for every tree — Random Forest only samples rows — forcing the ensemble to discover more varied patterns instead of converging on the same features. Skips normalization entirely, since trees split on thresholds not distances, but still needs categorical encoding.`,
@@ -324,6 +337,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'LightGBM',
+        officialUrl: 'https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html',
         sessions: [21],
         whatItDoes: {
           en: `Bins continuous values into buckets before searching for split points, so it only checks boundaries between a handful of buckets instead of every raw value — the same underlying idea as XGBoost, computed far more cheaply. Credited to Microsoft's original paper.`,
@@ -336,6 +350,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'CatBoost',
+        officialUrl: 'https://catboost.ai/en/docs/concepts/python-installation',
         sessions: [21],
         whatItDoes: {
           en: `Accepts categorical columns directly with no manual one-hot encoding, and builds symmetric trees — the same split rule mirrored across an entire tree level, computed once per level instead of once per node.`,
@@ -357,6 +372,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'Ultralytics (YOLO)',
+        officialUrl: 'https://docs.ultralytics.com/quickstart/',
         sessions: [22],
         whatItDoes: {
           en: `Ships four separate specialized models — detection, classification, segmentation, pose estimation — as downloadable local weight files, each trained for exactly one job.`,
@@ -388,6 +404,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'sqlite3 + SQLite Viewer',
+        officialUrl: 'https://docs.python.org/3/library/sqlite3.html',
         sessions: [15],
         whatItDoes: {
           en: `\`sqlite3.connect('file.db')\` creates or reconnects to a local database file from Python's standard library; a cursor pulled from that connection carries SQL commands. The SQLite Viewer editor extension is what actually renders tables and rows visually.`,
@@ -410,6 +427,7 @@ export const installGuide: InstallCategory[] = [
       },
       {
         name: 'Supabase CLI',
+        officialUrl: 'https://supabase.com/docs/guides/cli/getting-started',
         sessions: [16],
         whatItDoes: {
           en: `Lets an agent create organizations, projects, and tables in a Supabase account directly from the terminal, without a human touching the website.`,
@@ -435,6 +453,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'n8n',
+        officialUrl: 'https://docs.n8n.io/hosting/installation/',
         sessions: [2],
         whatItDoes: {
           en: `A no-code/low-code visual workflow builder (trigger → action nodes → output), explicitly framed as scaffolding for concepts that reappear in real code later, not a production tool in itself.`,
@@ -456,6 +475,7 @@ export const installGuide: InstallCategory[] = [
     items: [
       {
         name: 'Claude Code',
+        officialUrl: 'https://docs.claude.com/en/docs/claude-code/setup',
         sessions: [9, 10],
         whatItDoes: {
           en: `An agentic coding assistant reachable four ways — editor extension (Cursor/VS Code), standalone desktop app, web, or terminal.`,

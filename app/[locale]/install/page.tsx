@@ -55,7 +55,19 @@ export default async function InstallGuidePage({
               <div key={item.name} id={item.id} className="border border-rule p-6 bg-codebg/30 scroll-mt-24">
                 <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
                   <h3 className="text-lg font-bold font-mono tracking-tight">
-                    {item.name}
+                    {item.officialUrl ? (
+                      <a
+                        href={item.officialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={locale === 'he' ? 'עמוד ההתקנה הרשמי' : "Official installation page"}
+                        className="hover:text-accent transition underline decoration-rule underline-offset-4 hover:decoration-accent"
+                      >
+                        {item.name} ↗
+                      </a>
+                    ) : (
+                      item.name
+                    )}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {item.sessions.map((num) => {
