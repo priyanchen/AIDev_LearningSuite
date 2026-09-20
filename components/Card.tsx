@@ -31,7 +31,7 @@ export default function Card({ card, locale, total }: Props) {
     >
       <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
         <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex items-center gap-1.5">
-          <span aria-hidden="true" className="text-base leading-none not-italic normal-case">💡</span>
+          <span aria-hidden="true" className="text-base leading-none not-italic normal-case">🕎</span>
           {locale === 'he' ? `כרטיס ${card.number}` : `Card ${card.number}`}
         </span>
         <span className="text-[9px] tracking-brand uppercase text-muted font-sans">
