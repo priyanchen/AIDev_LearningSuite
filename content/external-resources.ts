@@ -130,6 +130,14 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `Intro to CS and Programming in Python (6.0001) — הרצאה 6: רקורסיה ומילונים`,
     },
   },
+  'Sets & None': {
+    url: 'https://cs50.harvard.edu/python/notes/9/',
+    source: 'Harvard CS50P',
+    label: {
+      en: `CS50's Introduction to Programming with Python — Lecture 9: Et Cetera (set, and None via type hints)`,
+      he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 9: Et Cetera (set, ו-None דרך type hints)`,
+    },
+  },
   'Comparison Operators': {
     url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/',
     source: 'MIT OpenCourseWare',
