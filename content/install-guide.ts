@@ -14,6 +14,7 @@ export type InstallItem = {
   id?: string;                 // anchor id, for deep-linking from a session's concept tag
   name: string;
   officialUrl?: string;        // the tool's own official install/download page — verified live, never guessed
+  moduleId?: string;           // links to that module's own page, when the tool anchors an entire module (e.g. n8n)
   sessions: number[];         // syllabus session numbers where this came up
   whatItDoes: Bilingual;
   tips?: Bilingual;           // installation-sequence tips, gotchas, warnings — grounded in the card content
@@ -454,6 +455,7 @@ export const installGuide: InstallCategory[] = [
       {
         name: 'n8n',
         officialUrl: 'https://docs.n8n.io/hosting/installation/',
+        moduleId: '02-n8n',
         sessions: [2],
         whatItDoes: {
           en: `A no-code/low-code visual workflow builder (trigger → action nodes → output), explicitly framed as scaffolding for concepts that reappear in real code later, not a production tool in itself.`,

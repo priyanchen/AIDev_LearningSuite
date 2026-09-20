@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { sessions } from '@/lib/registry';
+import { sessions, modules } from '@/lib/registry';
 import { installGuide } from '@/content/install-guide';
 import type { Locale } from '@/i18n';
 
@@ -30,6 +30,7 @@ export default async function InstallGuidePage({
   setRequestLocale(locale);
   const nav = await getTranslations('nav');
   const sessionBySlug = new Map(sessions.map((s) => [s.number, s]));
+  const moduleById = new Map(modules.map((m) => [m.id, m]));
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -70,6 +71,14 @@ export default async function InstallGuidePage({
                     )}
                   </h3>
                   <div className="flex flex-wrap gap-2">
+                    {item.moduleId && moduleById.get(item.moduleId) && (
+                      <Link
+                        href={`/${locale}/modules/${item.moduleId}`}
+                        className="text-[9px] tracking-brand uppercase text-accent hover:text-paper hover:bg-accent font-sans border border-accent px-2 py-1 transition"
+                      >
+                        {locale === 'he' ? 'מודול →' : 'Module →'}
+                      </Link>
+                    )}
                     {item.sessions.map((num) => {
                       const s = sessionBySlug.get(num);
                       const label = `${locale === 'he' ? 'מפגש' : 'Session'} ${String(num).padStart(2, '0')}`;
