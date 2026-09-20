@@ -8,6 +8,7 @@ import {
   getAdjacentSessions,
 } from '@/lib/registry';
 import { getDeck } from '@/content/cards';
+import { externalResources } from '@/content/external-resources';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
 
@@ -64,16 +65,39 @@ export default async function SessionPage({
           {session.headline[locale]}
         </p>
         {session.concepts && session.concepts.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
-            {session.concepts.map((c) => (
-              <span
-                key={c}
-                className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-3 py-1"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
+          <>
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              {session.concepts.map((c) => {
+                const resource = externalResources[c];
+                return resource ? (
+                  <a
+                    key={c}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${resource.source}: ${resource.label[locale]}`}
+                    className="text-[9px] tracking-brand uppercase text-accent font-sans border border-accent px-3 py-1 hover:bg-accent hover:text-paper transition"
+                  >
+                    {c} ↗
+                  </a>
+                ) : (
+                  <span
+                    key={c}
+                    className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-3 py-1"
+                  >
+                    {c}
+                  </span>
+                );
+              })}
+            </div>
+            {session.concepts.some((c) => externalResources[c]) && (
+              <p className="text-[10px] italic text-muted mt-3">
+                {locale === 'he'
+                  ? '↗ תגיות מקושרות מובילות להרצאות MIT/Harvard אמיתיות להעמקה.'
+                  : '↗ Linked tags lead to real MIT/Harvard lectures for further reading.'}
+              </p>
+            )}
+          </>
         )}
       </section>
 
