@@ -66,6 +66,22 @@ export default async function RecommendedPage({
 
                   <p className="text-sm leading-relaxed mb-3">{item.bio[locale]}</p>
 
+                  {item.links && item.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {item.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+                        >
+                          {link.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="border-t border-rule pt-3 mt-3">
                     <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
                       {locale === 'he' ? 'ההקשר במפגש' : 'Session Context'}

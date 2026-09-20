@@ -9,6 +9,7 @@ export type RecommendationItem = {
   bio: Bilingual;            // who they actually are — general background, not course-specific
   context: Bilingual;        // why Dr. Zuari brought them up, grounded in the actual session
   verified: boolean;         // false where the source recording is dead and this rests on direct confirmation rather than a transcript
+  links?: { label: string; url: string }[]; // real, verified external links only — never guessed
 };
 
 export type RecommendationCategory = {
@@ -79,6 +80,10 @@ export const recommendationCategories: RecommendationCategory[] = [
           he: `עלה במהלך שאלות-ותשובות של מפגש ההתמצאות לגבי איפה לעקוב אחרי התפתחויות AI מתמשכות — יומן הצ׳אט מראה סטודנטים ששואלים מייד באילו פלטפורמות (LinkedIn, X) לעקוב אחריו מייד אחרי ההמלצה.`,
         },
         verified: false,
+        links: [
+          { label: 'YouTube — YUV.AI', url: 'https://www.youtube.com/@yuv-ai' },
+          { label: 'yuv.ai', url: 'https://yuv.ai/' },
+        ],
       },
     ],
   },
