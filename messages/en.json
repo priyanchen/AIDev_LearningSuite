@@ -67,7 +67,8 @@
   "cards": {
     "printCard": "Print / Save PDF",
     "expandCard": "Expand",
-    "collapseCard": "Collapse"
+    "collapseCard": "Collapse",
+    "viewExample": "View Live Example"
   },
   "footer": {
     "rights": "Original teaching materials · Course concepts adapted from source curriculum",

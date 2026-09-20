@@ -255,6 +255,7 @@ export const session04Cards: CardContent[] = [
       en: `The homework is small on purpose — the muscle it trains is not.`,
       he: `שיעורי הבית קטנים בכוונה — השריר שהם מאמנים לא.`,
     },
+    exampleUrl: 'https://global-memory-temple.vercel.app/',
   },
   {
     number: '08',

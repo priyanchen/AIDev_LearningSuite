@@ -71,12 +71,24 @@ export default function Card({ card, locale, total }: Props) {
         ) : (
           <span />
         )}
-        <button
-          onClick={handlePrint}
-          className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1 hover:bg-ink hover:text-paper transition font-sans"
-        >
-          {t('printCard')}
-        </button>
+        <div className="flex gap-2">
+          {card.exampleUrl && (
+            <a
+              href={card.exampleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] tracking-brand uppercase text-accent border border-accent px-3 py-1 hover:bg-accent hover:text-paper transition font-sans"
+            >
+              {t('viewExample')} ↗
+            </a>
+          )}
+          <button
+            onClick={handlePrint}
+            className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1 hover:bg-ink hover:text-paper transition font-sans"
+          >
+            {t('printCard')}
+          </button>
+        </div>
       </div>
 
       <div className="mt-4 border border-ink p-3 text-center">

@@ -11,4 +11,5 @@ export type CardContent = {
   subtitle: Bilingual;
   sections: CardSection[];
   principle: Bilingual;   // The closing meta-principle
+  exampleUrl?: string;    // a live, deployed example of this card's assignment/exercise
 };
