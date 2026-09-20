@@ -6,6 +6,7 @@ import {
   getSession,
   getModule,
   getAdjacentSessions,
+  type Bilingual,
 } from '@/lib/registry';
 import { getDeck } from '@/content/cards';
 import { externalResources } from '@/content/external-resources';
@@ -15,6 +16,18 @@ import type { Locale } from '@/i18n';
 export function generateStaticParams() {
   return sessions.map((s) => ({ slug: s.slug }));
 }
+
+// Concept tags that should link to a section of this site itself (e.g. the Installation Guide)
+// rather than an external MIT/Harvard lecture — checked before externalResources.
+const internalLinks: Record<string, { path: string; label: Bilingual }> = {
+  'Python Installation': {
+    path: '/install#python',
+    label: {
+      en: 'Full step-by-step Python installation guide (Mac & Windows)',
+      he: 'מדריך התקנת פייתון מלא, שלב אחר שלב (Mac ו-Windows)',
+    },
+  },
+};
 
 export default async function SessionPage({
   params: { locale, slug },
@@ -68,7 +81,20 @@ export default async function SessionPage({
           <>
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {session.concepts.map((c) => {
+                const internal = internalLinks[c];
                 const resource = externalResources[c];
+                if (internal) {
+                  return (
+                    <Link
+                      key={c}
+                      href={`/${locale}${internal.path}`}
+                      title={internal.label[locale]}
+                      className="text-[9px] tracking-brand uppercase text-accent font-sans border border-accent px-3 py-1 hover:bg-accent hover:text-paper transition"
+                    >
+                      {c} →
+                    </Link>
+                  );
+                }
                 return resource ? (
                   <a
                     key={c}
@@ -90,11 +116,11 @@ export default async function SessionPage({
                 );
               })}
             </div>
-            {session.concepts.some((c) => externalResources[c]) && (
+            {(session.concepts.some((c) => externalResources[c]) || session.concepts.some((c) => internalLinks[c])) && (
               <p className="text-[10px] italic text-muted mt-3">
                 {locale === 'he'
-                  ? '↗ תגיות מקושרות מובילות להרצאות MIT/Harvard אמיתיות להעמקה.'
-                  : '↗ Linked tags lead to real MIT/Harvard lectures for further reading.'}
+                  ? '↗ תגיות מקושרות מובילות להרצאות MIT/Harvard אמיתיות להעמקה · → תגיות מקושרות מובילות למדריך באתר עצמו.'
+                  : '↗ Linked tags lead to real MIT/Harvard lectures for further reading · → linked tags lead to a guide on this site.'}
               </p>
             )}
           </>

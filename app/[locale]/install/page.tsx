@@ -4,6 +4,24 @@ import { sessions } from '@/lib/registry';
 import { installGuide } from '@/content/install-guide';
 import type { Locale } from '@/i18n';
 
+// Renders `code` spans as real inline code — same convention as the Syntax page.
+function renderWithCode(text: string) {
+  const parts = text.split('`');
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <code
+        key={i}
+        dir="ltr"
+        className="inline-block bg-ink text-paper font-mono text-[0.85em] px-1.5 py-0.5 rounded-sm"
+      >
+        {part}
+      </code>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
 export default async function InstallGuidePage({
   params: { locale },
 }: {
@@ -34,7 +52,7 @@ export default async function InstallGuidePage({
 
           <div className="grid gap-6">
             {category.items.map((item) => (
-              <div key={item.name} className="border border-rule p-6 bg-codebg/30">
+              <div key={item.name} id={item.id} className="border border-rule p-6 bg-codebg/30 scroll-mt-24">
                 <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
                   <h3 className="text-lg font-bold font-mono tracking-tight">
                     {item.name}
@@ -64,8 +82,44 @@ export default async function InstallGuidePage({
                 </div>
 
                 <p className="text-sm leading-relaxed mb-4">
-                  {item.whatItDoes[locale]}
+                  {renderWithCode(item.whatItDoes[locale])}
                 </p>
+
+                {item.steps && (
+                  <div className="mb-6">
+                    <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
+                      {locale === 'he' ? 'מדריך התקנה מלא, שלב אחר שלב' : 'Full Step-by-Step Installation Guide'}
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div>
+                        <div className="text-xs font-bold uppercase tracking-wide mb-3 border-b border-rule pb-1">
+                          Mac
+                        </div>
+                        <ol className="grid gap-3">
+                          {item.steps.mac.map((step, i) => (
+                            <li key={i}>
+                              <div className="text-xs font-bold mb-0.5">{renderWithCode(step.title[locale])}</div>
+                              <div className="text-xs text-muted leading-relaxed">{renderWithCode(step.detail[locale])}</div>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold uppercase tracking-wide mb-3 border-b border-rule pb-1">
+                          Windows
+                        </div>
+                        <ol className="grid gap-3">
+                          {item.steps.windows.map((step, i) => (
+                            <li key={i}>
+                              <div className="text-xs font-bold mb-0.5">{renderWithCode(step.title[locale])}</div>
+                              <div className="text-xs text-muted leading-relaxed">{renderWithCode(step.detail[locale])}</div>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {item.commands && (
                   <div className="grid sm:grid-cols-2 gap-4 mb-1">
@@ -94,7 +148,7 @@ export default async function InstallGuidePage({
                       {locale === 'he' ? 'טיפים ואזהרות' : 'Tips & Warnings'}
                     </div>
                     <p className="text-xs italic text-muted leading-relaxed">
-                      {item.tips[locale]}
+                      {renderWithCode(item.tips[locale])}
                     </p>
                   </div>
                 )}

@@ -5,12 +5,19 @@ export type InstallCommands = {
   windows: string[];
 };
 
+export type InstallStep = {
+  title: Bilingual;
+  detail: Bilingual;
+};
+
 export type InstallItem = {
+  id?: string;                 // anchor id, for deep-linking from a session's concept tag
   name: string;
   sessions: number[];         // syllabus session numbers where this came up
   whatItDoes: Bilingual;
   tips?: Bilingual;           // installation-sequence tips, gotchas, warnings — grounded in the card content
   commands?: InstallCommands; // actual install commands, one array entry per terminal line
+  steps?: { mac: InstallStep[]; windows: InstallStep[] }; // full numbered walkthrough, platform-specific
 };
 
 export type InstallCategory = {
@@ -25,6 +32,7 @@ export const installGuide: InstallCategory[] = [
     title: { en: `Python & Environment Management`, he: `Python וניהול סביבות` },
     items: [
       {
+        id: 'python',
         name: 'Python',
         sessions: [3],
         whatItDoes: {
@@ -38,6 +46,82 @@ export const installGuide: InstallCategory[] = [
         commands: {
           mac: ['brew install python@3.12', 'python3 --version'],
           windows: ['winget install -e --id Python.Python.3.12', 'python --version'],
+        },
+        steps: {
+          mac: [
+            {
+              title: { en: '1. Check what you already have', he: '1. בדקי מה כבר יש לך' },
+              detail: {
+                en: `Open Terminal (Cmd+Space, type "Terminal", Enter) and run \`python3 --version\`. Every Mac ships with an old system Python — never build a project on it; it's there for the OS, not for you.`,
+                he: `פתחי Terminal (Cmd+Space, הקלידי "Terminal", Enter) והריצי \`python3 --version\`. לכל Mac יש פייתון מערכת ישן מובנה — לעולם לא לבנות עליו פרויקט; הוא שם עבור מערכת ההפעלה, לא בשבילך.`,
+              },
+            },
+            {
+              title: { en: '2. Download the real installer', he: '2. הורידי את המתקין האמיתי' },
+              detail: {
+                en: `Go to python.org/downloads and click the yellow "Download Python 3.x" button — it auto-detects macOS. (Homebrew's \`brew install python@3.12\` works too if Homebrew is already set up, but the python.org installer needs nothing pre-installed.)`,
+                he: `לכי ל-python.org/downloads ולחצי על הכפתור הצהוב "Download Python 3.x" — הוא מזהה אוטומטית macOS. (גם \`brew install python@3.12\` של Homebrew עובד אם Homebrew כבר מותקן, אבל המתקין של python.org לא צריך שום דבר מותקן מראש.)`,
+              },
+            },
+            {
+              title: { en: '3. Run the .pkg installer', he: '3. הריצי את מתקין ה-.pkg' },
+              detail: {
+                en: `Open the downloaded file and click through Continue → Agree → Install, entering your Mac password when prompted.`,
+                he: `פתחי את הקובץ שהורדת ולחצי לאורך Continue → Agree → Install, והזיני את סיסמת ה-Mac שלך כשמתבקש.`,
+              },
+            },
+            {
+              title: { en: '4. Run the certificates script', he: '4. הריצי את סקריפט התעודות' },
+              detail: {
+                en: `A "Python 3.x" folder opens automatically in Finder after install — double-click "Install Certificates.command" inside it. Skipping this is the single most common cause of confusing SSL errors on a Mac's first Python project.`,
+                he: `תיקיית "Python 3.x" נפתחת אוטומטית ב-Finder אחרי ההתקנה — לחצי פעמיים על "Install Certificates.command" בתוכה. דילוג על זה הוא הגורם הנפוץ ביותר לשגיאות SSL מבלבלות בפרויקט הפייתון הראשון על Mac.`,
+              },
+            },
+            {
+              title: { en: '5. Open a fresh Terminal and verify', he: '5. פתחי Terminal חדש ואמתי' },
+              detail: {
+                en: `Close any Terminal windows that were already open and start a new one — an old window won't see the update. Run \`python3 --version\` and \`pip3 --version\` to confirm both installed correctly.`,
+                he: `סגרי כל חלון Terminal שכבר היה פתוח ופתחי חדש — חלון ישן לא יראה את העדכון. הריצי \`python3 --version\` ו-\`pip3 --version\` כדי לאשר ששניהם הותקנו נכון.`,
+              },
+            },
+          ],
+          windows: [
+            {
+              title: { en: '1. Download the installer', he: '1. הורידי את המתקין' },
+              detail: {
+                en: `Go to python.org/downloads and click the yellow "Download Python 3.x" button — it auto-detects 64-bit Windows.`,
+                he: `לכי ל-python.org/downloads ולחצי על הכפתור הצהוב "Download Python 3.x" — הוא מזהה אוטומטית Windows 64-בית.`,
+              },
+            },
+            {
+              title: { en: '2. Check "Add python.exe to PATH" — first screen, before anything else', he: '2. סמני "Add python.exe to PATH" — המסך הראשון, לפני כל דבר אחר' },
+              detail: {
+                en: `Run the downloaded .exe. The very first install screen has a checkbox at the bottom: "Add python.exe to PATH." Check it before clicking Install — this is the single step most installs get wrong, and skipping it means the terminal won't find Python at all afterward.`,
+                he: `הריצי את קובץ ה-.exe שהורדת. במסך ההתקנה הראשון ממש יש תיבת סימון בתחתית: "Add python.exe to PATH." סמני אותה לפני לחיצה על Install — זה השלב הבודד שהכי הרבה התקנות מפספסות, ודילוג עליו אומר שהטרמינל לא ימצא את פייתון בכלל אחר כך.`,
+              },
+            },
+            {
+              title: { en: '3. Click "Install Now"', he: '3. לחצי על "Install Now"' },
+              detail: {
+                en: `"Install Now" is the right choice for almost everyone — "Customize installation" is only needed for advanced, non-default setups.`,
+                he: `"Install Now" היא הבחירה הנכונה כמעט לכולם — "Customize installation" נחוץ רק להתקנות מתקדמות, לא-ברירת-מחדל.`,
+              },
+            },
+            {
+              title: { en: '4. Disable the path length limit if asked', he: '4. בטלי את מגבלת אורך הנתיב אם מתבקש' },
+              detail: {
+                en: `At the end of install, Windows may offer "Disable path length limit" — click it (needs admin rights). It prevents obscure "file not found" errors later, on projects with deeply nested folders.`,
+                he: `בסוף ההתקנה, Windows עשוי להציע "Disable path length limit" — לחצי עליו (דורש הרשאות מנהל). זה מונע שגיאות "file not found" מסתוריות בהמשך, בפרויקטים עם תיקיות מקוננות עמוק.`,
+              },
+            },
+            {
+              title: { en: '5. Open a fresh terminal and verify', he: '5. פתחי טרמינל חדש ואמתי' },
+              detail: {
+                en: `Open a NEW PowerShell or Command Prompt window — not one that was already open — and run \`python --version\` and \`pip --version\`. If \`python\` isn't recognized, the PATH checkbox in step 2 was missed; re-run the installer, choose "Modify," and check it.`,
+                he: `פתחי חלון PowerShell או Command Prompt חדש — לא כזה שכבר היה פתוח — והריצי \`python --version\` ו-\`pip --version\`. אם \`python\` לא מזוהה, תיבת ה-PATH משלב 2 פוספסה; הריצי את המתקין שוב, בחרי "Modify," וסמני אותה.`,
+              },
+            },
+          ],
         },
       },
       {
