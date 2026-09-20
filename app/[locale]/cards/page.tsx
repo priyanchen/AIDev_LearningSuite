@@ -35,7 +35,12 @@ export default async function CardsLibraryPage({
                 <span className="text-accent mr-3">
                   {String(session.number).padStart(2, '0')}
                 </span>
-                {session.title[locale]}
+                <Link
+                  href={`/${locale}/lessons/${session.slug}`}
+                  className="hover:text-accent transition"
+                >
+                  {session.title[locale]}
+                </Link>
               </h2>
               <Link
                 href={`/${locale}/lessons/${session.slug}`}
