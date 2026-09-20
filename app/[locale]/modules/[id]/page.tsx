@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { modules, getModule, getSessionsForModule } from '@/lib/registry';
+import { moduleResources } from '@/content/module-resources';
+import ResourceTree from '@/components/ResourceTree';
 import type { Locale } from '@/i18n';
 
 export function generateStaticParams() {
@@ -21,6 +23,7 @@ export default async function ModulePage({
   const nav = await getTranslations('nav');
   const sessionT = await getTranslations('session');
   const sessions = getSessionsForModule(id);
+  const resources = moduleResources[id];
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
@@ -87,7 +90,18 @@ export default async function ModulePage({
         <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
           {t('practiceCompanion')}
         </h3>
-        <p className="text-xs italic text-muted">{t('practicePlaceholder')}</p>
+        {resources ? (
+          <>
+            <p className="text-xs italic text-muted mb-4">
+              {locale === 'he'
+                ? 'תרגילי כיתה וחומר אימון נוסף, באותו מבנה תיקיות כמו התיקייה המקורית.'
+                : 'Class exercises and additional training material, in the same folder structure as the original.'}
+            </p>
+            <ResourceTree tree={resources.tree} locale={locale} />
+          </>
+        ) : (
+          <p className="text-xs italic text-muted">{t('practicePlaceholder')}</p>
+        )}
       </section>
     </div>
   );
