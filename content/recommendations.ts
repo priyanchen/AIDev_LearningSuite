@@ -114,4 +114,32 @@ export const recommendationCategories: RecommendationCategory[] = [
       },
     ],
   },
+  {
+    topic: { en: 'Code', he: 'קוד' },
+    influence: {
+      en: `The course's own throughline — from writing code by hand to supervising an agent that writes it — traced back to one of the people most associated with that shift in practice.`,
+      he: `הקו המנחה של הקורס עצמו — מכתיבת קוד ביד ועד לפיקוח על סוכן שכותב אותו — נעקב אחורה לאחד האנשים המזוהים ביותר עם המעבר הזה בפועל.`,
+    },
+    items: [
+      {
+        name: 'Andrej Karpathy',
+        type: 'person',
+        sessionNumber: 1,
+        bio: {
+          en: `A founding member of OpenAI and former Director of AI at Tesla, known for foundational deep-learning teaching — Stanford's CS231n and his own "Neural Networks: Zero to Hero" series — and for open-source projects (nanoGPT, llm.c) that build large language models from first principles in minimal code.`,
+          he: `חבר מייסד ב-OpenAI ולשעבר מנהל ה-AI של Tesla, מוכר בזכות הוראת למידה עמוקה יסודית — קורס CS231n של סטנפורד וסדרת "Neural Networks: Zero to Hero" שלו עצמו — ובזכות פרויקטים בקוד פתוח (nanoGPT, llm.c) שבונים מודלי שפה גדולים מעקרונות ראשונים בקוד מינימלי.`,
+        },
+        context: {
+          en: `Recommended as a follow in the Introduction session — no recording survives for that session, so this rests on direct confirmation rather than a transcript. The course returned to him concretely in Session 10: Dr. Zuari installed a Claude Code Skill attributed to Karpathy from the plugin marketplace and demonstrated it live, triggering it to rebuild the course site, as a real example of "code that keeps showing up" from an agent.`,
+          he: `הומלץ לעקוב אחריו במפגש ההתמצאות — אין הקלטה ששרדה למפגש הזה, כך שזה נשען על אישור ישיר במקום תמליל. הקורס חזר אליו בפועל במפגש 10: ד״ר זוארי התקין Claude Code Skill שמיוחס לקרפתי ממרקטפלייס התוספים והדגים אותו בשידור חי, מפעיל אותו כדי לבנות מחדש את אתר הקורס, כדוגמה אמיתית ל"קוד שממשיך לצוץ" מסוכן.`,
+        },
+        verified: false,
+        links: [
+          { label: 'GitHub — karpathy', url: 'https://github.com/karpathy' },
+          { label: 'YouTube — Andrej Karpathy', url: 'https://www.youtube.com/@AndrejKarpathy' },
+          { label: 'karpathy.ai', url: 'https://karpathy.ai' },
+        ],
+      },
+    ],
+  },
 ];
