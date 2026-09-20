@@ -146,6 +146,28 @@ export default async function SessionPage({
         </section>
       )}
 
+      {/* Slides — essential reference material, always ahead of the video */}
+      {session.sourceLinks?.slides && session.sourceLinks.slides.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-6">
+            {t('slides')}
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {session.sourceLinks.slides.map((slideLink, i, slides) => (
+              <a
+                key={i}
+                href={slideLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+              >
+                {t('openSlides')} {slides.length > 1 ? i + 1 : ''} ↗
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Lesson Video */}
       {session.videoLinks && (session.videoLinks.lecture || session.videoLinks.tirgul) && (
         <section className="mb-12">
@@ -222,8 +244,8 @@ export default async function SessionPage({
         </section>
       )}
 
-      {/* Source Materials */}
-      {session.sourceLinks && (
+      {/* Source Materials — recording and chat log; slides moved above, ahead of the video */}
+      {session.sourceLinks && (session.sourceLinks.recording || session.sourceLinks.chat) && (
         <section className="mb-12 border border-rule p-6 bg-codebg/40">
           <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
             {t('materials')}
@@ -250,18 +272,6 @@ export default async function SessionPage({
                 {t('openChat')} ↗
               </a>
             )}
-            {session.sourceLinks.slides &&
-              session.sourceLinks.slides.map((slideLink, i, slides) => (
-                <a
-                  key={i}
-                  href={slideLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
-                >
-                  {t('openSlides')} {slides.length > 1 ? i + 1 : ''} ↗
-                </a>
-              ))}
           </div>
         </section>
       )}
