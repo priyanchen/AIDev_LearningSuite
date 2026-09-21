@@ -130,9 +130,14 @@ function HerbalRepoStatusDiagram({ locale }: { locale: Locale }) {
   ];
   return (
     <div className="mt-4 pt-4 border-t border-dashed border-rule">
-      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
-        {locale === 'he' ? 'המאגר האמיתי, כרגע — מ-GitHub API' : 'The Real Repo, Right Now — from the GitHub API'}
-      </p>
+      <a
+        href="https://github.com/JonathanZouari/herbal-evidence"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center hover:text-accent transition"
+      >
+        {locale === 'he' ? 'המאגר האמיתי, כרגע — מ-GitHub API' : 'The Real Repo, Right Now — from the GitHub API'} ↗
+      </a>
       <p className="text-[10px] italic text-muted text-center mb-4">
         {locale === 'he'
           ? 'לא תמונת מצב קפואה מזמן הקורס — נשלף חי, כולל ה-pull requests הפתוחים כרגע.'
