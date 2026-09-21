@@ -166,6 +166,63 @@ function HerbalSetupDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// Real architecture, pulled from the repo's own docs/decisions.md (a live engineering decision log,
+// not a placeholder — its docs/architecture.md is literally still a stub) — the actual stack, not the
+// generic Python/Flask reference example in the points above.
+function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'הארכיטקטורה האמיתית — מ-docs/decisions.md' : 'The Real Architecture — from docs/decisions.md'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'לא הערימה הכללית לדוגמה למעלה — ההחלטות ההנדסיות בפועל שנרשמו בפרויקט עצמו (D-002 עד D-011).'
+          : "Not the generic example stack above — the actual engineering decisions logged in the project itself (D-002 through D-011)."}
+      </p>
+      <div className="flex items-stretch justify-center flex-wrap gap-2">
+        <div className="border border-dashed border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">
+            {locale === 'he' ? 'Frontend (Railway)' : 'Frontend (Railway)'}
+          </p>
+          <DiagramBox label="HTML / CSS / JS + Caddy" />
+        </div>
+        <div className="flex items-center px-1">
+          <span className="text-[9px] tracking-brand uppercase text-accent font-sans">↔</span>
+        </div>
+        <div className="border border-dashed border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">
+            {locale === 'he' ? 'Backend (Railway)' : 'Backend (Railway)'}
+          </p>
+          <DiagramBox label="Python 3.13 · FastAPI · Uvicorn" />
+        </div>
+        <div className="flex items-center px-1">
+          <span className="text-[9px] tracking-brand uppercase text-accent font-sans">↔</span>
+        </div>
+        <div className="border border-dashed border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">Supabase</p>
+          <div className="grid gap-1">
+            <DiagramBox label="Auth (JWT)" />
+            <DiagramBox label="Postgres + Job Queue" />
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-2 mt-3">
+        <span className="text-[9px] tracking-brand uppercase text-accent font-sans">↓</span>
+      </div>
+      <div className="flex items-center justify-center gap-2">
+        <DiagramBox label="OpenAI (AI drafts)" />
+        <DiagramBox label="PubMed + Europe PMC (evidence)" />
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-3">
+        {locale === 'he'
+          ? 'החלטות אמיתיות: Postgres כתור עבודות עמיד — בלי Redis, בלי שירות שלישי (D-010). לטיוטות ולחומרי צוות אין מדיניות RLS — נגישים רק דרך ה-backend עם מפתח service-role (D-011).'
+          : "Real decisions: Postgres as a durable job queue — no Redis, no third service (D-010). Drafts and staff artifacts have no RLS policies — reachable only through the backend with a service-role key (D-011)."}
+      </p>
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params: { locale },
 }: {
@@ -393,6 +450,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 6 && <HerbalArchitectureDiagram locale={locale} />}
                     {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
                   </div>
