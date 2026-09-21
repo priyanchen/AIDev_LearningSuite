@@ -1,87 +1,35 @@
+import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { syntaxGuide, otherLanguages, type SyntaxTopic } from '@/content/syntax-guide';
-import PrintButton from '@/components/PrintButton';
+import { syntaxGuide, otherLanguages } from '@/content/syntax-guide';
 import type { Locale } from '@/i18n';
 
-// Renders `code` spans as real inline code — this page is a syntax reference,
-// so backtick-delimited snippets earn real monospace styling (unlike card prose).
-function renderWithCode(text: string) {
-  const parts = text.split('`');
-  return parts.map((part, i) =>
-    i % 2 === 1 ? (
-      <code
-        key={i}
-        dir="ltr"
-        className="inline-block bg-ink text-paper font-mono text-[0.85em] px-1.5 py-0.5 rounded-sm"
-      >
-        {part}
-      </code>
-    ) : (
-      <span key={i}>{part}</span>
-    )
-  );
-}
-
-function TopicCard({ topic, locale, printLabel }: { topic: SyntaxTopic; locale: Locale; printLabel: string }) {
-  return (
-    <div id={`topic-${topic.number}`} className="border border-rule p-6 bg-codebg/30">
-      <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-rule">
-        <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold">
-          {topic.number}
-        </span>
-        <h2 className="small-caps tracking-wide text-xl flex-1">
-          {topic.title[locale]}
-        </h2>
-        <span className="text-[9px] tracking-brand uppercase text-muted font-sans font-mono">
-          {topic.source}
-        </span>
-      </div>
-
-      <ul className="grid gap-2 mb-4">
-        {topic.points.map((point, i) => (
-          <li key={i} className="text-sm leading-relaxed flex gap-2">
-            <span className="text-accent flex-shrink-0">·</span>
-            <span>{renderWithCode(point[locale])}</span>
-          </li>
-        ))}
-      </ul>
-
-      {topic.keyTakeaway && (
-        <div className="border-t border-rule pt-3 mt-3">
-          <div className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">
-            {locale === 'he' ? 'תובנת מפתח' : 'Key Takeaway'}
-          </div>
-          <p className="text-xs italic text-muted leading-relaxed">
-            {renderWithCode(topic.keyTakeaway[locale])}
-          </p>
-        </div>
-      )}
-
-      <div className="flex justify-end mt-4">
-        <PrintButton
-          title={topic.title[locale]}
-          sections={[
-            { heading: locale === 'he' ? 'נקודות' : 'Points', body: topic.points.map((p) => p[locale]).join('\n') },
-            ...(topic.keyTakeaway
-              ? [{ heading: locale === 'he' ? 'תובנת מפתח' : 'Key Takeaway', body: topic.keyTakeaway[locale] }]
-              : []),
-          ]}
-          dir={locale === 'he' ? 'rtl' : 'ltr'}
-          label={printLabel}
-        />
-      </div>
-    </div>
-  );
-}
-
-export default async function SyntaxGuidePage({
+export default async function SyntaxDirectoryPage({
   params: { locale },
 }: {
   params: { locale: Locale };
 }) {
   setRequestLocale(locale);
   const nav = await getTranslations('nav');
-  const cards = await getTranslations('cards');
+
+  const languages = [
+    {
+      id: 'python',
+      name: { en: 'Python', he: 'Python' } as const,
+      group: locale === 'he' ? 'השפה המרכזית' : 'Core Language',
+      note: {
+        en: 'The Python module syntax, recovered from every Jupyter notebook\'s own closing summary.',
+        he: 'תחביר מודול Python, ממוחזר מתקציר הסיום של כל מחברת Jupyter.',
+      },
+      count: syntaxGuide.length,
+    },
+    ...otherLanguages.map((s) => ({
+      id: s.id,
+      name: s.language,
+      group: locale === 'he' ? 'שפה נוספת' : 'Additional Language',
+      note: s.note,
+      count: s.topics.length,
+    })),
+  ];
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -98,88 +46,34 @@ export default async function SyntaxGuidePage({
       </p>
       <div className="ornament text-xl text-accent text-center mb-8"></div>
 
-      <p className="text-center italic text-muted max-w-2xl mx-auto mb-8">
+      <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
         {locale === 'he'
-          ? 'סיכום התחביר שנלמד לאורך מודול Python, ממוחזר מתקציר הסיום של כל מחברת Jupyter בקורס — לא תיעוד פייתון כללי. כל נושא ממוספר לפי מספר המחברת המקורית שלו.'
-          : 'A summary of the syntax taught across the Python module, recovered from the closing summary of every Jupyter notebook in the course — not generic Python documentation. Each topic is numbered by its original notebook number.'}
+          ? 'כל שפה או פורמט שהקורס נגע בו, כל אחד בעמוד משלו. בחרי שפה כדי לעיין בתחביר שלה — כל עמוד ניתן לקישור ישיר.'
+          : "Every language or format the course touched, each on its own page. Pick one to browse its syntax — every page is directly deep-linkable."}
       </p>
 
-      {/* Jump nav — click a language to scroll straight to its section */}
-      <nav className="flex flex-wrap justify-center gap-2 mb-16">
-        <a
-          href="#lang-python"
-          className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition"
-        >
-          Python
-        </a>
-        {otherLanguages.map((section) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition"
+      <div className="grid sm:grid-cols-2 gap-4">
+        {languages.map((lang) => (
+          <Link
+            key={lang.id}
+            href={`/${locale}/syntax/${lang.id}`}
+            className="border border-rule p-6 hover:border-ink hover:bg-codebg/40 transition block"
           >
-            {section.language[locale]}
-          </a>
-        ))}
-      </nav>
-
-      <section id="lang-python" className="scroll-mt-24">
-        <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
-          {locale === 'he' ? 'השפה המרכזית' : 'Core Language'}
-        </div>
-        <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-4 text-center">
-          Python
-        </h2>
-        <div className="flex justify-center mb-10">
-          <a
-            href="https://www.w3schools.com/python/python_ref_modules.asp"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
-          >
-            {locale === 'he' ? 'עיון מודולי פייתון — W3Schools' : 'Python Module Reference — W3Schools'} ↗
-          </a>
-        </div>
-        <div className="grid gap-8">
-          {syntaxGuide.map((topic) => (
-            <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
-          ))}
-        </div>
-      </section>
-
-      {otherLanguages.map((section) => (
-        <section key={section.id} id={section.id} className="mt-20 scroll-mt-24">
-          <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
-            {locale === 'he' ? 'שפה נוספת' : 'Additional Language'}
-          </div>
-          <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-4 text-center">
-            {section.language[locale]}
-          </h2>
-          <p className={`text-center italic text-muted max-w-2xl mx-auto text-sm ${section.attachments?.length ? 'mb-4' : 'mb-10'}`}>
-            {section.note[locale]}
-          </p>
-          {section.attachments && section.attachments.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-2 mb-10">
-              {section.attachments.map((att) => (
-                <a
-                  key={att.url}
-                  href={att.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
-                >
-                  {att.label[locale]} ↗
-                </a>
-              ))}
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+                {lang.group}
+              </span>
+              <span className="text-[9px] tracking-brand uppercase text-muted font-sans">
+                {lang.count} {locale === 'he' ? 'נושאים' : 'topics'}
+              </span>
             </div>
-          )}
-          <div className="grid gap-8">
-            {section.topics.map((topic) => (
-              <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
-            ))}
-          </div>
-        </section>
-      ))}
+            <h2 className="small-caps tracking-wide text-xl mb-2">{lang.name[locale]}</h2>
+            <p className="text-xs italic text-muted leading-relaxed line-clamp-3">
+              {lang.note[locale]}
+            </p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
