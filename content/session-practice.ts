@@ -1,8 +1,23 @@
 import type { ResourceNode } from './module-resources';
 
+// The instructor's own Claude Code workshop deck — attached to every session that
+// substantively uses Claude/Claude Code as a working tool, not just a passing mention.
+const claudeCodeWorkshop: ResourceNode = {
+  kind: 'file',
+  name: 'claude code workshop.pdf',
+  label: { en: 'Claude Code Workshop (Slides)', he: 'סדנת Claude Code (שקפים)' },
+  url: 'https://drive.google.com/file/d/1Il2GsqC7pxJbqUNGakgcl4dM-O_o1uzy/view',
+  ext: 'pdf',
+};
+
 // Each targil (practice exercise) from the class's shared Drive folder (module-resources.ts),
 // attached to the specific lesson it belongs to, rather than only the module-level index.
 export const sessionPractice: Record<string, ResourceNode[]> = {
+  'session-09-python-6': [claudeCodeWorkshop],
+  'session-10-python-7': [claudeCodeWorkshop],
+  'session-13-ds-0': [claudeCodeWorkshop],
+  'session-15-ds-2': [claudeCodeWorkshop],
+  'session-18-ds-5': [claudeCodeWorkshop],
   'session-14-ds-1': [
     {
       kind: 'file',
@@ -41,6 +56,7 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
       url: 'https://drive.google.com/file/d/1iQx6cu95x9I8OHBcHRdGMAF2b7UIgpB7/view',
       ext: 'mp4',
     },
+    claudeCodeWorkshop,
   ],
   // Exercise 1 — the combined linear + logistic regression targil, attached to Session 19
   // (Logistic Regression, Model Evaluation & K-Means), the closing session of that arc.
@@ -129,6 +145,7 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
         },
       ],
     },
+    claudeCodeWorkshop,
   ],
   // Exercise 2 — Clustering, attached to Session 20 (deferred; the missing recording would
   // have been the dedicated Clustering lecture, right after K-Means was introduced in Session 19).
