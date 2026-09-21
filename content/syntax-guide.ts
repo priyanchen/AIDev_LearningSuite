@@ -320,19 +320,20 @@ export const otherLanguages: SyntaxLanguageSection[] = [
     id: 'cli',
     language: { en: 'Command Line (Terminal)', he: 'שורת פקודה (טרמינל)' },
     note: {
-      en: `Session 7 introduced the terminal as the room every AI coding agent actually works in — the goal stated explicitly was recognition, not memorizing a full command vocabulary. What follows is the handful of commands the course actually used.`,
-      he: `מפגש 7 הציג את הטרמינל כחדר שבו כל סוכן קידוד AI באמת עובד — המטרה שהוצהרה במפורש הייתה זיהוי, לא שינון אוצר מילים מלא של פקודות. מה שבא בהמשך הן הפקודות הבודדות שהקורס בפועל השתמש בהן.`,
+      en: `Session 7 introduced the terminal as the room every AI coding agent actually works in — the goal stated explicitly was recognition, not memorizing a full command vocabulary. The first three topics below now draw on Dr. Zuari's own CLI reference deck (attached below) rather than just the card summary, so the vocabulary runs a bit deeper than "the handful of commands the course actually used" — everything past that is still scoped to what the course itself demonstrated.`,
+      he: `מפגש 7 הציג את הטרמינל כחדר שבו כל סוכן קידוד AI באמת עובד — המטרה שהוצהרה במפורש הייתה זיהוי, לא שינון אוצר מילים מלא של פקודות. שלושת הנושאים הראשונים למטה נשענים כעת על חוברת העזר של ד"ר זוארי עצמו ל-CLI (מצורפת למטה) ולא רק על תקציר הכרטיס, כך שאוצר המילים עמוק מעט יותר מ"הפקודות הבודדות שהקורס בפועל השתמש בהן" — כל מה שאחרי זה עדיין תחום למה שהקורס עצמו הדגים.`,
     },
     topics: [
       {
         number: 'cli-01',
-        title: { en: 'Opening & Navigating a Terminal', he: 'פתיחה וניווט בטרמינל' },
-        source: 'Session 7 · Card 02',
+        title: { en: 'Terminal, Shell & Getting Started', he: 'טרמינל, מעטפת, ותחילת עבודה' },
+        source: 'Dr. Zuari · CLI Reference Deck',
         points: [
-          { en: `Windows: searching "Command Prompt" opens the older shell; searching "PowerShell" (or just "Terminal") opens the newer, Unix-aware one. Mac: Cmd+Space, then type "Terminal".`, he: `Windows: חיפוש "Command Prompt" פותח את המעטפת הישנה יותר; חיפוש "PowerShell" (או סתם "Terminal") פותח את החדשה יותר, המודעת ל-Unix. Mac: Cmd+Space, ואז הקלדת "Terminal".` },
-          { en: `\`ls\` (Mac) or \`dir\` (Windows) lists everything in the current folder.`, he: `\`ls\` (ב-Mac) או \`dir\` (ב-Windows) מציגה רשימה של הכול בתיקייה הנוכחית.` },
-          { en: `\`cd <folder>\` moves into a folder — a forward slash on Mac, a backslash on Windows, exactly the mismatch PowerShell papers over.`, he: `\`cd <folder>\` עוברת לתוך תיקייה — קו נטוי קדימה ב-Mac, קו נטוי אחורה ב-Windows, בדיוק אי-ההתאמה ש-PowerShell מגשרת עליה.` },
-          { en: `\`clear\` (Mac/PowerShell) or \`cls\` (Command Prompt) wipes the screen without affecting anything that already ran.`, he: `\`clear\` (Mac/PowerShell) או \`cls\` (Command Prompt) מנקה את המסך בלי להשפיע על שום דבר שכבר רץ.` },
+          { en: `Terminal is the program that opens a text window for typing commands (Terminal on Mac, Command Prompt on Windows); shell is the interpreter that actually runs what you type (Bash, Zsh, PowerShell). In practice "terminal," "shell," and "command line" get used interchangeably.`, he: `טרמינל הוא התוכנה שפותחת חלון טקסט להקלדת פקודות (Terminal ב-Mac, Command Prompt ב-Windows); מעטפת (shell) היא המתרגם שבפועל מריץ את מה שמקלידים (Bash, Zsh, PowerShell). בפועל, "טרמינל," "מעטפת," ו"שורת פקודה" משמשים לסירוגין.` },
+          { en: `macOS/Linux run Bash or Zsh; Windows runs PowerShell (supports many Unix commands) or the older CMD. Path separators differ: \`/\` on Unix vs \`\\\` on Windows; home directory is \`~\` on Unix vs \`%HOMEPATH%\` on Windows. WSL (Windows Subsystem for Linux) lets a Windows machine run a full Linux shell when a tool specifically needs one.`, he: `macOS/Linux מריצים Bash או Zsh; Windows מריץ PowerShell (תומך בהרבה פקודות Unix) או את ה-CMD הישן יותר. מפרידי נתיבים שונים: \`/\` ב-Unix מול \`\\\` ב-Windows; תיקיית הבית היא \`~\` ב-Unix מול \`%HOMEPATH%\` ב-Windows. WSL (‏Windows Subsystem for Linux) מאפשר למחשב Windows להריץ מעטפת לינוקס מלאה כשכלי מסוים דורש דווקא סביבת Unix.` },
+          { en: `Bash vs Zsh (macOS default since Catalina): Bash is more widely compatible and the standard for scripts/servers; Zsh is more customizable (themes, plugins, better autocomplete) but not perfectly Bash-compatible — configured via \`~/.bashrc\` vs \`~/.zshrc\` respectively. Recommendation: Bash for portable scripts, Zsh for a nicer daily personal terminal.`, he: `Bash מול Zsh (ברירת המחדל ב-macOS מאז Catalina): Bash תואם באופן רחב יותר והתקן לסקריפטים/שרתים; Zsh ניתן להתאמה אישית יותר (ערכות נושא, תוספים, השלמה אוטומטית טובה יותר) אך לא תואם Bash באופן מושלם — מוגדר דרך \`~/.bashrc\` מול \`~/.zshrc\` בהתאמה. המלצה: Bash לסקריפטים ניידים, Zsh לטרמינל אישי יומיומי נעים יותר.` },
+          { en: `Windows: Win+R then type \`cmd\`, or search "PowerShell". Mac: Applications → Utilities → Terminal, or Cmd+Space then type "Terminal". The prompt (\`$\` on Unix, \`>\` on Windows) signals the shell is ready for input.`, he: `Windows: Win+R ואז הקלדת \`cmd\`, או חיפוש "PowerShell". Mac: Applications ← Utilities ← Terminal, או Cmd+Space ואז הקלדת "Terminal". הפרומפט (\`$\` ב-Unix, \`>\` ב-Windows) מסמן שהמעטפת מוכנה לקלט.` },
+          { en: `\`Tab\` autocompletes file/folder names; \`↑\`/\`↓\` scroll through command history; \`Ctrl+C\` cancels a running command; \`clear\` (Mac/PowerShell) or \`cls\` (Command Prompt) wipes the screen without affecting anything already run.`, he: `\`Tab\` משלים אוטומטית שמות קבצים/תיקיות; \`↑\`/\`↓\` גוללים בהיסטוריית הפקודות; \`Ctrl+C\` מבטל פקודה רצה; \`clear\` (Mac/PowerShell) או \`cls\` (Command Prompt) מנקה את המסך בלי להשפיע על שום דבר שכבר רץ.` },
         ],
         keyTakeaway: {
           en: `The terminal has no icons to click — every action is a sentence you type and mean.`,
@@ -341,14 +342,27 @@ export const otherLanguages: SyntaxLanguageSection[] = [
       },
       {
         number: 'cli-02',
-        title: { en: 'A Shortcut Worth Knowing — `code .`', he: 'קיצור שכדאי לדעת — `code .`' },
-        source: 'Session 15 · Card 07',
+        title: { en: 'Navigating Files & Environment Variables', he: 'ניווט בקבצים ומשתני סביבה' },
+        source: 'Dr. Zuari · CLI Reference Deck',
         points: [
-          { en: `Opening a terminal inside a project folder and typing \`code .\` opens that exact folder in the editor directly — a small shortcut called out as worth learning early, instead of manually navigating the editor's own open-project menu.`, he: `פתיחת טרמינל בתוך תיקיית פרויקט והקלדת \`code .\` פותחת את אותה תיקייה בדיוק בעורך ישירות — קיצור קטן שצוין ככדאי ללמוד מוקדם, במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
+          { en: `\`pwd\` prints the current directory (Unix); on Windows, \`cd\` with no arguments does the same. \`ls\` (Unix) / \`dir\` (Windows) lists everything in the current folder.`, he: `\`pwd\` מדפיסה את התיקייה הנוכחית (Unix); ב-Windows, \`cd\` בלי ארגומנטים עושה את אותו הדבר. \`ls\` (Unix) / \`dir\` (Windows) מציגה רשימה של הכול בתיקייה הנוכחית.` },
+          { en: `\`cd <folder>\` moves into a folder — \`cd Documents\` enters a subfolder, \`cd Documents/my_project\` enters a nested one in one step. \`cd ..\` goes up one level (\`cd ../..\` goes up two); \`cd ~\` jumps straight to the home directory (Unix). Press \`Tab\` to autocomplete folder names, and \`pwd\` to confirm where you are.`, he: `\`cd <folder>\` עוברת לתוך תיקייה — \`cd Documents\` נכנסת לתת-תיקייה, \`cd Documents/my_project\` נכנסת לתיקייה מקוננת בצעד אחד. \`cd ..\` עולה רמה אחת (\`cd ../..\` עולה שתי רמות); \`cd ~\` קופצת ישר לתיקיית הבית (Unix). לוחצים \`Tab\` להשלמה אוטומטית של שמות תיקיות, ו-\`pwd\` לאישור המיקום הנוכחי.` },
+          { en: `Environment variables are key-value pairs that store config (paths, API keys) for programs. Set one for the current session: \`export MY_KEY="abc123"\` (Mac/Linux), \`set MY_KEY=abc123\` (Windows CMD), or \`$env:MY_KEY = "abc123"\` (Windows PowerShell).`, he: `משתני סביבה הם זוגות מפתח-ערך ששומרים קונפיגורציה (נתיבים, מפתחות API) עבור תוכניות. הגדרת אחד לסשן הנוכחי: \`export MY_KEY="abc123"\` (Mac/Linux), \`set MY_KEY=abc123\` (Windows CMD), או \`$env:MY_KEY = "abc123"\` (Windows PowerShell).` },
+          { en: `In Python, \`os.environ['MY_KEY']\` reads an environment variable; \`os.environ.get('MY_KEY', 'default')\` is the safer form, since it falls back to a default instead of raising an error when the key is missing.`, he: `בפייתון, \`os.environ['MY_KEY']\` קוראת משתנה סביבה; \`os.environ.get('MY_KEY', 'default')\` היא הצורה הבטוחה יותר, כי היא נופלת לברירת מחדל במקום לזרוק שגיאה כשהמפתח חסר.` },
         ],
       },
       {
         number: 'cli-03',
+        title: { en: 'Essential CLI Commands', he: 'פקודות CLI חיוניות' },
+        source: 'Dr. Zuari · CLI Reference Deck · Session 15 · Card 07',
+        points: [
+          { en: `\`mkdir <name>\` creates a new directory; \`cp\` copies a file, \`mv\` moves or renames one; \`rm\` deletes a file (Unix).`, he: `\`mkdir <name>\` יוצרת תיקייה חדשה; \`cp\` מעתיקה קובץ, \`mv\` מזיזה או משנה שם לקובץ; \`rm\` מוחקת קובץ (Unix).` },
+          { en: `\`cat <file>\` prints a file's contents straight to the terminal; \`echo $VAR\` prints the value of an environment variable (Unix); \`python <file.py>\` runs a Python script directly from the terminal.`, he: `\`cat <file>\` מדפיסה את תוכן הקובץ ישירות לטרמינל; \`echo $VAR\` מדפיסה את ערך משתנה הסביבה (Unix); \`python <file.py>\` מריצה סקריפט פייתון ישירות מהטרמינל.` },
+          { en: `Opening a terminal inside a project folder and typing \`code .\` opens that exact folder in the editor directly — a small shortcut worth learning early, instead of manually navigating the editor's own open-project menu.`, he: `פתיחת טרמינל בתוך תיקיית פרויקט והקלדת \`code .\` פותחת את אותה תיקייה בדיוק בעורך ישירות — קיצור קטן שכדאי ללמוד מוקדם, במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
+        ],
+      },
+      {
+        number: 'cli-04',
         title: { en: 'Git & GitHub — the CLI Equivalent of the Course\'s GitHub Desktop Workflow', he: 'Git ו-GitHub — המקבילה בשורת הפקודה לתהליך GitHub Desktop של הקורס' },
         source: 'Sessions 7–8 · "git and github" source folder',
         points: [
