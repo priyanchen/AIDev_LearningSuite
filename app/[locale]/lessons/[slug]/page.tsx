@@ -11,6 +11,7 @@ import {
 import { getDeck } from '@/content/cards';
 import { externalResources } from '@/content/external-resources';
 import { sessionPractice } from '@/content/session-practice';
+import { sessionSlidesExtra } from '@/content/session-slides-extra';
 import Card from '@/components/Card';
 import ResourceTree from '@/components/ResourceTree';
 import type { Locale } from '@/i18n';
@@ -55,6 +56,7 @@ export default async function SessionPage({
   const { previous, next } = getAdjacentSessions(slug);
   const cards = session.hasCardDeck ? getDeck(slug) : undefined;
   const practice = sessionPractice[slug];
+  const slidesExtra = sessionSlidesExtra[slug];
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
@@ -177,7 +179,23 @@ export default async function SessionPage({
                 {t('viewExample')} ↗
               </a>
             )}
+            {slidesExtra?.notebooks?.map((notebook) => (
+              <a
+                key={notebook.url}
+                href={notebook.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+              >
+                {notebook.label[locale]} ↗
+              </a>
+            ))}
           </div>
+          {slidesExtra?.problemSet && (
+            <div className="mt-4">
+              <ResourceTree tree={[slidesExtra.problemSet]} locale={locale} />
+            </div>
+          )}
         </section>
       )}
 
