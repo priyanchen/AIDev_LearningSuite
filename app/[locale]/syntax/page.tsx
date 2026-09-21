@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { syntaxGuide, otherLanguages, type SyntaxTopic } from '@/content/syntax-guide';
+import PrintButton from '@/components/PrintButton';
 import type { Locale } from '@/i18n';
 
 // Renders `code` spans as real inline code — this page is a syntax reference,
@@ -21,7 +22,7 @@ function renderWithCode(text: string) {
   );
 }
 
-function TopicCard({ topic, locale }: { topic: SyntaxTopic; locale: Locale }) {
+function TopicCard({ topic, locale, printLabel }: { topic: SyntaxTopic; locale: Locale; printLabel: string }) {
   return (
     <div id={`topic-${topic.number}`} className="border border-rule p-6 bg-codebg/30">
       <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-rule">
@@ -55,6 +56,20 @@ function TopicCard({ topic, locale }: { topic: SyntaxTopic; locale: Locale }) {
           </p>
         </div>
       )}
+
+      <div className="flex justify-end mt-4">
+        <PrintButton
+          title={topic.title[locale]}
+          sections={[
+            { heading: locale === 'he' ? 'נקודות' : 'Points', body: topic.points.map((p) => p[locale]).join('\n') },
+            ...(topic.keyTakeaway
+              ? [{ heading: locale === 'he' ? 'תובנת מפתח' : 'Key Takeaway', body: topic.keyTakeaway[locale] }]
+              : []),
+          ]}
+          dir={locale === 'he' ? 'rtl' : 'ltr'}
+          label={printLabel}
+        />
+      </div>
     </div>
   );
 }
@@ -66,6 +81,7 @@ export default async function SyntaxGuidePage({
 }) {
   setRequestLocale(locale);
   const nav = await getTranslations('nav');
+  const cards = await getTranslations('cards');
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -90,7 +106,7 @@ export default async function SyntaxGuidePage({
 
       <div className="grid gap-8">
         {syntaxGuide.map((topic) => (
-          <TopicCard key={topic.number} topic={topic} locale={locale} />
+          <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
         ))}
       </div>
 
@@ -107,7 +123,7 @@ export default async function SyntaxGuidePage({
           </p>
           <div className="grid gap-8">
             {section.topics.map((topic) => (
-              <TopicCard key={topic.number} topic={topic} locale={locale} />
+              <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
             ))}
           </div>
         </section>

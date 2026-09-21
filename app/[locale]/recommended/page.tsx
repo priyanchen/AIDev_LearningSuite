@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { sessions } from '@/lib/registry';
 import { recommendationCategories } from '@/content/recommendations';
+import PrintButton from '@/components/PrintButton';
 import type { Locale } from '@/i18n';
 
 export default async function RecommendedPage({
@@ -11,6 +12,7 @@ export default async function RecommendedPage({
 }) {
   setRequestLocale(locale);
   const nav = await getTranslations('nav');
+  const cards = await getTranslations('cards');
   const sessionByNumber = new Map(sessions.map((s) => [s.number, s]));
 
   return (
@@ -96,6 +98,19 @@ export default async function RecommendedPage({
                         : "⚠ This session's recording is unavailable — this entry rests on direct confirmation, not a verified transcript."}
                     </p>
                   )}
+
+                  <div className="flex justify-end mt-3">
+                    <PrintButton
+                      title={item.name}
+                      subtitle={item.type === 'book' ? (locale === 'he' ? 'ספר' : 'Book') : (locale === 'he' ? 'אדם' : 'Person')}
+                      sections={[
+                        { heading: locale === 'he' ? 'רקע' : 'Bio', body: item.bio[locale] },
+                        { heading: locale === 'he' ? 'ההקשר במפגש' : 'Session Context', body: item.context[locale] },
+                      ]}
+                      dir={locale === 'he' ? 'rtl' : 'ltr'}
+                      label={cards('printCard')}
+                    />
+                  </div>
                 </div>
               );
             })}

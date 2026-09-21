@@ -1,8 +1,33 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { sessions, modules } from '@/lib/registry';
-import { installGuide } from '@/content/install-guide';
+import { installGuide, type InstallItem } from '@/content/install-guide';
+import PrintButton, { type PrintSection } from '@/components/PrintButton';
 import type { Locale } from '@/i18n';
+
+function buildPrintSections(item: InstallItem, locale: Locale): PrintSection[] {
+  const sections: PrintSection[] = [
+    { heading: locale === 'he' ? 'מה זה עושה' : 'What It Does', body: item.whatItDoes[locale] },
+  ];
+  if (item.steps) {
+    sections.push({
+      heading: 'Mac',
+      body: item.steps.mac.map((s, i) => `${i + 1}. ${s.title[locale]} — ${s.detail[locale]}`).join('\n'),
+    });
+    sections.push({
+      heading: 'Windows',
+      body: item.steps.windows.map((s, i) => `${i + 1}. ${s.title[locale]} — ${s.detail[locale]}`).join('\n'),
+    });
+  }
+  if (item.commands) {
+    sections.push({ heading: 'Mac', body: item.commands.mac.join('\n') });
+    sections.push({ heading: 'Windows', body: item.commands.windows.join('\n') });
+  }
+  if (item.tips) {
+    sections.push({ heading: locale === 'he' ? 'טיפים ואזהרות' : 'Tips & Warnings', body: item.tips[locale] });
+  }
+  return sections;
+}
 
 // Renders `code` spans as real inline code — same convention as the Syntax page.
 function renderWithCode(text: string) {
@@ -29,6 +54,7 @@ export default async function InstallGuidePage({
 }) {
   setRequestLocale(locale);
   const nav = await getTranslations('nav');
+  const cards = await getTranslations('cards');
   const sessionBySlug = new Map(sessions.map((s) => [s.number, s]));
   const moduleById = new Map(modules.map((m) => [m.id, m]));
 
@@ -173,6 +199,15 @@ export default async function InstallGuidePage({
                     </p>
                   </div>
                 )}
+
+                <div className="flex justify-end mt-4">
+                  <PrintButton
+                    title={item.name}
+                    sections={buildPrintSections(item, locale)}
+                    dir={locale === 'he' ? 'rtl' : 'ltr'}
+                    label={cards('printCard')}
+                  />
+                </div>
               </div>
             ))}
           </div>
