@@ -10,7 +10,9 @@ import {
 } from '@/lib/registry';
 import { getDeck } from '@/content/cards';
 import { externalResources } from '@/content/external-resources';
+import { sessionPractice } from '@/content/session-practice';
 import Card from '@/components/Card';
+import ResourceTree from '@/components/ResourceTree';
 import type { Locale } from '@/i18n';
 
 export function generateStaticParams() {
@@ -52,6 +54,7 @@ export default async function SessionPage({
   const nav = await getTranslations('nav');
   const { previous, next } = getAdjacentSessions(slug);
   const cards = session.hasCardDeck ? getDeck(slug) : undefined;
+  const practice = sessionPractice[slug];
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
@@ -175,6 +178,16 @@ export default async function SessionPage({
               </a>
             )}
           </div>
+        </section>
+      )}
+
+      {/* Practice Material — the targil files for this lesson, next to Session Slides */}
+      {practice && practice.length > 0 && (
+        <section className="mb-12 border border-rule p-6 bg-codebg/30">
+          <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-4">
+            {t('practiceMaterial')}
+          </h2>
+          <ResourceTree tree={practice} locale={locale} />
         </section>
       )}
 
