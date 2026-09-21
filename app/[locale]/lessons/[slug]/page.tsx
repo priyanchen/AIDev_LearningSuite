@@ -190,7 +190,7 @@ export default async function SessionPage({
       {session.sourceLinks?.slides && session.sourceLinks.slides.length > 0 && (
         <section className="mb-12">
           <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-6">
-            {t('slides')}
+            {slidesExtra?.notebooks?.length ? t('slidesWithNotebooks') : t('slides')}
           </h2>
           <div className="flex flex-wrap gap-3">
             {session.sourceLinks.slides.map((slideLink, i, slides) => (

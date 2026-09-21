@@ -53,6 +53,7 @@
     "cardDeck": "The Card Deck",
     "project": "Runnable Project",
     "slides": "Session Slides",
+    "slidesWithNotebooks": "Session Slides & ipynb Notebooks",
     "practiceMaterial": "Ester Practice Material",
     "materials": "Source Materials",
     "downloadCards": "Download All Cards",

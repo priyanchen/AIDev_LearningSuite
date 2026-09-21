@@ -21,6 +21,17 @@ export function renderWithCode(text: string) {
   );
 }
 
+// Every point in this dataset follows a "Label: description" shape (see content/syntax-guide.ts) —
+// split on the first colon that precedes any backtick, so a colon inside `{key: value}` code
+// is never mistaken for the label separator. Returns null when a point doesn't fit the pattern.
+function splitKeyValue(text: string): [string, string] | null {
+  const colonIndex = text.indexOf(':');
+  if (colonIndex === -1) return null;
+  const backtickIndex = text.indexOf('`');
+  if (backtickIndex !== -1 && colonIndex > backtickIndex) return null;
+  return [text.slice(0, colonIndex), text.slice(colonIndex + 1).trim()];
+}
+
 export default function SyntaxTopicCard({
   topic,
   locale,
@@ -30,6 +41,8 @@ export default function SyntaxTopicCard({
   locale: Locale;
   printLabel: string;
 }) {
+  const isPython = /^\d+$/.test(topic.number);
+
   return (
     <div id={`topic-${topic.number}`} className="border border-rule p-6 bg-codebg/30 scroll-mt-24">
       <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-rule">
@@ -44,14 +57,35 @@ export default function SyntaxTopicCard({
         </span>
       </div>
 
-      <ul className="grid gap-2 mb-4">
-        {topic.points.map((point, i) => (
-          <li key={i} className="text-sm leading-relaxed flex gap-2">
-            <span className="text-accent flex-shrink-0">·</span>
-            <span>{renderWithCode(point[locale])}</span>
-          </li>
-        ))}
-      </ul>
+      {isPython ? (
+        <div className="grid gap-y-2 gap-x-4 mb-4 sm:grid-cols-[8rem_1fr]">
+          {topic.points.map((point, i) => {
+            const split = splitKeyValue(point[locale]);
+            return split ? (
+              <div key={i} className="contents">
+                <span className="text-xs font-sans font-semibold text-accent sm:pt-0.5">{split[0]}</span>
+                <span className="text-sm leading-relaxed pb-2 sm:pb-0 border-b sm:border-b-0 border-rule/50">
+                  {renderWithCode(split[1])}
+                </span>
+              </div>
+            ) : (
+              <div key={i} className="sm:col-span-2 text-sm leading-relaxed flex gap-2">
+                <span className="text-accent flex-shrink-0">·</span>
+                <span>{renderWithCode(point[locale])}</span>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <ul className="grid gap-2 mb-4">
+          {topic.points.map((point, i) => (
+            <li key={i} className="text-sm leading-relaxed flex gap-2">
+              <span className="text-accent flex-shrink-0">·</span>
+              <span>{renderWithCode(point[locale])}</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {topic.keyTakeaway && (
         <div className="border-t border-rule pt-3 mt-3">
