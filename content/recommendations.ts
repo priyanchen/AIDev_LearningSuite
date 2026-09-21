@@ -100,7 +100,7 @@ export const recommendationCategories: RecommendationCategory[] = [
     },
     items: [
       {
-        name: 'Prof. Shaul Peleg',
+        name: 'Prof. Shmuel Peleg',
         type: 'person',
         sessionNumber: 22,
         bio: {
@@ -112,6 +112,11 @@ export const recommendationCategories: RecommendationCategory[] = [
           he: `זוכה לקרדיט מד״ר זוארי כיוצר הטכנולוגיה שדחסה שעות של צילומי אבטחה לדקות, מה שסייע לזהות את מחבל מרתון בוסטון — שימש כמקרה העולם-האמיתי הפותח ללמה ראייה ממוחשבת חשובה.`,
         },
         verified: true,
+        links: [
+          { label: 'Research — Google Scholar', url: 'https://scholar.google.com/citations?user=CshJxRUAAAAJ&hl=en' },
+          { label: 'Faculty Page — HUJI', url: 'https://www.cs.huji.ac.il/~peleg/' },
+          { label: 'BriefCam', url: 'https://www.briefcam.com/' },
+        ],
       },
       {
         name: 'MIT 6.S897 — Machine Learning for Healthcare, Lecture 13: Machine Learning for Mammography',
