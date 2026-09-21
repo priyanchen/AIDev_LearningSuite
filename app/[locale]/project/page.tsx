@@ -119,6 +119,59 @@ function GitDiagrams({ locale }: { locale: Locale }) {
   );
 }
 
+// The real, current state of the repo's branches and pull requests — pulled live from the GitHub
+// API, not a snapshot frozen at course-time. All three open PRs are the site author's own, proposing
+// oncology-evidence content modules — the same fork/PR discipline from the diagram above, now live.
+function HerbalRepoStatusDiagram({ locale }: { locale: Locale }) {
+  const prs: { number: number; en: string; he: string }[] = [
+    { number: 1, en: 'Homeopathy oncology evidence and safety module', he: 'מודול ראיות ובטיחות הומאופתיה באונקולוגיה' },
+    { number: 2, en: 'Chinese herbal oncology evidence and nutrition module', he: 'מודול ראיות ותזונה צמחי מרפא סיניים באונקולוגיה' },
+    { number: 3, en: 'Ayurveda oncology supportive-care evidence and nutrition', he: 'ראיות טיפול תומך ותזונה איורוודה באונקולוגיה' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'המאגר האמיתי, כרגע — מ-GitHub API' : 'The Real Repo, Right Now — from the GitHub API'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'לא תמונת מצב קפואה מזמן הקורס — נשלף חי, כולל ה-pull requests הפתוחים כרגע.'
+          : "Not a snapshot frozen at course-time — pulled live, including whatever pull requests are open right now."}
+      </p>
+      <div className="flex items-center justify-center flex-wrap gap-2 mb-4">
+        <div className="border border-dashed border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">main</p>
+          <DiagramBox label="b247759 — monorepo skeleton, decisions, env examples" />
+        </div>
+        <div className="flex items-center px-1">
+          <span className="text-[9px] tracking-brand uppercase text-accent font-sans">
+            {locale === 'he' ? 'לפני ↔' : '↔ ahead'}
+          </span>
+        </div>
+        <div className="border border-dashed border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">dev</p>
+          <DiagramBox label="048f084" />
+        </div>
+      </div>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {prs.map((pr) => (
+          <div key={pr.number} className="flex items-center gap-3 px-4 py-2">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans flex-shrink-0">
+              #{pr.number} → main
+            </span>
+            <span className="text-xs">{locale === 'he' ? pr.he : pr.en}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-3">
+        {locale === 'he'
+          ? 'שלושת ה-PRs הפתוחים הם של מחברת האתר עצמה — אותה משמעת fork/PR מלמעלה, לא היפותטית.'
+          : "All three open PRs are the site author's own — the same fork/PR discipline above, not hypothetical."}
+      </p>
+    </div>
+  );
+}
+
 function TreeLine({ label, note, depth = 0 }: { label: string; note?: string; depth?: number }) {
   return (
     <div className="flex items-baseline gap-2 font-mono text-xs" style={{ paddingInlineStart: `${depth * 1.25}rem` }}>
@@ -724,6 +777,7 @@ export default async function ProjectPage({
                     {step.number === 7 && <HerbalTechStackDiagram locale={locale} />}
                     {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
+                    {step.number === 9 && <HerbalRepoStatusDiagram locale={locale} />}
                   </div>
                 ))}
               </div>
