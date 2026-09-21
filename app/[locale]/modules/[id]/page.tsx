@@ -86,6 +86,28 @@ export default async function ModulePage({
         </div>
       </section>
 
+      {resources?.sourceMaterials && resources.sourceMaterials.length > 0 && (
+        <section className="mb-12 border border-rule p-6 bg-codebg/40">
+          <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
+            {sessionT('materials')}
+          </h3>
+          <p className="text-xs italic text-muted mb-4">{sessionT('materialsNote')}</p>
+          <div className="flex flex-wrap gap-3">
+            {resources.sourceMaterials.map((item) => (
+              <a
+                key={item.url}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+              >
+                {item.label[locale]} ↗
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section id="practice-companion" className="border border-rule p-6 bg-codebg/30 scroll-mt-24">
         <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
           {t('practiceCompanion')}

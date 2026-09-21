@@ -22,7 +22,16 @@ export type ResourceNode = ResourceFile | ResourceFolder;
 // individually, same nesting as the original, nothing renamed except for a friendlier display label.
 export const moduleResources: Record<
   string,
-  { sourceUrl: string; tree: ResourceNode[]; estherSourceUrl?: string; estherTree?: ResourceNode[] }
+  {
+    sourceUrl: string;
+    tree: ResourceNode[];
+    estherSourceUrl?: string;
+    estherTree?: ResourceNode[];
+    // The real Zoom recording chat log / transcript — kept separate from the practice tree
+    // and rendered like a lesson page's own "Source Materials" section, to mark it as the
+    // official academic source rather than one more practice file.
+    sourceMaterials?: { label: Bilingual; url: string; kind: 'recording' | 'chat' | 'transcript' }[];
+  }
 > = {
   '03-python': {
     sourceUrl: 'https://drive.google.com/drive/folders/1yWrqBMWkFhOtQl4uXa6t5KroE9mkr1DO',
@@ -250,27 +259,10 @@ export const moduleResources: Record<
         url: 'https://drive.google.com/file/d/1nzcKUfxvSdf3PYHdAzxoUFqDQHCiO_ia/view',
         ext: 'pt',
       },
-      {
-        kind: 'folder',
-        name: 'REC',
-        label: { en: 'Recording — Chat & Transcript (Sep 16)', he: 'הקלטה — צ׳אט ותמליל (16.9)' },
-        children: [
-          {
-            kind: 'file',
-            name: 'GMT20260916-055539_RecordingnewChat.txt',
-            label: { en: 'Session Chat Log', he: 'יומן צ׳אט המפגש' },
-            url: 'https://drive.google.com/file/d/1ffc9_v_Dqr6cN4vqbBcYpadMwwCUIlFA/view',
-            ext: 'txt',
-          },
-          {
-            kind: 'file',
-            name: 'GMT20260916-055539_Recording.cutfile.20260917065114549.cc.vtt',
-            label: { en: 'Session Transcript', he: 'תמליל המפגש' },
-            url: 'https://drive.google.com/file/d/1ay7_D-ZpSqoMg5zj9aVFFzHOoGk49MnB/view',
-            ext: 'vtt',
-          },
-        ],
-      },
+    ],
+    sourceMaterials: [
+      { label: { en: 'Session Chat Log', he: 'יומן צ׳אט המפגש' }, url: 'https://drive.google.com/file/d/1ffc9_v_Dqr6cN4vqbBcYpadMwwCUIlFA/view', kind: 'chat' },
+      { label: { en: 'Session Transcript', he: 'תמליל המפגש' }, url: 'https://drive.google.com/file/d/1ay7_D-ZpSqoMg5zj9aVFFzHOoGk49MnB/view', kind: 'transcript' },
     ],
   },
   '02-n8n': {
