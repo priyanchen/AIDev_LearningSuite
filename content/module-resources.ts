@@ -282,27 +282,10 @@ export const moduleResources: Record<
         url: 'https://drive.google.com/file/d/1ozYT7DD80ZcsiMPiaqGshINTSukoSKDU/view',
         ext: 'mkv',
       },
-      {
-        kind: 'folder',
-        name: 'REC 1/7',
-        label: { en: 'Recording 1/7 — Chat & Transcript', he: 'הקלטה 1/7 — צ׳אט ותמליל' },
-        children: [
-          {
-            kind: 'file',
-            name: 'GMT20260701-055510_RecordingnewChat.txt',
-            label: { en: 'Session Chat Log', he: 'יומן צ׳אט המפגש' },
-            url: 'https://drive.google.com/file/d/11BYR1mnlU8XMjYY1DsHGflw8TGvVEbii/view',
-            ext: 'txt',
-          },
-          {
-            kind: 'file',
-            name: 'GMT20260701-055510_Recording.cc.vtt',
-            label: { en: 'Session Transcript', he: 'תמליל המפגש' },
-            url: 'https://drive.google.com/file/d/1DzU16iwlow76ApJj873LZjf6xxIiXYu3/view',
-            ext: 'vtt',
-          },
-        ],
-      },
+    ],
+    sourceMaterials: [
+      { label: { en: 'Session Chat Log', he: 'יומן צ׳אט המפגש' }, url: 'https://drive.google.com/file/d/11BYR1mnlU8XMjYY1DsHGflw8TGvVEbii/view', kind: 'chat' },
+      { label: { en: 'Session Transcript', he: 'תמליל המפגש' }, url: 'https://drive.google.com/file/d/1DzU16iwlow76ApJj873LZjf6xxIiXYu3/view', kind: 'transcript' },
     ],
   },
   '04-intro-to-ds': {
