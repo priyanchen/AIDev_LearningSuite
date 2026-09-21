@@ -1,6 +1,6 @@
 import type { Bilingual } from '@/lib/registry';
 
-export type RecommendationType = 'book' | 'person';
+export type RecommendationType = 'book' | 'person' | 'course';
 
 export type RecommendationItem = {
   name: string;              // kept in its original language/script — not translated
@@ -9,6 +9,7 @@ export type RecommendationItem = {
   bio: Bilingual;            // who they actually are — general background, not course-specific
   context: Bilingual;        // why Dr. Zuari brought them up, grounded in the actual session
   verified: boolean;         // false where the source recording is dead and this rests on direct confirmation rather than a transcript
+  editorial?: boolean;       // true for site-curated further-reading, not something Dr. Zuari actually said
   links?: { label: string; url: string }[]; // real, verified external links only — never guessed
 };
 
@@ -111,6 +112,25 @@ export const recommendationCategories: RecommendationCategory[] = [
           he: `זוכה לקרדיט מד״ר זוארי כיוצר הטכנולוגיה שדחסה שעות של צילומי אבטחה לדקות, מה שסייע לזהות את מחבל מרתון בוסטון — שימש כמקרה העולם-האמיתי הפותח ללמה ראייה ממוחשבת חשובה.`,
         },
         verified: true,
+      },
+      {
+        name: 'MIT 6.S897 — Machine Learning for Healthcare, Lecture 13: Machine Learning for Mammography',
+        type: 'course',
+        sessionNumber: 22,
+        bio: {
+          en: `An MIT graduate course (taught by Peter Szolovits and David Sontag) on applying machine learning to clinical problems. Lecture 13, given by Dr. Adam Yala, covers deep-learning models that read mammograms — the same detection/classification building blocks as the session's YOLO exercises, applied to cancer screening instead of everyday objects.`,
+          he: `קורס תואר שני של MIT (בהוראת פיטר סולוביץ' ודייוויד סונטג) על יישום למידת מכונה לבעיות קליניות. הרצאה 13, בהנחיית ד"ר אדם יאלה, עוסקת במודלים של למידה עמוקה שקוראים ממוגרפיות — אותם אבני-בניין של זיהוי/סיווג שנעשה בהם שימוש בתרגילי ה-YOLO של המפגש, מיושמות על סקירת סרטן במקום על אובייקטים יומיומיים.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari mentioned live — added editorially to extend the session's own real-world-impact framing (Prof. Peleg's surveillance work, above) into medicine: the exact object-detection and classification techniques taught in this session are, in practice, also how AI reads a mammogram.`,
+          he: `לא משהו שד"ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כדי להרחיב את המסגור של השפעה-בעולם-האמיתי של המפגש עצמו (העבודה של פרופ' פלג באבטחה, למעלה) אל תוך הרפואה: אותן טכניקות זיהוי-אובייקטים וסיווג שנלמדות במפגש הזה הן, בפועל, גם איך AI קוראת ממוגרפיה.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'MIT OCW — Lecture 13: Machine Learning for Mammography', url: 'https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/resources/lecture-13-machine-learning-for-mammography/' },
+          { label: 'MIT OCW — Full Course (6.S897)', url: 'https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/' },
+        ],
       },
     ],
   },

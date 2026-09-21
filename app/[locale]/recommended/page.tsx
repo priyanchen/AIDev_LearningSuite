@@ -4,6 +4,13 @@ import { sessions } from '@/lib/registry';
 import { recommendationCategories } from '@/content/recommendations';
 import PrintButton from '@/components/PrintButton';
 import type { Locale } from '@/i18n';
+import type { RecommendationType } from '@/content/recommendations';
+
+function typeLabel(type: RecommendationType, locale: Locale) {
+  if (type === 'book') return locale === 'he' ? 'ספר' : 'Book';
+  if (type === 'course') return locale === 'he' ? 'קורס' : 'Course';
+  return locale === 'he' ? 'אדם' : 'Person';
+}
 
 export default async function RecommendedPage({
   params: { locale },
@@ -46,9 +53,7 @@ export default async function RecommendedPage({
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
                     <div className="flex items-baseline gap-3">
                       <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold border border-accent px-2 py-0.5">
-                        {item.type === 'book'
-                          ? (locale === 'he' ? 'ספר' : 'Book')
-                          : (locale === 'he' ? 'אדם' : 'Person')}
+                        {typeLabel(item.type, locale)}
                       </span>
                       <h3 className="text-lg small-caps tracking-wide">{item.name}</h3>
                     </div>
@@ -99,10 +104,18 @@ export default async function RecommendedPage({
                     </p>
                   )}
 
+                  {item.editorial && (
+                    <p className="text-[10px] text-muted mt-3">
+                      {locale === 'he'
+                        ? '✎ תוספת עריכתית — לא משהו שד״ר זוארי אמר בשידור חי, אלא הרחבה מוסמכת של נושא המפגש.'
+                        : "✎ Editorially added — not something Dr. Zuari said live, but a grounded extension of the session's own subject."}
+                    </p>
+                  )}
+
                   <div className="flex justify-end mt-3">
                     <PrintButton
                       title={item.name}
-                      subtitle={item.type === 'book' ? (locale === 'he' ? 'ספר' : 'Book') : (locale === 'he' ? 'אדם' : 'Person')}
+                      subtitle={typeLabel(item.type, locale)}
                       sections={[
                         { heading: locale === 'he' ? 'רקע' : 'Bio', body: item.bio[locale] },
                         { heading: locale === 'he' ? 'ההקשר במפגש' : 'Session Context', body: item.context[locale] },
