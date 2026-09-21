@@ -44,6 +44,9 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/recommended`} className="hover:text-accent transition">
             {t('recommended')}
           </Link>
+          <Link href={`/${locale}/prompts`} className="hover:text-accent transition">
+            {t('prompts')}
+          </Link>
           <SearchBox locale={locale === 'he' ? 'he' : 'en'} />
           <Link
             href={otherPath}
