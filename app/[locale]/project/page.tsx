@@ -17,6 +17,71 @@ const introCardNumber = '02';
 const branchSlug = 'session-08-python-5';
 const branchCardNumber = '01';
 
+function DiagramBox({ label }: { label: string }) {
+  return (
+    <span className="inline-block border border-ink px-3 py-2 text-xs text-center bg-paper">
+      {label}
+    </span>
+  );
+}
+
+function DiagramArrow({ label }: { label: string }) {
+  return (
+    <div className="flex flex-col items-center px-1 flex-shrink-0">
+      <span className="text-[9px] tracking-brand uppercase text-accent font-sans">{label}</span>
+      <span className="text-accent">→</span>
+    </div>
+  );
+}
+
+// Recreated faithfully from Dr. Zuari's own hand-drawn diagrams in "02-Git and Github.pdf" — box
+// layout, labels, and grouping match the source slides; restyled to the site's own visual language
+// rather than reproduced as an image.
+function GitDiagrams({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule grid gap-6">
+      <div>
+        <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-2 text-center">
+          {locale === 'he' ? 'התרשים שלו — יסודי' : "His Diagram — Fundamental"}
+        </p>
+        <div className="flex items-center justify-center flex-wrap gap-1">
+          <DiagramBox label="working directory" />
+          <DiagramArrow label="git add" />
+          <DiagramBox label="staging area" />
+          <DiagramArrow label="git commit" />
+          <DiagramBox label="repository" />
+        </div>
+      </div>
+      <div>
+        <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-2 text-center">
+          {locale === 'he' ? 'התרשים שלו — זרימת עבודה מלאה' : 'His Diagram — Complete Workflow'}
+        </p>
+        <div className="flex items-stretch justify-center flex-wrap gap-2">
+          <div className="border border-dashed border-rule p-3">
+            <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">Local Machine</p>
+            <div className="flex items-center flex-wrap gap-1">
+              <DiagramBox label="Code" />
+              <DiagramArrow label="Add" />
+              <DiagramBox label="Staged Changes" />
+              <span className="text-accent px-1">→</span>
+              <DiagramBox label="Committed Changes" />
+            </div>
+          </div>
+          <div className="flex items-center px-1">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans">Push →</span>
+          </div>
+          <div className="border border-dashed border-rule p-3 flex items-center">
+            <div>
+              <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">GitHub</p>
+              <DiagramBox label="Your GitHub Repo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params: { locale },
 }: {
@@ -244,6 +309,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 9 && <GitDiagrams locale={locale} />}
                   </div>
                 ))}
               </div>
