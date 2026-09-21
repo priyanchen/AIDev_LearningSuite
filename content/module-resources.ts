@@ -20,9 +20,31 @@ export type ResourceNode = ResourceFile | ResourceFolder;
 
 // Mirrors the exact folder tree of the class's own shared Drive folder — every file linked
 // individually, same nesting as the original, nothing renamed except for a friendlier display label.
-export const moduleResources: Record<string, { sourceUrl: string; tree: ResourceNode[] }> = {
+export const moduleResources: Record<
+  string,
+  { sourceUrl: string; tree: ResourceNode[]; estherSourceUrl?: string; estherTree?: ResourceNode[] }
+> = {
   '03-python': {
     sourceUrl: 'https://drive.google.com/drive/folders/1yWrqBMWkFhOtQl4uXa6t5KroE9mkr1DO',
+    // A separate subfolder within the same parent, authored and owned by esther.kadosh@mail.huji.ac.il —
+    // distinct from the "Python Scripts" tree below, which belongs to a different course contributor.
+    estherSourceUrl: 'https://drive.google.com/drive/folders/1G6jlE_MB_E_fJvLkcmJLQYuBk8VG96DT',
+    estherTree: [
+      {
+        kind: 'file',
+        name: 'לינקים לומדות_.docx',
+        label: { en: 'Lomda App Links', he: 'לינקים לומדות' },
+        url: 'https://drive.google.com/file/d/13ekqB5lmMLEiRNWRD1iaSgeIw56HUATt/view',
+        ext: 'docx',
+      },
+      {
+        kind: 'file',
+        name: 'טבלאות פייתון - סיכום פקודות.pdf',
+        label: { en: 'Python Tables — Command Summary', he: 'טבלאות פייתון — סיכום פקודות' },
+        url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view',
+        ext: 'pdf',
+      },
+    ],
     tree: [
       {
         kind: 'folder',

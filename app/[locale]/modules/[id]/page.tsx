@@ -98,6 +98,14 @@ export default async function ModulePage({
                 : 'Class exercises and additional training material, in the same folder structure as the original.'}
             </p>
             <ResourceTree tree={resources.tree} locale={locale} />
+            {resources.estherTree && (
+              <div className="mt-6 pt-6 border-t border-dashed border-rule">
+                <h4 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
+                  {locale === 'he' ? 'מלווה תרגול אסתר' : 'Ester Practice Companion'}
+                </h4>
+                <ResourceTree tree={resources.estherTree} locale={locale} />
+              </div>
+            )}
           </>
         ) : (
           <p className="text-xs italic text-muted">{t('practicePlaceholder')}</p>
