@@ -223,6 +223,99 @@ function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// The actual user journey he generated live in Session 22, walking through it screen-by-screen —
+// not a hypothetical UX flow. Source: the session's own caption transcript.
+function HerbalUXFlowDiagram({ locale }: { locale: Locale }) {
+  const steps: { en: string; he: string }[] = [
+    { en: 'Family member logs in', he: 'בן משפחה — כניסה לחשבון' },
+    { en: 'Submits a request to check a plant', he: 'הגשת בקשה לבדיקת צמח' },
+    { en: 'Brief clarification if ambiguous', he: 'בירור קצר במקרה של עמימות' },
+    { en: 'Request queued — waiting status shown', he: 'הבקשה בתור — סטטוס המתנה מוצג' },
+    { en: 'AI prepares a draft (research search)', he: 'AI מכין טיוטה (חיפוש מחקרי)' },
+    { en: 'Draft with findings ready', he: 'טיוטה עם ממצאים מוכנה' },
+    { en: "Researcher's decision", he: 'החלטת החוקר' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'המסע האמיתי — ממפגש 22, לא היפותטי' : 'The Real Journey — from Session 22, Not Hypothetical'}
+      </p>
+      <div className="grid gap-2 max-w-md mx-auto">
+        {steps.map((s, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-5">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span className="flex-1 border border-ink px-3 py-1.5 text-xs bg-paper text-center">
+              {s[locale]}
+            </span>
+          </div>
+        ))}
+        <div className="flex items-center gap-2">
+          <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-5">→</span>
+          <div className="flex-1 grid grid-cols-2 gap-2">
+            <span className="border border-accent text-accent px-2 py-1.5 text-[11px] bg-paper text-center">
+              {locale === 'he' ? 'תיקון נדרש ↺' : 'Needs correction ↺'}
+            </span>
+            <span className="border border-accent text-accent px-2 py-1.5 text-[11px] bg-paper text-center">
+              {locale === 'he' ? 'מאושרת לפרסום' : 'Approved for publish'}
+            </span>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-5">08</span>
+          <span className="flex-1 border border-ink px-3 py-1.5 text-xs bg-paper text-center">
+            {locale === 'he' ? 'תשובה אישית בחשבון · גרסה נשמרת לעדכון עתידי' : "Personal answer in the user's account · version saved for a future update"}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// The real design system, from docs/design/stitch.md — not a generic palette.
+function HerbalUIDesignSystem({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'מערכת העיצוב האמיתית — "Herbal Evidence – Calm Research"' : 'The Real Design System — "Herbal Evidence – Calm Research"'}
+      </p>
+      <div className="flex items-center justify-center gap-4 mt-4">
+        <div className="text-center">
+          <div className="w-14 h-14 rounded-lg border border-ink" style={{ backgroundColor: '#3F6B5A' }} />
+          <span className="text-[9px] font-mono text-muted mt-1 block">#3F6B5A</span>
+          <span className="text-[8px] tracking-brand uppercase text-accent font-sans">
+            {locale === 'he' ? 'ראשי' : 'Primary'}
+          </span>
+        </div>
+        <div className="text-center">
+          <div className="w-14 h-14 rounded-lg border border-ink" style={{ backgroundColor: '#F7F7F4' }} />
+          <span className="text-[9px] font-mono text-muted mt-1 block">#F7F7F4</span>
+          <span className="text-[8px] tracking-brand uppercase text-accent font-sans">
+            {locale === 'he' ? 'ניטרלי' : 'Neutral'}
+          </span>
+        </div>
+        <div className="text-center">
+          <div className="w-14 h-14 rounded-lg border border-ink flex items-center justify-center bg-paper" style={{ borderRadius: '8px' }}>
+            <span className="text-[9px] font-sans">Aa</span>
+          </div>
+          <span className="text-[9px] font-mono text-muted mt-1 block">Noto Sans</span>
+          <span className="text-[8px] tracking-brand uppercase text-accent font-sans">
+            {locale === 'he' ? 'גופן' : 'Typeface'}
+          </span>
+        </div>
+        <div className="text-center">
+          <div className="w-14 h-14 border border-ink bg-paper" style={{ borderRadius: '8px' }} />
+          <span className="text-[9px] font-mono text-muted mt-1 block">8px</span>
+          <span className="text-[8px] tracking-brand uppercase text-accent font-sans">
+            {locale === 'he' ? 'רדיוס' : 'Radius'}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params: { locale },
 }: {
@@ -450,6 +543,8 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 4 && <HerbalUXFlowDiagram locale={locale} />}
+                    {step.number === 5 && <HerbalUIDesignSystem locale={locale} />}
                     {step.number === 6 && <HerbalArchitectureDiagram locale={locale} />}
                     {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
