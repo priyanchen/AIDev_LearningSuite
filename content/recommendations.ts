@@ -189,39 +189,21 @@ export const recommendationCategories: RecommendationCategory[] = [
   {
     topic: { en: 'Machine Learning', he: 'למידת מכונה' },
     influence: {
-      en: `Regression and model evaluation stop being formulas once they're run end-to-end against real, messy data — this worked Kaggle notebook is the site's own further-reading pointer for that.`,
-      he: `רגרסיה והערכת מודל מפסיקות להיות נוסחאות ברגע שמריצים אותן מקצה לקצה על נתונים אמיתיים ומבולגנים — המחברת המפורקת הזו ב-Kaggle היא ההפניה העריכתית של האתר לקריאה נוספת בנושא.`,
+      en: `Regression and model evaluation stop being formulas once they're run end-to-end against real, messy data — Kaggle is the site's own further-reading pointer for that (the specific worked housing-prices notebook lives on Session 18's own lesson page, right next to the metric it demonstrates).`,
+      he: `רגרסיה והערכת מודל מפסיקות להיות נוסחאות ברגע שמריצים אותן מקצה לקצה על נתונים אמיתיים ומבולגנים — Kaggle היא ההפניה העריכתית של האתר לקריאה נוספת בנושא (המחברת הספציפית של מחירי דיור נמצאת בעמוד השיעור של מפגש 18 עצמו, ממש ליד המדד שהיא מדגימה).`,
     },
     items: [
-      {
-        name: 'Housing Prices — EDA and Prediction',
-        type: 'dataset',
-        sessionNumber: 18,
-        bio: {
-          en: `A worked Kaggle notebook by ruchi798: exploratory data analysis followed by a regression model on a real housing-price dataset — the same R²/RMSE/multivariate-regression discipline taught in Session 18, run against a public dataset end-to-end.`,
-          he: `מחברת Kaggle מפורקת מאת ruchi798: ניתוח נתונים אקספלורטיבי ולאחריו מודל רגרסיה על מערך נתוני מחירי דיור אמיתי — אותה משמעת R²/RMSE/רגרסיה מרובת-משתנים שנלמדה במפגש 18, מורצת מקצה לקצה על מערך נתונים ציבורי.`,
-        },
-        context: {
-          en: `Not something Dr. Zuari referenced live — added editorially as further reading for Session 18's model-evaluation discipline, on a dataset outside the course's own material.`,
-          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כקריאה נוספת למשמעת הערכת-המודל של מפגש 18, על מערך נתונים מחוץ לחומר של הקורס עצמו.`,
-        },
-        verified: true,
-        editorial: true,
-        links: [
-          { label: 'Kaggle — Housing Prices EDA and Prediction', url: 'https://www.kaggle.com/code/ruchi798/housing-prices-eda-and-prediction' },
-        ],
-      },
       {
         name: 'Kaggle',
         type: 'platform',
         sessionNumber: 18,
         bio: {
-          en: `A data-science community and platform hosting public datasets, competitions, and shared notebooks — the source of the housing-prices notebook above, and a general well of real, messy datasets to practice regression, evaluation, and EDA against beyond the course's own material.`,
-          he: `קהילה ופלטפורמה למדעי הנתונים המארחת מערכי נתונים ציבוריים, תחרויות, ומחברות משותפות — המקור של מחברת מחירי הדיור שלמעלה, ובאר כללית של מערכי נתונים אמיתיים ומבולגנים לתרגול רגרסיה, הערכה, ו-EDA מעבר לחומר של הקורס עצמו.`,
+          en: `A data-science community and platform hosting public datasets, competitions, and shared notebooks — a general well of real, messy datasets to practice regression, evaluation, and EDA against beyond the course's own material.`,
+          he: `קהילה ופלטפורמה למדעי הנתונים המארחת מערכי נתונים ציבוריים, תחרויות, ומחברות משותפות — באר כללית של מערכי נתונים אמיתיים ומבולגנים לתרגול רגרסיה, הערכה, ו-EDA מעבר לחומר של הקורס עצמו.`,
         },
         context: {
-          en: `Not something Dr. Zuari referenced live — added editorially as the general source behind the Kaggle notebook above, for anyone who wants to keep practicing on public datasets after the course.`,
-          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כמקור הכללי מאחורי מחברת ה-Kaggle שלמעלה, למי שרוצה להמשיך להתאמן על מערכי נתונים ציבוריים אחרי הקורס.`,
+          en: `Not something Dr. Zuari referenced live — added editorially as a general source for anyone who wants to keep practicing on public datasets after the course. A specific worked example (a housing-prices EDA/prediction notebook) lives directly on Session 18's lesson page, next to the R²/RMSE/Adjusted R² card it illustrates.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כמקור כללי למי שרוצה להמשיך להתאמן על מערכי נתונים ציבוריים אחרי הקורס. דוגמה ספציפית ומפורקת (מחברת EDA/חיזוי למחירי דיור) נמצאת ישירות בעמוד השיעור של מפגש 18, ליד כרטיס R²/RMSE/Adjusted R² שהיא ממחישה.`,
         },
         verified: true,
         editorial: true,

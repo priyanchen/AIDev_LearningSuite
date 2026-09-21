@@ -179,6 +179,7 @@ export const session18Cards: CardContent[] = [
       en: `Each metric fixes a specific weakness of the others — the right choice depends on what could go wrong with your specific data, not on which one is more familiar.`,
       he: `כל מדד מתקן חולשה ספציפית של האחרים — הבחירה הנכונה תלויה במה שיכול להשתבש עם הנתונים הספציפיים שלך, לא באיזה מהם יותר מוכר.`,
     },
+    exampleUrl: 'https://www.kaggle.com/code/ruchi798/housing-prices-eda-and-prediction',
   },
   {
     number: '06',
