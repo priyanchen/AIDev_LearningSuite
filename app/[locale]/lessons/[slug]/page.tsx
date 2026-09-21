@@ -325,6 +325,17 @@ export default async function SessionPage({
         </section>
       )}
 
+      {practice && practice.length > 0 && (
+        <div className="mb-12 flex justify-end">
+          <Link
+            href={`/${locale}/modules/${module.id}#practice-companion`}
+            className="text-[9px] tracking-brand uppercase font-bold text-accent hover:text-paper hover:bg-accent font-sans border border-accent px-2 py-1 transition"
+          >
+            {locale === 'he' ? 'כל חומרי התרגול של המודול →' : "Module's Full Practice Companion →"}
+          </Link>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="flex justify-between items-center pt-8 border-t border-rule">
         {previous ? (
