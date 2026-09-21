@@ -289,10 +289,10 @@ export const otherLanguages: SyntaxLanguageSection[] = [
         title: { en: 'sqlite3 in Python — Connect, Cursor, Execute, Commit, Close', he: 'sqlite3 בפייתון — Connect, Cursor, Execute, Commit, Close' },
         source: 'Session 15 · Card 03',
         points: [
-          { en: `\`sqlite3.connect('file.db')\` creates a brand-new empty database if the file doesn't exist yet, or reconnects to the one already there.`, he: `\`sqlite3.connect('file.db')\` יוצרת בסיס נתונים חדש וריק אם הקובץ עוד לא קיים, או מתחברת מחדש לזה שכבר קיים.` },
-          { en: `A \`cursor\`, pulled from that connection (\`conn.cursor()\`), is the object that actually carries SQL commands back and forth via \`cursor.execute('...')\`.`, he: `\`cursor\`, שנשלף מהחיבור (\`conn.cursor()\`), הוא האובייקט שבפועל נושא פקודות SQL הלוך ושוב דרך \`cursor.execute('...')\`.` },
-          { en: `\`conn.commit()\` is a separate, required step — running \`CREATE TABLE\` or \`INSERT\` only changes an in-progress state until commit actually saves it to the file.`, he: `\`conn.commit()\` הוא שלב נפרד ונדרש — הרצת \`CREATE TABLE\` או \`INSERT\` משנה רק מצב באמצע תהליך עד ש-commit באמת שומר אותו לקובץ.` },
-          { en: `\`with sqlite3.connect('file.db') as conn:\` closes the connection automatically at the end of the block — the same open-write-close discipline as a plain text file.`, he: `\`with sqlite3.connect('file.db') as conn:\` סוגרת את החיבור אוטומטית בסוף הבלוק — אותה משמעת פתח-כתוב-סגור כמו קובץ טקסט רגיל.` },
+          { en: `\`sqlite3.connect('file.db')\` — creates a brand-new empty database if the file doesn't exist yet, or reconnects to the one already there.`, he: `\`sqlite3.connect('file.db')\` — יוצרת בסיס נתונים חדש וריק אם הקובץ עוד לא קיים, או מתחברת מחדש לזה שכבר קיים.` },
+          { en: `\`conn.cursor()\` — pulls a cursor from the connection, the object that carries SQL commands back and forth; \`cursor.execute('...')\` — runs a SQL command through the cursor.`, he: `\`conn.cursor()\` — שולפת cursor מהחיבור, האובייקט שנושא פקודות SQL הלוך ושוב; \`cursor.execute('...')\` — מריצה פקודת SQL דרך ה-cursor.` },
+          { en: `\`conn.commit()\` — a separate, required step: running \`CREATE TABLE\` or \`INSERT\` only changes an in-progress state until commit actually saves it to the file.`, he: `\`conn.commit()\` — שלב נפרד ונדרש: הרצת \`CREATE TABLE\` או \`INSERT\` משנה רק מצב באמצע תהליך עד ש-commit באמת שומר אותו לקובץ.` },
+          { en: `\`with sqlite3.connect('file.db') as conn:\` — closes the connection automatically at the end of the block, the same open-write-close discipline as a plain text file.`, he: `\`with sqlite3.connect('file.db') as conn:\` — סוגרת את החיבור אוטומטית בסוף הבלוק, אותה משמעת פתח-כתוב-סגור כמו קובץ טקסט רגיל.` },
         ],
       },
       {
