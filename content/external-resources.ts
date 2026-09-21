@@ -66,6 +66,46 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `The Missing Semester of Your CS Education — הרצאה 9: אבטחה וקריפטוגרפיה (מפתחות, סודות, ומודל האימות שמאחורי שירותים כמו OAuth)`,
     },
   },
+  'Workflow': {
+    url: 'https://docs.n8n.io/workflows/',
+    source: 'Official n8n Documentation',
+    label: {
+      en: `Official n8n documentation — Workflows (n8n's own term; no MIT/Harvard lecture teaches it, so the product's own docs are the honest best source)`,
+      he: `תיעוד רשמי של n8n — Workflows (המונח של n8n עצמה; אין הרצאת MIT/Harvard שמלמדת אותו, אז התיעוד הרשמי של המוצר הוא המקור הכן הטוב ביותר)`,
+    },
+  },
+  'Trigger': {
+    url: 'https://docs.n8n.io/workflows/components/nodes/#trigger-nodes',
+    source: 'Official n8n Documentation',
+    label: {
+      en: `Official n8n documentation — Trigger nodes (n8n's own term; no MIT/Harvard lecture teaches it, so the product's own docs are the honest best source)`,
+      he: `תיעוד רשמי של n8n — צמתי Trigger (המונח של n8n עצמה; אין הרצאת MIT/Harvard שמלמדת אותו, אז התיעוד הרשמי של המוצר הוא המקור הכן הטוב ביותר)`,
+    },
+  },
+  'Node': {
+    url: 'https://docs.n8n.io/workflows/components/nodes/',
+    source: 'Official n8n Documentation',
+    label: {
+      en: `Official n8n documentation — Nodes (n8n's own term; no MIT/Harvard lecture teaches it, so the product's own docs are the honest best source)`,
+      he: `תיעוד רשמי של n8n — צמתים (Nodes) (המונח של n8n עצמה; אין הרצאת MIT/Harvard שמלמדת אותו, אז התיעוד הרשמי של המוצר הוא המקור הכן הטוב ביותר)`,
+    },
+  },
+  'API': {
+    url: 'https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/',
+    source: 'Official n8n Documentation',
+    label: {
+      en: `Official n8n documentation — the HTTP Request node, n8n's own way of calling external APIs from a workflow`,
+      he: `תיעוד רשמי של n8n — צומת HTTP Request, הדרך של n8n עצמה לקרוא ל-API-ים חיצוניים מתוך תהליך עבודה`,
+    },
+  },
+  'Automation': {
+    url: 'https://docs.n8n.io/',
+    source: 'Official n8n Documentation',
+    label: {
+      en: `Official n8n documentation home — n8n describes itself as a workflow automation platform; too broad a term for one honest academic lecture, so the product's own docs are the best source`,
+      he: `דף הבית של התיעוד הרשמי של n8n — n8n מתארת את עצמה כפלטפורמת אוטומציית תהליכים; מונח רחב מדי להרצאה אקדמית אחת כנה, אז התיעוד הרשמי של המוצר הוא המקור הטוב ביותר`,
+    },
+  },
   'AI Agent Landing Page': {
     url: 'https://code.claude.com/docs/en/agent-sdk/overview',
     source: 'Anthropic — Claude Agent SDK Docs',
