@@ -162,6 +162,38 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `The Missing Semester of Your CS Education — הרצאה 6: בקרת גרסאות (Git)`,
     },
   },
+  'README & License': {
+    url: 'https://missing.csail.mit.edu/2020/version-control/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Lecture 6: Version Control (Git), which uses tracking README.md's history as its own worked example — the lecture doesn't address software licensing specifically`,
+      he: `The Missing Semester of Your CS Education — הרצאה 6: בקרת גרסאות (Git), שמשתמשת במעקב אחר ההיסטוריה של README.md כדוגמה מעשית משלה — ההרצאה לא עוסקת ברישוי תוכנה באופן ספציפי`,
+    },
+  },
+  'random & abs()': {
+    url: 'https://cs50.harvard.edu/python/notes/4/',
+    source: 'Harvard CS50P',
+    label: {
+      en: `CS50's Introduction to Programming with Python — Lecture 4: Libraries (the random module)`,
+      he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 4: ספריות (מודול ה-random)`,
+    },
+  },
+  'List Comprehensions': {
+    url: 'https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_lec12_pdf/',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Introduction to CS and Programming Using Python (6.100L) — Lecture 12: List Comprehension, Functions as Objects, Testing, Debugging`,
+      he: `Introduction to CS and Programming Using Python (6.100L) — הרצאה 12: הבנת רשימה, פונקציות כאובייקטים, בדיקות, ניפוי`,
+    },
+  },
+  'Unpacking (*)': {
+    url: 'https://cs50.harvard.edu/python/notes/9/',
+    source: 'Harvard CS50P',
+    label: {
+      en: `CS50's Introduction to Programming with Python — Lecture 9: Et Cetera (unpacking a sequence with *)`,
+      he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 9: Et Cetera (פירוק רצף עם *)`,
+    },
+  },
   'Comparison Operators': {
     url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/',
     source: 'MIT OpenCourseWare',
