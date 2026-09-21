@@ -86,7 +86,7 @@ export default async function ModulePage({
         </div>
       </section>
 
-      <section className="border border-rule p-6 bg-codebg/30">
+      <section id="practice-companion" className="border border-rule p-6 bg-codebg/30 scroll-mt-24">
         <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">
           {t('practiceCompanion')}
         </h3>

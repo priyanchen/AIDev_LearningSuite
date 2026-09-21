@@ -202,9 +202,17 @@ export default async function SessionPage({
       {/* Practice Material — the targil files for this lesson, next to Session Slides */}
       {practice && practice.length > 0 && (
         <section className="mb-12 border border-rule p-6 bg-codebg/30">
-          <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-4">
-            {t('practiceMaterial')}
-          </h2>
+          <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-2 mb-4">
+            <h2 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {t('practiceMaterial')}
+            </h2>
+            <Link
+              href={`/${locale}/modules/${module.id}#practice-companion`}
+              className="text-[9px] tracking-brand uppercase text-accent hover:text-paper hover:bg-accent font-sans border border-accent px-2 py-1 transition"
+            >
+              {locale === 'he' ? 'כל חומרי התרגול של המודול →' : "Module's Full Practice Companion →"}
+            </Link>
+          </div>
           <ResourceTree tree={practice} locale={locale} />
         </section>
       )}
