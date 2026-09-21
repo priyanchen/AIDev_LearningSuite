@@ -356,9 +356,9 @@ export const otherLanguages: SyntaxLanguageSection[] = [
         title: { en: 'Essential CLI Commands', he: 'פקודות CLI חיוניות' },
         source: 'Dr. Zuari · CLI Reference Deck · Session 15 · Card 07',
         points: [
-          { en: `\`mkdir <name>\` creates a new directory; \`cp\` copies a file, \`mv\` moves or renames one; \`rm\` deletes a file (Unix).`, he: `\`mkdir <name>\` יוצרת תיקייה חדשה; \`cp\` מעתיקה קובץ, \`mv\` מזיזה או משנה שם לקובץ; \`rm\` מוחקת קובץ (Unix).` },
-          { en: `\`cat <file>\` prints a file's contents straight to the terminal; \`echo $VAR\` prints the value of an environment variable (Unix); \`python <file.py>\` runs a Python script directly from the terminal.`, he: `\`cat <file>\` מדפיסה את תוכן הקובץ ישירות לטרמינל; \`echo $VAR\` מדפיסה את ערך משתנה הסביבה (Unix); \`python <file.py>\` מריצה סקריפט פייתון ישירות מהטרמינל.` },
-          { en: `Opening a terminal inside a project folder and typing \`code .\` opens that exact folder in the editor directly — a small shortcut worth learning early, instead of manually navigating the editor's own open-project menu.`, he: `פתיחת טרמינל בתוך תיקיית פרויקט והקלדת \`code .\` פותחת את אותה תיקייה בדיוק בעורך ישירות — קיצור קטן שכדאי ללמוד מוקדם, במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
+          { en: `\`mkdir <name>\` — creates a new directory; \`cp\` — copies a file; \`mv\` — moves or renames a file; \`rm\` — deletes a file (Unix).`, he: `\`mkdir <name>\` — יוצרת תיקייה חדשה; \`cp\` — מעתיקה קובץ; \`mv\` — מזיזה או משנה שם לקובץ; \`rm\` — מוחקת קובץ (Unix).` },
+          { en: `\`cat <file>\` — prints a file's contents straight to the terminal; \`echo $VAR\` — prints the value of an environment variable (Unix); \`python <file.py>\` — runs a Python script directly from the terminal.`, he: `\`cat <file>\` — מדפיסה את תוכן הקובץ ישירות לטרמינל; \`echo $VAR\` — מדפיסה את ערך משתנה הסביבה (Unix); \`python <file.py>\` — מריצה סקריפט פייתון ישירות מהטרמינל.` },
+          { en: `\`code .\` — opens the current folder directly in the editor when run from inside a project folder, a small shortcut worth learning early instead of navigating the editor's own open-project menu.`, he: `\`code .\` — פותחת את התיקייה הנוכחית ישירות בעורך כשמריצים אותה מתוך תיקיית פרויקט, קיצור קטן שכדאי ללמוד מוקדם במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
         ],
       },
       {
