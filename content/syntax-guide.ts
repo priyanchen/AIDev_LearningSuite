@@ -391,7 +391,7 @@ export const otherLanguages: SyntaxLanguageSection[] = [
   },
   {
     id: 'python-quickref',
-    language: { en: "Ester's Python Quick-Reference", he: 'דף עזר מהיר לפייתון — אסתר' },
+    language: { en: 'Python Basics — Ester Edition', he: 'יסודות פייתון — מהדורת אסתר' },
     note: {
       en: `A literal term-for-term recreation of Ester's own Python command-reference table (Module 3's Practice Companion PDF) — every pairing below is the same command and label the sheet itself lists, not a paraphrase. Where the source PDF's own multi-column layout made a pairing genuinely ambiguous after extraction, the command shown is the one that actually matches its label, verified against real Python behavior rather than raw column position.`,
       he: `שחזור מילולי, מונח-מול-מונח, של דף עזר הפקודות של אסתר עצמה לפייתון (PDF ממלווה התרגול של מודול 3) — כל צמד למטה הוא אותה פקודה ואותה תווית שהדף עצמו מפרט, לא ניסוח מחדש. במקומות שהפריסה הרב-טורית של ה-PDF המקורי הפכה צמד למעורפל ממש לאחר החילוץ, הפקודה שמוצגת היא זו שבאמת תואמת לתווית שלה, מאומתת מול התנהגות אמיתית של פייתון ולא לפי מיקום הטור הגולמי.`,
@@ -492,7 +492,7 @@ export const otherLanguages: SyntaxLanguageSection[] = [
   },
   {
     id: 'numpy',
-    language: { en: 'NumPy', he: 'NumPy' },
+    language: { en: 'NumPy — Ester Edition', he: 'NumPy — מהדורת אסתר' },
     note: {
       en: `Used throughout the Data Science module (Sessions 17–21) for array math underneath pandas, but never had its own notebook summary. A literal, term-for-term recreation of the NumPy rows in Ester's own Python command-reference sheet (Module 3's Practice Companion), not the instructor's notebooks.`,
       he: `בשימוש לאורך כל מודול מדעי הנתונים (מפגשים 17–21) לחישובי מערכים מתחת ל-pandas, אך מעולם לא הייתה לו מחברת סיכום משלו. שחזור מילולי, מונח-מול-מונח, של שורות NumPy בדף עזר הפקודות של אסתר עצמה (מלווה התרגול של מודול 3), לא מהמחברות של המרצה.`,
@@ -532,7 +532,7 @@ export const otherLanguages: SyntaxLanguageSection[] = [
   },
   {
     id: 'pandas',
-    language: { en: 'Pandas', he: 'Pandas' },
+    language: { en: 'Pandas — Ester Edition', he: 'Pandas — מהדורת אסתר' },
     note: {
       en: `The workhorse of every Session 17–21 exercise — reading CSVs, cleaning data, grouping and aggregating it. A literal, term-for-term recreation of the Pandas rows in Ester's own Python command-reference sheet (Module 3's Practice Companion), not a course notebook summary.`,
       he: `סוס העבודה של כל תרגיל במפגשים 17–21 — קריאת CSV, ניקוי נתונים, קיבוץ וצבירה. שחזור מילולי, מונח-מול-מונח, של שורות Pandas בדף עזר הפקודות של אסתר עצמה (מלווה התרגול של מודול 3), לא מסיכום מחברת קורס.`,
