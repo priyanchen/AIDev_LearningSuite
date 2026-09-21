@@ -70,7 +70,8 @@
     "printCard": "Print / Save PDF",
     "expandCard": "Expand",
     "collapseCard": "Collapse",
-    "viewExample": "View Live Example"
+    "viewExample": "View Live Example",
+    "viewGuide": "Full Step-by-Step Guide"
   },
   "footer": {
     "rights": "Original teaching materials · Course concepts adapted from source curriculum · Hebrew University of Jerusalem · AI Dev13",

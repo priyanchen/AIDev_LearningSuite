@@ -95,6 +95,7 @@ export const session12Cards: CardContent[] = [
       en: `A virtual environment only protects you if all three steps happen in that exact order — skip step three and the isolation was pointless.`,
       he: `סביבה וירטואלית מגנה עלייך רק אם שלושת השלבים קורים בדיוק בסדר הזה — לדלג על שלב שלוש והבידוד היה חסר טעם.`,
     },
+    guideUrl: '/install#venv',
   },
   {
     number: '03',

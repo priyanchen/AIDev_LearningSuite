@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import type { CardContent } from '@/content/cards/types';
 
@@ -72,6 +73,14 @@ export default function Card({ card, locale, total }: Props) {
           <span />
         )}
         <div className="flex gap-2">
+          {card.guideUrl && (
+            <Link
+              href={`/${locale}${card.guideUrl}`}
+              className="text-[10px] tracking-brand uppercase text-accent border border-accent px-3 py-1 hover:bg-accent hover:text-paper transition font-sans"
+            >
+              {t('viewGuide')} →
+            </Link>
+          )}
           {card.exampleUrl && (
             <a
               href={card.exampleUrl}

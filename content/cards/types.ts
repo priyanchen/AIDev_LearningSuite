@@ -12,4 +12,5 @@ export type CardContent = {
   sections: CardSection[];
   principle: Bilingual;   // The closing meta-principle
   exampleUrl?: string;    // a live, deployed example of this card's assignment/exercise
+  guideUrl?: string;      // a full step-by-step guide elsewhere on this site for this card's topic
 };

@@ -129,6 +129,7 @@ export const installGuide: InstallCategory[] = [
         },
       },
       {
+        id: 'venv',
         name: 'venv',
         officialUrl: 'https://docs.python.org/3/library/venv.html',
         sessions: [3, 12, 19],
@@ -143,6 +144,54 @@ export const installGuide: InstallCategory[] = [
         commands: {
           mac: ['python3 -m venv .venv', 'source .venv/bin/activate'],
           windows: ['python -m venv .venv', '.venv\\Scripts\\activate'],
+        },
+        steps: {
+          mac: [
+            {
+              title: { en: '1. Create it', he: '1. יוצרות אותה' },
+              detail: {
+                en: `From the command palette (Cmd+Shift+P), run "Python: Create Environment," choose venv, and pick a Python version. This builds a \`.venv\` folder inside the project — a fresh, isolated Python install with none of the packages already on your main machine. Command-line equivalent: \`python3 -m venv .venv\`.`,
+                he: `מפלטת הפקודות (Cmd+Shift+P), הריצי "Python: Create Environment", בחרי venv, ובחרי גרסת פייתון. זה בונה תיקיית \`.venv\` בתוך הפרויקט — התקנת פייתון טרייה ומבודדת, בלי אף חבילה שכבר קיימת במכונה הראשית. מקבילה בשורת פקודה: \`python3 -m venv .venv\`.`,
+              },
+            },
+            {
+              title: { en: '2. Confirm, then install', he: '2. לאשר, ואז להתקין' },
+              detail: {
+                en: `Before installing anything, check the bottom status bar for the venv's dotted path — the only reliable confirmation the environment is active. Close and reopen the terminal if it doesn't auto-activate, or run \`source .venv/bin/activate\` yourself. Only then run \`pip install\` — every package installed in this state lands inside \`.venv\`, not on the main Python.`,
+                he: `לפני שמתקינות כל דבר, בדקי את שורת הסטטוס התחתונה לנתיב המנוקד של ה-venv — האישור האמין היחיד שהסביבה פעילה. סגרי ופתחי מחדש את הטרמינל אם היא לא מתפעלת אוטומטית, או הריצי \`source .venv/bin/activate\` בעצמך. רק אז הריצי \`pip install\` — כל חבילה שמותקנת במצב הזה נוחתת בתוך \`.venv\`, לא על הפייתון הראשי.`,
+              },
+            },
+            {
+              title: { en: '3. Run inside it', he: '3. להריץ בתוכה' },
+              detail: {
+                en: `Running the script only protects you if it runs on the venv's interpreter, not the general one — the step most people skip. A successful \`pip install\` proves nothing about which Python actually received the package; a \`ModuleNotFoundError\` right after a clean install is never a package problem, it's always an environment-identity problem.`,
+                he: `הרצת הסקריפט מגנה עלייך רק אם היא רצה על המתורגמן של ה-venv, לא הכללי — השלב שהכי הרבה אנשים מדלגים עליו. \`pip install\` מוצלח לא מוכיח כלום לגבי איזה פייתון בעצם קיבל את החבילה; \`ModuleNotFoundError\` מייד אחרי התקנה נקייה הוא לעולם לא בעיית חבילה, הוא תמיד בעיית זהות-סביבה.`,
+              },
+            },
+          ],
+          windows: [
+            {
+              title: { en: '1. Create it', he: '1. יוצרות אותה' },
+              detail: {
+                en: `From the command palette (Ctrl+Shift+P), run "Python: Create Environment," choose venv, and pick a Python version. This builds a \`.venv\` folder inside the project. Command-line equivalent: \`python -m venv .venv\`.`,
+                he: `מפלטת הפקודות (Ctrl+Shift+P), הריצי "Python: Create Environment", בחרי venv, ובחרי גרסת פייתון. זה בונה תיקיית \`.venv\` בתוך הפרויקט. מקבילה בשורת פקודה: \`python -m venv .venv\`.`,
+              },
+            },
+            {
+              title: { en: '2. Confirm, then install', he: '2. לאשר, ואז להתקין' },
+              detail: {
+                en: `Check the bottom status bar for the venv's dotted path before running \`pip install\`, or activate it yourself with \`.venv\\Scripts\\activate\`. Only after activation does an install land inside \`.venv\` instead of the system Python.`,
+                he: `בדקי את שורת הסטטוס התחתונה לנתיב המנוקד של ה-venv לפני הרצת \`pip install\`, או הפעילי אותה בעצמך עם \`.venv\\Scripts\\activate\`. רק אחרי ההפעלה, התקנה נוחתת בתוך \`.venv\` במקום על פייתון המערכת.`,
+              },
+            },
+            {
+              title: { en: '3. Run inside it', he: '3. להריץ בתוכה' },
+              detail: {
+                en: `Make sure the script runs on the venv's interpreter, not the system one — the step most people skip. A \`ModuleNotFoundError\` right after a clean install means the wrong interpreter ran it, not that the install failed.`,
+                he: `ודאי שהסקריפט רץ על המתורגמן של ה-venv, לא של המערכת — השלב שהכי הרבה אנשים מדלגים עליו. \`ModuleNotFoundError\` מייד אחרי התקנה נקייה אומר שהמתורגמן הלא-נכון הריץ אותו, לא שההתקנה נכשלה.`,
+              },
+            },
+          ],
         },
       },
       {
