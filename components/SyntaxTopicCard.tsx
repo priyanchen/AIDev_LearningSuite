@@ -73,12 +73,12 @@ export default function SyntaxTopicCard({
       </div>
 
       {isPython ? (
-        <div className="grid gap-y-2 gap-x-4 mb-4 sm:grid-cols-[8rem_1fr]">
+        <div className="grid gap-y-2 gap-x-2 mb-4 sm:grid-cols-[auto_1fr]">
           {topic.points.map((point, i) => {
             const split = splitKeyValue(point[locale]);
             return split ? (
               <div key={i} className="contents">
-                <span className="text-xs font-sans font-semibold text-accent sm:pt-0.5">{split[0]}</span>
+                <span className="text-xs font-sans font-semibold text-accent sm:pt-0.5 sm:whitespace-nowrap">{split[0]}</span>
                 <span className="text-sm leading-relaxed pb-2 sm:pb-0 border-b sm:border-b-0 border-rule/50">
                   {renderWithCode(split[1])}
                 </span>
@@ -92,13 +92,13 @@ export default function SyntaxTopicCard({
           })}
         </div>
       ) : (
-        <div className="grid gap-y-2 gap-x-4 mb-4 sm:grid-cols-[11rem_1fr]">
+        <div className="grid gap-y-2 gap-x-2 mb-4 sm:grid-cols-[auto_1fr]">
           {topic.points.map((point, i) => {
             const entries = splitDashEntries(point[locale]);
             return entries ? (
               entries.map(([term, definition], j) => (
                 <div key={`${i}-${j}`} className="contents">
-                  <span className="text-xs font-sans sm:pt-0.5">{renderWithCode(term)}</span>
+                  <span className="text-xs font-sans sm:pt-0.5 sm:whitespace-nowrap">{renderWithCode(term)}</span>
                   <span className="text-sm leading-relaxed pb-2 sm:pb-0 border-b sm:border-b-0 border-rule/50 text-muted">
                     {definition}
                   </span>
