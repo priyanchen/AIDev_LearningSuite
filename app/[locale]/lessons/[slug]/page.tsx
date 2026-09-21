@@ -39,6 +39,15 @@ const internalLinks: Record<string, { path: string; label: Bilingual }> = {
   },
 };
 
+// Custom display names for specific slide/source links, keyed by URL — falls back to the
+// generic "Open Lecture Slides {n}" label when a link isn't listed here.
+const slideLabels: Record<string, Bilingual> = {
+  'https://drive.google.com/file/d/1MQ_FWuhjk3RQzObVDHf47UOr3wiHFkLu/view': {
+    en: 'Building a Project from Scratch',
+    he: 'בניית פרויקט מאפס',
+  },
+};
+
 export default async function SessionPage({
   params: { locale, slug },
 }: {
@@ -192,7 +201,7 @@ export default async function SessionPage({
                 rel="noopener noreferrer"
                 className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
               >
-                {t('openSlides')} {slides.length > 1 ? i + 1 : ''} ↗
+                {slideLabels[slideLink]?.[locale] ?? `${t('openSlides')} ${slides.length > 1 ? i + 1 : ''}`} ↗
               </a>
             ))}
             {session.exampleUrl && (
