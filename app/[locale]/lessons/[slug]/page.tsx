@@ -166,8 +166,8 @@ export default async function SessionPage({
             {(session.concepts.some((c) => externalResources[c]) || session.concepts.some((c) => internalLinks[c])) && (
               <p className="text-[10px] italic text-muted mt-3">
                 {locale === 'he'
-                  ? '↗ תגיות מקושרות מובילות למקורות אמיתיים להעמקה — הרצאות אוניברסיטה או תיעוד רשמי של Claude · → תגיות מקושרות מובילות למדריך באתר עצמו.'
-                  : '↗ Linked tags lead to real sources for further reading — university lectures or official Claude documentation · → linked tags lead to a guide on this site.'}
+                  ? '↗ תגיות מקושרות מובילות למקורות אמיתיים להעמקה — הרצאות אוניברסיטת MIT והרווארד, תיעוד רשמי של תוכנות, או משאבים נוספים שזוהו כשימושיים אפשריים · → תגיות מקושרות מובילות למדריך באתר עצמו.'
+                  : '↗ Linked tags lead to real sources for further reading — MIT and Harvard university lectures, official program documentation, or other resources identified as possibly useful · → linked tags lead to a guide on this site.'}
               </p>
             )}
           </>
