@@ -31,18 +31,26 @@ export const moduleResources: Record<
     estherSourceUrl: 'https://drive.google.com/drive/folders/1G6jlE_MB_E_fJvLkcmJLQYuBk8VG96DT',
     estherTree: [
       {
-        kind: 'file',
-        name: 'לינקים לומדות_.docx',
-        label: { en: 'Lomda App Links', he: 'לינקים לומדות' },
-        url: 'https://drive.google.com/file/d/13ekqB5lmMLEiRNWRD1iaSgeIw56HUATt/view',
-        ext: 'docx',
-      },
-      {
-        kind: 'file',
-        name: 'טבלאות פייתון - סיכום פקודות.pdf',
-        label: { en: 'Python Tables — Command Summary', he: 'טבלאות פייתון — סיכום פקודות' },
-        url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view',
-        ext: 'pdf',
+        kind: 'folder',
+        name: 'Tirgul_Esther',
+        label: { en: 'Tirgul_Esther', he: 'תרגול_אסתר' },
+        open: true,
+        children: [
+          {
+            kind: 'file',
+            name: 'לינקים לומדות_.docx',
+            label: { en: 'Lomda App Links', he: 'לינקים לומדות' },
+            url: 'https://drive.google.com/file/d/13ekqB5lmMLEiRNWRD1iaSgeIw56HUATt/view',
+            ext: 'docx',
+          },
+          {
+            kind: 'file',
+            name: 'טבלאות פייתון - סיכום פקודות.pdf',
+            label: { en: 'Python Tables — Command Summary', he: 'טבלאות פייתון — סיכום פקודות' },
+            url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view',
+            ext: 'pdf',
+          },
+        ],
       },
     ],
     tree: [
