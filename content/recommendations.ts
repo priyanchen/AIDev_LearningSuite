@@ -1,11 +1,12 @@
 import type { Bilingual } from '@/lib/registry';
 
-export type RecommendationType = 'book' | 'person' | 'course' | 'dataset' | 'platform' | 'reference';
+export type RecommendationType = 'book' | 'person' | 'course' | 'dataset' | 'platform' | 'reference' | 'newsletter' | 'organization';
 
 export type RecommendationItem = {
   name: string;              // kept in its original language/script — not translated
   type: RecommendationType;
-  sessionNumber: number;     // links back to the session this came up in
+  sessionNumber?: number;    // links back to the session this came up in — omitted for general, non-session-tied follow recommendations
+  role?: Bilingual;          // a short one-line "why follow" tag, for compact follow-list entries
   bio: Bilingual;            // who they actually are — general background, not course-specific
   context: Bilingual;        // why Dr. Zuari brought them up, grounded in the actual session
   verified: boolean;         // false where the source recording is dead and this rests on direct confirmation rather than a transcript
@@ -226,6 +227,110 @@ export const recommendationCategories: RecommendationCategory[] = [
         editorial: true,
         links: [
           { label: 'Kaggle', url: 'https://www.kaggle.com/' },
+        ],
+      },
+    ],
+  },
+  {
+    topic: { en: 'Who to Follow', he: 'את מי לעקוב' },
+    influence: {
+      en: `A site-curated follow list for staying current after the course ends — not something Dr. Zuari said live, but a set of standing recommendations covering different angles of the field: foundational intuition, practical engineering, weekly news, and frontier research.`,
+      he: `רשימת מעקב שנאספה על ידי האתר כדי להישאר מעודכנת אחרי שהקורס נגמר — לא משהו שד״ר זוארי אמר בשידור חי, אלא סט המלצות קבועות שמכסה זוויות שונות של התחום: אינטואיציה יסודית, הנדסה מעשית, חדשות שבועיות, ומחקר חזית.`,
+    },
+    items: [
+      {
+        name: 'Andrej Karpathy',
+        type: 'person',
+        role: { en: 'Foundations + Intuition', he: 'יסודות + אינטואיציה' },
+        bio: {
+          en: `A founding member of OpenAI and former Director of AI at Tesla — see the Code category above for his full course context.`,
+          he: `חבר מייסד ב-OpenAI ולשעבר מנהל ה-AI של Tesla — ראי את קטגוריית הקוד למעלה להקשר המלא שלו בקורס.`,
+        },
+        context: {
+          en: `Grouped here as the "foundations + intuition" anchor of the site's standing follow list.`,
+          he: `מקובצת כאן כעוגן ה"יסודות + אינטואיציה" של רשימת המעקב הקבועה של האתר.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'YouTube — Andrej Karpathy', url: 'https://www.youtube.com/@AndrejKarpathy' },
+          { label: 'karpathy.ai', url: 'https://karpathy.ai' },
+        ],
+      },
+      {
+        name: 'Sebastian Raschka',
+        type: 'person',
+        role: { en: 'Practical ML/LLM Engineering', he: 'הנדסת ML/LLM מעשית' },
+        bio: {
+          en: `A machine learning researcher and author (Python Machine Learning, Machine Learning Q and AI) known for clear, code-first explanations of how modern LLMs are actually built and fine-tuned — the "Ahead of AI" newsletter is a standing reference for practical model-engineering detail.`,
+          he: `חוקרת למידת מכונה ומחברת (Python Machine Learning, Machine Learning Q and AI) הידועה בהסברים ברורים ומבוססי-קוד על איך מודלי שפה גדולים באמת נבנים ומכווננים — הניוזלטר "Ahead of AI" הוא מקור עזר קבוע לפרטי הנדסת מודלים מעשית.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially as the "practical engineering" counterweight to Karpathy's foundational teaching.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כמשקל-נגד "הנדסי מעשי" להוראה היסודית של קרפתי.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'Ahead of AI (newsletter)', url: 'https://magazine.sebastianraschka.com' },
+          { label: 'GitHub — rasbt', url: 'https://github.com/rasbt' },
+          { label: 'X — @rasbt', url: 'https://x.com/rasbt' },
+        ],
+      },
+      {
+        name: 'ThursdAI — Alex Volkov',
+        type: 'newsletter',
+        role: { en: 'Weekly AI Market/Research Updates', he: 'עדכוני שוק/מחקר AI שבועיים' },
+        bio: {
+          en: `A weekly live show and newsletter hosted by Alex Volkov, recapping that week's model releases, research papers, and AI industry news — a standing way to track a field that moves faster than any syllabus.`,
+          he: `תוכנית חיה שבועית וניוזלטר בהנחיית אלכס וולקוב, שמסכמים את שחרורי המודלים, מאמרי המחקר, וחדשות תעשיית ה-AI של אותו שבוע — דרך קבועה לעקוב אחרי תחום שנע מהר יותר מכל תוכנית לימודים.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially as the "weekly news" anchor of the follow list, the same role Yuval Avidani fills for Hebrew-speaking students above.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כעוגן ה"חדשות השבועיות" של רשימת המעקב, אותו תפקיד שיובל אבידני ממלא לסטודנטיות דוברות עברית למעלה.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'ThursdAI.news', url: 'https://thursdai.news' },
+          { label: 'X — @altryne', url: 'https://x.com/altryne' },
+        ],
+      },
+      {
+        name: 'Sakana AI',
+        type: 'organization',
+        role: { en: 'Agentic / Evolutionary AI Research', he: 'מחקר AI סוכני / אבולוציוני' },
+        bio: {
+          en: `A Tokyo-based AI research lab, co-founded by former Google Brain/Transformer researchers, known for nature-inspired approaches — evolutionary model merging, agentic multi-model systems — as an alternative to simply scaling up a single large model.`,
+          he: `מעבדת מחקר AI ממוקמת בטוקיו, שנוסדה בשותפות חוקרים לשעבר מ-Google Brain/Transformer, הידועה בגישות בהשראת הטבע — מיזוג מודלים אבולוציוני, מערכות סוכניות רב-מודליות — כאלטרנטיבה להגדלה פשוטה של מודל בודד וגדול.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially as the "frontier research" anchor of the follow list, for whoever wants to see where agentic AI research is headed past the course's own agent material.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כעוגן "מחקר החזית" של רשימת המעקב, למי שרוצה לראות לאן מחקר ה-AI הסוכני הולך מעבר לחומר הסוכנים של הקורס עצמו.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'sakana.ai', url: 'https://sakana.ai' },
+        ],
+      },
+      {
+        name: 'Andrew Ng',
+        type: 'person',
+        role: { en: 'Structured ML/AI Courses', he: 'קורסי ML/AI מובנים' },
+        bio: {
+          en: `Co-founder of Coursera and DeepLearning.AI, and the instructor behind the Machine Learning Specialization and Deep Learning Specialization — the standing structured-course counterpart to this list's more informal follow accounts, for anyone who wants a formal curriculum after this one ends.`,
+          he: `מייסד-שותף של Coursera ו-DeepLearning.AI, והמרצה מאחורי ה-Machine Learning Specialization וה-Deep Learning Specialization — המקבילה הקבועה בקורס מובנה למעקב הבלתי-פורמלי יותר ברשימה הזו, למי שרוצה תוכנית לימודים פורמלית אחרי שהקורס הזה נגמר.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially, the one formal-course entry alongside the informal follow accounts above.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי, הפריט היחיד של קורס פורמלי לצד חשבונות המעקב הבלתי-פורמליים למעלה.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'Coursera — Andrew Ng', url: 'https://www.coursera.org/instructor/andrewng' },
+          { label: 'DeepLearning.AI', url: 'https://www.deeplearning.ai' },
         ],
       },
     ],

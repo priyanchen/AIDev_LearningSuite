@@ -12,6 +12,8 @@ function typeLabel(type: RecommendationType, locale: Locale) {
   if (type === 'dataset') return locale === 'he' ? 'נתונים' : 'Data';
   if (type === 'platform') return locale === 'he' ? 'פלטפורמה' : 'Platform';
   if (type === 'reference') return locale === 'he' ? 'מקור עזר' : 'Reference';
+  if (type === 'newsletter') return locale === 'he' ? 'ניוזלטר' : 'Newsletter';
+  if (type === 'organization') return locale === 'he' ? 'ארגון' : 'Organization';
   return locale === 'he' ? 'אדם' : 'Person';
 }
 
@@ -49,8 +51,10 @@ export default async function RecommendedPage({
 
           <div className="grid gap-6">
             {category.items.map((item) => {
-              const s = sessionByNumber.get(item.sessionNumber);
-              const sessionLabel = `${locale === 'he' ? 'מפגש' : 'Session'} ${String(item.sessionNumber).padStart(2, '0')}`;
+              const s = item.sessionNumber ? sessionByNumber.get(item.sessionNumber) : undefined;
+              const sessionLabel = item.sessionNumber
+                ? `${locale === 'he' ? 'מפגש' : 'Session'} ${String(item.sessionNumber).padStart(2, '0')}`
+                : undefined;
               return (
                 <div key={item.name} className="border border-rule p-6 bg-codebg/30">
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
@@ -60,18 +64,24 @@ export default async function RecommendedPage({
                       </span>
                       <h3 className="text-lg small-caps tracking-wide">{item.name}</h3>
                     </div>
-                    {s ? (
-                      <Link
-                        href={`/${locale}/lessons/${s.slug}`}
-                        className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans border border-rule px-2 py-1"
-                      >
-                        {sessionLabel}
-                      </Link>
-                    ) : (
-                      <span className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-2 py-1">
-                        {sessionLabel}
+                    {sessionLabel ? (
+                      s ? (
+                        <Link
+                          href={`/${locale}/lessons/${s.slug}`}
+                          className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans border border-rule px-2 py-1"
+                        >
+                          {sessionLabel}
+                        </Link>
+                      ) : (
+                        <span className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-2 py-1">
+                          {sessionLabel}
+                        </span>
+                      )
+                    ) : item.role ? (
+                      <span className="text-[9px] tracking-brand uppercase text-accent font-sans border border-accent px-2 py-1">
+                        {item.role[locale]}
                       </span>
-                    )}
+                    ) : null}
                   </div>
 
                   <p className="text-sm leading-relaxed mb-3">{item.bio[locale]}</p>
