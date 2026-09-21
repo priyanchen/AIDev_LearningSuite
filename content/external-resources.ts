@@ -50,6 +50,54 @@ export const externalResources: Record<string, ExternalResource> = {
       he: 'הרצאה 11 — אינטראקציית אדם-AI (כולל למידת אדם-בלולאה)',
     },
   },
+  'AI Agent': {
+    url: 'https://rdi.berkeley.edu/llm-agents/f24',
+    source: 'UC Berkeley',
+    label: {
+      en: `CS 194/294-196 — Large Language Model Agents (Dawn Song & Xinyun Chen, Fall 2024): the academic course on LLM agent infrastructure, tool use, and multi-agent collaboration`,
+      he: `CS 194/294-196 — Large Language Model Agents (דון סונג ושינג'ין צ'ן, סתיו 2024): הקורס האקדמי על תשתיות סוכני-LLM, שימוש בכלים, ושיתוף-פעולה רב-סוכנים`,
+    },
+  },
+  'Credentials': {
+    url: 'https://missing.csail.mit.edu/2020/security/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Lecture 9: Security and Cryptography (keys, secrets, and the authentication model behind services like OAuth)`,
+      he: `The Missing Semester of Your CS Education — הרצאה 9: אבטחה וקריפטוגרפיה (מפתחות, סודות, ומודל האימות שמאחורי שירותים כמו OAuth)`,
+    },
+  },
+  'AI Agent Landing Page': {
+    url: 'https://code.claude.com/docs/en/agent-sdk/overview',
+    source: 'Anthropic — Claude Agent SDK Docs',
+    label: {
+      en: `Official Claude Agent SDK documentation — the same agent loop and tools used to have an agent write and run code on its own, the exact pattern behind this exercise`,
+      he: `תיעוד רשמי של Claude Agent SDK — אותו לולאת-סוכן וכלים שמשמשים לגרום לסוכן לכתוב ולהריץ קוד בעצמו, בדיוק התבנית שמאחורי התרגיל הזה`,
+    },
+  },
+  'Streamlit Deployment': {
+    url: 'https://docs.streamlit.io/deploy/streamlit-community-cloud',
+    source: 'Official Streamlit Documentation',
+    label: {
+      en: `Official Streamlit documentation — deploying an app on Streamlit Community Cloud; no MIT/Harvard lecture teaches Streamlit specifically, so the tool's own official docs are the honest best source`,
+      he: `תיעוד רשמי של Streamlit — פריסת אפליקציה ב-Streamlit Community Cloud; אין הרצאת MIT/Harvard שמלמדת Streamlit באופן ספציפי, אז התיעוד הרשמי של הכלי עצמו הוא המקור הכן הטוב ביותר`,
+    },
+  },
+  'Supabase': {
+    url: 'https://supabase.com/docs/guides/database/postgres/row-level-security',
+    source: 'Official Supabase Documentation',
+    label: {
+      en: `Official Supabase documentation — Row Level Security guide; no MIT/Harvard lecture teaches Supabase specifically, so the platform's own official docs are the honest best source`,
+      he: `תיעוד רשמי של Supabase — מדריך Row Level Security; אין הרצאת MIT/Harvard שמלמדת Supabase באופן ספציפי, אז התיעוד הרשמי של הפלטפורמה עצמה הוא המקור הכן הטוב ביותר`,
+    },
+  },
+  'Anon vs Service Role Key': {
+    url: 'https://supabase.com/docs/guides/getting-started/api-keys',
+    source: 'Official Supabase Documentation',
+    label: {
+      en: `Official Supabase documentation — API keys guide (the anon key runs under Row Level Security; the service_role key bypasses it and must never reach the browser)`,
+      he: `תיעוד רשמי של Supabase — מדריך מפתחות API (מפתח ה-anon פועל תחת Row Level Security; מפתח ה-service_role עוקף אותה ולעולם לא צריך להגיע לדפדפן)`,
+    },
+  },
   'CPU / RAM / Storage': {
     url: 'https://cs50.harvard.edu/x/2025/notes/0/',
     source: 'CS50 (Harvard)',
@@ -768,6 +816,70 @@ export const externalResources: Record<string, ExternalResource> = {
     label: {
       en: `CS109A Lecture 5 — Model Selection and Cross Validation`,
       he: `CS109A הרצאה 5 — בחירת מודל ואימות-הצלבה`,
+    },
+  },
+  'Data Leakage': {
+    url: 'https://harvard-iacs.github.io/2021-CS109A/lectures/lecture05/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 5 — Model Selection and Cross Validation (the train/validation/test discipline that prevents leakage; the lecture doesn't use the term "leakage" directly)`,
+      he: `CS109A הרצאה 5 — בחירת מודל ואימות-הצלבה (המשמעת של אימון/אימות/בדיקה שמונעת דליפה; ההרצאה לא משתמשת במונח "דליפה" ישירות)`,
+    },
+  },
+  'Confusion Matrix': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture17/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 17 — kNN Classification and Logistic Regression II (confusion matrices, ROC curves, AUC)`,
+      he: `CS109A הרצאה 17 — סיווג kNN ורגרסיה לוגיסטית II (מטריצות בלבול, עקומות ROC, AUC)`,
+    },
+  },
+  'Precision / Recall / F1': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture17/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 17 — kNN Classification and Logistic Regression II (confusion matrices, ROC curves, AUC)`,
+      he: `CS109A הרצאה 17 — סיווג kNN ורגרסיה לוגיסטית II (מטריצות בלבול, עקומות ROC, AUC)`,
+    },
+  },
+  'Threshold Sweep': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture17/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 17 — kNN Classification and Logistic Regression II (the ROC curve is exactly a threshold sweep)`,
+      he: `CS109A הרצאה 17 — סיווג kNN ורגרסיה לוגיסטית II (עקומת ROC היא בדיוק סריקת סף)`,
+    },
+  },
+  'Parameters vs Hyperparameters': {
+    url: 'https://ocw.mit.edu/courses/6-867-machine-learning-fall-2006/2051efc0159bf145f2050469b7589fc5_lec9.pdf',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Machine Learning (6.867) — Lecture 9: Model Selection`,
+      he: `Machine Learning (6.867) — הרצאה 9: בחירת מודל`,
+    },
+  },
+  'Grid Search': {
+    url: 'https://ocw.mit.edu/courses/6-867-machine-learning-fall-2006/2051efc0159bf145f2050469b7589fc5_lec9.pdf',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Machine Learning (6.867) — Lecture 9: Model Selection (the academic foundation for searching a hyperparameter space; the lecture doesn't name grid search specifically)`,
+      he: `Machine Learning (6.867) — הרצאה 9: בחירת מודל (היסוד האקדמי לחיפוש במרחב היפר-פרמטרים; ההרצאה לא מזכירה grid search באופן ספציפי)`,
+    },
+  },
+  'LightGBM': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture26/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 26 — Boosting Methods for Classification (the gradient-boosting family LightGBM belongs to; the lecture doesn't teach LightGBM by name)`,
+      he: `CS109A הרצאה 26 — שיטות Boosting לסיווג (משפחת ה-gradient boosting ש-LightGBM שייכת אליה; ההרצאה לא מלמדת LightGBM בשמה)`,
+    },
+  },
+  'CatBoost': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture26/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `CS109A Lecture 26 — Boosting Methods for Classification (the gradient-boosting family CatBoost belongs to; the lecture doesn't teach CatBoost by name)`,
+      he: `CS109A הרצאה 26 — שיטות Boosting לסיווג (משפחת ה-gradient boosting ש-CatBoost שייכת אליה; ההרצאה לא מלמדת CatBoost בשמה)`,
     },
   },
   'Feature Importance': {
