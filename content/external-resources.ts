@@ -434,6 +434,14 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `CS50P שבוע 8 — תכנות מונחה עצמים (ירושה, super().__init__())`,
     },
   },
+  'Composition': {
+    url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-8-object-oriented-programming/',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Intro to CS and Programming in Python (6.0001) — Lecture 8: Object Oriented Programming`,
+      he: `Intro to CS and Programming in Python (6.0001) — הרצאה 8: תכנות מונחה עצמים`,
+    },
+  },
   'import vs from-import': {
     url: 'https://cs50.harvard.edu/python/weeks/4/',
     source: 'CS50P (Harvard)',
@@ -464,6 +472,22 @@ export const externalResources: Record<string, ExternalResource> = {
     label: {
       en: `CS50P Week 4 — Libraries (the if __name__ == "__main__": pattern)`,
       he: `CS50P שבוע 4 — ספריות (התבנית if __name__ == "__main__":)`,
+    },
+  },
+  'ModuleNotFoundError': {
+    url: 'https://cs50.harvard.edu/python/notes/4/',
+    source: 'Harvard CS50P',
+    label: {
+      en: `CS50's Introduction to Programming with Python — Lecture 4: Libraries (import, modules, and the errors that come from getting them wrong)`,
+      he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 4: ספריות (import, מודולים, והשגיאות שנובעות מטעות בהם)`,
+    },
+  },
+  'API Key Hygiene': {
+    url: 'https://missing.csail.mit.edu/2020/security/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Lecture 9: Security and Cryptography (keeping secrets secret, key generation, and why a leaked credential must be rotated)`,
+      he: `The Missing Semester of Your CS Education — הרצאה 9: אבטחה וקריפטוגרפיה (שמירה על סודות, יצירת מפתחות, ולמה פרטי גישה שדלפו חייבים להיות מוחלפים)`,
     },
   },
   'EDA': {
@@ -528,6 +552,54 @@ export const externalResources: Record<string, ExternalResource> = {
     label: {
       en: `Introduction to Computational Thinking and Data Science (6.0002) — uses NumPy throughout`,
       he: `Introduction to Computational Thinking and Data Science (6.0002) — משתמש ב-NumPy לכל אורכו`,
+    },
+  },
+  'Series & DataFrame': {
+    url: 'https://harvard-iacs.github.io/2021-CS109A/lectures/lecture02/notebook-3/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `Introduction to Data Science (CS109A) — Lecture 2: Introduction to PANDAS`,
+      he: `Introduction to Data Science (CS109A) — הרצאה 2: מבוא ל-PANDAS`,
+    },
+  },
+  '.loc vs .iloc': {
+    url: 'https://harvard-iacs.github.io/2021-CS109A/lectures/lecture02/notebook-3/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `Introduction to Data Science (CS109A) — Lecture 2: Introduction to PANDAS`,
+      he: `Introduction to Data Science (CS109A) — הרצאה 2: מבוא ל-PANDAS`,
+    },
+  },
+  'Boolean Masking': {
+    url: 'https://harvard-iacs.github.io/2021-CS109A/lectures/lecture02/notebook-3/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `Introduction to Data Science (CS109A) — Lecture 2: Introduction to PANDAS`,
+      he: `Introduction to Data Science (CS109A) — הרצאה 2: מבוא ל-PANDAS`,
+    },
+  },
+  'describe()': {
+    url: 'https://harvard-iacs.github.io/2020-CS109A/lectures/lecture04/notebook-2/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `Introduction to Data Science (CS109A) — Lecture 4: EDA and PANDAS`,
+      he: `Introduction to Data Science (CS109A) — הרצאה 4: EDA ו-PANDAS`,
+    },
+  },
+  'sqlite3 in Python': {
+    url: 'https://ocw.mit.edu/courses/6-830-database-systems-fall-2010/',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Database Systems (6.830) — the general database-systems foundations behind sqlite3; the course doesn't teach sqlite3 specifically`,
+      he: `Database Systems (6.830) — היסודות הכלליים של מערכות בסיסי נתונים שמאחורי sqlite3; הקורס לא מלמד sqlite3 באופן ספציפי`,
+    },
+  },
+  'Row Level Security': {
+    url: 'https://www2.eecs.berkeley.edu/Courses/CS186/',
+    source: 'UC Berkeley',
+    label: {
+      en: `CS 186 — Introduction to Database Systems, which covers database protection and access control generally; the course doesn't teach Postgres/Supabase Row Level Security by name`,
+      he: `CS 186 — מבוא למערכות בסיסי נתונים, שמכסה הגנת בסיס נתונים ובקרת גישה באופן כללי; הקורס לא מלמד Row Level Security של Postgres/Supabase בשמה`,
     },
   },
   'DBMS': {
@@ -624,6 +696,14 @@ export const externalResources: Record<string, ExternalResource> = {
     label: {
       en: `Introduction to Machine Learning (6.036) — covers over-fitting and generalization`,
       he: `Introduction to Machine Learning (6.036) — מכסה התאמת יתר והכללה`,
+    },
+  },
+  'Project Characterization': {
+    url: 'https://harvard-iacs.github.io/2021-CS109A/lectures/lecture01/notebook/',
+    source: 'Harvard CS109A',
+    label: {
+      en: `Introduction to Data Science (CS109A) — Lecture 1: Introduction, framing what a data science project actually is before building it`,
+      he: `Introduction to Data Science (CS109A) — הרצאה 1: מבוא, מסגור מה בעצם פרויקט מדעי נתונים לפני שבונים אותו`,
     },
   },
   'Multivariate Regression': {

@@ -687,6 +687,7 @@ export const sessions: Session[] = [
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1YCzMkZNsL8q1QY66rAoHS2T6uWhyyQCI/view',
       chat: 'https://drive.google.com/file/d/1-00ZnBknRpqPc0rBMppA0Rgehifuqmp1/view',
+      slides: ['https://drive.google.com/file/d/1MQ_FWuhjk3RQzObVDHf47UOr3wiHFkLu/view'],
     },
     videoLinks: {
       lecture: 'https://us06web.zoom.us/rec/share/PqpGLG4G2H-l3vWUKvBthZxglocRiSEA3l3HW4RBL7KJ6VWY5UdtyYiv0at49QGC.saszl7h4ZcXi3xG_',
