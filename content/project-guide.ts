@@ -250,3 +250,79 @@ export const projectSpokenExcerpts: SpokenExcerpt[] = [
     en: `Railway — it's essentially a platform that will let us upload the app [deploy it].`,
   },
 ];
+
+export type PathStep = {
+  title: Bilingual;
+  body: Bilingual;
+};
+
+// Reconstructed from Session 22's own live Zoom chat log (not the VTT transcript above) — the actual
+// sequence the class worked through to go from an open brainstorm to the specific characterization
+// prompt Dr. Zuari eventually shared. Individual students' names are omitted here for privacy; the
+// site's own author (PriYa N. Chen) is named where her real, visible messages shaped a decision, since
+// this is her own site and her own class contribution.
+export const projectPromptPath: PathStep[] = [
+  {
+    title: { en: 'Open Brainstorm', he: 'סיעור מוחות פתוח' },
+    body: {
+      en: `The class threw out real-world computer-vision ideas in chat: airport logistics, warehouse inventory counting, autonomous cars, parking, supermarket checkout, a "smart shopping cart" that auto-detects items and charges on the way out.`,
+      he: `הכיתה זרקה בצ'אט רעיונות אמיתיים לראייה ממוחשבת: לוגיסטיקת שדה תעופה, ספירת מלאי במחסן, מכוניות אוטונומיות, חנייה, קופה בסופרמרקט, "עגלת קניות חכמה" שמזהה מוצרים אוטומטית וגובה תשלום ביציאה.`,
+    },
+  },
+  {
+    title: { en: 'The Pivot to Plants', he: 'המעבר לצמחים' },
+    body: {
+      en: `Someone suggested "plants," another "plant disease detection" — then a third framing, "medicinal plant identification," pulled the room together. The site's own author (PriYa N. Chen), live in that chat, reacted immediately: "medicinal plants — excellent!!"`,
+      he: `מישהו הציע "צמחים," מישהו אחר "זיהוי מחלות צמחים" — ואז מסגור שלישי, "זיהוי צמחי מרפא," איחד את החדר. המחברת של האתר עצמו (PriYa N. Chen), בצ'אט החי באותו רגע, הגיבה מיד: "צמחי מרפא מעולה!!"`,
+    },
+  },
+  {
+    title: { en: 'The Characterization Poll', he: 'הסקר על האפיון' },
+    body: {
+      en: `Dr. Zuari proposed three possible framings for the app and the class voted live in chat, 1/2/3. Consensus landed on a blend of two of them — evidence-based framing for skeptics, accessible framing for everyday users — a split PriYa proposed directly: "2 for skeptics, 3 for the user."`,
+      he: `ד״ר זוארי הציע שלושה מסגורים אפשריים לאפליקציה, והכיתה הצביעה בצ'אט החי, 1/2/3. ההסכמה נחתה על שילוב של שניים מהם — מסגור מבוסס-ראיות לסקפטיים, מסגור נגיש למשתמשים רגילים — חלוקה ש-PriYa הציעה ישירות: "2 לסקפטיים, 3 למשתמש."`,
+    },
+  },
+  {
+    title: { en: 'Scoping the Knowledge Base', he: 'תיחום מאגר הידע' },
+    body: {
+      en: `The class picked which medical traditions the system should actually draw from — Chinese medicine, Ayurveda, homeopathy — again on PriYa's suggestion ("go with Chinese medicine, Ayurveda, homeopathy"), adopted directly into the spec.`,
+      he: `הכיתה בחרה מאילו מסורות רפואיות המערכת תשאב בפועל — רפואה סינית, איירוודה, הומאופתיה — שוב לפי הצעתה של PriYa ("לך על רפואה סינית, איירוודה, הומאופתיה"), שאומצה ישירות לתוך המפרט.`,
+    },
+  },
+  {
+    title: { en: 'Defining the MVP\'s Target Symptoms', he: 'הגדרת התסמינים למוצר המינימלי' },
+    body: {
+      en: `Brainstormed live: cancer support, winter illnesses, children's illnesses, immune support, pain, nausea, fatigue, appetite changes, sleep issues — the raw material for the MVP's actual scope.`,
+      he: `סוער בשידור חי: תמיכה בסרטן, מחלות חורף, מחלות ילדים, חיזוק מערכת החיסון, כאב, בחילה, עייפות, שינויים בתיאבון, בעיות שינה — חומר הגלם לתחום בפועל של המוצר המינימלי.`,
+    },
+  },
+  {
+    title: { en: 'Designing the Trust Layer', he: 'עיצוב שכבת האמון' },
+    body: {
+      en: `PriYa proposed that the system's "researcher" role should be an AI agent whose output requires human/expert approval before publishing, rather than trusting a single AI answer outright — the design point Dr. Zuari later used to explain content states (checked vs. pending review) in the VTT excerpts above.`,
+      he: `PriYa הציעה שתפקיד ה"חוקר" של המערכת יהיה סוכן AI שהפלט שלו דורש אישור אנושי/מומחה לפני פרסום, במקום לבטוח בתשובת AI בודדת ללא בדיקה — נקודת העיצוב שד״ר זוארי השתמש בה בהמשך כדי להסביר מצבי תוכן (נבדק מול ממתין לבדיקה) בקטעי ה-VTT שלמעלה.`,
+    },
+  },
+  {
+    title: { en: 'Choosing the Platform', he: 'בחירת הפלטפורמה' },
+    body: {
+      en: `Students asked in chat whether Railway was like Vercel, or like Cloudflare — Dr. Zuari settled on Railway, the same platform named in the roadmap's own reference tech stack above.`,
+      he: `סטודנטים שאלו בצ'אט האם Railway דומה ל-Vercel, או ל-Cloudflare — ד״ר זוארי קבע על Railway, אותה פלטפורמה שמופיעה בערימת הטכנולוגיה לדוגמה של המפת-דרכים למעלה.`,
+    },
+  },
+  {
+    title: { en: 'The Git Workflow Question', he: 'שאלת תהליך העבודה ב-Git' },
+    body: {
+      en: `A student asked about the actual difference between staying on a branch versus merging, and whether unrelated feature branches interfere with each other — leading into the same test-on-a-branch → merge-to-main → deploy discipline the CLI syntax section documents.`,
+      he: `סטודנט שאל מה ההבדל בפועל בין להישאר על ענף לבין למזג, והאם ענפי תכונה לא-קשורים מפריעים אחד לשני — מה שהוביל לאותה משמעת בדיקה-על-ענף ← מיזוג-ל-main ← פריסה שסעיף התחביר של ה-CLI מתעד.`,
+    },
+  },
+  {
+    title: { en: 'The Handoff', he: 'ההעברה' },
+    body: {
+      en: `Near the end of class, students explicitly asked him in chat to "send the prompt of the characterization you sent to the chat[bot]" — he posted the real ChatGPT share link. Moments later, asked for "the GitHub link," he posted the resulting repo — the same two links attached above.`,
+      he: `לקראת סוף השיעור, סטודנטים ביקשו ממנו במפורש בצ'אט "לשלוח את הפרומפט של האפיון ששלחת לצ'אט" — הוא פרסם את קישור השיתוף האמיתי של ChatGPT. רגעים לאחר מכן, כשנשאל על "הקישור מגיטהאב," הוא פרסם את המאגר שנוצר — אותם שני קישורים המצורפים למעלה.`,
+    },
+  },
+];

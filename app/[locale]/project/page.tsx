@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { cardDecks } from '@/content/cards';
-import { projectPhases, projectSpokenExcerpts } from '@/content/project-guide';
+import { projectPhases, projectSpokenExcerpts, projectPromptPath } from '@/content/project-guide';
 import { getSession } from '@/lib/registry';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
 
 const introSlug = 'session-01-intro';
 const introCardNumber = '02';
+const branchSlug = 'session-08-python-5';
+const branchCardNumber = '01';
 
 export default async function ProjectPage({
   params: { locale },
@@ -19,6 +21,9 @@ export default async function ProjectPage({
   const deck = cardDecks[introSlug];
   const introCard = deck?.find((c) => c.number === introCardNumber);
   const introSession = getSession(introSlug);
+  const branchDeck = cardDecks[branchSlug];
+  const branchCard = branchDeck?.find((c) => c.number === branchCardNumber);
+  const branchSession = getSession(branchSlug);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -59,8 +64,8 @@ export default async function ProjectPage({
         </h2>
         <p className="text-center italic text-muted text-sm mb-2">
           {locale === 'he'
-            ? 'לא שקפים — המילים שנאמרו בפועל, בזמן שד״ר זוארי אפיין פרויקט אמיתי (אפליקציית זיהוי תרופות צמחיות) יחד עם הכיתה, בשידור חי, מול אותם שלבים שלמטה.'
-            : "Not slides — the words he actually said, live-characterizing a real project (a herbal-remedy identification app) with the class, against the same steps documented below."}
+            ? 'לא שקפים — המילים שנאמרו בפועל, בזמן שד״ר זוארי הדגים "פרויקט לדוגמה" חי (אפליקציית זיהוי תרופות צמחיות) יחד עם הכיתה — אותה נקודת-ביקורת מעשית שמוזכרת בקשת הקורס של מפגש 1 למעלה, מול אותם שלבים שלמטה.'
+            : 'Not slides — the words he actually said, live-demonstrating a "Sample Project" (a herbal-remedy identification app) with the class — the same practical checkpoint named in Session 1\'s course arc above, against the same steps documented below.'}
         </p>
         <p className="text-center text-[10px] text-muted mb-8">
           {locale === 'he'
@@ -75,6 +80,48 @@ export default async function ProjectPage({
             </blockquote>
           ))}
         </div>
+
+        <h3 className="text-lg small-caps tracking-wide text-center mb-2">
+          {locale === 'he' ? 'הדרך — מסיעור מוחות לפרומפט' : 'The Path — From Brainstorm to Prompt'}
+        </h3>
+        <p className="text-center italic text-muted text-sm mb-6">
+          {locale === 'he'
+            ? 'משוחזר מיומן הצ׳אט החי של מפגש 22 עצמו (לא התמליל) — הרצף בפועל שהכיתה עברה. שמות סטודנטים הושמטו לפרטיות; PriYa N. Chen, מחברת האתר, מוזכרת במקומות שבהם ההודעות האמיתיות שלה בצ׳אט עיצבו החלטה.'
+            : "Reconstructed from Session 22's own live chat log (not the transcript) — the actual sequence the class worked through. Student names omitted for privacy; PriYa N. Chen, this site's own author, is named where her real chat messages shaped a decision."}
+        </p>
+        <div className="grid gap-4 mb-10">
+          {projectPromptPath.map((step, i) => (
+            <div key={i} className="flex gap-4">
+              <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-6 pt-0.5">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h4 className="small-caps tracking-wide text-sm mb-1">{step.title[locale]}</h4>
+                <p className="text-xs leading-relaxed text-muted">{step.body[locale]}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {branchCard && (
+          <div className="mb-10">
+            {branchSession && (
+              <p className="text-center text-[10px] tracking-brand uppercase text-muted font-sans mb-3">
+                {locale === 'he' ? 'כרטיס 01 — נלקח ממפגש' : 'Card 01 — sourced from Session'}{' '}
+                {String(branchSession.number).padStart(2, '0')}: {branchSession.title[locale]}
+              </p>
+            )}
+            <Card card={branchCard} locale={locale} total={branchDeck!.length} />
+            <div className="text-center mt-3">
+              <Link
+                href={`/${locale}/lessons/${branchSlug}#card-${branchCardNumber}`}
+                className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans"
+              >
+                {locale === 'he' ? 'צפייה במפגש המקורי →' : 'View in its original session →'}
+              </Link>
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-wrap justify-center gap-3">
           <a
