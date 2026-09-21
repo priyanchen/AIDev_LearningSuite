@@ -310,8 +310,8 @@ export const otherLanguages: SyntaxLanguageSection[] = [
         title: { en: 'A Duplicate-Insert Gotcha', he: 'מלכודת הכנסה כפולה' },
         source: 'Session 15 · Card 06',
         points: [
-          { en: `SQLite has no memory of "this insert already ran" — re-running a cell that inserts rows creates a brand-new, independent set of rows every single time, with no error.`, he: `ל-SQLite אין זיכרון של "ההכנסה הזו כבר רצה" — הרצה חוזרת של תא שמכניס שורות יוצרת סט חדש ועצמאי לגמרי של שורות בכל פעם, בלי שגיאה.` },
-          { en: `An auto-incrementing primary key happily hands out a fresh ID to every duplicate, so the failure shows up as extra rows, not as a crash.`, he: `מפתח ראשי שמעלה את עצמו אוטומטית מוסר בשמחה מזהה טרי לכל כפילות, אז הכשל מופיע כשורות נוספות, לא כקריסה.` },
+          { en: `SQLite — has no memory of "this insert already ran"; Re-running an insert cell — creates a brand-new, independent set of rows every single time, with no error.`, he: `SQLite — אין לו זיכרון של "ההכנסה הזו כבר רצה"; הרצה חוזרת של תא שמכניס שורות — יוצרת סט חדש ועצמאי לגמרי של שורות בכל פעם, בלי שגיאה.` },
+          { en: `Auto-incrementing primary key — happily hands out a fresh ID to every duplicate, so the failure shows up as extra rows, not as a crash.`, he: `מפתח ראשי שמעלה את עצמו אוטומטית — מוסר בשמחה מזהה טרי לכל כפילות, אז הכשל מופיע כשורות נוספות, לא כקריסה.` },
         ],
       },
     ],
