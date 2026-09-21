@@ -177,6 +177,62 @@ function HerbalRepoStatusDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// Illustrates the one concept from Session 22's git walkthrough he named but didn't demo live —
+// a worktree as a full separate copy of the repo, vs. a branch as one shared working directory.
+function WorktreeDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-3 ps-10">
+      <div className="border border-dashed border-rule p-4">
+        <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+          {locale === 'he' ? 'ענף אחד מול Worktrees נפרדים' : 'One Branch vs. Separate Worktrees'}
+        </p>
+        <div className="flex items-stretch justify-center flex-wrap gap-4">
+          <div className="border border-rule p-3">
+            <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">
+              {locale === 'he' ? 'ענף — תיקיית עבודה אחת' : 'A Branch — One Working Directory'}
+            </p>
+            <div className="grid gap-1 justify-items-center">
+              <DiagramBox label="~/herbal-evidence" />
+              <span className="text-accent text-xs">↕ checkout</span>
+              <DiagramBox label="feature-a" />
+            </div>
+            <p className="text-[9px] italic text-muted text-center mt-2 max-w-[10rem]">
+              {locale === 'he'
+                ? 'סוכן אחד בכל פעם — checkout מחליף את מה שעל הדיסק'
+                : 'One agent at a time — checkout swaps what\'s on disk'}
+            </p>
+          </div>
+          <div className="flex items-center px-1">
+            <span className="text-accent">→</span>
+          </div>
+          <div className="border border-rule p-3">
+            <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">
+              {locale === 'he' ? 'Worktrees — תיקיות נפרדות פיזית' : 'Worktrees — Physically Separate Directories'}
+            </p>
+            <div className="grid gap-1">
+              <div className="flex items-center gap-2">
+                <DiagramBox label="~/herbal-evidence-a" />
+                <span className="text-[8px] tracking-brand uppercase text-muted font-sans">{locale === 'he' ? 'סוכן A' : 'Agent A'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <DiagramBox label="~/herbal-evidence-b" />
+                <span className="text-[8px] tracking-brand uppercase text-muted font-sans">{locale === 'he' ? 'סוכן B' : 'Agent B'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <DiagramBox label="~/herbal-evidence-c" />
+                <span className="text-[8px] tracking-brand uppercase text-muted font-sans">{locale === 'he' ? 'סוכן C' : 'Agent C'}</span>
+              </div>
+            </div>
+            <p className="text-[9px] italic text-muted text-center mt-2">
+              {locale === 'he' ? 'כולם מאותו .git — רצים במקביל, בלי לדרוס זה את זה' : 'All from the same .git — run in parallel, without overwriting each other'}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TreeLine({ label, note, depth = 0 }: { label: string; note?: string; depth?: number }) {
   return (
     <div className="flex items-baseline gap-2 font-mono text-xs" style={{ paddingInlineStart: `${depth * 1.25}rem` }}>
@@ -708,9 +764,10 @@ export default async function ProjectPage({
                 <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-6 pt-0.5">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <div>
+                <div className="flex-1">
                   <h4 className="small-caps tracking-wide text-sm mb-1">{stage.title[locale]}</h4>
                   <p className="text-xs leading-relaxed text-muted">{stage.body[locale]}</p>
+                  {i === 7 && <WorktreeDiagram locale={locale} />}
                 </div>
               </div>
             ))}
