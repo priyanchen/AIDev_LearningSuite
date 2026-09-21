@@ -98,20 +98,47 @@ export default async function SyntaxGuidePage({
       </p>
       <div className="ornament text-xl text-accent text-center mb-8"></div>
 
-      <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
+      <p className="text-center italic text-muted max-w-2xl mx-auto mb-8">
         {locale === 'he'
           ? 'סיכום התחביר שנלמד לאורך מודול Python, ממוחזר מתקציר הסיום של כל מחברת Jupyter בקורס — לא תיעוד פייתון כללי. כל נושא ממוספר לפי מספר המחברת המקורית שלו.'
           : 'A summary of the syntax taught across the Python module, recovered from the closing summary of every Jupyter notebook in the course — not generic Python documentation. Each topic is numbered by its original notebook number.'}
       </p>
 
-      <div className="grid gap-8">
-        {syntaxGuide.map((topic) => (
-          <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
+      {/* Jump nav — click a language to scroll straight to its section */}
+      <nav className="flex flex-wrap justify-center gap-2 mb-16">
+        <a
+          href="#lang-python"
+          className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition"
+        >
+          Python
+        </a>
+        {otherLanguages.map((section) => (
+          <a
+            key={section.id}
+            href={`#${section.id}`}
+            className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition"
+          >
+            {section.language[locale]}
+          </a>
         ))}
-      </div>
+      </nav>
+
+      <section id="lang-python" className="scroll-mt-24">
+        <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
+          {locale === 'he' ? 'השפה המרכזית' : 'Core Language'}
+        </div>
+        <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-10 text-center">
+          Python
+        </h2>
+        <div className="grid gap-8">
+          {syntaxGuide.map((topic) => (
+            <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
+          ))}
+        </div>
+      </section>
 
       {otherLanguages.map((section) => (
-        <section key={section.id} className="mt-20">
+        <section key={section.id} id={section.id} className="mt-20 scroll-mt-24">
           <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
             {locale === 'he' ? 'שפה נוספת' : 'Additional Language'}
           </div>
