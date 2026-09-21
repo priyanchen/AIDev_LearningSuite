@@ -49,6 +49,7 @@ export type Session = {
   hasCardDeck?: boolean;
   hasProject?: boolean;
   projectFile?: string;
+  exampleUrl?: string;             // a live, deployed example of the session's assignment
 };
 
 // ============================================================================
@@ -311,6 +312,7 @@ export const sessions: Session[] = [
     status: 'complete',
     concepts: ['Indexing & Slicing', 'Mutability', 'Variables', 'Lists', 'Tuples', 'Dictionaries', 'AI Agent Landing Page'],
     hasCardDeck: true,
+    exampleUrl: 'https://global-memory-temple.vercel.app/',
     sourceLinks: {
       recording: 'https://drive.google.com/file/d/1S0I4S2WsESpnFRWvoie-OryIOYn_SrfQ/view',
       chat: 'https://drive.google.com/file/d/1hIhHEwKyjsIwXm2HNYGcaycFLu7fYhwD/view',

@@ -164,6 +164,16 @@ export default async function SessionPage({
                 {t('openSlides')} {slides.length > 1 ? i + 1 : ''} ↗
               </a>
             ))}
+            {session.exampleUrl && (
+              <a
+                href={session.exampleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-brand uppercase text-accent border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition font-sans"
+              >
+                {t('viewExample')} ↗
+              </a>
+            )}
           </div>
         </section>
       )}
