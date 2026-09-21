@@ -3,6 +3,19 @@ import type { Locale } from '@/i18n';
 
 function ResourceNodeView({ node, locale }: { node: ResourceNode; locale: Locale }) {
   if (node.kind === 'file') {
+    if (node.ext === 'app') {
+      return (
+        <a
+          href={node.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={node.name}
+          className="inline-flex items-center gap-2 text-[10px] tracking-brand uppercase text-accent border border-accent px-3 py-1.5 my-1 hover:bg-accent hover:text-paper transition font-sans"
+        >
+          {node.label[locale]} ↗
+        </a>
+      );
+    }
     return (
       <a
         href={node.url}
