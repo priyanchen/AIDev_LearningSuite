@@ -390,11 +390,112 @@ export const otherLanguages: SyntaxLanguageSection[] = [
     ],
   },
   {
+    id: 'python-quickref',
+    language: { en: "Ester's Python Quick-Reference", he: 'דף עזר מהיר לפייתון — אסתר' },
+    note: {
+      en: `A literal term-for-term recreation of Ester's own Python command-reference table (Module 3's Practice Companion PDF) — every pairing below is the same command and label the sheet itself lists, not a paraphrase. Where the source PDF's own multi-column layout made a pairing genuinely ambiguous after extraction, the command shown is the one that actually matches its label, verified against real Python behavior rather than raw column position.`,
+      he: `שחזור מילולי, מונח-מול-מונח, של דף עזר הפקודות של אסתר עצמה לפייתון (PDF ממלווה התרגול של מודול 3) — כל צמד למטה הוא אותה פקודה ואותה תווית שהדף עצמו מפרט, לא ניסוח מחדש. במקומות שהפריסה הרב-טורית של ה-PDF המקורי הפכה צמד למעורפל ממש לאחר החילוץ, הפקודה שמוצגת היא זו שבאמת תואמת לתווית שלה, מאומתת מול התנהגות אמיתית של פייתון ולא לפי מיקום הטור הגולמי.`,
+    },
+    topics: [
+      {
+        number: 'qref-01',
+        title: { en: 'Type Conversion & Basic Structures', he: 'המרת טיפוסים ומבנים בסיסיים' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`int()\` — convert to whole number`, he: `\`int()\` — המרה למספר שלם` },
+          { en: `\`float()\` — convert to decimal`, he: `\`float()\` — המרה לעשרוני` },
+          { en: `\`str()\` — convert to string`, he: `\`str()\` — המרה למחרוזת` },
+          { en: `\`bool()\` — convert to boolean`, he: `\`bool()\` — המרה לבוליאני` },
+          { en: `\`list\`, \`tuple\`, \`dict\`, \`set\` — the four core data structures`, he: `\`list\`, \`tuple\`, \`dict\`, \`set\` — ארבעת מבני הנתונים המרכזיים` },
+        ],
+      },
+      {
+        number: 'qref-02',
+        title: { en: 'List, Set & Dict Methods', he: 'מתודות של רשימה, קבוצה ומילון' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`list.append()\` — add to the end; \`list.insert()\` — add at a position; \`list.remove()\` — remove an element; \`list.pop()\` — remove & return by index (default last).`, he: `\`list.append()\` — הוספה לסוף; \`list.insert()\` — הוספה במיקום; \`list.remove()\` — הסרת אלמנט; \`list.pop()\` — הוצאה לפי אינדקס (ברירת מחדל: אחרון).` },
+          { en: `\`list.sort()\` / \`sorted()\` — sort; \`list.reverse()\` — reverse; \`list.index()\` — find index; \`list.count()\` — count occurrences.`, he: `\`list.sort()\` / \`sorted()\` — מיון; \`list.reverse()\` — היפוך; \`list.index()\` — מציאת אינדקס; \`list.count()\` — ספירה.` },
+          { en: `\`set.add()\` — add an element; \`set.remove()\` — remove (errors if missing); \`set.discard()\` — safe removal; \`set.pop()\` — random extraction.`, he: `\`set.add()\` — הוספת אלמנט; \`set.remove()\` — הסרה (שגיאה אם לא נמצא); \`set.discard()\` — הסרה בטוחה; \`set.pop()\` — הוצאה אקראית.` },
+          { en: `\`set.union()\` — union; \`set.intersection()\` — intersection; \`set.difference()\` — difference.`, he: `\`set.union()\` — איחוד; \`set.intersection()\` — חיתוך; \`set.difference()\` — הפרש.` },
+          { en: `\`dict.get()\` — get a value; \`dict.keys()\` / \`.values()\` / \`.items()\` — keys / values / key-value pairs; \`dict.update()\` — update; \`dict.setdefault()\` — set if missing; \`del dict[key]\` — delete a key.`, he: `\`dict.get()\` — קבלת ערך; \`dict.keys()\` / \`.values()\` / \`.items()\` — מפתחות / ערכים / זוגות מפתח-ערך; \`dict.update()\` — עדכון; \`dict.setdefault()\` — הגדרה אם לא קיים; \`del dict[key]\` — מחיקת מפתח.` },
+          { en: `\`len()\` — length, works on all four structures.`, he: `\`len()\` — אורך, עובד על כל ארבעת המבנים.` },
+        ],
+      },
+      {
+        number: 'qref-03',
+        title: { en: 'Loops & Comprehensions', he: 'לולאות והבנות' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`break\` — exit the loop; \`continue\` — skip to next iteration; \`pass\` — empty no-op.`, he: `\`break\` — יציאה מלולאה; \`continue\` — דילוג לאיטרציה הבאה; \`pass\` — פעולה ריקה.` },
+          { en: `\`enumerate()\` — index and value together; \`zip()\` — pair iterables together; \`range()\` — number range.`, he: `\`enumerate()\` — אינדקס וערך יחד; \`zip()\` — צימוד איטרבלים יחד; \`range()\` — טווח מספרים.` },
+          { en: `\`[x for x in range(10)]\` — list comprehension; \`[x for x in list if condition]\` — with a condition.`, he: `\`[x for x in range(10)]\` — הבנת רשימה (List Comprehension); \`[x for x in list if condition]\` — עם תנאי.` },
+          { en: `\`sum()\` — sum; \`str.split()\` — split a string into a list.`, he: `\`sum()\` — סכום; \`str.split()\` — פיצול מחרוזת לרשימה.` },
+        ],
+      },
+      {
+        number: 'qref-04',
+        title: { en: 'Functions & Scope', he: 'פונקציות והיקף' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`def function_name():\` — define a function; \`return\` — return a value; \`lambda\` — anonymous function.`, he: `\`def function_name():\` — הגדרת פונקציה; \`return\` — החזרת ערך; \`lambda\` — פונקציה אנונימית.` },
+          { en: `\`map()\` — apply a function to every item; \`filter()\` — keep matching items; \`input()\` — get user input; \`print()\` — print to screen.`, he: `\`map()\` — הפעלת פונקציה על כל איבר; \`filter()\` — סינון איברים תואמים; \`input()\` — קבלת קלט מהמשתמש; \`print()\` — הדפסה למסך.` },
+          { en: `\`global\` — rebind a module-level name from inside a function; \`type()\` — object's type; \`isinstance()\` — check type; \`abs()\` — absolute value; \`round()\` — round a number.`, he: `\`global\` — קישור מחדש של שם ברמת המודול מתוך פונקציה; \`type()\` — סוג האובייקט; \`isinstance()\` — בדיקת סוג; \`abs()\` — ערך מוחלט; \`round()\` — עיגול מספר.` },
+        ],
+      },
+      {
+        number: 'qref-05',
+        title: { en: 'Operators & Comparisons', he: 'אופרטורים והשוואות' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`%\` — remainder (modulo); \`//\` — integer division; \`**\` — exponent.`, he: `\`%\` — שארית (מודולו); \`//\` — חילוק שלם; \`**\` — חזקה.` },
+          { en: `\`==\` — equal; \`!=\` — not equal; \`<\`, \`>\`, \`<=\`, \`>=\` — comparisons.`, he: `\`==\` — השוואה; \`!=\` — שונה מ; \`<\`, \`>\`, \`<=\`, \`>=\` — השוואות.` },
+          { en: `\`and\`, \`or\`, \`not\`, \`&\`, \`|\` — logical operators.`, he: `\`and\`, \`or\`, \`not\`, \`&\`, \`|\` — אופרטורים לוגיים.` },
+        ],
+      },
+      {
+        number: 'qref-06',
+        title: { en: 'String Methods', he: 'מתודות מחרוזת' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`str.upper()\` / \`.lower()\` — uppercase / lowercase; \`str.strip()\` — remove whitespace; \`str.replace()\` — replace text.`, he: `\`str.upper()\` / \`.lower()\` — אותיות גדולות / קטנות; \`str.strip()\` — הסרת רווחים; \`str.replace()\` — החלפת טקסט.` },
+          { en: `\`str.startswith()\` / \`.endswith()\` — check start/end; \`str.find()\` — find position; \`str.isdigit()\` — is it digits; \`str.join()\` — join into a string.`, he: `\`str.startswith()\` / \`.endswith()\` — בדיקת התחלה/סיום; \`str.find()\` — מציאת מיקום; \`str.isdigit()\` — האם ספרות; \`str.join()\` — חיבור לרשימה למחרוזת.` },
+          { en: `\`f"text {variable}"\` — string format (f-string).`, he: `\`f"text {variable}"\` — פורמט מחרוזת (f-string).` },
+        ],
+      },
+      {
+        number: 'qref-07',
+        title: { en: 'Errors & Exception Handling', he: 'שגיאות וטיפול בחריגות' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`try\`, \`except\` — error handling.`, he: `\`try\`, \`except\` — טיפול בשגיאות.` },
+          { en: `\`SyntaxError\` — syntax error; \`TypeError\` — type error; \`ValueError\` — value error; \`KeyError\` — missing dict key; \`IndexError\` — index out of range.`, he: `\`SyntaxError\` — שגיאת תחביר; \`TypeError\` — שגיאת סוג; \`ValueError\` — שגיאת ערך; \`KeyError\` — מפתח חסר במילון; \`IndexError\` — אינדקס מחוץ לטווח.` },
+          { en: `\`all()\` — true if every item is true; \`any()\` — true if at least one item is true.`, he: `\`all()\` — אמת אם כל האיברים אמת; \`any()\` — אמת אם לפחות איבר אחד אמת.` },
+        ],
+      },
+      {
+        number: 'qref-08',
+        title: { en: 'Packages & Key Terms', he: 'חבילות ומונחי מפתח' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`pandas\` — files; \`matplotlib\` — graphs; \`seaborn\` — advanced graphs; \`numpy\` — math computations.`, he: `\`pandas\` — קבצים; \`matplotlib\` — גרפים; \`seaborn\` — גרפים מתקדמים; \`numpy\` — חישובים מתמטיים.` },
+          { en: `\`sklearn\` — machine learning; \`pytorch\` — deep learning; \`statsmodels\` — statistics; \`Mermaid\` — flowcharts.`, he: `\`sklearn\` — למידת מכונה; \`pytorch\` — למידה עמוקה; \`statsmodels\` — סטטיסטיקה; \`Mermaid\` — תרשימי זרימה.` },
+          { en: `\`import wikipedia\` — import the Wikipedia package; \`wikipedia.page()\` — get a page; \`wiki.content\` — page content; \`wikipedia.search()\` — search.`, he: `\`import wikipedia\` — ייבוא חבילת ויקיפדיה; \`wikipedia.page()\` — קבלת דף; \`wiki.content\` — תוכן הדף; \`wikipedia.search()\` — חיפוש.` },
+          { en: `Duck Typing — identification by behavior; Mutable vs Immutable — can change vs fixed; Scope — a variable's access range.`, he: `Duck Typing — זיהוי לפי התנהגות; Mutable vs Immutable — ניתן לשינוי מול קבוע; Scope — טווח גישה למשתנה.` },
+          { en: `Global Variables / Local Variables — module-level vs function-level names; Default / Keyword / Positional Arguments — the three ways a function receives its arguments.`, he: `Global Variables / Local Variables — שמות ברמת המודול מול רמת הפונקציה; Default / Keyword / Positional Arguments — שלוש הדרכים שפונקציה מקבלת בהן את הארגומנטים שלה.` },
+        ],
+      },
+    ],
+    attachments: [
+      { label: { en: "Ester's Python Tables — Command Summary (PDF)", he: 'טבלאות פייתון של אסתר — סיכום פקודות (PDF)' }, url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view' },
+    ],
+  },
+  {
     id: 'numpy',
     language: { en: 'NumPy', he: 'NumPy' },
     note: {
-      en: `Used throughout the Data Science module (Sessions 17–21) for array math underneath pandas, but never had its own notebook summary. What follows is sourced from Ester's own Python command-reference sheet (Module 3's Practice Companion), not the instructor's notebooks — treat it as a supplementary cheat sheet, not a course transcript.`,
-      he: `בשימוש לאורך כל מודול מדעי הנתונים (מפגשים 17–21) לחישובי מערכים מתחת ל-pandas, אך מעולם לא הייתה לו מחברת סיכום משלו. מה שבא בהמשך מקורו בדף עזר לפקודות פייתון של אסתר עצמה (מלווה התרגול של מודול 3), לא מהמחברות של המרצה — יש להתייחס אליו כגיליון עזר משלים, לא כתמליל קורס.`,
+      en: `Used throughout the Data Science module (Sessions 17–21) for array math underneath pandas, but never had its own notebook summary. A literal, term-for-term recreation of the NumPy rows in Ester's own Python command-reference sheet (Module 3's Practice Companion), not the instructor's notebooks.`,
+      he: `בשימוש לאורך כל מודול מדעי הנתונים (מפגשים 17–21) לחישובי מערכים מתחת ל-pandas, אך מעולם לא הייתה לו מחברת סיכום משלו. שחזור מילולי, מונח-מול-מונח, של שורות NumPy בדף עזר הפקודות של אסתר עצמה (מלווה התרגול של מודול 3), לא מהמחברות של המרצה.`,
     },
     topics: [
       {
@@ -402,10 +503,11 @@ export const otherLanguages: SyntaxLanguageSection[] = [
         title: { en: 'Creating & Inspecting Arrays', he: 'יצירת מערכים ובדיקתם' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `\`np.array(list)\` builds an array from a list; \`np.arange(start, stop, step)\` builds one from a sequence of numbers.`, he: `\`np.array(list)\` בונה מערך מרשימה; \`np.arange(start, stop, step)\` בונה מערך מרצף מספרים.` },
-          { en: `\`np.zeros(n)\` and \`np.ones(n)\` build arrays pre-filled with 0s or 1s.`, he: `\`np.zeros(n)\` ו-\`np.ones(n)\` בונים מערכים ממולאים מראש ב-0 או ב-1.` },
-          { en: `\`array.shape\` gives (rows, columns); \`array.dtype\` gives the element type.`, he: `\`array.shape\` נותן (שורות, עמודות); \`array.dtype\` נותן את סוג האיברים.` },
-          { en: `Slicing works like lists: \`array[1:4]\` takes a sub-range.`, he: `פרוסה עובדת כמו ברשימות: \`array[1:4]\` לוקח טווח משנה.` },
+          { en: `\`np.array()\` — create array from a list.`, he: `\`np.array()\` — יצירת מערך מרשימה.` },
+          { en: `\`np.arange()\` — create array of sequential values.`, he: `\`np.arange()\` — יצירת מערך של ערכים עוקבים.` },
+          { en: `\`array.shape\` — array shape (rows, columns).`, he: `\`array.shape\` — צורת המערך (שורות, עמודות).` },
+          { en: `\`np.zeros()\` — array filled with zeros; \`np.ones()\` — array filled with ones.`, he: `\`np.zeros()\` — מערך מלא באפסים; \`np.ones()\` — מערך מלא באחדים.` },
+          { en: `\`array[1:4]\` — sub-slicing; \`array.dtype\` — data type in the array.`, he: `\`array[1:4]\` — חיתוך תת-מערך; \`array.dtype\` — סוג הנתונים במערך.` },
         ],
       },
       {
@@ -413,9 +515,10 @@ export const otherLanguages: SyntaxLanguageSection[] = [
         title: { en: 'Filtering & Statistics', he: 'סינון וסטטיסטיקה' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `\`array > 5\` returns a boolean array; \`array[array > 5]\` uses that boolean array to filter in place.`, he: `\`array > 5\` מחזיר מערך בוליאני; \`array[array > 5]\` משתמש במערך הבוליאני הזה כדי לסנן במקום.` },
-          { en: `\`np.where(condition, A, B)\` picks A where the condition holds, B otherwise — a vectorized if/else.`, he: `\`np.where(condition, A, B)\` בוחר ב-A במקום שהתנאי מתקיים, ב-B אחרת — if/else מווקטר.` },
-          { en: `\`np.sum()\`, \`np.mean()\`, \`np.max()\` compute across the whole array; \`np.sort()\` returns a sorted copy.`, he: `\`np.sum()\`, \`np.mean()\`, \`np.max()\` מחשבים על פני המערך כולו; \`np.sort()\` מחזיר עותק ממוין.` },
+          { en: `\`array > 5\` — creates a boolean array (logical operation).`, he: `\`array > 5\` — יצירת מערך בוליאני (פעולה לוגית).` },
+          { en: `\`array[array > 5]\` — filtering in practice.`, he: `\`array[array > 5]\` — סינון בפועל.` },
+          { en: `\`np.where(condition, A, B)\` — conditional logical operation.`, he: `\`np.where(condition, A, B)\` — פעולה לוגית מותנית.` },
+          { en: `\`np.sum()\` — sum of the array's values; \`np.mean()\` — average of the array's values; \`np.max()\` — maximum of the array's values; \`np.sort()\` — sort the array.`, he: `\`np.sum()\` — סכום ערכי המערך; \`np.mean()\` — ממוצע ערכי המערך; \`np.max()\` — מקסימום ערכי המערך; \`np.sort()\` — מיון המערך.` },
         ],
         keyTakeaway: {
           en: `NumPy's boolean-array filtering (\`array[condition]\`) is the same idea pandas' \`df[df['col'] > 10]\` builds on — one array operation instead of a loop.`,
@@ -431,63 +534,104 @@ export const otherLanguages: SyntaxLanguageSection[] = [
     id: 'pandas',
     language: { en: 'Pandas', he: 'Pandas' },
     note: {
-      en: `The workhorse of every Session 17–21 exercise — reading CSVs, cleaning data, grouping and aggregating it. As with NumPy above, this reference comes from Ester's own Python command sheet (Module 3's Practice Companion), not a course notebook summary — a working cheat sheet, not a transcript.`,
-      he: `סוס העבודה של כל תרגיל במפגשים 17–21 — קריאת CSV, ניקוי נתונים, קיבוץ וצבירה. כמו ב-NumPy למעלה, גיליון העזר הזה מגיע מדף פקודות הפייתון של אסתר עצמה (מלווה התרגול של מודול 3), לא מסיכום מחברת קורס — גיליון עזר עובד, לא תמליל.`,
+      en: `The workhorse of every Session 17–21 exercise — reading CSVs, cleaning data, grouping and aggregating it. A literal, term-for-term recreation of the Pandas rows in Ester's own Python command-reference sheet (Module 3's Practice Companion), not a course notebook summary.`,
+      he: `סוס העבודה של כל תרגיל במפגשים 17–21 — קריאת CSV, ניקוי נתונים, קיבוץ וצבירה. שחזור מילולי, מונח-מול-מונח, של שורות Pandas בדף עזר הפקודות של אסתר עצמה (מלווה התרגול של מודול 3), לא מסיכום מחברת קורס.`,
     },
     topics: [
       {
         number: 'pandas-01',
-        title: { en: 'Reading, Inspecting & Writing Data', he: 'קריאה, בדיקה וכתיבה של נתונים' },
+        title: { en: 'File I/O', he: 'קלט/פלט קבצים' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `\`pd.read_csv()\`, \`pd.read_excel()\`, \`pd.read_json()\` load data from a file into a DataFrame; \`df.to_csv()\`, \`df.to_excel()\`, \`df.to_json()\` write it back out.`, he: `\`pd.read_csv()\`, \`pd.read_excel()\`, \`pd.read_json()\` טוענים נתונים מקובץ ל-DataFrame; \`df.to_csv()\`, \`df.to_excel()\`, \`df.to_json()\` כותבים אותם חזרה.` },
-          { en: `\`df.head()\` / \`df.tail()\` show the first/last five rows; \`df.info()\` shows column types and structure; \`df.describe()\` gives summary statistics; \`df.shape\` gives (rows, columns).`, he: `\`df.head()\` / \`df.tail()\` מציגים את חמש השורות הראשונות/אחרונות; \`df.info()\` מציג סוגי עמודות ומבנה; \`df.describe()\` נותן סטטיסטיקה תיאורית; \`df.shape\` נותן (שורות, עמודות).` },
-          { en: `\`df.columns\`, \`df.dtypes\`, \`df.index\` expose the column names, per-column types, and row index directly.`, he: `\`df.columns\`, \`df.dtypes\`, \`df.index\` חושפים ישירות את שמות העמודות, הסוגים לפי עמודה, ואינדקס השורות.` },
+          { en: `\`pd.read_csv()\` — read a CSV file; \`pd.read_excel()\` — read an Excel file; \`pd.read_json()\` — read a JSON file.`, he: `\`pd.read_csv()\` — קריאת קובץ CSV; \`pd.read_excel()\` — קריאת קובץ Excel; \`pd.read_json()\` — קריאת קובץ JSON.` },
+          { en: `\`df.to_csv()\` — save as CSV; \`df.to_excel()\` — save as Excel; \`df.to_json()\` — save as JSON; \`df.to_sql()\` — save to a database.`, he: `\`df.to_csv()\` — שמירה כ-CSV; \`df.to_excel()\` — שמירה כ-Excel; \`df.to_json()\` — שמירה כ-JSON; \`df.to_sql()\` — שמירה למסד נתונים.` },
+          { en: `Plain file handling: \`open()\` — open a file; \`file.read()\` — read the whole file; \`file.readline()\` — read one line; \`file.readlines()\` — read all lines; \`file.write()\` — write to a file; \`file.close()\` — close a file; \`with open() as file:\` — safe open.`, he: `טיפול בקבצים רגילים: \`open()\` — פתיחת קובץ; \`file.read()\` — קריאת כל הקובץ; \`file.readline()\` — קריאת שורה; \`file.readlines()\` — קריאת כל השורות; \`file.write()\` — כתיבה לקובץ; \`file.close()\` — סגירת קובץ; \`with open() as file:\` — פתיחה בטוחה.` },
         ],
       },
       {
         number: 'pandas-02',
-        title: { en: 'Selecting & Filtering', he: 'בחירה וסינון' },
+        title: { en: 'Inspecting Data', he: 'בדיקת נתונים' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `Column access: \`df['col']\` or \`df.col\`. Row access by position: \`df.iloc[row, col]\`; by label: \`df.loc[label_row, label_col]\`.`, he: `גישה לעמודה: \`df['col']\` או \`df.col\`. גישה לשורה לפי מיקום: \`df.iloc[row, col]\`; לפי תווית: \`df.loc[label_row, label_col]\`.` },
-          { en: `Conditional filtering: \`df[df['col'] > 10]\`; combine conditions with \`&\` (and) / \`|\` (or): \`df.loc[filter1 & filter2]\`; or \`df.query("condition")\` as a readable alternative.`, he: `סינון תנאי: \`df[df['col'] > 10]\`; שילוב תנאים עם \`&\` (וגם) / \`|\` (או): \`df.loc[filter1 & filter2]\`; או \`df.query("condition")\` כאלטרנטיבה קריאה.` },
-          { en: `\`df.sort_values('col')\` sorts by a column's values; \`df.sort_index()\` sorts by the row index.`, he: `\`df.sort_values('col')\` ממיין לפי ערכי עמודה; \`df.sort_index()\` ממיין לפי אינדקס השורות.` },
+          { en: `\`df.head()\` — first five rows; \`df.tail()\` — last five rows; \`df.info()\` — info on table structure; \`df.describe()\` — descriptive statistics.`, he: `\`df.head()\` — חמש השורות הראשונות; \`df.tail()\` — חמש השורות האחרונות; \`df.info()\` — מידע על מבנה הטבלה; \`df.describe()\` — סטטיסטיקה תיאורית.` },
+          { en: `\`df.shape\` — table dimensions; \`df.columns\` — column names; \`df.index\` — the index; \`df.dtypes\` — data types.`, he: `\`df.shape\` — מימדי הטבלה; \`df.columns\` — שמות העמודות; \`df.index\` — האינדקס; \`df.dtypes\` — טיפוסי הנתונים.` },
+          { en: `\`df.nunique()\` — number of unique values; \`df.corr()\` — correlation matrix; \`df.cov()\` — covariance matrix.`, he: `\`df.nunique()\` — מספר ערכים ייחודיים; \`df.corr()\` — מטריצת מתאם; \`df.cov()\` — מטריצת קווריאנס.` },
         ],
       },
       {
         number: 'pandas-03',
-        title: { en: 'Cleaning & Missing Data', he: 'ניקוי וטיפול בנתונים חסרים' },
+        title: { en: 'Selecting, Filtering & Sorting', he: 'בחירה, סינון ומיון' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `\`df['col'].isna()\` / \`df.isnull()\` flag missing values; \`df.fillna(value)\` fills them in; \`df.dropna()\` removes rows that have them.`, he: `\`df['col'].isna()\` / \`df.isnull()\` מסמנים ערכים חסרים; \`df.fillna(value)\` ממלא אותם; \`df.dropna()\` מסיר שורות שמכילות אותם.` },
-          { en: `\`df.drop_duplicates()\` removes duplicate rows; \`df.duplicated()\` flags which rows are duplicates without removing them.`, he: `\`df.drop_duplicates()\` מסיר שורות כפולות; \`df.duplicated()\` מסמן אילו שורות כפולות בלי להסיר אותן.` },
-          { en: `\`df.astype()\` converts a column's type; \`df.rename()\` renames columns; \`df.replace()\` swaps specific values.`, he: `\`df.astype()\` ממיר את סוג העמודה; \`df.rename()\` משנה שמות עמודות; \`df.replace()\` מחליף ערכים ספציפיים.` },
+          { en: `\`df['col']\` / \`df.col\` — column access; \`df.iloc[row, col]\` — access by position; \`df.loc[label_row, label_col]\` — access by label.`, he: `\`df['col']\` / \`df.col\` — גישה לעמודה; \`df.iloc[row, col]\` — גישה לפי מיקום; \`df.loc[label_row, label_col]\` — גישה לפי תווית.` },
+          { en: `\`df[df['col'] > 10]\` — filter by condition; \`df.loc[filter1 & filter2]\` — filter with AND; \`df.loc[filter1 | filter2]\` — filter with OR; \`df.query("condition")\` — filter with a string.`, he: `\`df[df['col'] > 10]\` — סינון לפי תנאי; \`df.loc[filter1 & filter2]\` — סינון עם AND; \`df.loc[filter1 | filter2]\` — סינון עם OR; \`df.query("condition")\` — סינון עם מחרוזת.` },
+          { en: `\`df.filter()\` — filter columns; \`df.sort_values()\` — sort by values; \`df.sort_index()\` — sort by index.`, he: `\`df.filter()\` — סינון עמודות; \`df.sort_values()\` — מיון לפי ערכים; \`df.sort_index()\` — מיון לפי אינדקס.` },
         ],
       },
       {
         number: 'pandas-04',
-        title: { en: 'String & DateTime Operations', he: 'פעולות על מחרוזות ותאריכים' },
+        title: { en: 'Missing Data & Duplicates', he: 'נתונים חסרים וכפילויות' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `String methods run on a whole column via \`.str\`: \`df['col'].str.contains()\`, \`.str.startswith()\`, \`.str.replace()\`, \`.str.upper()\` / \`.str.lower()\`, \`.str.strip()\`.`, he: `מתודות מחרוזת רצות על עמודה שלמה דרך \`.str\`: \`df['col'].str.contains()\`, \`.str.startswith()\`, \`.str.replace()\`, \`.str.upper()\` / \`.str.lower()\`, \`.str.strip()\`.` },
-          { en: `\`pd.to_datetime()\` converts a column to real dates; once converted, \`df['date'].dt.year\`, \`.dt.month\`, \`.dt.day\`, \`.dt.weekday\` pull each part out.`, he: `\`pd.to_datetime()\` ממיר עמודה לתאריכים אמיתיים; לאחר ההמרה, \`df['date'].dt.year\`, \`.dt.month\`, \`.dt.day\`, \`.dt.weekday\` שולפים כל חלק.` },
-          { en: `\`pd.date_range()\` generates a range of dates; \`df.resample()\` re-buckets time-indexed data into new time periods.`, he: `\`pd.date_range()\` מייצר טווח תאריכים; \`df.resample()\` מקבץ מחדש נתונים עם אינדקס זמן לתקופות זמן חדשות.` },
+          { en: `\`df['col'].isna()\` / \`df.isnull()\` — identify missing values; \`df.notnull()\` — identify non-missing values; \`df.fillna(value)\` — fill missing values; \`df.dropna()\` — remove rows with missing values.`, he: `\`df['col'].isna()\` / \`df.isnull()\` — זיהוי ערכים חסרים; \`df.notnull()\` — זיהוי ערכים לא חסרים; \`df.fillna(value)\` — מילוי ערכים חסרים; \`df.dropna()\` — הסרת שורות עם ערכים חסרים.` },
+          { en: `\`df.duplicated()\` — identify duplicate rows; \`df.drop_duplicates()\` — remove duplicate rows; \`na_values\` — defining missing values on read.`, he: `\`df.duplicated()\` — זיהוי שורות כפולות; \`df.drop_duplicates()\` — הסרת שורות כפולות; \`na_values\` — הגדרת ערכים חסרים בקריאה.` },
+          { en: `\`df.clip()\` — clip values to a range.`, he: `\`df.clip()\` — חיתוך ערכים לטווח.` },
         ],
       },
       {
         number: 'pandas-05',
-        title: { en: 'GroupBy, Merging & Reshaping', he: 'קיבוץ, מיזוג ועיצוב מחדש' },
+        title: { en: 'Column Operations', he: 'פעולות על עמודות' },
         source: "Ester's Practice Companion · Python Tables (Module 3)",
         points: [
-          { en: `\`df.groupby('col')\` buckets rows by a column's values; follow with \`.agg()\`, \`.mean()\`, \`.sum()\`, or \`.count()\` to summarize each bucket.`, he: `\`df.groupby('col')\` מקבץ שורות לפי ערכי עמודה; ממשיכים עם \`.agg()\`, \`.mean()\`, \`.sum()\`, או \`.count()\` כדי לסכם כל קבוצה.` },
-          { en: `\`pd.merge()\` joins two DataFrames on a shared key, like a SQL join; \`pd.concat()\` stacks DataFrames together.`, he: `\`pd.merge()\` מצרף שני DataFrames לפי מפתח משותף, כמו join ב-SQL; \`pd.concat()\` מערים DataFrames זה על זה.` },
-          { en: `\`df.pivot_table()\` reshapes long data into a summary grid; \`df.melt()\` does the reverse, turning columns back into rows.`, he: `\`df.pivot_table()\` מעצב מחדש נתונים ארוכים לרשת סיכום; \`df.melt()\` עושה את ההפך, הופך עמודות בחזרה לשורות.` },
+          { en: `\`df.rename()\` — rename columns; \`df.insert(loc, column, value)\` — insert a column at a position; \`df.assign(new_col=calculation)\` — add a computed column.`, he: `\`df.rename()\` — שינוי שמות עמודות; \`df.insert(loc, column, value)\` — הוספת עמודה במיקום; \`df.assign(new_col=calculation)\` — הוספת עמודה מחושבת.` },
+          { en: `\`df.astype()\` — convert type; \`df.convert_dtypes()\` — convert types automatically; \`df.apply(func)\` — apply a function; \`df.map()\` — mapping; \`df.applymap()\` — apply to every cell.`, he: `\`df.astype()\` — המרת סוג; \`df.convert_dtypes()\` — המרת סוגים אוטומטית; \`df.apply(func)\` — הפעלת פונקציה; \`df.map()\` — מיפוי; \`df.applymap()\` — הפעלה על כל תא.` },
+          { en: `\`df.value_counts()\` — count unique values; \`df.mode()\` — most frequent value; \`df.quantile()\` — quantiles; \`df.sample()\` — random sample; \`df.replace()\` — replace specific values.`, he: `\`df.value_counts()\` — ספירת ערכים ייחודיים; \`df.mode()\` — הערך השכיח; \`df.quantile()\` — רבעונים; \`df.sample()\` — מדגם אקראי; \`df.replace()\` — החלפת ערכים ספציפיים.` },
+        ],
+      },
+      {
+        number: 'pandas-06',
+        title: { en: 'String & DateTime Methods', he: 'מתודות מחרוזת ותאריך' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`df['col'].str.contains()\` — containment check; \`.str.startswith()\` / \`.str.endswith()\` — start/end check; \`.str.replace()\` — replace text; \`.str.upper()\` / \`.str.lower()\` — case conversion; \`.str.strip()\` — remove whitespace.`, he: `\`df['col'].str.contains()\` — בדיקת הכלה; \`.str.startswith()\` / \`.str.endswith()\` — בדיקת התחלה/סיום; \`.str.replace()\` — החלפת טקסט; \`.str.upper()\` / \`.str.lower()\` — המרת רישיות; \`.str.strip()\` — הסרת רווחים.` },
+          { en: `\`pd.to_datetime()\` — convert to date; \`df['date'].dt.year\` / \`.dt.month\` / \`.dt.day\` / \`.dt.weekday\` — extract year/month/day/weekday.`, he: `\`pd.to_datetime()\` — המרה לתאריך; \`df['date'].dt.year\` / \`.dt.month\` / \`.dt.day\` / \`.dt.weekday\` — שליפת שנה/חודש/יום/יום בשבוע.` },
+          { en: `\`pd.date_range()\` — create a range of dates; \`now()\` — current time; \`timedelta\` — time difference; \`df.resample()\` — resample time data.`, he: `\`pd.date_range()\` — יצירת טווח תאריכים; \`now()\` — זמן נוכחי; \`timedelta\` — הפרש זמן; \`df.resample()\` — דגימה מחדש של זמן.` },
+        ],
+      },
+      {
+        number: 'pandas-07',
+        title: { en: 'GroupBy & Aggregation', he: 'קיבוץ וצבירה' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`df.groupby('col')\` — group data; \`groupby().agg()\` — aggregation over groups; \`groupby().transform()\` — transformation over groups; \`groupby().filter()\` — filter groups.`, he: `\`df.groupby('col')\` — קיבוץ נתונים; \`groupby().agg()\` — אגרגציה על קבוצות; \`groupby().transform()\` — טרנספורמציה על קבוצות; \`groupby().filter()\` — סינון קבוצות.` },
+          { en: `\`pd.crosstab()\` — cross-tabulation table.`, he: `\`pd.crosstab()\` — טבלת הצלבה.` },
         ],
         keyTakeaway: {
           en: `groupby → agg is pandas' equivalent of SQL's GROUP BY — the same "bucket, then summarize" logic taught for SQLite in Session 15.`,
           he: `groupby ← agg הוא המקבילה של pandas ל-GROUP BY של SQL — אותה לוגיקת "לקבץ, ואז לסכם" שנלמדה עבור SQLite במפגש 15.`,
         },
+      },
+      {
+        number: 'pandas-08',
+        title: { en: 'Merging & Reshaping', he: 'מיזוג ועיצוב מחדש' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`pd.merge()\` — merge two DataFrames; \`df.join()\` — join; \`pd.concat()\` — concatenate.`, he: `\`pd.merge()\` — מיזוג שני DataFrames; \`df.join()\` — חיבור; \`pd.concat()\` — שרשור.` },
+          { en: `\`df.pivot_table()\` — pivot table; \`df.pivot()\` — pivot; \`df.melt()\` — melt; \`df.wide_to_long()\` — wide to long.`, he: `\`df.pivot_table()\` — טבלת ציר; \`df.pivot()\` — ציר; \`df.melt()\` — התכה; \`df.wide_to_long()\` — רחב לארוך.` },
+          { en: `\`df.stack()\` — stack; \`df.unstack()\` — unstack; \`df.transpose()\` — transpose; \`df.cut()\` — bin into groups; \`df.qcut()\` — bin into quantiles.`, he: `\`df.stack()\` — המרעה (Stack); \`df.unstack()\` — פירוק ערימה; \`df.transpose()\` — טרנספוזיציה; \`df.cut()\` — חלוקה לקבוצות; \`df.qcut()\` — חלוקה לרבעונים.` },
+        ],
+      },
+      {
+        number: 'pandas-09',
+        title: { en: 'Iteration, Visualization & Misc', he: 'איטרציה, ויזואליזציה ושונות' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`df.iterrows()\` — iterate over rows; \`df.iteritems()\` — iterate over columns; \`df.itertuples()\` — iterate as tuples.`, he: `\`df.iterrows()\` — איטרציה על שורות; \`df.iteritems()\` — איטרציה על עמודות; \`df.itertuples()\` — איטרציה כטאפלים.` },
+          { en: `\`df.plot()\` — basic plot; \`df.hist()\` — histogram; \`df.boxplot()\` — box plot.`, he: `\`df.plot()\` — שרטוט בסיסי; \`df.hist()\` — היסטוגרמה; \`df.boxplot()\` — תרשים "קופסה".` },
+          { en: `\`pd.Series()\` — create a one-dimensional column; \`pd.DataFrame()\` — create a two-dimensional table; \`df.eval()\` — evaluate an expression; \`df.pipe()\` — chain operations; \`df.memory_usage()\` — memory usage; \`df.reset_index()\` — reset the index; \`df.reindex()\` — change the index; \`df.set_index()\` — set a column as the index.`, he: `\`pd.Series()\` — יצירת עמודה חד-ממדית; \`pd.DataFrame()\` — יצירת טבלה דו-ממדית; \`df.eval()\` — הערכת ביטוי; \`df.pipe()\` — שרשור פעולות; \`df.memory_usage()\` — שימוש בזיכרון; \`df.reset_index()\` — איפוס האינדקס; \`df.reindex()\` — שינוי אינדקס; \`df.set_index()\` — הגדרת עמודה כאינדקס.` },
+          { en: `\`df.shift()\` — shift; \`df.cumsum()\` — cumulative sum; \`df.ewm()\` — weighted average; \`df.rolling()\` — rolling window; \`df.expanding()\` — expanding window.`, he: `\`df.shift()\` — הזזה; \`df.cumsum()\` — סכום מצטבר; \`df.ewm()\` — ממוצע משוקלל; \`df.rolling()\` — חלון מתגלגל; \`df.expanding()\` — חלון מתרחב.` },
+          { en: `\`axis\` — direction of the operation (0/1); \`inplace\` — change the original; \`ascending\` — sort order (ascending/descending); \`df.select_dtypes()\` — select by type; \`df.mean()\`, \`df.min()\`, \`df.max()\`, \`df.median()\`, \`df.std()\`, \`df.sum()\`, \`df.count()\` — column statistics.`, he: `\`axis\` — כיוון הפעולה (0/1); \`inplace\` — שינוי על המקורי; \`ascending\` — סדר מיון (עולה/יורד); \`df.select_dtypes()\` — בחירה לפי סוג; \`df.mean()\`, \`df.min()\`, \`df.max()\`, \`df.median()\`, \`df.std()\`, \`df.sum()\`, \`df.count()\` — סטטיסטיקות עמודה.` },
+        ],
       },
     ],
     attachments: [
