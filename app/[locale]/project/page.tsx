@@ -6,6 +6,7 @@ import {
   projectSpokenExcerpts,
   projectPromptPath,
   characterizationReconstruction,
+  gitSubmissionStages,
 } from '@/content/project-guide';
 import { getSession } from '@/lib/registry';
 import Card from '@/components/Card';
@@ -159,6 +160,33 @@ export default async function ProjectPage({
             </div>
           </div>
         )}
+
+        {/* Card 3 — his own live walkthrough of actually submitting/deploying the Herbal project */}
+        <div className="mb-10 border border-rule p-6 bg-codebg/30">
+          <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {locale === 'he' ? 'כרטיס 3 — הגשת הפרויקט ל-Git, בשלבים' : 'Card 3 — Submitting the Project to Git, Staged'}
+            </span>
+          </header>
+          <p className="text-xs italic text-muted mb-4 leading-relaxed">
+            {locale === 'he'
+              ? 'הליכה חיה נוספת מתמליל מפגש 22 (קטע מאוחר יותר מהציטוטים למעלה) — staging מול production, למה main זה הלקוח, זרימת ה-push ← merge בפועל, ולמה עבודה לוקאלית לא מבטיחה שזה יעבוד בענן.'
+              : "Another live walkthrough from Session 22's transcript (a later segment than the excerpts above) — staging vs. production, why main is the client, the actual push → merge flow, and why local success doesn't guarantee cloud success."}
+          </p>
+          <div className="grid gap-4">
+            {gitSubmissionStages.map((stage, i) => (
+              <div key={i} className="flex gap-4">
+                <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-6 pt-0.5">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 className="small-caps tracking-wide text-sm mb-1">{stage.title[locale]}</h4>
+                  <p className="text-xs leading-relaxed text-muted">{stage.body[locale]}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-3">
           <a

@@ -359,3 +359,74 @@ export const characterizationReconstruction: Bilingual[] = [
     he: `הוראת אתגור מפורשת: לא לתת למודל סתם להסכים — אם כיוון מוצע חלש, הוא צריך לומר את זה ולדחוף עם אלטרנטיבות, במקום ברירת מחדל של החנפה.`,
   },
 ];
+
+// Dr. Zuari's own live walkthrough of submitting/deploying the Herbal project — staged from Session
+// 22's real caption transcript (a different, later segment than the excerpts above), covering staging
+// vs. production, the branch discipline, the actual push→merge submission flow, and why local success
+// doesn't guarantee cloud success. Reconstructed and lightly cleaned from auto-generated captions, same
+// sourcing standard as the excerpts above — not a polished quote.
+export const gitSubmissionStages: PathStep[] = [
+  {
+    title: { en: 'Why Deploy at All', he: 'למה בכלל לפרוס' },
+    body: {
+      en: `The code exists only on his own machine right now — no outside user can reach it. To let someone external actually use it, it has to go up to external servers, cloud services.`,
+      he: `הקוד קיים כרגע רק על המחשב שלו — שום משתמש חיצוני לא יכול להגיע אליו. כדי לאפשר למישהו חיצוני להשתמש בו בפועל, הוא צריך לעלות לשרתים חיצוניים, שירותי ענן.`,
+    },
+  },
+  {
+    title: { en: 'Two Environments', he: 'שתי סביבות' },
+    body: {
+      en: `One environment is usually called staging (or "dev"); the other is called production. Staging is where you check that things actually work in the cloud, away from the client. Production is what the client sees.`,
+      he: `סביבה אחת בדרך כלל נקראת staging (או "dev"); השנייה נקראת production. staging היא איפה שבודקים שהדברים באמת עובדים בענן, הרחק מהלקוח. production זה מה שהלקוח רואה.`,
+    },
+  },
+  {
+    title: { en: 'main Is the Client', he: 'main זה הלקוח' },
+    body: {
+      en: `The main branch is already connected to production and is normally not touched directly — only at the very first setup. main is the client. Real work happens on a separate branch.`,
+      he: `הענף main כבר מחובר ל-production ובדרך כלל לא נוגעים בו ישירות — רק בהקמה הראשונית. main זה הלקוח. עבודה אמיתית קורית על ענף נפרד.`,
+    },
+  },
+  {
+    title: { en: 'The Submission Flow', he: 'תהליך ההגשה' },
+    body: {
+      en: `Write code → push it to your own branch. That automatically updates the cloud copy of that branch, so you can check how the app behaves in the cloud without the client seeing anything yet.`,
+      he: `כותבים קוד ← דוחפים (push) אותו לענף שלך. זה מעדכן אוטומטית את העותק בענן של הענף הזה, כדי שתוכלי לבדוק איך האפליקציה מתנהגת בענן בלי שהלקוח רואה כלום עדיין.`,
+    },
+  },
+  {
+    title: { en: 'Why Staging Matters', he: 'למה staging חשוב' },
+    body: {
+      en: `There's a well-known saying in this world: what works locally won't necessarily work well in the cloud. Bugs can appear only once it's actually deployed. That's exactly why teams often label an early cloud version "beta" — so that if something breaks, it doesn't look bad in front of the client: "look, this isn't final, we'll take a look, we're learning from your experience too."`,
+      he: `יש אמרה ידועה בעולם הזה: מה שעובד לוקאלית לא בהכרח יעבוד טוב בענן. באגים יכולים להופיע רק ברגע שזה באמת נפרס. בדיוק בגלל זה צוותים לעיתים קרובות מתייגים גרסת ענן מוקדמת כ"בטא" — כך שאם משהו נשבר, זה לא נראה רע מול הלקוח: "תראה, זה לא סופי, נבדוק, אנחנו גם לומדים מהניסיון שלך."`,
+    },
+  },
+  {
+    title: { en: 'The Merge', he: 'המיזוג' },
+    body: {
+      en: `Once you're satisfied it works in staging, you merge your branch back into main, deliberately — only that step is what actually reaches the client, in production.`,
+      he: `ברגע שאת מרוצה שזה עובד ב-staging, ממזגים את הענף שלך בחזרה ל-main, בכוונה — רק השלב הזה הוא מה שבאמת מגיע ללקוח, ב-production.`,
+    },
+  },
+  {
+    title: { en: 'Merge Conflicts', he: 'קונפליקטים במיזוג' },
+    body: {
+      en: `Sometimes a feature clashes with something else and you get what's called a "git conflict." Whoever is responsible for the project then has to decide: accept this code, accept that code, or accept neither — that's a legitimate option too.`,
+      he: `לפעמים תכונה מתנגשת עם משהו אחר ומקבלים מה שנקרא "git conflict." מי שאחראי על הפרויקט צריך אז להחליט: לקבל את הקוד הזה, לקבל את הקוד ההוא, או לא לקבל אף אחד מהם — זו גם אופציה לגיטימית.`,
+    },
+  },
+  {
+    title: { en: 'Worktrees (Deferred)', he: 'Worktrees (נדחה)' },
+    body: {
+      en: `Mentioned but not demonstrated live — deferred to a future session. The idea: instead of a branch, a worktree is a full, physically separate copy of the project, letting multiple agents work fully in parallel without overwriting each other, useful specifically for running several AI agents on the same project at once.`,
+      he: `הוזכר אך לא הודגם בשידור חי — נדחה למפגש עתידי. הרעיון: במקום ענף, worktree הוא עותק מלא ונפרד פיזית של הפרויקט, שמאפשר למספר סוכנים לעבוד באופן מקביל מלא בלי לדרוס אחד את השני — שימושי במיוחד להרצת כמה סוכני AI על אותו פרויקט בו-זמנית.`,
+    },
+  },
+  {
+    title: { en: 'Splitting Frontend and Backend', he: 'פיצול פרונטאנד ובקאנד' },
+    body: {
+      en: `His own habit, stated directly: build two separate services rather than one — because a bug in the backend alone doesn't force you to touch the frontend, and vice versa. Combining everything into one bundle makes debugging much harder.`,
+      he: `ההרגל שלו עצמו, נאמר ישירות: לבנות שני שירותים נפרדים במקום אחד — כי באג בבקאנד בלבד לא מחייב לגעת בפרונטאנד, ולהפך. איחוד הכול לחבילה אחת מקשה מאוד על ניפוי באגים.`,
+    },
+  },
+];
