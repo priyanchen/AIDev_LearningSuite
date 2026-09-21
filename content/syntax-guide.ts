@@ -377,6 +377,21 @@ export const otherLanguages: SyntaxLanguageSection[] = [
           he: `אותה משמעת שהקורס לימד דרך הכפתורים של GitHub Desktop — לעשות stage בכוונה, commit עם הודעה אמיתית, push רק למה שמוכן — פשוט מוקלדת במקום נלחצת.`,
         },
       },
+      {
+        number: 'cli-05',
+        title: { en: 'Terminology & the Fork Workflow, in the Instructor\'s Own Words', he: 'מינוח וזרימת ה-Fork, במילותיו של המרצה' },
+        source: 'Dr. Zuari · "02-Git and Github.pdf"',
+        points: [
+          { en: `Staged Changes — "preparing specific changes to be included in the next commit, like choosing which edits you're ready to save." Commit — "a saved snapshot of your changes in a project, like pressing 'save' with a note on what you updated."`, he: `Staged Changes — "הכנת שינויים ספציפיים להכללה בקומיט הבא, כמו בחירת אילו עריכות מוכנות לשמירה." Commit — "צילום מצב שמור של השינויים בפרויקט, כמו לחיצה על 'שמור' עם הערה על מה עודכן."` },
+          { en: `Push — "sending your saved changes (commits) from your computer to the online repository on GitHub so others can see them." Pull — "downloading the latest changes from the online repository on GitHub to keep your own copy up-to-date."`, he: `Push — "שליחת השינויים השמורים (commits) מהמחשב שלך למאגר המקוון ב-GitHub כדי שאחרים יוכלו לראות אותם." Pull — "הורדת השינויים העדכניים ביותר מהמאגר המקוון ב-GitHub כדי לשמור על העותק שלך מעודכן."` },
+          { en: `Fork — "creating your own copy of someone else's project on GitHub so you can make changes without affecting the original." Sync Fork — "updating your copy of someone else's code to reflect any recent updates."`, he: `Fork — "יצירת עותק משלך לפרויקט של מישהו אחר ב-GitHub כדי שתוכלי לבצע שינויים בלי להשפיע על המקור." Sync Fork — "עדכון העותק שלך של הקוד של מישהו אחר כך שישקף עדכונים אחרונים."` },
+          { en: `The instructor's "Complete Workflow" diagram, solo version: Code → Add → Staged Changes → Committed Changes → Push → your GitHub repo. The collaboration version adds a loop: Fork someone else's repo → your own GitHub repo → clone/pull to your local machine → code, add, commit, push back to your fork → Sync Fork to catch up with the original.`, he: `תרשים "זרימת העבודה המלאה" של המרצה, גרסה עצמאית: Code ← Add ← Staged Changes ← Committed Changes ← Push ← מאגר ה-GitHub שלך. גרסת שיתוף הפעולה מוסיפה לולאה: Fork למאגר של מישהו אחר ← מאגר ה-GitHub שלך ← clone/pull למחשב המקומי ← קוד, add, commit, push בחזרה ל-fork שלך ← Sync Fork כדי להדביק את המקור.` },
+        ],
+        keyTakeaway: {
+          en: `Fork + Sync Fork is the CLI/GitHub-native version of "make your own copy, keep it caught up" — the same instinct as \`git clone\` plus repeated \`git pull\`, but for someone else's repository instead of your own.`,
+          he: `Fork + Sync Fork היא הגרסה הילידית של CLI/GitHub ל"תעשי עותק משלך, שמרי עליו מעודכן" — אותה אינטואיציה כמו \`git clone\` ועוד \`git pull\` חוזר, אבל עבור מאגר של מישהו אחר במקום שלך.`,
+        },
+      },
     ],
     attachments: [
       { label: { en: 'CLI Reference (PDF)', he: 'מדריך CLI (PDF)' }, url: 'https://drive.google.com/file/d/1EkQsHNes19VezDPPcccWPNnQ2oS6H4gR/view' },
