@@ -20,7 +20,7 @@ export default function Header({ locale }: { locale: string }) {
           <span className="text-[9px] tracking-brand uppercase text-muted font-sans">
             {site('brand')}
           </span>
-          <span className="text-lg small-caps tracking-wide">
+          <span className="text-lg small-caps tracking-wide font-bold text-accent">
             {site('title')}
           </span>
         </Link>
@@ -44,6 +44,14 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/prompts`} className="hover:text-accent transition">
             {t('prompts')}
           </Link>
+          <a
+            href="https://drive.google.com/file/d/1MQ_FWuhjk3RQzObVDHf47UOr3wiHFkLu/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent transition"
+          >
+            {t('project')}
+          </a>
           <SearchBox locale={locale === 'he' ? 'he' : 'en'} />
           <Link
             href={otherPath}
