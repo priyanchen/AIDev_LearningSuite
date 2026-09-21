@@ -37,11 +37,33 @@ export const moduleResources: Record<
         open: true,
         children: [
           {
-            kind: 'file',
-            name: 'לינקים לומדות_.docx',
+            kind: 'folder',
+            name: 'לינקים לומדות',
             label: { en: 'Lomda App Links', he: 'לינקים לומדות' },
-            url: 'https://drive.google.com/file/d/13ekqB5lmMLEiRNWRD1iaSgeIw56HUATt/view',
-            ext: 'docx',
+            open: true,
+            children: [
+              {
+                kind: 'file',
+                name: '1 - קרסר ופייתון (מבוא)',
+                label: { en: '1 — Cursor & Python (Intro)', he: '1 — קרסר ופייתון (מבוא)' },
+                url: 'https://ubiquitous-py-path-pilot.base44.app/',
+                ext: 'app',
+              },
+              {
+                kind: 'file',
+                name: '2 - משתנים if for while ופונקציות',
+                label: { en: '2 — Variables, if/for/while & Functions', he: '2 — משתנים, if/for/while ופונקציות' },
+                url: 'https://py-leap-start.base44.app/',
+                ext: 'app',
+              },
+              {
+                kind: 'file',
+                name: '3 - מחלקות ודקורטורים',
+                label: { en: '3 — Classes & Decorators', he: '3 — מחלקות ודקורטורים' },
+                url: 'https://python-class-lab.base44.app/',
+                ext: 'app',
+              },
+            ],
           },
           {
             kind: 'file',
