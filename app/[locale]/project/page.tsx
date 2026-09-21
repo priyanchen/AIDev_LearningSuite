@@ -223,6 +223,45 @@ function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// The real stack, laid out as choices-by-category rather than data-flow (that's Step 6's diagram) —
+// every row cites its own docs/decisions.md entry, not the generic Python/Flask example above.
+function HerbalTechStackDiagram({ locale }: { locale: Locale }) {
+  const rows: { categoryEn: string; categoryHe: string; choice: string; decision: string }[] = [
+    { categoryEn: 'Language & Runtime', categoryHe: 'שפה וסביבת ריצה', choice: 'Python 3.13', decision: 'D-002' },
+    { categoryEn: 'Web Framework', categoryHe: 'Web Framework', choice: 'FastAPI · Uvicorn', decision: 'D-002' },
+    { categoryEn: 'Dependency Management', categoryHe: 'ניהול תלויות', choice: '`uv`', decision: 'D-002' },
+    { categoryEn: 'Frontend', categoryHe: 'Frontend', choice: 'Plain HTML/CSS/JS — no framework', decision: 'D-003' },
+    { categoryEn: 'Frontend Server', categoryHe: 'שרת Frontend', choice: 'Caddy', decision: 'D-003' },
+    { categoryEn: 'Auth', categoryHe: 'אימות', choice: 'Supabase — email/password, JWT', decision: 'D-004' },
+    { categoryEn: 'AI Provider', categoryHe: 'ספק AI', choice: 'OpenAI, behind a replaceable interface', decision: 'D-009' },
+    { categoryEn: 'Evidence Sources', categoryHe: 'מקורות ראיות', choice: 'PubMed E-utilities · Europe PMC REST API', decision: 'D-012' },
+    { categoryEn: 'Design Tool', categoryHe: 'כלי עיצוב', choice: 'Google Stitch', decision: '—' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'הערימה האמיתית, לפי קטגוריה — מ-docs/decisions.md' : 'The Real Stack, By Category — from docs/decisions.md'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'לא הדוגמה הכללית למעלה — הבחירות בפועל שד״ר זוארי רשם ונימק בפרויקט עצמו.'
+          : 'Not the generic example above — the actual choices Dr. Zuari logged and justified in the project itself.'}
+      </p>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {rows.map((row) => (
+          <div key={row.categoryEn} className="flex items-center justify-between gap-3 px-4 py-2">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans flex-shrink-0 w-32">
+              {locale === 'he' ? row.categoryHe : row.categoryEn}
+            </span>
+            <span className="text-xs text-end flex-1">{row.choice}</span>
+            <span className="text-[9px] text-muted font-mono flex-shrink-0">{row.decision}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // The real problem statement he reached live, plus the safety constraint that shaped the whole
 // product — Session 22's transcript, the actual opening of the characterization.
 function HerbalProblemCallout({ locale }: { locale: Locale }) {
@@ -682,6 +721,7 @@ export default async function ProjectPage({
                     {step.number === 4 && <HerbalUXFlowDiagram locale={locale} />}
                     {step.number === 5 && <HerbalUIDesignSystem locale={locale} />}
                     {step.number === 6 && <HerbalArchitectureDiagram locale={locale} />}
+                    {step.number === 7 && <HerbalTechStackDiagram locale={locale} />}
                     {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
                   </div>
