@@ -21,6 +21,39 @@ export type ResourceNode = ResourceFile | ResourceFolder;
 // Mirrors the exact folder tree of the class's own shared Drive folder — every file linked
 // individually, same nesting as the original, nothing renamed except for a friendlier display label.
 export const moduleResources: Record<string, { sourceUrl: string; tree: ResourceNode[] }> = {
+  '03-python': {
+    sourceUrl: 'https://drive.google.com/drive/folders/1yWrqBMWkFhOtQl4uXa6t5KroE9mkr1DO',
+    tree: [
+      {
+        kind: 'folder',
+        name: 'Python Scripts',
+        label: { en: 'Python Scripts — Notebooks 01–19', he: 'סקריפטי פייתון — מחברות 01–19' },
+        open: true,
+        children: [
+          { kind: 'file', name: '01-Numbers.ipynb', label: { en: '01 — Numbers', he: '01 — מספרים' }, url: 'https://drive.google.com/file/d/1GFeyqAAIz1LA7Nknuyi-kVhImSmvlA1F/view', ext: 'ipynb' },
+          { kind: 'file', name: '02-Strings.ipynb', label: { en: '02 — Strings', he: '02 — מחרוזות' }, url: 'https://drive.google.com/file/d/1h8Ma_YJcrz9ywjEECPDYOWbgoq2pHSDi/view', ext: 'ipynb' },
+          { kind: 'file', name: '03-Variables.ipynb', label: { en: '03 — Variables', he: '03 — משתנים' }, url: 'https://drive.google.com/file/d/1h-2Hx10Hk1my_Wd-P8SNIwprq769NR7B/view', ext: 'ipynb' },
+          { kind: 'file', name: '04-Lists.ipynb', label: { en: '04 — Lists', he: '04 — רשימות' }, url: 'https://drive.google.com/file/d/1LkpiQgxx8BJeIig63VS731SbYV4EiObg/view', ext: 'ipynb' },
+          { kind: 'file', name: '05-Tuples.ipynb', label: { en: '05 — Tuples', he: '05 — טאפלים' }, url: 'https://drive.google.com/file/d/1_1krg8dAE0voN1hGY8rI0cKC1WhCCy0A/view', ext: 'ipynb' },
+          { kind: 'file', name: '06-Dictionaries.ipynb', label: { en: '06 — Dictionaries', he: '06 — מילונים' }, url: 'https://drive.google.com/file/d/1gOF2MLP9M8of1EABcBbQPXZj_YWM-mZr/view', ext: 'ipynb' },
+          { kind: 'file', name: '07-Sets.ipynb', label: { en: '07 — Sets', he: '07 — קבוצות' }, url: 'https://drive.google.com/file/d/1IQyPWQEkdB2chcqqmpA3YS5RuUi-fbaM/view', ext: 'ipynb' },
+          { kind: 'file', name: '08-Comparison Operators.ipynb', label: { en: '08 — Comparison Operators', he: '08 — אופרטורי השוואה' }, url: 'https://drive.google.com/file/d/1xaEtsmsARbr-76OG-A1-qz2X0sI1z5q0/view', ext: 'ipynb' },
+          { kind: 'file', name: '09 -if, elif, and else Statements.ipynb', label: { en: '09 — if / elif / else', he: '09 — if / elif / else' }, url: 'https://drive.google.com/file/d/1lFinM5M9SytVCjw7kyItJxoqfaYaKM39/view', ext: 'ipynb' },
+          { kind: 'file', name: '10-for Loops.ipynb', label: { en: '10 — for Loops', he: '10 — לולאות for' }, url: 'https://drive.google.com/file/d/1R2xnGDMJLqrxOpHqx-bTUkCAny8c9_fC/view', ext: 'ipynb' },
+          { kind: 'file', name: '11-while Loops.ipynb', label: { en: '11 — while Loops', he: '11 — לולאות while' }, url: 'https://drive.google.com/file/d/1U1JsT1nEkOZUKuZhV20UnI098XshtoaL/view', ext: 'ipynb' },
+          { kind: 'file', name: '11.1-Problem.ipynb', label: { en: '11.1 — Practice Problem', he: '11.1 — תרגיל תרגול' }, url: 'https://drive.google.com/file/d/1XINK3a6Dr540L20bBT3f2O5jYb8uBxfK/view', ext: 'ipynb' },
+          { kind: 'file', name: '12-List Comprehensions.ipynb', label: { en: '12 — List Comprehensions', he: '12 — הבנות רשימה' }, url: 'https://drive.google.com/file/d/1QaGLzk51Uyrlh_QcPZM7CXD1BvinTY8P/view', ext: 'ipynb' },
+          { kind: 'file', name: '13-Functions.ipynb', label: { en: '13 — Functions', he: '13 — פונקציות' }, url: 'https://drive.google.com/file/d/1s_YS-ev7gk5qN7QYgjMCp8E9mhbP_BVK/view', ext: 'ipynb' },
+          { kind: 'file', name: '14-args kwargs.ipynb', label: { en: '14 — *args and **kwargs', he: '14 — *args ו-**kwargs' }, url: 'https://drive.google.com/file/d/14ybBzfZV2QH40xKpRMDIs-9cMkpSM78P/view', ext: 'ipynb' },
+          { kind: 'file', name: '15-Nested Statements and Scope.ipynb', label: { en: '15 — Nested Statements & Scope', he: '15 — משפטים מקוננים והיקף' }, url: 'https://drive.google.com/file/d/17w7BMrQWV5ablnh5wmSY7okxfPsFzCr1/view', ext: 'ipynb' },
+          { kind: 'file', name: '16-FunctionalPro.ipynb', label: { en: '16 — Functional Programming', he: '16 — תכנות פונקציונלי' }, url: 'https://drive.google.com/file/d/1K4bZK9v8AfU4Wrgwj3ngF5a2dQqfn2tF/view', ext: 'ipynb' },
+          { kind: 'file', name: '17-unpack_deco_exceptions.ipynb', label: { en: '17 — Unpacking, Decorators & Exceptions', he: '17 — פירוק, דקורטורים וחריגות' }, url: 'https://drive.google.com/file/d/1WEymmTjEUrBwzNBLVUI0D5I4uP3pf8p7/view', ext: 'ipynb' },
+          { kind: 'file', name: '18-OOP.ipynb', label: { en: '18 — OOP, Part 1', he: '18 — תכנות מונחה-עצמים, חלק 1' }, url: 'https://drive.google.com/file/d/1KYIIpcN0oOG5h42f_9jNQbHycKTEzS42/view', ext: 'ipynb' },
+          { kind: 'file', name: '19-OOP2.ipynb', label: { en: '19 — OOP, Part 2', he: '19 — תכנות מונחה-עצמים, חלק 2' }, url: 'https://drive.google.com/file/d/1SnjssZU7EtWq2F7vODd5RXPHJ65G2UHh/view', ext: 'ipynb' },
+        ],
+      },
+    ],
+  },
   '05-computer-vision': {
     sourceUrl: 'https://drive.google.com/drive/folders/1WktwIgKnEN8NPyYeHolldKIG59q9W3yY',
     tree: [

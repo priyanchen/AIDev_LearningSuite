@@ -200,6 +200,19 @@ export default async function InstallGuidePage({
                   </div>
                 )}
 
+                {item.videoUrl && (
+                  <div className="mt-3">
+                    <a
+                      href={item.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] tracking-brand uppercase text-accent border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition font-sans"
+                    >
+                      {locale === 'he' ? 'צפייה בהדרכת התקנה (וידאו)' : 'Watch the Install Walkthrough (Video)'} ↗
+                    </a>
+                  </div>
+                )}
+
                 <div className="flex justify-end mt-4">
                   <PrintButton
                     title={item.name}

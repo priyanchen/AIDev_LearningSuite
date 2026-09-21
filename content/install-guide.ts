@@ -20,6 +20,7 @@ export type InstallItem = {
   tips?: Bilingual;           // installation-sequence tips, gotchas, warnings — grounded in the card content
   commands?: InstallCommands; // actual install commands, one array entry per terminal line
   steps?: { mac: InstallStep[]; windows: InstallStep[] }; // full numbered walkthrough, platform-specific
+  videoUrl?: string;           // a real walkthrough recording of this exact install, when one exists
 };
 
 export type InstallCategory = {
@@ -488,6 +489,7 @@ export const installGuide: InstallCategory[] = [
             'pip install ultralytics',
           ],
         },
+        videoUrl: 'https://drive.google.com/file/d/1SEtH1jVHWoLWEfylvGztqxIQNN3EGsuD/view',
       },
     ],
   },
