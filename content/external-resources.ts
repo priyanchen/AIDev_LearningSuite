@@ -194,6 +194,70 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 9: Et Cetera (פירוק רצף עם *)`,
     },
   },
+  'CLAUDE.md': {
+    url: 'https://code.claude.com/docs/en/memory',
+    source: 'Anthropic — Claude Code Docs',
+    label: {
+      en: `Official Claude Code documentation — "How Claude remembers your project" (the CLAUDE.md memory file, its hierarchy, and the \`@path\` import syntax)`,
+      he: `תיעוד רשמי של Claude Code — "איך Claude זוכר את הפרויקט שלך" (קובץ הזיכרון CLAUDE.md, ההיררכיה שלו, ותחביר הייבוא \`@path\`)`,
+    },
+  },
+  'CLAUDE.md Maintenance': {
+    url: 'https://code.claude.com/docs/en/memory',
+    source: 'Anthropic — Claude Code Docs',
+    label: {
+      en: `Official Claude Code documentation — "How Claude remembers your project" (updating CLAUDE.md over time, /init, and the enterprise/project/user memory hierarchy)`,
+      he: `תיעוד רשמי של Claude Code — "איך Claude זוכר את הפרויקט שלך" (עדכון CLAUDE.md עם הזמן, /init, וההיררכיה ארגון/פרויקט/משתמש)`,
+    },
+  },
+  'Plan Mode & Thinking Levels': {
+    url: 'https://code.claude.com/docs/en/permission-modes',
+    source: 'Anthropic — Claude Code Docs',
+    label: {
+      en: `Official Claude Code documentation — "Choose a permission mode" (Plan Mode as one of Claude Code's permission modes, and how it separates thinking from doing)`,
+      he: `תיעוד רשמי של Claude Code — "בחירת מצב הרשאה" (Plan Mode כאחד ממצבי ההרשאה של Claude Code, ואיך הוא מפריד חשיבה מפעולה)`,
+    },
+  },
+  'Sub-Agents': {
+    url: 'https://code.claude.com/docs/en/sub-agents',
+    source: 'Anthropic — Claude Code Docs',
+    label: {
+      en: `Official Claude Code documentation — "Create custom subagents" (specialized assistants with their own context window, system prompt, and tool access)`,
+      he: `תיעוד רשמי של Claude Code — "יצירת סוכני-משנה מותאמים אישית" (עוזרים מתמחים עם חלון הקשר, system prompt, וגישת כלים משלהם)`,
+    },
+  },
+  'Sub-Agents vs Team Agents': {
+    url: 'https://rdi.berkeley.edu/llm-agents/f24',
+    source: 'UC Berkeley',
+    label: {
+      en: `CS 194/294-196 — Large Language Model Agents (Dawn Song & Xinyun Chen, Fall 2024): the academic course on LLM agent infrastructure that covers multi-agent collaboration as its own topic — the closest real university course to this exact distinction`,
+      he: `CS 194/294-196 — Large Language Model Agents (דון סונג ושינג'ין צ'ן, סתיו 2024): הקורס האקדמי על תשתיות סוכני-LLM שמכסה שיתוף-פעולה רב-סוכנים כנושא בפני עצמו — הקורס האוניברסיטאי האמיתי הקרוב ביותר להבחנה המדויקת הזו`,
+    },
+  },
+  'Coding Agent vs In-App Agent': {
+    url: 'https://code.claude.com/docs/en/agent-sdk/overview',
+    source: 'Anthropic — Claude Agent SDK Docs',
+    label: {
+      en: `Official Claude Agent SDK documentation — the same agent loop and tools that power Claude Code, packaged as a library for building an agent that ships inside your own product, rather than one that helps you write it`,
+      he: `תיעוד רשמי של Claude Agent SDK — אותו לולאת-סוכן וכלים שמניעים את Claude Code, ארוזים כספרייה לבניית סוכן שמשולב בתוך המוצר שלך, ולא כזה שעוזר לך לכתוב אותו`,
+    },
+  },
+  'API vs Subscription Billing': {
+    url: 'https://claude.com/pricing',
+    source: 'Anthropic — Official Pricing',
+    label: {
+      en: `Official Anthropic pricing page — Pro/Max/Team subscriptions (fixed monthly usage) versus API billing (per-token, no fixed ceiling); Claude Code draws from whichever is active`,
+      he: `עמוד התמחור הרשמי של Anthropic — מנויי Pro/Max/Team (שימוש חודשי קבוע) לעומת חיוב API (לפי טוקן, בלי תקרה קבועה); Claude Code שואב מהמנגנון הפעיל`,
+    },
+  },
+  'Permission Prompts': {
+    url: 'https://code.claude.com/docs/en/permission-modes',
+    source: 'Anthropic — Claude Code Docs',
+    label: {
+      en: `Official Claude Code documentation — "Choose a permission mode" (what triggers a permission prompt, and the modes — manual, acceptEdits, plan, auto — that change how often you see one)`,
+      he: `תיעוד רשמי של Claude Code — "בחירת מצב הרשאה" (מה מפעיל בקשת הרשאה, והמצבים — manual, acceptEdits, plan, auto — שמשנים באיזו תדירות רואים אותה)`,
+    },
+  },
   'Comparison Operators': {
     url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/',
     source: 'MIT OpenCourseWare',
