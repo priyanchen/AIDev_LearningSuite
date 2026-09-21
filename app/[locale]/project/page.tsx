@@ -42,7 +42,7 @@ function GitDiagrams({ locale }: { locale: Locale }) {
     <div className="mt-4 pt-4 border-t border-dashed border-rule grid gap-6">
       <div>
         <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-2 text-center">
-          {locale === 'he' ? 'התרשים שלו — יסודי' : "His Diagram — Fundamental"}
+          {locale === 'he' ? 'התרשים של ד״ר זוארי — יסודי' : "Dr. Zuari's Diagram — Fundamental"}
         </p>
         <div className="flex items-center justify-center flex-wrap gap-1">
           <DiagramBox label="working directory" />
@@ -54,7 +54,7 @@ function GitDiagrams({ locale }: { locale: Locale }) {
       </div>
       <div>
         <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-2 text-center">
-          {locale === 'he' ? 'התרשים שלו — זרימת עבודה מלאה' : 'His Diagram — Complete Workflow'}
+          {locale === 'he' ? 'התרשים של ד״ר זוארי — זרימת עבודה מלאה' : "Dr. Zuari's Diagram — Complete Workflow"}
         </p>
         <div className="flex items-stretch justify-center flex-wrap gap-2">
           <div className="border border-dashed border-rule p-3">
