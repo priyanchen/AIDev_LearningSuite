@@ -223,6 +223,65 @@ function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// The real V1 boundary — a long live brainstorm narrowed down to one symptom, plus the README's own
+// explicit out-of-scope statement. Source: Session 22's chat/transcript + the repo's README.
+function HerbalMVPDiagram({ locale }: { locale: Locale }) {
+  const brainstormed = [
+    { en: 'Cancer support', he: 'תמיכה בסרטן' },
+    { en: 'Winter illnesses', he: 'מחלות חורף' },
+    { en: "Children's illnesses", he: 'מחלות ילדים' },
+    { en: 'Immune support', he: 'חיזוק חיסוני' },
+    { en: 'Pain', he: 'כאב' },
+    { en: 'Nausea', he: 'בחילה' },
+    { en: 'Fatigue', he: 'עייפות' },
+    { en: 'Sleep issues', he: 'בעיות שינה' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'מסיעור מוחות ל-V1 אחד — ממפגש 22 + ה-README' : 'From Brainstorm to One V1 — Session 22 + the README'}
+      </p>
+      <div className="flex flex-wrap justify-center gap-1.5 mb-3 max-w-md mx-auto">
+        {brainstormed.map((s, i) => (
+          <span key={i} className="text-[10px] border border-rule text-muted px-2 py-1 line-through decoration-accent/60">
+            {s[locale]}
+          </span>
+        ))}
+      </div>
+      <div className="flex justify-center mb-3">
+        <span className="text-accent">↓</span>
+      </div>
+      <div className="flex justify-center mb-4">
+        <span className="text-sm border-2 border-accent text-accent px-4 py-2 font-semibold small-caps tracking-wide">
+          {locale === 'he' ? 'צמח אחד + שיפור תיאבון' : 'One herb + appetite improvement'}
+        </span>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-3 max-w-lg mx-auto">
+        <div className="border border-rule p-3">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans font-semibold mb-2 text-center">
+            {locale === 'he' ? 'בתחום (README)' : 'In Scope (README)'}
+          </p>
+          <p className="text-[11px] leading-relaxed text-center">
+            {locale === 'he'
+              ? 'דירוג עד כמה טענה מבוססת ראיות, עם מקורות ואישור חוקר'
+              : 'Rating how evidence-based a claim is, with sources and researcher approval'}
+          </p>
+        </div>
+        <div className="border border-rule p-3 bg-codebg/40">
+          <p className="text-[8px] tracking-brand uppercase text-muted font-sans font-semibold mb-2 text-center">
+            {locale === 'he' ? 'מחוץ לתחום (README)' : 'Out of Scope (README)'}
+          </p>
+          <p className="text-[11px] leading-relaxed text-center text-muted">
+            {locale === 'he'
+              ? 'המלצה איזה צמח לקחת, רישום מינון, אישור שילוב עם טיפול'
+              : 'Recommending which herb to take, dosing, approving treatment combinations'}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // The actual user journey he generated live in Session 22, walking through it screen-by-screen —
 // not a hypothetical UX flow. Source: the session's own caption transcript.
 function HerbalUXFlowDiagram({ locale }: { locale: Locale }) {
@@ -543,6 +602,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 3 && <HerbalMVPDiagram locale={locale} />}
                     {step.number === 4 && <HerbalUXFlowDiagram locale={locale} />}
                     {step.number === 5 && <HerbalUIDesignSystem locale={locale} />}
                     {step.number === 6 && <HerbalArchitectureDiagram locale={locale} />}
