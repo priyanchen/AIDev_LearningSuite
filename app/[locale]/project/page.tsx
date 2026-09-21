@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { cardDecks } from '@/content/cards';
 import { projectPhases, projectSpokenExcerpts } from '@/content/project-guide';
+import { getSession } from '@/lib/registry';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
 
@@ -17,6 +18,7 @@ export default async function ProjectPage({
   const nav = await getTranslations('nav');
   const deck = cardDecks[introSlug];
   const introCard = deck?.find((c) => c.number === introCardNumber);
+  const introSession = getSession(introSlug);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
@@ -33,6 +35,12 @@ export default async function ProjectPage({
 
       {introCard && (
         <div className="mb-16 max-w-3xl mx-auto">
+          {introSession && (
+            <p className="text-center text-[10px] tracking-brand uppercase text-muted font-sans mb-3">
+              {locale === 'he' ? 'כרטיס 02 — נלקח ממפגש' : 'Card 02 — sourced from Session'}{' '}
+              {String(introSession.number).padStart(2, '0')}: {introSession.title[locale]}
+            </p>
+          )}
           <Card card={introCard} locale={locale} total={deck!.length} />
           <div className="text-center mt-3">
             <Link
@@ -47,7 +55,7 @@ export default async function ProjectPage({
 
       <section className="mb-16 max-w-3xl mx-auto border-t border-rule pt-12">
         <h2 className="text-2xl small-caps tracking-wide text-center mb-2">
-          {locale === 'he' ? 'בקולו — הליכה חיה במפגש 22' : 'In His Own Words — Live From Session 22'}
+          {locale === 'he' ? 'בקולו של ד״ר זוארי — הליכה חיה במפגש 22' : "In Dr. Zuari's Own Words — Live From Session 22"}
         </h2>
         <p className="text-center italic text-muted text-sm mb-2">
           {locale === 'he'
