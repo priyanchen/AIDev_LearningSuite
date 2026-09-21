@@ -26,9 +26,6 @@ export default function Header({ locale }: { locale: string }) {
         </Link>
 
         <nav className="flex items-center gap-6 text-sm">
-          <Link href={`/${locale}`} className="hover:text-accent transition">
-            {t('home')}
-          </Link>
           <Link href={`/${locale}/modules`} className="hover:text-accent transition">
             {t('modules')}
           </Link>
