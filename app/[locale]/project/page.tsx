@@ -119,6 +119,53 @@ function GitDiagrams({ locale }: { locale: Locale }) {
   );
 }
 
+function TreeLine({ label, note, depth = 0 }: { label: string; note?: string; depth?: number }) {
+  return (
+    <div className="flex items-baseline gap-2 font-mono text-xs" style={{ paddingInlineStart: `${depth * 1.25}rem` }}>
+      <span>{depth > 0 ? '└─' : ''}</span>
+      <span className="text-accent">{label}</span>
+      {note && <span className="text-muted italic font-sans text-[10px]">— {note}</span>}
+    </div>
+  );
+}
+
+// Real, live directory structure of the actual herbal-evidence repo (verified via the GitHub API,
+// not invented) — Dr. Zuari's own "always ask for a diagram to understand the whole process" habit
+// (quoted above), applied to the real project setup instead of left abstract.
+function HerbalSetupDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he'
+          ? '"תכיני לי איזה תרשים כזה, שיעזור לי להבין איך כל התהליך הזה הולך לעבוד" — מיושם על ההגדרה האמיתית'
+          : '"Prepare me a diagram like this, to help me understand how this whole process is going to work" — applied to the real setup'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'מבנה התיקיות האמיתי של herbal-evidence כפי שהוא היום, מ-GitHub — לא תרשים כללי.'
+          : 'The real folder structure of herbal-evidence as it exists today, pulled from GitHub — not a generic diagram.'}
+      </p>
+      <div className="border border-rule p-4 bg-paper grid gap-1 max-w-md mx-auto">
+        <TreeLine label="herbal-evidence/" />
+        <TreeLine depth={1} label="frontend/" note={locale === 'he' ? 'HTML/CSS/JS סטטי — שירות Railway משלו' : 'static HTML/CSS/JS — own Railway service'} />
+        <TreeLine depth={1} label="backend/" note={locale === 'he' ? 'FastAPI + Uvicorn — שירות Railway משלו' : 'FastAPI + Uvicorn — own Railway service'} />
+        <TreeLine depth={2} label="app/" />
+        <TreeLine depth={3} label="ai/  api/  auth/  domain/  jobs/  research/  services/" />
+        <TreeLine depth={2} label="tests/" />
+        <TreeLine depth={1} label="supabase/" note={locale === 'he' ? 'קונפיגורציית CLI, migrations, seed' : 'CLI config, migrations, seed'} />
+        <TreeLine depth={1} label="docs/" note={locale === 'he' ? 'ארכיטקטורה, החלטות, מודל נתונים, מדריך חוקר' : 'architecture, decisions, data model, researcher guide'} />
+        <TreeLine depth={1} label="README.md" />
+        <TreeLine depth={1} label=".gitignore" />
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-3">
+        {locale === 'he'
+          ? 'שימו לב: frontend ו-backend הם שני שירותים נפרדים, בדיוק כמו שד״ר זוארי תיאר בכרטיס 3 למעלה — לא חבילה אחת.'
+          : "Note: frontend and backend are two separate services, exactly as Dr. Zuari described in Card 3 above — not one bundle."}
+      </p>
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params: { locale },
 }: {
@@ -346,6 +393,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
                   </div>
                 ))}
