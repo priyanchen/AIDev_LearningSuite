@@ -78,6 +78,43 @@ function GitDiagrams({ locale }: { locale: Locale }) {
           </div>
         </div>
       </div>
+      <div>
+        <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-2 text-center">
+          {locale === 'he' ? 'התרשים של ד״ר זוארי — עבודת צוות (שיתוף פעולה)' : "Dr. Zuari's Diagram — Working in a Team (Collaboration)"}
+        </p>
+        <div className="flex items-stretch justify-center flex-wrap gap-2">
+          <div className="border border-dashed border-rule p-3">
+            <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">Local Machine</p>
+            <div className="text-[8px] tracking-brand uppercase text-accent font-sans text-center mb-1">↖ Pull</div>
+            <div className="flex items-center flex-wrap gap-1">
+              <DiagramBox label="Code" />
+              <DiagramArrow label="Add" />
+              <DiagramBox label="Staged Changes" />
+              <span className="text-accent px-1">→</span>
+              <DiagramBox label="Committed Changes" />
+            </div>
+          </div>
+          <div className="flex items-center px-1">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans">Push →</span>
+          </div>
+          <div className="border border-dashed border-rule p-3">
+            <p className="text-[8px] tracking-brand uppercase text-accent font-sans mb-2 text-center">GitHub</p>
+            <div className="grid gap-2 justify-items-center">
+              <DiagramBox label="Your GitHub Repo" />
+              <div className="flex items-center gap-3 text-[8px] tracking-brand uppercase text-accent font-sans">
+                <span>↓ Pull Request</span>
+                <span>Sync Fork ↑</span>
+              </div>
+              <DiagramBox label="Other GitHub Repo" />
+            </div>
+          </div>
+        </div>
+        <p className="text-[10px] italic text-muted text-center mt-3">
+          {locale === 'he'
+            ? '"Other GitHub Repo" הוא ה-fork המקורי שממנו את התחלת — כאן נכנסים pull request (הצעת שינוי חזרה למקור) ו-sync fork (עדכון העותק שלך ממנו), אותו זוג פעולות שכבר מוגדר למעלה בשלב הזה.'
+            : '"Other GitHub Repo" is the original fork source you started from — this is where pull request (proposing your change back upstream) and sync fork (updating your copy from it) come in, the same pair already defined above in this step.'}
+        </p>
+      </div>
     </div>
   );
 }
