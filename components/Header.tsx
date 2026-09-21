@@ -44,14 +44,9 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/prompts`} className="hover:text-accent transition">
             {t('prompts')}
           </Link>
-          <a
-            href="https://drive.google.com/file/d/1MQ_FWuhjk3RQzObVDHf47UOr3wiHFkLu/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition"
-          >
+          <Link href={`/${locale}/project`} className="hover:text-accent transition">
             {t('project')}
-          </a>
+          </Link>
           <SearchBox locale={locale === 'he' ? 'he' : 'en'} />
           <Link
             href={otherPath}
