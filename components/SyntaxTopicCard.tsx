@@ -32,6 +32,21 @@ function splitKeyValue(text: string): [string, string] | null {
   return [text.slice(0, colonIndex), text.slice(colonIndex + 1).trim()];
 }
 
+// Ester's Pandas/NumPy reference sheet packs several `code()` — description pairs into one point,
+// separated by ";". Split each into its own term/definition row; returns null (fall back to a plain
+// bullet) unless every semicolon-separated segment actually has a " — " term/definition split.
+function splitDashEntries(text: string): [string, string][] | null {
+  const segments = text.split(';').map((s) => s.trim()).filter(Boolean);
+  if (segments.length === 0) return null;
+  const entries: [string, string][] = [];
+  for (const segment of segments) {
+    const dashIndex = segment.indexOf(' — ');
+    if (dashIndex === -1) return null;
+    entries.push([segment.slice(0, dashIndex).trim(), segment.slice(dashIndex + 3).trim()]);
+  }
+  return entries;
+}
+
 export default function SyntaxTopicCard({
   topic,
   locale,
@@ -77,14 +92,26 @@ export default function SyntaxTopicCard({
           })}
         </div>
       ) : (
-        <ul className="grid gap-2 mb-4">
-          {topic.points.map((point, i) => (
-            <li key={i} className="text-sm leading-relaxed flex gap-2">
-              <span className="text-accent flex-shrink-0">·</span>
-              <span>{renderWithCode(point[locale])}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="grid gap-y-2 gap-x-4 mb-4 sm:grid-cols-[11rem_1fr]">
+          {topic.points.map((point, i) => {
+            const entries = splitDashEntries(point[locale]);
+            return entries ? (
+              entries.map(([term, definition], j) => (
+                <div key={`${i}-${j}`} className="contents">
+                  <span className="text-xs font-sans sm:pt-0.5">{renderWithCode(term)}</span>
+                  <span className="text-sm leading-relaxed pb-2 sm:pb-0 border-b sm:border-b-0 border-rule/50 text-muted">
+                    {definition}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div key={i} className="sm:col-span-2 text-sm leading-relaxed flex gap-2">
+                <span className="text-accent flex-shrink-0">·</span>
+                <span>{renderWithCode(point[locale])}</span>
+              </div>
+            );
+          })}
+        </div>
       )}
 
       {topic.keyTakeaway && (
