@@ -315,6 +315,124 @@ export const moduleResources: Record<
   },
   '04-intro-to-ds': {
     sourceUrl: 'https://drive.google.com/drive/folders/1u2vwCRJwxfgwDjZYv-PTL1JmxmcSULgX',
+    // Ester's own supplementary additions (Lomda app links, her recommended reading, her practice
+    // slides) live in estherTree below, separate from the class's own exercises/solutions/problem
+    // sets here — same distinction drawn for Module 3.
+    estherTree: [
+      {
+        kind: 'folder',
+        name: '1- pandas',
+        label: { en: '1 — Pandas', he: '1 — Pandas' },
+        children: [
+          {
+            kind: 'file',
+            name: 'לינק לומדות',
+            label: { en: 'Pandas — Interactive Lomda', he: 'Pandas — לומדה אינטראקטיבית' },
+            url: 'https://panda-house-flow.base44.app/',
+            ext: 'app',
+          },
+        ],
+      },
+      {
+        kind: 'folder',
+        name: '2- database',
+        label: { en: '2 — Database (Supabase)', he: '2 — בסיס נתונים (Supabase)' },
+        children: [
+          {
+            kind: 'file',
+            name: 'לינק לומדות',
+            label: { en: 'SQLite — Interactive Lomda', he: 'SQLite — לומדה אינטראקטיבית' },
+            url: 'https://simple-sqlite-lab.base44.app/',
+            ext: 'app',
+          },
+        ],
+      },
+      {
+        kind: 'folder',
+        name: '3- Machine Learning',
+        label: { en: '3 — Machine Learning', he: '3 — למידת מכונה' },
+        open: true,
+        children: [
+          {
+            kind: 'folder',
+            name: 'קישור לומדות (למידת מכונה).docx',
+            label: { en: 'Interactive Lomdot — Machine Learning', he: 'לומדות אינטראקטיביות — למידת מכונה' },
+            children: [
+              {
+                kind: 'file',
+                name: '1. הקדמה - סטטיסטיקה',
+                label: { en: '1. Intro — Statistics', he: '1. הקדמה — סטטיסטיקה' },
+                url: 'https://perky-data-lab-flow.base44.app',
+                ext: 'app',
+              },
+              {
+                kind: 'file',
+                name: '2. טיפול במשתנים',
+                label: { en: '2. Handling Variables', he: '2. טיפול במשתנים' },
+                url: 'https://data-craft-ai-9873944c.base44.app/',
+                ext: 'app',
+              },
+              {
+                kind: 'file',
+                name: '3. סיכום מודלים',
+                label: { en: '3. Model Summary', he: '3. סיכום מודלים' },
+                url: 'https://machine-learning-playground-3c6f2d65.base44.app',
+                ext: 'app',
+              },
+              {
+                kind: 'file',
+                name: 'pandas (same lomda as Exercise 1)',
+                label: { en: 'Pandas — Interactive Lomda (same as Exercise 1)', he: 'Pandas — לומדה אינטראקטיבית (זהה לתרגיל 1)' },
+                url: 'https://panda-house-flow.base44.app/',
+                ext: 'app',
+              },
+            ],
+          },
+          {
+            kind: 'folder',
+            name: "Ester's Recommended Links",
+            label: { en: "Ester's Recommended Links", he: 'קישורים מומלצים מאת אסתר' },
+            children: [
+              {
+                kind: 'file',
+                name: 'MLU-Explain — Linear Regression',
+                label: { en: 'Linear Regression — Visual Explainer (MLU-Explain)', he: 'רגרסיה לינארית — הסבר חזותי (MLU-Explain)' },
+                url: 'https://mlu-explain.github.io/linear-regression/',
+                ext: 'link',
+              },
+              {
+                kind: 'file',
+                name: 'From Animation to Intuition — Linear & Logistic Regression',
+                label: { en: 'From Animation to Intuition: Linear & Logistic Regression', he: 'מאנימציה לאינטואיציה: רגרסיה לינארית ולוגיסטית' },
+                url: 'https://medium.com/swlh/from-animation-to-intuition-linear-regression-and-logistic-regression-f641a31e1caf',
+                ext: 'link',
+              },
+              {
+                kind: 'file',
+                name: 'MAE, MSE, RMSE, R² & Adjusted R² — Which Metric is Better',
+                label: { en: 'MAE, MSE, RMSE, R² & Adjusted R² — Which Metric is Better?', he: 'MAE, MSE, RMSE, R² ו-R² מתוקנן — איזה מדד עדיף?' },
+                url: 'https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e',
+                ext: 'link',
+              },
+              {
+                kind: 'file',
+                name: 'Mastering K-Means Clustering',
+                label: { en: 'Mastering K-Means Clustering', he: 'שליטה באשכול K-Means' },
+                url: 'https://medium.com/data-science/mastering-k-means-clustering-065bc42637e4',
+                ext: 'link',
+              },
+            ],
+          },
+          {
+            kind: 'file',
+            name: 'ML-Ensemble Models-Esther- Practice.pptx',
+            label: { en: 'Ensemble Models — Practice Slides', he: 'מודלים משולבים — שקפי תרגול' },
+            url: 'https://drive.google.com/file/d/1yCuHXz3gKBeozIxJRAisP-1_T_NGFd5e/view',
+            ext: 'pptx',
+          },
+        ],
+      },
+    ],
     tree: [
       {
         kind: 'folder',
@@ -351,13 +469,6 @@ export const moduleResources: Record<
               },
             ],
           },
-          {
-            kind: 'file',
-            name: 'לינק לומדות',
-            label: { en: 'Pandas — Interactive Lomda', he: 'Pandas — לומדה אינטראקטיבית' },
-            url: 'https://panda-house-flow.base44.app/',
-            ext: 'app',
-          },
         ],
       },
       {
@@ -372,13 +483,6 @@ export const moduleResources: Record<
             label: { en: 'Supabase CRM Exercise', he: 'תרגיל Supabase CRM' },
             url: 'https://drive.google.com/file/d/1sTj-103zcL8ZF7uU2Uj3qTb1dPIntaeq/view',
             ext: 'docx',
-          },
-          {
-            kind: 'file',
-            name: 'לינק לומדות',
-            label: { en: 'SQLite — Interactive Lomda', he: 'SQLite — לומדה אינטראקטיבית' },
-            url: 'https://simple-sqlite-lab.base44.app/',
-            ext: 'app',
           },
           {
             kind: 'file',
@@ -583,48 +687,6 @@ export const moduleResources: Record<
                 ],
               },
             ],
-          },
-          {
-            kind: 'folder',
-            name: 'קישור לומדות (למידת מכונה).docx',
-            label: { en: 'Interactive Lomdot — Machine Learning', he: 'לומדות אינטראקטיביות — למידת מכונה' },
-            children: [
-              {
-                kind: 'file',
-                name: '1. הקדמה - סטטיסטיקה',
-                label: { en: '1. Intro — Statistics', he: '1. הקדמה — סטטיסטיקה' },
-                url: 'https://perky-data-lab-flow.base44.app',
-                ext: 'app',
-              },
-              {
-                kind: 'file',
-                name: '2. טיפול במשתנים',
-                label: { en: '2. Handling Variables', he: '2. טיפול במשתנים' },
-                url: 'https://data-craft-ai-9873944c.base44.app/',
-                ext: 'app',
-              },
-              {
-                kind: 'file',
-                name: '3. סיכום מודלים',
-                label: { en: '3. Model Summary', he: '3. סיכום מודלים' },
-                url: 'https://machine-learning-playground-3c6f2d65.base44.app',
-                ext: 'app',
-              },
-              {
-                kind: 'file',
-                name: 'pandas (same lomda as Exercise 1)',
-                label: { en: 'Pandas — Interactive Lomda (same as Exercise 1)', he: 'Pandas — לומדה אינטראקטיבית (זהה לתרגיל 1)' },
-                url: 'https://panda-house-flow.base44.app/',
-                ext: 'app',
-              },
-            ],
-          },
-          {
-            kind: 'file',
-            name: 'ML-Ensemble Models-Esther- Practice.pptx',
-            label: { en: 'Ensemble Models — Practice Slides', he: 'מודלים משולבים — שקפי תרגול' },
-            url: 'https://drive.google.com/file/d/1yCuHXz3gKBeozIxJRAisP-1_T_NGFd5e/view',
-            ext: 'pptx',
           },
         ],
       },

@@ -9,6 +9,7 @@ import type { RecommendationType } from '@/content/recommendations';
 function typeLabel(type: RecommendationType, locale: Locale) {
   if (type === 'book') return locale === 'he' ? 'ספר' : 'Book';
   if (type === 'course') return locale === 'he' ? 'קורס' : 'Course';
+  if (type === 'dataset') return locale === 'he' ? 'נתונים' : 'Data';
   return locale === 'he' ? 'אדם' : 'Person';
 }
 
