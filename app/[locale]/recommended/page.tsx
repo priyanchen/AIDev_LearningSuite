@@ -11,6 +11,7 @@ function typeLabel(type: RecommendationType, locale: Locale) {
   if (type === 'course') return locale === 'he' ? 'קורס' : 'Course';
   if (type === 'dataset') return locale === 'he' ? 'נתונים' : 'Data';
   if (type === 'platform') return locale === 'he' ? 'פלטפורמה' : 'Platform';
+  if (type === 'reference') return locale === 'he' ? 'מקור עזר' : 'Reference';
   return locale === 'he' ? 'אדם' : 'Person';
 }
 

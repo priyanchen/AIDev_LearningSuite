@@ -1,6 +1,6 @@
 import type { Bilingual } from '@/lib/registry';
 
-export type RecommendationType = 'book' | 'person' | 'course' | 'dataset' | 'platform';
+export type RecommendationType = 'book' | 'person' | 'course' | 'dataset' | 'platform' | 'reference';
 
 export type RecommendationItem = {
   name: string;              // kept in its original language/script — not translated
@@ -163,6 +163,24 @@ export const recommendationCategories: RecommendationCategory[] = [
           { label: 'GitHub — karpathy', url: 'https://github.com/karpathy' },
           { label: 'YouTube — Andrej Karpathy', url: 'https://www.youtube.com/@AndrejKarpathy' },
           { label: 'karpathy.ai', url: 'https://karpathy.ai' },
+        ],
+      },
+      {
+        name: 'W3Schools — Python Module Reference',
+        type: 'reference',
+        sessionNumber: 12,
+        bio: {
+          en: `A reference listing of Python's built-in standard-library modules (\`random\`, \`os\`, \`sys\`, \`math\`, and the rest) with their functions and short examples — the same modules the course's own \`import random\` and \`import calc\` exercises draw on.`,
+          he: `רשימת עזר של המודולים המובנים בספריית התקן של פייתון (\`random\`, \`os\`, \`sys\`, \`math\`, והשאר) עם הפונקציות שלהם ודוגמאות קצרות — אותם מודולים שתרגילי \`import random\` ו-\`import calc\` של הקורס עצמו נשענים עליהם.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially as the standing reference for Session 12's "Import ≠ Use" distinction and every other session's standard-library imports, already linked from the Syntax page's Python section.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כעזר קבוע להבחנה "ייבוא ≠ שימוש" של מפגש 12 ולייבואי ספריית התקן של כל שאר המפגשים, כבר מקושר מסעיף הפייתון בעמוד התחביר.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'W3Schools — Python Module Reference', url: 'https://www.w3schools.com/python/python_ref_modules.asp' },
         ],
       },
     ],
