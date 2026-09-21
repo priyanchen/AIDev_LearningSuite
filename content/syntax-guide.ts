@@ -389,4 +389,109 @@ export const otherLanguages: SyntaxLanguageSection[] = [
       },
     ],
   },
+  {
+    id: 'numpy',
+    language: { en: 'NumPy', he: 'NumPy' },
+    note: {
+      en: `Used throughout the Data Science module (Sessions 17–21) for array math underneath pandas, but never had its own notebook summary. What follows is sourced from Ester's own Python command-reference sheet (Module 3's Practice Companion), not the instructor's notebooks — treat it as a supplementary cheat sheet, not a course transcript.`,
+      he: `בשימוש לאורך כל מודול מדעי הנתונים (מפגשים 17–21) לחישובי מערכים מתחת ל-pandas, אך מעולם לא הייתה לו מחברת סיכום משלו. מה שבא בהמשך מקורו בדף עזר לפקודות פייתון של אסתר עצמה (מלווה התרגול של מודול 3), לא מהמחברות של המרצה — יש להתייחס אליו כגיליון עזר משלים, לא כתמליל קורס.`,
+    },
+    topics: [
+      {
+        number: 'numpy-01',
+        title: { en: 'Creating & Inspecting Arrays', he: 'יצירת מערכים ובדיקתם' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`np.array(list)\` builds an array from a list; \`np.arange(start, stop, step)\` builds one from a sequence of numbers.`, he: `\`np.array(list)\` בונה מערך מרשימה; \`np.arange(start, stop, step)\` בונה מערך מרצף מספרים.` },
+          { en: `\`np.zeros(n)\` and \`np.ones(n)\` build arrays pre-filled with 0s or 1s.`, he: `\`np.zeros(n)\` ו-\`np.ones(n)\` בונים מערכים ממולאים מראש ב-0 או ב-1.` },
+          { en: `\`array.shape\` gives (rows, columns); \`array.dtype\` gives the element type.`, he: `\`array.shape\` נותן (שורות, עמודות); \`array.dtype\` נותן את סוג האיברים.` },
+          { en: `Slicing works like lists: \`array[1:4]\` takes a sub-range.`, he: `פרוסה עובדת כמו ברשימות: \`array[1:4]\` לוקח טווח משנה.` },
+        ],
+      },
+      {
+        number: 'numpy-02',
+        title: { en: 'Filtering & Statistics', he: 'סינון וסטטיסטיקה' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`array > 5\` returns a boolean array; \`array[array > 5]\` uses that boolean array to filter in place.`, he: `\`array > 5\` מחזיר מערך בוליאני; \`array[array > 5]\` משתמש במערך הבוליאני הזה כדי לסנן במקום.` },
+          { en: `\`np.where(condition, A, B)\` picks A where the condition holds, B otherwise — a vectorized if/else.`, he: `\`np.where(condition, A, B)\` בוחר ב-A במקום שהתנאי מתקיים, ב-B אחרת — if/else מווקטר.` },
+          { en: `\`np.sum()\`, \`np.mean()\`, \`np.max()\` compute across the whole array; \`np.sort()\` returns a sorted copy.`, he: `\`np.sum()\`, \`np.mean()\`, \`np.max()\` מחשבים על פני המערך כולו; \`np.sort()\` מחזיר עותק ממוין.` },
+        ],
+        keyTakeaway: {
+          en: `NumPy's boolean-array filtering (\`array[condition]\`) is the same idea pandas' \`df[df['col'] > 10]\` builds on — one array operation instead of a loop.`,
+          he: `סינון במערך בוליאני של NumPy (\`array[condition]\`) הוא אותו רעיון ש-\`df[df['col'] > 10]\` של pandas בנוי עליו — פעולת מערך אחת במקום לולאה.`,
+        },
+      },
+    ],
+    attachments: [
+      { label: { en: "Ester's Python Tables — Command Summary (PDF)", he: 'טבלאות פייתון של אסתר — סיכום פקודות (PDF)' }, url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view' },
+    ],
+  },
+  {
+    id: 'pandas',
+    language: { en: 'Pandas', he: 'Pandas' },
+    note: {
+      en: `The workhorse of every Session 17–21 exercise — reading CSVs, cleaning data, grouping and aggregating it. As with NumPy above, this reference comes from Ester's own Python command sheet (Module 3's Practice Companion), not a course notebook summary — a working cheat sheet, not a transcript.`,
+      he: `סוס העבודה של כל תרגיל במפגשים 17–21 — קריאת CSV, ניקוי נתונים, קיבוץ וצבירה. כמו ב-NumPy למעלה, גיליון העזר הזה מגיע מדף פקודות הפייתון של אסתר עצמה (מלווה התרגול של מודול 3), לא מסיכום מחברת קורס — גיליון עזר עובד, לא תמליל.`,
+    },
+    topics: [
+      {
+        number: 'pandas-01',
+        title: { en: 'Reading, Inspecting & Writing Data', he: 'קריאה, בדיקה וכתיבה של נתונים' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`pd.read_csv()\`, \`pd.read_excel()\`, \`pd.read_json()\` load data from a file into a DataFrame; \`df.to_csv()\`, \`df.to_excel()\`, \`df.to_json()\` write it back out.`, he: `\`pd.read_csv()\`, \`pd.read_excel()\`, \`pd.read_json()\` טוענים נתונים מקובץ ל-DataFrame; \`df.to_csv()\`, \`df.to_excel()\`, \`df.to_json()\` כותבים אותם חזרה.` },
+          { en: `\`df.head()\` / \`df.tail()\` show the first/last five rows; \`df.info()\` shows column types and structure; \`df.describe()\` gives summary statistics; \`df.shape\` gives (rows, columns).`, he: `\`df.head()\` / \`df.tail()\` מציגים את חמש השורות הראשונות/אחרונות; \`df.info()\` מציג סוגי עמודות ומבנה; \`df.describe()\` נותן סטטיסטיקה תיאורית; \`df.shape\` נותן (שורות, עמודות).` },
+          { en: `\`df.columns\`, \`df.dtypes\`, \`df.index\` expose the column names, per-column types, and row index directly.`, he: `\`df.columns\`, \`df.dtypes\`, \`df.index\` חושפים ישירות את שמות העמודות, הסוגים לפי עמודה, ואינדקס השורות.` },
+        ],
+      },
+      {
+        number: 'pandas-02',
+        title: { en: 'Selecting & Filtering', he: 'בחירה וסינון' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `Column access: \`df['col']\` or \`df.col\`. Row access by position: \`df.iloc[row, col]\`; by label: \`df.loc[label_row, label_col]\`.`, he: `גישה לעמודה: \`df['col']\` או \`df.col\`. גישה לשורה לפי מיקום: \`df.iloc[row, col]\`; לפי תווית: \`df.loc[label_row, label_col]\`.` },
+          { en: `Conditional filtering: \`df[df['col'] > 10]\`; combine conditions with \`&\` (and) / \`|\` (or): \`df.loc[filter1 & filter2]\`; or \`df.query("condition")\` as a readable alternative.`, he: `סינון תנאי: \`df[df['col'] > 10]\`; שילוב תנאים עם \`&\` (וגם) / \`|\` (או): \`df.loc[filter1 & filter2]\`; או \`df.query("condition")\` כאלטרנטיבה קריאה.` },
+          { en: `\`df.sort_values('col')\` sorts by a column's values; \`df.sort_index()\` sorts by the row index.`, he: `\`df.sort_values('col')\` ממיין לפי ערכי עמודה; \`df.sort_index()\` ממיין לפי אינדקס השורות.` },
+        ],
+      },
+      {
+        number: 'pandas-03',
+        title: { en: 'Cleaning & Missing Data', he: 'ניקוי וטיפול בנתונים חסרים' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`df['col'].isna()\` / \`df.isnull()\` flag missing values; \`df.fillna(value)\` fills them in; \`df.dropna()\` removes rows that have them.`, he: `\`df['col'].isna()\` / \`df.isnull()\` מסמנים ערכים חסרים; \`df.fillna(value)\` ממלא אותם; \`df.dropna()\` מסיר שורות שמכילות אותם.` },
+          { en: `\`df.drop_duplicates()\` removes duplicate rows; \`df.duplicated()\` flags which rows are duplicates without removing them.`, he: `\`df.drop_duplicates()\` מסיר שורות כפולות; \`df.duplicated()\` מסמן אילו שורות כפולות בלי להסיר אותן.` },
+          { en: `\`df.astype()\` converts a column's type; \`df.rename()\` renames columns; \`df.replace()\` swaps specific values.`, he: `\`df.astype()\` ממיר את סוג העמודה; \`df.rename()\` משנה שמות עמודות; \`df.replace()\` מחליף ערכים ספציפיים.` },
+        ],
+      },
+      {
+        number: 'pandas-04',
+        title: { en: 'String & DateTime Operations', he: 'פעולות על מחרוזות ותאריכים' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `String methods run on a whole column via \`.str\`: \`df['col'].str.contains()\`, \`.str.startswith()\`, \`.str.replace()\`, \`.str.upper()\` / \`.str.lower()\`, \`.str.strip()\`.`, he: `מתודות מחרוזת רצות על עמודה שלמה דרך \`.str\`: \`df['col'].str.contains()\`, \`.str.startswith()\`, \`.str.replace()\`, \`.str.upper()\` / \`.str.lower()\`, \`.str.strip()\`.` },
+          { en: `\`pd.to_datetime()\` converts a column to real dates; once converted, \`df['date'].dt.year\`, \`.dt.month\`, \`.dt.day\`, \`.dt.weekday\` pull each part out.`, he: `\`pd.to_datetime()\` ממיר עמודה לתאריכים אמיתיים; לאחר ההמרה, \`df['date'].dt.year\`, \`.dt.month\`, \`.dt.day\`, \`.dt.weekday\` שולפים כל חלק.` },
+          { en: `\`pd.date_range()\` generates a range of dates; \`df.resample()\` re-buckets time-indexed data into new time periods.`, he: `\`pd.date_range()\` מייצר טווח תאריכים; \`df.resample()\` מקבץ מחדש נתונים עם אינדקס זמן לתקופות זמן חדשות.` },
+        ],
+      },
+      {
+        number: 'pandas-05',
+        title: { en: 'GroupBy, Merging & Reshaping', he: 'קיבוץ, מיזוג ועיצוב מחדש' },
+        source: "Ester's Practice Companion · Python Tables (Module 3)",
+        points: [
+          { en: `\`df.groupby('col')\` buckets rows by a column's values; follow with \`.agg()\`, \`.mean()\`, \`.sum()\`, or \`.count()\` to summarize each bucket.`, he: `\`df.groupby('col')\` מקבץ שורות לפי ערכי עמודה; ממשיכים עם \`.agg()\`, \`.mean()\`, \`.sum()\`, או \`.count()\` כדי לסכם כל קבוצה.` },
+          { en: `\`pd.merge()\` joins two DataFrames on a shared key, like a SQL join; \`pd.concat()\` stacks DataFrames together.`, he: `\`pd.merge()\` מצרף שני DataFrames לפי מפתח משותף, כמו join ב-SQL; \`pd.concat()\` מערים DataFrames זה על זה.` },
+          { en: `\`df.pivot_table()\` reshapes long data into a summary grid; \`df.melt()\` does the reverse, turning columns back into rows.`, he: `\`df.pivot_table()\` מעצב מחדש נתונים ארוכים לרשת סיכום; \`df.melt()\` עושה את ההפך, הופך עמודות בחזרה לשורות.` },
+        ],
+        keyTakeaway: {
+          en: `groupby → agg is pandas' equivalent of SQL's GROUP BY — the same "bucket, then summarize" logic taught for SQLite in Session 15.`,
+          he: `groupby ← agg הוא המקבילה של pandas ל-GROUP BY של SQL — אותה לוגיקת "לקבץ, ואז לסכם" שנלמדה עבור SQLite במפגש 15.`,
+        },
+      },
+    ],
+    attachments: [
+      { label: { en: "Ester's Python Tables — Command Summary (PDF)", he: 'טבלאות פייתון של אסתר — סיכום פקודות (PDF)' }, url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view' },
+    ],
+  },
 ];
