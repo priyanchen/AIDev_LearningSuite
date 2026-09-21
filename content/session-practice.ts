@@ -15,9 +15,23 @@ const claudeCodeWorkshop: ResourceNode = {
 export const sessionPractice: Record<string, ResourceNode[]> = {
   'session-09-python-6': [claudeCodeWorkshop],
   'session-10-python-7': [claudeCodeWorkshop],
-  'session-13-ds-0': [claudeCodeWorkshop],
-  'session-15-ds-2': [claudeCodeWorkshop],
-  'session-18-ds-5': [claudeCodeWorkshop],
+  'session-13-ds-0': [
+    claudeCodeWorkshop,
+    { kind: 'file', name: 'practical_statistics.html', label: { en: 'Practice — Statistics (English)', he: 'תרגול — סטטיסטיקה (אנגלית)' }, url: 'https://drive.google.com/file/d/1t6ys1VwLAo9UiFqjiN8I5OHEHHQ9XRNa/view', ext: 'html' },
+    { kind: 'file', name: 'practical_statistics_he.html', label: { en: 'Practice — Statistics (Hebrew)', he: 'תרגול — סטטיסטיקה (עברית)' }, url: 'https://drive.google.com/file/d/1q8-HvTpHCrRPcRno8aKpfqqzjDFzyt4a/view', ext: 'html' },
+  ],
+  'session-15-ds-2': [
+    claudeCodeWorkshop,
+    { kind: 'file', name: 'SQLite-Interactive.html', label: { en: 'SQLite — Interactive Practice', he: 'SQLite — תרגול אינטראקטיבי' }, url: 'https://drive.google.com/file/d/18AZNXF_x1d9GjxkIlIg-InTbEqEn749c/view', ext: 'html' },
+    { kind: 'file', name: 'sqltestcode.ipynb', label: { en: 'SQL Test Code 1 (Notebook)', he: 'קוד בדיקת SQL 1 (מחברת)' }, url: 'https://drive.google.com/file/d/15KvdVOkOpZ-sVFcIIqjNdKd-vCPdiQXU/view', ext: 'ipynb' },
+    { kind: 'file', name: 'sqltestcode2.ipynb', label: { en: 'SQL Test Code 2 (Notebook)', he: 'קוד בדיקת SQL 2 (מחברת)' }, url: 'https://drive.google.com/file/d/1XNkjMK6HQjw38XtBYi1sEEyUEiTgNmIz/view', ext: 'ipynb' },
+    { kind: 'file', name: 'Practice 1.pdf', label: { en: 'Practice 1', he: 'תרגול 1' }, url: 'https://drive.google.com/file/d/10YhI8L8Wp37K2neO08hc6E_2uIyMMYuy/view', ext: 'pdf' },
+  ],
+  'session-18-ds-5': [
+    claudeCodeWorkshop,
+    { kind: 'file', name: '02 - linear_regression.ipynb', label: { en: 'Linear Regression (Notebook)', he: 'רגרסיה לינארית (מחברת)' }, url: 'https://drive.google.com/file/d/1XzgtDqd8O3uMcdPanmfR4QHbWY4Ddm2I/view', ext: 'ipynb' },
+    { kind: 'file', name: 'reg_data.xlsx', label: { en: 'Regression Dataset', he: 'מערך נתונים — רגרסיה' }, url: 'https://drive.google.com/file/d/1XEsoh1Bu3US-y1bk1QkNUi4NyBJNir8M/view', ext: 'xlsx' },
+  ],
   'session-14-ds-1': [
     {
       kind: 'file',
@@ -40,6 +54,18 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
       url: 'https://drive.google.com/file/d/10CrL3NW2qDJ7x0DGwHfGTXT5y81R8YMV/view',
       ext: 'ipynb',
     },
+    { kind: 'file', name: 'Pandas-Lecture .html', label: { en: 'Pandas Lecture', he: 'הרצאת Pandas' }, url: 'https://drive.google.com/file/d/1Xz5BY6OlxuRf_hfQHcvA6lpUFaAx53G8/view', ext: 'html' },
+    {
+      kind: 'folder',
+      name: 'Practice',
+      label: { en: 'Pandas — Practice Set', he: 'Pandas — סט תרגול' },
+      children: [
+        { kind: 'file', name: 'PS.ipynb', label: { en: 'Problem Set (Notebook)', he: 'סט בעיות (מחברת)' }, url: 'https://drive.google.com/file/d/1v95Awdh8AvhjJBnPVzet4rMSGy708HCF/view', ext: 'ipynb' },
+        { kind: 'file', name: 'PSsol.ipynb', label: { en: 'Problem Set — Solution', he: 'סט בעיות — פתרון' }, url: 'https://drive.google.com/file/d/1uy4LhkDT_SFAyt4LebD3jSF8dTwFJBJ3/view', ext: 'ipynb' },
+        { kind: 'file', name: 'dataset.csv', label: { en: 'Dataset', he: 'מערך נתונים' }, url: 'https://drive.google.com/file/d/1cOTIFucSs4FZzgq2Rq64zzDCxw78J6s6/view', ext: 'csv' },
+        { kind: 'file', name: 'data_description.txt', label: { en: 'Data Description', he: 'תיאור הנתונים' }, url: 'https://drive.google.com/file/d/1ORyHbUknXdk_3jDOJGKLke0Z7bWUJoMh/view', ext: 'txt' },
+      ],
+    },
   ],
   'session-16-ds-3': [
     {
@@ -56,7 +82,22 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
       url: 'https://drive.google.com/file/d/1iQx6cu95x9I8OHBcHRdGMAF2b7UIgpB7/view',
       ext: 'mp4',
     },
+    { kind: 'file', name: 'Supabase_airline.html', label: { en: 'Supabase — Airline Practice', he: 'Supabase — תרגול תעופה' }, url: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view', ext: 'html' },
     claudeCodeWorkshop,
+  ],
+  'session-17-ds-4': [
+    { kind: 'file', name: '01 - data_preprocessing_tools.ipynb', label: { en: 'Data Preprocessing Tools (Notebook)', he: 'כלי עיבוד מקדים לנתונים (מחברת)' }, url: 'https://drive.google.com/file/d/1kpITLTrZQLbZk241JMssElQVAT5a7G8w/view', ext: 'ipynb' },
+    { kind: 'file', name: 'PreprocessData.csv', label: { en: 'Preprocessing Dataset', he: 'מערך נתונים — עיבוד מקדים' }, url: 'https://drive.google.com/file/d/1dCxLagh6C9ns5yo-4ZvWjOYwgpiEdP5d/view', ext: 'csv' },
+    {
+      kind: 'folder',
+      name: 'Problem Sets',
+      label: { en: 'Problem Set — Heart Attack & Housing Data', he: 'סט בעיות — נתוני התקף לב ודיור' },
+      children: [
+        { kind: 'file', name: 'תרגיל למידת מכונה.pdf', label: { en: 'Assignment', he: 'מטלה' }, url: 'https://drive.google.com/file/d/1WLVGgLRrGduVPtBG1no-vJqKPsd4QIAQ/view', ext: 'pdf' },
+        { kind: 'file', name: 'Project Heart attack data.csv', label: { en: 'Heart Attack Dataset', he: 'מערך נתונים — התקף לב' }, url: 'https://drive.google.com/file/d/1NZfitGQrKR3YeE1E-vDBZoC0w8EI2l3b/view', ext: 'csv' },
+        { kind: 'file', name: 'Project housing data .csv', label: { en: 'Housing Dataset', he: 'מערך נתונים — דיור' }, url: 'https://drive.google.com/file/d/1dkDrG7vIDlTgaMjboqqUBtY13RYiOSFO/view', ext: 'csv' },
+      ],
+    },
   ],
   // Exercise 1 — the combined linear + logistic regression targil, attached to Session 19
   // (Logistic Regression, Model Evaluation & K-Means), the closing session of that arc.
@@ -145,6 +186,9 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
         },
       ],
     },
+    { kind: 'file', name: '03 - logistic_regression.ipynb', label: { en: 'Logistic Regression (Notebook)', he: 'רגרסיה לוגיסטית (מחברת)' }, url: 'https://drive.google.com/file/d/1n5zCHcCTv68MbrE1r_B4xZvl7dHEo7C6/view', ext: 'ipynb' },
+    { kind: 'file', name: 'log_data.csv', label: { en: 'Logistic Regression Dataset', he: 'מערך נתונים — רגרסיה לוגיסטית' }, url: 'https://drive.google.com/file/d/1I6cAC-HOOqjVGxxk4r-BW678igpmi2TK/view', ext: 'csv' },
+    { kind: 'file', name: 'Machine Learning - Linear Regression, Logistic Regression,.html', label: { en: 'Linear & Logistic Regression — Combined Practice', he: 'רגרסיה לינארית ולוגיסטית — תרגול משולב' }, url: 'https://drive.google.com/file/d/1aUNnOURtfszbvDo1rP0B3ZYMJ-s-dd8Z/view', ext: 'html' },
     claudeCodeWorkshop,
   ],
   // Exercise 2 — Clustering, attached to Session 20 (deferred; the missing recording would
@@ -192,6 +236,16 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
         },
       ],
     },
+    {
+      kind: 'folder',
+      name: 'Clustering',
+      label: { en: 'K-Means — Additional Practice', he: 'K-Means — תרגול נוסף' },
+      children: [
+        { kind: 'file', name: 'k_means_clustering.ipynb', label: { en: 'K-Means Clustering (Notebook)', he: 'אשכול K-Means (מחברת)' }, url: 'https://drive.google.com/file/d/198e5mS5yCwiugQigTt_TmlSRChL_qTp-/view', ext: 'ipynb' },
+        { kind: 'file', name: 'clustering - K-Means.html', label: { en: 'K-Means — Practice (HTML)', he: 'K-Means — תרגול (HTML)' }, url: 'https://drive.google.com/file/d/1WRFcSLJ6r3rQjqbmt5rKfWGBGH06PP9O/view', ext: 'html' },
+        { kind: 'file', name: 'data.csv', label: { en: 'Dataset', he: 'מערך נתונים' }, url: 'https://drive.google.com/file/d/1sxIkhLN70iG4HRL-DcFpCN1UDCIGC2xt/view', ext: 'csv' },
+      ],
+    },
   ],
   // Exercise 3 — Gradient Boosting / Ensemble Models, attached to Session 21
   // (Cross-Validation, Grid Search, LightGBM, CatBoost).
@@ -236,6 +290,21 @@ export const sessionPractice: Record<string, ResourceNode[]> = {
           url: 'https://drive.google.com/file/d/1O4lQpOj_HwFpCaNonUM32vpxaDeNxX2C/view',
           ext: 'ipynb',
         },
+      ],
+    },
+    {
+      kind: 'folder',
+      name: 'Esemble Models',
+      label: { en: 'Ensemble Models — Additional Practice', he: 'מודלים משולבים — תרגול נוסף' },
+      children: [
+        { kind: 'file', name: 'Ensemble Models — Part A.html', label: { en: 'Ensemble Models — Part A', he: 'מודלים משולבים — חלק א' }, url: 'https://drive.google.com/file/d/1fvTPPPaVxk3QL2xqPM414hrOifVk9ODZ/view', ext: 'html' },
+        { kind: 'file', name: 'Modern Boosters — Part B.html', label: { en: 'Modern Boosters — Part B', he: 'מאיצים מודרניים — חלק ב' }, url: 'https://drive.google.com/file/d/1xueeIbh_tR9-bepgIruLD0muNs0Ue_Sg/view', ext: 'html' },
+        { kind: 'file', name: 'xgboost_classifier.ipynb', label: { en: 'XGBoost Classifier (Notebook)', he: 'מסווג XGBoost (מחברת)' }, url: 'https://drive.google.com/file/d/1VAN1Wjx_VbsNJpHwO_4jJxdNiG3Pa2Lh/view', ext: 'ipynb' },
+        { kind: 'file', name: 'xgboost_regressor.ipynb', label: { en: 'XGBoost Regressor (Notebook)', he: 'רגרסור XGBoost (מחברת)' }, url: 'https://drive.google.com/file/d/15ougaa6J4NKWpbkRaKoV462bKOxInays/view', ext: 'ipynb' },
+        { kind: 'file', name: 'lightgbm_classifier.ipynb', label: { en: 'LightGBM Classifier (Notebook)', he: 'מסווג LightGBM (מחברת)' }, url: 'https://drive.google.com/file/d/1EUZklRENV7YZiWyogtkzLYDYdCjGPt8n/view', ext: 'ipynb' },
+        { kind: 'file', name: 'Random Forest.ipynb', label: { en: 'Random Forest (Notebook)', he: 'Random Forest (מחברת)' }, url: 'https://drive.google.com/file/d/1CsIeq3PsHThdx4uWlx1sGKH8IA1bjP4s/view', ext: 'ipynb' },
+        { kind: 'file', name: 'credit_card_fraud_10k.csv', label: { en: 'Credit Card Fraud Dataset', he: 'מערך נתונים — הונאת כרטיס אשראי' }, url: 'https://drive.google.com/file/d/1HVEWLW0PLRi2evdmJSbTRhFyHGY9ySoN/view', ext: 'csv' },
+        { kind: 'file', name: 'churn_modelling.csv', label: { en: 'Churn Modelling Dataset', he: 'מערך נתונים — מודל נטישה' }, url: 'https://drive.google.com/file/d/18LxcgkqVehqrAFV4bWS5wLgAuYug8abP/view', ext: 'csv' },
       ],
     },
   ],
