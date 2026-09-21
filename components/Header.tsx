@@ -24,7 +24,7 @@ export default function Header({ locale }: { locale: string }) {
             {site('brand')}
           </span>
           <span
-            className="block text-sm small-caps tracking-wide text-accent"
+            className="block text-xl small-caps tracking-wide text-accent"
             style={{ textAlign: 'justify', textAlignLast: 'justify' }}
           >
             {site('title')}
