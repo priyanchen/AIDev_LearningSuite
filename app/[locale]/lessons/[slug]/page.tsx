@@ -356,6 +356,17 @@ export default async function SessionPage({
                 {t('openChat')} ↗
               </a>
             )}
+            {session.sourceLinks.slides?.map((slideLink, i, slides) => (
+              <a
+                key={slideLink}
+                href={slideLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+              >
+                {slideLabels[slideLink]?.[locale] ?? `${t('openSlides')} ${slides.length > 1 ? i + 1 : ''}`} ↗
+              </a>
+            ))}
           </div>
         </section>
       )}
