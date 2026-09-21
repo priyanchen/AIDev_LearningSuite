@@ -223,6 +223,36 @@ function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// The real problem statement he reached live, plus the safety constraint that shaped the whole
+// product — Session 22's transcript, the actual opening of the characterization.
+function HerbalProblemCallout({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'הבעיה בפועל — מפגש 22, לא היפותטית' : 'The Actual Problem — Session 22, Not Hypothetical'}
+      </p>
+      <blockquote className="border-s-2 border-accent ps-4 mb-4">
+        <p dir="rtl" className="text-sm leading-relaxed mb-1">
+          "שמעתי שצמח X עוזר למחלה שלי — האם הטענה הזו באמת מבוססת?"
+        </p>
+        <p dir="ltr" className="text-sm italic text-muted leading-relaxed">
+          "I heard herb X helps with my condition — is that claim actually evidence-based?"
+        </p>
+      </blockquote>
+      <div className="border border-accent p-4 max-w-md mx-auto">
+        <p className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold mb-2 text-center">
+          {locale === 'he' ? 'האילוץ שעיצב הכול' : 'The Constraint That Shaped Everything'}
+        </p>
+        <p className="text-xs leading-relaxed text-center">
+          {locale === 'he'
+            ? 'צמח שנחקר לא אומר שהוא מועיל — רשימה גולמית עלולה להיקרא כהמלצה. הסיכון הזה עיצב את המוצר מההתחלה.'
+            : "A plant being researched doesn't mean it's beneficial — a bare list risks being read as a recommendation. That risk shaped the product from the start."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // The real user, straight from the repo's own README plus the screen flow walked through live —
 // not a hypothetical persona.
 function HerbalPersonaCard({ locale }: { locale: Locale }) {
@@ -646,6 +676,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 1 && <HerbalProblemCallout locale={locale} />}
                     {step.number === 2 && <HerbalPersonaCard locale={locale} />}
                     {step.number === 3 && <HerbalMVPDiagram locale={locale} />}
                     {step.number === 4 && <HerbalUXFlowDiagram locale={locale} />}
