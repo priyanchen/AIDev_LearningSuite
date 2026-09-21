@@ -8,6 +8,7 @@ import {
   characterizationReconstruction,
   gitSubmissionStages,
 } from '@/content/project-guide';
+import { chatGptScript, chatGptScriptNote } from '@/content/chatgpt-script';
 import { getSession } from '@/lib/registry';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
@@ -686,8 +687,8 @@ export default async function ProjectPage({
           </header>
           <p className="text-xs italic text-muted mb-4 leading-relaxed">
             {locale === 'he'
-              ? 'לא ציטוט מילולי — הפרומפט האמיתי חי בקישור ה-ChatGPT למטה, ולא ניתן היה לשלוף אותו בכלים אוטומטיים ב-session הזה (הדף נטען בצד-לקוח מאחורי הגנת Cloudflare). מה שלמטה משוחזר משני מקורות עצמאיים: יומן הצ׳אט החי ותמליל הכתוביות האוטומטי — מדויק להחלטות בפועל, גם אם הוא לא ציטוט ישיר.'
-              : "Not a verbatim quote — the real prompt lives at the ChatGPT link below, and couldn't be pulled through any automated tool this session (the page loads client-side behind Cloudflare). What follows is reconstructed from two independent sources instead: the live chat log and the auto-caption transcript — accurate to the actual decisions, even if not a direct quote."}
+              ? 'לא ציטוט מילולי — זהו סיכום קצר של המסקנות. הפרומפט המלא והמילולי נשלף בהצלחה בהמשך session זה וזמין להלן ב"כרטיס 2 — התסריט המלא," אחרי שניסיונות קודמים נחסמו על ידי Cloudflare.'
+              : 'Not a verbatim quote — this is a short summary of the conclusions. The full, verbatim prompt was successfully retrieved later in this same session and is available below in "Card 2 — The Full Script," after earlier attempts were Cloudflare-blocked.'}
           </p>
           <ul className="grid gap-2">
             {characterizationReconstruction.map((point, i) => (
@@ -699,11 +700,44 @@ export default async function ProjectPage({
           </ul>
         </div>
 
-        {/* Card 2 — the questioning & decision process that produced Card 1 above */}
+        {/* Card 2 — the full, verbatim ChatGPT conversation, retrieved live from the share link */}
         <div className="mb-10 border border-rule p-6 bg-codebg/30">
           <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
             <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
-              {locale === 'he' ? 'כרטיס 2 — השאלות וההחלטות' : 'Card 2 — The Questioning & Decisions'}
+              {locale === 'he' ? 'כרטיס 2 — התסריט המלא של ChatGPT' : 'Card 2 — The Full ChatGPT Script'}
+            </span>
+          </header>
+          <p className="text-xs italic text-muted mb-4 leading-relaxed">
+            {locale === 'he'
+              ? 'לא שחזור — השיחה המלאה, מילה במילה, נשלפה חי מהקישור ל-ChatGPT למטה. עברית היא המקור המקורי; אנגלית היא תרגום.'
+              : "Not a reconstruction — the full conversation, word for word, retrieved live from the ChatGPT link below. Hebrew is the original; English is a translation."}
+            {' '}{chatGptScriptNote[locale]}
+          </p>
+          <div className="max-h-[32rem] overflow-y-auto border border-rule p-4 bg-paper grid gap-4">
+            {chatGptScript.map((turn, i) => (
+              <div
+                key={i}
+                className={`border-s-2 ps-3 ${turn.role === 'user' ? 'border-accent' : turn.role === 'tool' ? 'border-rule' : 'border-ink'}`}
+              >
+                <span className="text-[8px] tracking-brand uppercase text-muted font-sans">
+                  {turn.role === 'user'
+                    ? (locale === 'he' ? 'משתמש' : 'User')
+                    : turn.role === 'tool'
+                      ? (locale === 'he' ? 'כלי' : 'Tool')
+                      : 'ChatGPT'}
+                </span>
+                <p dir="rtl" className="text-xs leading-relaxed whitespace-pre-wrap mt-1 mb-1">{turn.he}</p>
+                <p dir="ltr" className="text-xs italic text-muted leading-relaxed whitespace-pre-wrap">{turn.en}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Card 3 — the questioning & decision process that produced Card 1 above */}
+        <div className="mb-10 border border-rule p-6 bg-codebg/30">
+          <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {locale === 'he' ? 'כרטיס 3 — השאלות וההחלטות' : 'Card 3 — The Questioning & Decisions'}
             </span>
           </header>
           <p className="text-xs italic text-muted mb-4 leading-relaxed">
@@ -750,7 +784,7 @@ export default async function ProjectPage({
         <div className="mb-10 border border-rule p-6 bg-codebg/30">
           <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
             <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
-              {locale === 'he' ? 'כרטיס 3 — הגשת הפרויקט ל-Git, בשלבים' : 'Card 3 — Submitting the Project to Git, Staged'}
+              {locale === 'he' ? 'כרטיס 4 — הגשת הפרויקט ל-Git, בשלבים' : 'Card 4 — Submitting the Project to Git, Staged'}
             </span>
           </header>
           <p className="text-xs italic text-muted mb-4 leading-relaxed">
