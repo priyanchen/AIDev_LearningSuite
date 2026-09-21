@@ -209,3 +209,44 @@ export const projectPhases: ProjectPhase[] = [
     ],
   },
 ];
+
+export type SpokenExcerpt = {
+  he: string;
+  en: string;
+};
+
+// Not the slide deck — his actual spoken words, live-walking the class through characterizing a real
+// project idea (a "herbal remedy identification app," brainstormed live in Session 22's chat) against
+// the same steps as the roadmap above. Pulled from the session's auto-generated caption transcript
+// (Session Transcript, linked in Module 5's Source Materials) — lightly cleaned for stray recognition
+// noise (repeated fillers, mid-word cutoffs), but not rewritten; a live transcript, not a polished quote.
+export const projectSpokenExcerpts: SpokenExcerpt[] = [
+  {
+    he: `בואו נחשוב על איזושהי בעיה מסוימת כדי שנבנה אותה ממש מקצה לקצה כמה שאפשר — כי "מקצה לקצה" זה יכול להיות אינסופי. אבל יש לי איזשהו רעיון שיכול להיות מאוד קטן.`,
+    en: `Let's think of some specific problem so we build it really end-to-end, as much as possible — because "end-to-end" can be infinite. But I have some idea that could be very small.`,
+  },
+  {
+    he: `יש פה — האפיון הזה דורש המון זמן. אנחנו עושים את זה מהר עכשיו, אבל זה לוקח הרבה יותר זמן בחיים האמיתיים. אני לא עושה שתיים-שתיים-שתיים — אני קורא, מנסה להבין במה מדובר. זה לוקח הרבה מאוד זמן.`,
+    en: `This characterization — this takes a huge amount of time. We're doing it fast right now, but in real life it takes much longer. I don't just go two-two-two — I read, I try to understand what it's actually about. That takes a very long time.`,
+  },
+  {
+    he: `זה משהו שאנחנו חייבים כדי לבנות את הפרויקט — אין ברירה.`,
+    en: `This is something we have to do to build the project — there's no choice.`,
+  },
+  {
+    he: `אני תמיד אוהב לעשות את מה שכתבתי עכשיו — אחרי שסיימתי לעיין, אני תמיד אוהב להסתכל על זה במבט-על, באמצעות תרשים. אני חושב שזה גם מאוד עוזר להבין את זה ממבט-על. אז תמיד אני אומר לו: תכיני לי איזה תרשים כזה, שיעזור לי להבין איך כל התהליך הזה הולך לעבוד.`,
+    en: `I always like to take what I just wrote — after I finish reviewing it, I always like to look at it from a bird's-eye view, through a diagram. I think that really helps understand it from above. So I always tell it: prepare me a diagram like this, to help me understand how this whole process is going to work.`,
+  },
+  {
+    he: `עכשיו אני חושב על הפרויקט מהפרונט — אבל זה לא מספיק. אנחנו צריכים להגיד לו כמה דברים. קודם כול — עם אילו כלים אני בעצם הולך לעבוד. אז אני אומר לו: Python. אני רוצה שיהיה — שזה יהיה מהיר. Flask.`,
+    en: `Now I'm thinking about the project from the front[end] — but that's not enough. We need to tell it a few things. First — what tools am I actually going to work with. So I tell it: Python. I want it to — for it to be fast. Flask.`,
+  },
+  {
+    he: `אני מזכיר לכם: כשנכנסים לאיזשהו אתר, מה שאתם רואים זה הטקסט עצמו, הפסקאות עצמן — וכל הקישוט מסביב, זה הסטייל.`,
+    en: `I'll remind you: when you go into some website, what you're actually seeing is the text itself, the paragraphs themselves — and all the decoration around it, that's the style [CSS].`,
+  },
+  {
+    he: `Railway — היא בעצם פלטפורמה שתאפשר לנו להעלות את האפליקציה.`,
+    en: `Railway — it's essentially a platform that will let us upload the app [deploy it].`,
+  },
+];

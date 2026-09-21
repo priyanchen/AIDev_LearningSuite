@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { cardDecks } from '@/content/cards';
-import { projectPhases } from '@/content/project-guide';
+import { projectPhases, projectSpokenExcerpts } from '@/content/project-guide';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
 
@@ -44,6 +44,49 @@ export default async function ProjectPage({
           </div>
         </div>
       )}
+
+      <section className="mb-16 max-w-3xl mx-auto border-t border-rule pt-12">
+        <h2 className="text-2xl small-caps tracking-wide text-center mb-2">
+          {locale === 'he' ? 'בקולו — הליכה חיה במפגש 22' : 'In His Own Words — Live From Session 22'}
+        </h2>
+        <p className="text-center italic text-muted text-sm mb-2">
+          {locale === 'he'
+            ? 'לא שקפים — המילים שנאמרו בפועל, בזמן שד״ר זוארי אפיין פרויקט אמיתי (אפליקציית זיהוי תרופות צמחיות) יחד עם הכיתה, בשידור חי, מול אותם שלבים שלמטה.'
+            : "Not slides — the words he actually said, live-characterizing a real project (a herbal-remedy identification app) with the class, against the same steps documented below."}
+        </p>
+        <p className="text-center text-[10px] text-muted mb-8">
+          {locale === 'he'
+            ? 'מקור: תמליל כתוביות אוטומטי של הקלטת מפגש 22 — נוקה קלות מרעש זיהוי, לא נוסח מחדש.'
+            : "Source: Session 22's auto-generated caption transcript — lightly cleaned of recognition noise, not rewritten."}
+        </p>
+        <div className="grid gap-4 mb-8">
+          {projectSpokenExcerpts.map((ex, i) => (
+            <blockquote key={i} className="border-s-2 border-accent ps-4">
+              <p dir="rtl" className="text-sm leading-relaxed mb-1">{ex.he}</p>
+              <p dir="ltr" className="text-sm italic text-muted leading-relaxed">{ex.en}</p>
+            </blockquote>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <a
+            href="https://chatgpt.com/share/6aaa65d1-3fe8-83eb-95f0-28dd4a97f8f7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+          >
+            {locale === 'he' ? 'שיחת האפיון המקורית (ChatGPT)' : 'The Original Characterization Chat (ChatGPT)'} ↗
+          </a>
+          <a
+            href="https://github.com/JonathanZouari/herbal-evidence"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+          >
+            {locale === 'he' ? 'המאגר שיצא מזה (GitHub)' : 'The Resulting Repo (GitHub)'} ↗
+          </a>
+        </div>
+      </section>
 
       <section className="mb-16 border-t border-rule pt-12">
         <h2 className="text-2xl small-caps tracking-wide text-center mb-2">
