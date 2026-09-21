@@ -13,6 +13,18 @@ const claudeCodeWorkshop: ResourceNode = {
 // Each targil (practice exercise) from the class's shared Drive folder (module-resources.ts),
 // attached to the specific lesson it belongs to, rather than only the module-level index.
 export const sessionPractice: Record<string, ResourceNode[]> = {
+  'session-07-python-4': [
+    { kind: 'file', name: 'CLI.pdf', label: { en: 'CLI Reference', he: 'מדריך CLI' }, url: 'https://drive.google.com/file/d/1EkQsHNes19VezDPPcccWPNnQ2oS6H4gR/view', ext: 'pdf' },
+    {
+      kind: 'folder',
+      name: 'git and github',
+      label: { en: 'Git & GitHub', he: 'Git ו-GitHub' },
+      children: [
+        { kind: 'file', name: '02-Git and Github.pdf', label: { en: 'Git & GitHub Workshop', he: 'סדנת Git ו-GitHub' }, url: 'https://drive.google.com/file/d/1Txqv-B0hoslh9GweUcAVApqHzO8QQqEP/view', ext: 'pdf' },
+        { kind: 'file', name: 'github-workflow-exercise.html', label: { en: 'Git Workflow Exercise', he: 'תרגיל זרימת עבודה ב-Git' }, url: 'https://drive.google.com/file/d/1DykbLRDZIfYebpF1z1xLHqY2u1Ppp7qc/view', ext: 'html' },
+      ],
+    },
+  ],
   'session-09-python-6': [claudeCodeWorkshop],
   'session-10-python-7': [claudeCodeWorkshop],
   'session-13-ds-0': [

@@ -13,6 +13,7 @@ export type SyntaxLanguageSection = {
   language: Bilingual;
   note: Bilingual;   // honesty/scope note — how much of this language the course actually covered
   topics: SyntaxTopic[];
+  attachments?: { label: Bilingual; url: string }[]; // real course source material for this language
 };
 
 // Sourced from the end-of-notebook summary cells in the course's own Jupyter notebooks
@@ -346,6 +347,27 @@ export const otherLanguages: SyntaxLanguageSection[] = [
           { en: `Opening a terminal inside a project folder and typing \`code .\` opens that exact folder in the editor directly — a small shortcut called out as worth learning early, instead of manually navigating the editor's own open-project menu.`, he: `פתיחת טרמינל בתוך תיקיית פרויקט והקלדת \`code .\` פותחת את אותה תיקייה בדיוק בעורך ישירות — קיצור קטן שצוין ככדאי ללמוד מוקדם, במקום לנווט ידנית דרך תפריט פתיחת-הפרויקט של העורך.` },
         ],
       },
+      {
+        number: 'cli-03',
+        title: { en: 'Git & GitHub — the CLI Equivalent of the Course\'s GitHub Desktop Workflow', he: 'Git ו-GitHub — המקבילה בשורת הפקודה לתהליך GitHub Desktop של הקורס' },
+        source: 'Sessions 7–8 · "git and github" source folder',
+        points: [
+          { en: `The course itself demonstrated stage → commit → push through GitHub Desktop's GUI, not raw CLI commands — these are the equivalent terminal commands for the exact same three-step rhythm: \`git add <file>\` (stage), \`git commit -m "message"\` (commit — never skip the message), \`git push\` (sync to the cloud copy).`, he: `הקורס עצמו הדגים stage ← commit ← push דרך הממשק הגרפי של GitHub Desktop, לא פקודות CLI גולמיות — אלה פקודות הטרמינל המקבילות לאותו קצב תלת-שלבי בדיוק: \`git add <file>\` (stage), \`git commit -m "message"\` (commit — לעולם לא לדלג על ההודעה), \`git push\` (סנכרון לעותק הענן).` },
+          { en: `\`git init\` starts version tracking in a folder — the CLI equivalent of GitHub Desktop's "create a repository". \`git clone <url>\` copies an existing repository, including its full history, onto your machine.`, he: `\`git init\` מתחילה מעקב גרסאות בתיקייה — המקבילה ב-CLI ל"create a repository" של GitHub Desktop. \`git clone <url>\` מעתיקה repository קיים, כולל כל ההיסטוריה שלו, למחשב שלך.` },
+          { en: `\`git status\` shows which files are staged, changed, or untracked — the CLI view of what GitHub Desktop's changed-files panel shows visually.`, he: `\`git status\` מציגה אילו קבצים ב-staging, השתנו, או לא במעקב — התצוגה ב-CLI של מה שפאנל הקבצים-שהשתנו של GitHub Desktop מציג ויזואלית.` },
+          { en: `\`git branch <name>\` creates a branch to isolate risky work; \`git checkout <branch>\` (or \`git switch <branch>\`) moves between branches; \`git merge <branch>\` brings a branch's changes into the current one — only after it's proven safe.`, he: `\`git branch <name>\` יוצרת ענף כדי לבודד עבודה מסוכנת; \`git checkout <branch>\` (או \`git switch <branch>\`) עוברת בין ענפים; \`git merge <branch>\` מכניסה את השינויים של ענף לתוך הנוכחי — רק אחרי שהוכח שהוא בטוח.` },
+          { en: `\`git pull\` fetches and merges the latest changes from the cloud copy — the opposite direction of \`git push\`. \`git log\` and \`git diff\` are the CLI ways to read a version's history and read exactly what changed in it.`, he: `\`git pull\` מושכת וממזגת את השינויים האחרונים מהעותק בענן — הכיוון ההפוך מ-\`git push\`. \`git log\` ו-\`git diff\` הן הדרכים ב-CLI לקרוא את ההיסטוריה של גרסה ולקרוא בדיוק מה השתנה בה.` },
+        ],
+        keyTakeaway: {
+          en: `Same discipline the course taught through GitHub Desktop's buttons — stage deliberately, commit with a real message, push only what's ready — just typed instead of clicked.`,
+          he: `אותה משמעת שהקורס לימד דרך הכפתורים של GitHub Desktop — לעשות stage בכוונה, commit עם הודעה אמיתית, push רק למה שמוכן — פשוט מוקלדת במקום נלחצת.`,
+        },
+      },
+    ],
+    attachments: [
+      { label: { en: 'CLI Reference (PDF)', he: 'מדריך CLI (PDF)' }, url: 'https://drive.google.com/file/d/1EkQsHNes19VezDPPcccWPNnQ2oS6H4gR/view' },
+      { label: { en: 'Git & GitHub Workshop (PDF)', he: 'סדנת Git ו-GitHub (PDF)' }, url: 'https://drive.google.com/file/d/1Txqv-B0hoslh9GweUcAVApqHzO8QQqEP/view' },
+      { label: { en: 'Git Workflow Exercise (HTML)', he: 'תרגיל זרימת עבודה ב-Git (HTML)' }, url: 'https://drive.google.com/file/d/1DykbLRDZIfYebpF1z1xLHqY2u1Ppp7qc/view' },
     ],
   },
   {

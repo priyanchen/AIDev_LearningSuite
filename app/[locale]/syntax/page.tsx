@@ -127,9 +127,19 @@ export default async function SyntaxGuidePage({
         <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mb-3">
           {locale === 'he' ? 'השפה המרכזית' : 'Core Language'}
         </div>
-        <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-10 text-center">
+        <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-4 text-center">
           Python
         </h2>
+        <div className="flex justify-center mb-10">
+          <a
+            href="https://www.w3schools.com/python/python_ref_modules.asp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+          >
+            {locale === 'he' ? 'עיון מודולי פייתון — W3Schools' : 'Python Module Reference — W3Schools'} ↗
+          </a>
+        </div>
         <div className="grid gap-8">
           {syntaxGuide.map((topic) => (
             <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
@@ -145,9 +155,24 @@ export default async function SyntaxGuidePage({
           <h2 className="text-2xl md:text-3xl small-caps tracking-wide mb-4 text-center">
             {section.language[locale]}
           </h2>
-          <p className="text-center italic text-muted max-w-2xl mx-auto mb-10 text-sm">
+          <p className={`text-center italic text-muted max-w-2xl mx-auto text-sm ${section.attachments?.length ? 'mb-4' : 'mb-10'}`}>
             {section.note[locale]}
           </p>
+          {section.attachments && section.attachments.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-2 mb-10">
+              {section.attachments.map((att) => (
+                <a
+                  key={att.url}
+                  href={att.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+                >
+                  {att.label[locale]} ↗
+                </a>
+              ))}
+            </div>
+          )}
           <div className="grid gap-8">
             {section.topics.map((topic) => (
               <TopicCard key={topic.number} topic={topic} locale={locale} printLabel={cards('printCard')} />
