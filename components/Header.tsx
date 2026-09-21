@@ -18,13 +18,13 @@ export default function Header({ locale }: { locale: string }) {
       <div className="max-w-6xl mx-auto px-6 py-2.5 flex items-center justify-between">
         <Link href={`/${locale}`} className="inline-flex flex-col w-max">
           <span
-            className="block text-[9px] tracking-brand uppercase text-muted font-sans"
+            className="block text-[8px] tracking-brand uppercase text-muted font-sans"
             style={{ textAlign: 'justify', textAlignLast: 'justify' }}
           >
             {site('brand')}
           </span>
           <span
-            className="block text-base small-caps tracking-wide text-accent"
+            className="block text-sm small-caps tracking-wide text-accent"
             style={{ textAlign: 'justify', textAlignLast: 'justify' }}
           >
             {site('title')}
