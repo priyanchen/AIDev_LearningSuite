@@ -77,11 +77,37 @@ export default async function SessionPage({
 
       {/* Hero */}
       <section className="text-center mb-12 pb-12 border-b border-rule">
-        <div className="text-[10px] tracking-brand uppercase text-accent font-sans mb-3">
-          {t('session')} {String(session.number).padStart(2, '0')}
-          {session.date && ` · ${session.date}`}
-          {' · '}
-          {session.format === 'zoom' ? t('zoom') : t('inPerson')}
+        <div className="flex items-center justify-center gap-3 text-[10px] tracking-brand uppercase text-accent font-sans mb-3">
+          {previous ? (
+            <Link
+              href={`/${locale}/lessons/${previous.slug}`}
+              title={previous.title[locale]}
+              className="text-sm leading-none text-muted hover:text-accent transition"
+              aria-label={nav('previousSession')}
+            >
+              ‹
+            </Link>
+          ) : (
+            <span className="text-sm leading-none w-2.5" />
+          )}
+          <span>
+            {t('session')} {String(session.number).padStart(2, '0')}
+            {session.date && ` · ${session.date}`}
+            {' · '}
+            {session.format === 'zoom' ? t('zoom') : t('inPerson')}
+          </span>
+          {next ? (
+            <Link
+              href={`/${locale}/lessons/${next.slug}`}
+              title={next.title[locale]}
+              className="text-sm leading-none text-muted hover:text-accent transition"
+              aria-label={nav('nextSession')}
+            >
+              ›
+            </Link>
+          ) : (
+            <span className="text-sm leading-none w-2.5" />
+          )}
         </div>
         <h1 className="text-3xl md:text-4xl small-caps tracking-wide mb-4">
           {session.title[locale]}
