@@ -138,6 +138,30 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 9: Et Cetera (set, ו-None דרך type hints)`,
     },
   },
+  '*args & **kwargs': {
+    url: 'https://cs50.harvard.edu/python/notes/9/',
+    source: 'Harvard CS50P',
+    label: {
+      en: `CS50's Introduction to Programming with Python — Lecture 9: Et Cetera (args and kwargs)`,
+      he: `מבוא לתכנות עם פייתון של CS50 — הרצאה 9: Et Cetera (args ו-kwargs)`,
+    },
+  },
+  'Terminal & Shell': {
+    url: 'https://missing.csail.mit.edu/2020/course-shell/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Lecture 1: Course Overview + the Shell`,
+      he: `The Missing Semester of Your CS Education — הרצאה 1: סקירת הקורס + המעטפת (Shell)`,
+    },
+  },
+  'Git Staging & Commit': {
+    url: 'https://missing.csail.mit.edu/2020/version-control/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Lecture 6: Version Control (Git)`,
+      he: `The Missing Semester of Your CS Education — הרצאה 6: בקרת גרסאות (Git)`,
+    },
+  },
   'Comparison Operators': {
     url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-2-branching-and-iteration/',
     source: 'MIT OpenCourseWare',
