@@ -15,7 +15,7 @@ export default function Header({ locale }: { locale: string }) {
 
   return (
     <header className="border-b border-ink bg-paper sticky top-0 z-40 no-print">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 py-2.5 flex items-center justify-between">
         <Link href={`/${locale}`} className="inline-flex flex-col w-max">
           <span
             className="block text-[9px] tracking-brand uppercase text-muted font-sans"
@@ -31,7 +31,7 @@ export default function Header({ locale }: { locale: string }) {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-6 text-sm">
+        <nav className="flex items-center gap-3 text-xs whitespace-nowrap">
           <Link href={`/${locale}/modules`} className="hover:text-accent transition">
             {t('modules')}
           </Link>
@@ -53,7 +53,7 @@ export default function Header({ locale }: { locale: string }) {
           <SearchBox locale={locale === 'he' ? 'he' : 'en'} />
           <Link
             href={otherPath}
-            className="border border-ink px-3 py-1 text-[10px] tracking-brand uppercase font-sans hover:bg-ink hover:text-paper transition"
+            className="border border-ink px-2 py-1 text-[9px] tracking-brand uppercase font-sans hover:bg-ink hover:text-paper transition"
           >
             {locale === 'en' ? 'עברית' : 'English'}
           </Link>
