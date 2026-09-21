@@ -626,4 +626,28 @@ export const externalResources: Record<string, ExternalResource> = {
       he: `Machine Vision (6.801) — הרצאה 13: זיהוי אובייקטים, הכרה, וקביעת תנוחה`,
     },
   },
+  'Ultralytics / YOLO': {
+    url: 'https://ocw.mit.edu/courses/6-801-machine-vision-fall-2020/resources/mit6_801f20_lec13_1080p/',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Machine Vision (6.801) — Lecture 13: the academic foundations (feature-based detection, recognition, pose determination) behind detection architectures like YOLO — no MIT/Harvard lecture on Ultralytics/YOLO itself was found`,
+      he: `Machine Vision (6.801) — הרצאה 13: היסודות האקדמיים (זיהוי מבוסס-תכונות, הכרה, קביעת תנוחה) שמאחורי ארכיטקטורות זיהוי כמו YOLO — לא נמצאה הרצאת MIT/Harvard על Ultralytics/YOLO עצמם`,
+    },
+  },
+  'Model Selection': {
+    url: 'https://ocw.mit.edu/courses/6-867-machine-learning-fall-2006/2051efc0159bf145f2050469b7589fc5_lec9.pdf',
+    source: 'MIT OpenCourseWare',
+    label: {
+      en: `Machine Learning (6.867) — Lecture 9: Model Selection`,
+      he: `Machine Learning (6.867) — הרצאה 9: בחירת מודל`,
+    },
+  },
+  'Conda Environments': {
+    url: 'https://missing.csail.mit.edu/2026/shipping-code/',
+    source: 'MIT — The Missing Semester of Your CS Education',
+    label: {
+      en: `The Missing Semester of Your CS Education — Packaging and Shipping Code: isolating a project's dependencies into its own environment — the general concept Conda implements, though the lecture itself demonstrates venv rather than naming Conda directly`,
+      he: `The Missing Semester of Your CS Education — אריזה ומשלוח קוד: בידוד תלויות פרויקט לסביבה משלו — המושג הכללי ש-Conda מממש, אם כי ההרצאה עצמה מדגימה venv ולא מזכירה Conda ישירות`,
+    },
+  },
 };
