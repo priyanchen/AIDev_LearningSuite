@@ -618,20 +618,51 @@ export const installGuide: InstallCategory[] = [
     title: { en: `AI Coding Assistants`, he: `עוזרי קידוד AI` },
     items: [
       {
+        id: 'claude-code',
         name: 'Claude Code',
         officialUrl: 'https://docs.claude.com/en/docs/claude-code/setup',
         sessions: [9, 10],
         whatItDoes: {
-          en: `An agentic coding assistant reachable four ways — editor extension (Cursor/VS Code), standalone desktop app, web, or terminal.`,
-          he: `עוזר קידוד סוכני שנגיש בארבע דרכים — תוסף עורך (Cursor/VS Code), אפליקציית שולחן עבודה עצמאית, אינטרנט, או טרמינל.`,
+          en: `An agentic coding tool that lives in your terminal — not a chatbot. It reads, writes, runs, and tests code autonomously, and understands your whole codebase via natural language. Reachable two main ways: the CLI (terminal) or the VS Code Extension.`,
+          he: `כלי קידוד סוכני שחי בטרמינל שלך — לא צ'אטבוט. הוא קורא, כותב, מריץ, ובודק קוד באופן אוטונומי, ומבין את כל בסיס הקוד שלך דרך שפה טבעית. נגיש בשתי דרכים עיקריות: ה-CLI (טרמינל) או תוסף VS Code.`,
         },
         tips: {
-          en: `The course deliberately teaches the terminal first, despite it being the least visually friendly option, because it's the only interface with no functionality held back — the others are constrained versions of it. Recommended rhythm for any nontrivial request: enter plan mode first (produces a full outline with no execution), review and approve it, then let it run — approving a plan you haven't read isn't delegation, it's just hoping. CLAUDE.md acts as the project's constitution — re-injected into every single prompt, not consulted occasionally, because the agent has no persistent memory of its own. Cost note: the flat monthly Claude subscription only covers usage inside a Claude Code session (planning, building, running sub-agents) — an agent embedded inside a deployed app talking to real end-users runs on a completely separate, uncapped pay-per-token API key.`,
-          he: `הקורס במכוון מלמד את הטרמינל קודם, למרות שהוא האפשרות הכי פחות ידידותית חזותית, כי הוא הממשק היחיד בלי שום פונקציונליות שמוחזקת בצד — האחרים הם גרסאות מוגבלות שלו. קצב מומלץ לכל בקשה לא-טריוויאלית: להיכנס תחילה למצב תכנון (מייצר מתאר מלא בלי הרצה), לבדוק ולאשר אותו, ואז לתת לו לרוץ — אישור תוכנית שלא קראת הוא לא האצלה, זו רק תקווה. CLAUDE.md משמש כחוקת הפרויקט — מוזרק מחדש לכל prompt בודד, לא נדרש מדי פעם, כי לסוכן אין זיכרון מתמיד משלו. הערת עלות: המנוי החודשי השטוח של Claude מכסה רק שימוש בתוך session של Claude Code (תכנון, בנייה, הרצת תת-סוכנים) — סוכן שמוטמע בתוך אפליקציה שפרוסה ומדברת עם משתמשי קצה אמיתיים רץ על מפתח API נפרד לגמרי, בתשלום-לפי-טוקן וללא תקרה.`,
+          en: `The course deliberately teaches the terminal first, despite it being the least visually friendly option, because it's the only interface with no functionality held back — the others are constrained versions of it. Recommended rhythm for any nontrivial request: enter plan mode first (produces a full outline with no execution), review and approve it, then let it run — approving a plan you haven't read isn't delegation, it's just hoping. CLAUDE.md acts as the project's constitution — re-injected into every single prompt, not consulted occasionally, because the agent has no persistent memory of its own. Cost note: the flat monthly Claude subscription only covers usage inside a Claude Code session (planning, building, running sub-agents) — an agent embedded inside a deployed app talking to real end-users runs on a completely separate, uncapped pay-per-token API key. Windows gotcha from the instructor's own workshop deck: use the CLI in CMD, not PowerShell.`,
+          he: `הקורס במכוון מלמד את הטרמינל קודם, למרות שהוא האפשרות הכי פחות ידידותית חזותית, כי הוא הממשק היחיד בלי שום פונקציונליות שמוחזקת בצד — האחרים הם גרסאות מוגבלות שלו. קצב מומלץ לכל בקשה לא-טריוויאלית: להיכנס תחילה למצב תכנון (מייצר מתאר מלא בלי הרצה), לבדוק ולאשר אותו, ואז לתת לו לרוץ — אישור תוכנית שלא קראת הוא לא האצלה, זו רק תקווה. CLAUDE.md משמש כחוקת הפרויקט — מוזרק מחדש לכל prompt בודד, לא נדרש מדי פעם, כי לסוכן אין זיכרון מתמיד משלו. הערת עלות: המנוי החודשי השטוח של Claude מכסה רק שימוש בתוך session של Claude Code (תכנון, בנייה, הרצת תת-סוכנים) — סוכן שמוטמע בתוך אפליקציה שפרוסה ומדברת עם משתמשי קצה אמיתיים רץ על מפתח API נפרד לגמרי, בתשלום-לפי-טוקן וללא תקרה. מלכודת Windows מחוברת התרגול של המרצה עצמו: השתמשי ב-CLI דרך CMD, לא PowerShell.`,
         },
         commands: {
-          mac: ['npm install -g @anthropic-ai/claude-code', 'claude'],
-          windows: ['npm install -g @anthropic-ai/claude-code', 'claude'],
+          mac: ['npm install -g @anthropic-ai/claude-code', 'claude', 'claude --version'],
+          windows: ['npm install -g @anthropic-ai/claude-code', 'claude', 'claude --version'],
+        },
+        steps: {
+          mac: [
+            {
+              title: { en: '1. Install Node.js 18+', he: '1. התקיני Node.js 18+' },
+              detail: { en: `Download from nodejs.org. Claude Code requires Node.js 18 or newer — this is the one real prerequisite.`, he: `הורידי מ-nodejs.org. Claude Code דורש Node.js 18 ומעלה — זו הדרישה המקדימה האמיתית היחידה.` },
+            },
+            {
+              title: { en: '2. Install Claude Code', he: '2. התקיני את Claude Code' },
+              detail: { en: `In any terminal: \`npm install -g @anthropic-ai/claude-code\` — installs it globally, once, for every project.`, he: `בכל טרמינל: \`npm install -g @anthropic-ai/claude-code\` — מתקין אותו גלובלית, פעם אחת, לכל פרויקט.` },
+            },
+            {
+              title: { en: '3. Verify & launch', he: '3. אמתי והפעילי' },
+              detail: { en: `\`claude --version\` should print 2.1.183+ or newer. Then \`cd\` into any project and run \`claude\` to start a session.`, he: `\`claude --version\` אמורה להדפיס 2.1.183+ ומעלה. אז \`cd\` לתוך כל פרויקט והרצת \`claude\` כדי להתחיל session.` },
+            },
+          ],
+          windows: [
+            {
+              title: { en: '1. Install Node.js 18+', he: '1. התקיני Node.js 18+' },
+              detail: { en: `Download the .msi installer from nodejs.org. Claude Code requires Node.js 18 or newer.`, he: `הורידי את מתקין ה-.msi מ-nodejs.org. Claude Code דורש Node.js 18 ומעלה.` },
+            },
+            {
+              title: { en: '2. Install Claude Code', he: '2. התקיני את Claude Code' },
+              detail: { en: `In CMD — not PowerShell, per the instructor's own workshop notes: \`npm install -g @anthropic-ai/claude-code\`.`, he: `ב-CMD — לא PowerShell, לפי הערות התרגול של המרצה עצמו: \`npm install -g @anthropic-ai/claude-code\`.` },
+            },
+            {
+              title: { en: '3. Verify & launch', he: '3. אמתי והפעילי' },
+              detail: { en: `\`claude --version\` should print 2.1.183+ or newer. Then \`cd\` into any project and run \`claude\` to start a session.`, he: `\`claude --version\` אמורה להדפיס 2.1.183+ ומעלה. אז \`cd\` לתוך כל פרויקט והרצת \`claude\` כדי להתחיל session.` },
+            },
+          ],
         },
       },
     ],

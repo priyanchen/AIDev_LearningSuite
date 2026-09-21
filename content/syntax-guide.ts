@@ -667,4 +667,71 @@ export const otherLanguages: SyntaxLanguageSection[] = [
       { label: { en: "Ester's Python Tables — Command Summary (PDF)", he: 'טבלאות פייתון של אסתר — סיכום פקודות (PDF)' }, url: 'https://drive.google.com/file/d/1f7dQoe1BDsQbeezB-dJGjOsBnUX30_7v/view' },
     ],
   },
+  {
+    id: 'claude-code',
+    language: { en: 'Claude Code', he: 'Claude Code' },
+    note: {
+      en: `Sourced from Dr. Zuari's own "Claude Code: From Zero to Production Agent" workshop deck (all 2026 updates, Jan–Jul) — the same tool used live in Session 10 to rebuild the course site. This is a large, fast-moving surface; what follows covers installation and the command vocabulary the deck itself documents, not every feature Claude Code has ever shipped.`,
+      he: `מקורו בחוברת הסדנה של ד"ר זוארי עצמו "Claude Code: From Zero to Production Agent" (כל עדכוני 2026, ינואר–יולי) — אותו כלי שנעשה בו שימוש בשידור חי במפגש 10 כדי לבנות מחדש את אתר הקורס. זהו משטח גדול ומתפתח מהר; מה שבא בהמשך מכסה התקנה ואוצר הפקודות שהחוברת עצמה מתעדת, לא כל תכונה ש-Claude Code אי-פעם השיק.`,
+    },
+    topics: [
+      {
+        number: 'claude-01',
+        title: { en: 'Installation & Launching', he: 'התקנה והפעלה' },
+        source: 'Dr. Zuari · "claude code workshop.pdf"',
+        points: [
+          { en: `Prerequisite: Node.js 18+ (download from nodejs.org; Windows uses the .msi installer). Install: \`npm install -g @anthropic-ai/claude-code\`. Verify: \`claude --version\`.`, he: `דרישה מקדימה: Node.js 18+ (הורדה מ-nodejs.org; Windows משתמש במתקין .msi). התקנה: \`npm install -g @anthropic-ai/claude-code\`. אימות: \`claude --version\`.` },
+          { en: `Two interfaces: the CLI (standalone terminal tool — use CMD on Windows, not PowerShell) and the VS Code Extension (integrated into the editor, adds session forking and usage indicators).`, he: `שני ממשקים: ה-CLI (כלי טרמינל עצמאי — משתמשים ב-CMD ב-Windows, לא PowerShell) ותוסף VS Code (משולב בעורך, מוסיף פיצול session ומחווני שימוש).` },
+          { en: `Launch a session with \`claude\` from inside any project folder. Switch models mid-prompt with Option+P (Mac) / Alt+P (Windows).`, he: `הפעלת session עם \`claude\` מתוך תיקיית פרויקט כלשהי. החלפת מודלים באמצע prompt עם Option+P (Mac) / Alt+P (Windows).` },
+        ],
+      },
+      {
+        number: 'claude-02',
+        title: { en: 'CLAUDE.md — Project Memory', he: 'CLAUDE.md — זיכרון הפרויקט' },
+        source: 'Dr. Zuari · "claude code workshop.pdf"',
+        points: [
+          { en: `CLAUDE.md is a config file Claude reads automatically every session — persistent project context with higher authority than an ordinary prompt (system rules, not suggestions). Run \`/init\` to auto-generate one for any existing project, then customize it.`, he: `CLAUDE.md הוא קובץ קונפיגורציה ש-Claude קורא אוטומטית בכל session — הקשר פרויקט מתמיד עם סמכות גבוהה יותר מ-prompt רגיל (חוקי מערכת, לא הצעות). מריצים \`/init\` כדי לייצר אחד אוטומטית לכל פרויקט קיים, ואז מתאימים אותו אישית.` },
+          { en: `Karpathy's 4 rules for a CLAUDE.md, cited directly in the deck: (1) Think Before Coding — define success criteria before writing any code; (2) Keep It Simple — minimum code to solve the problem, no speculative abstraction; (3) Surgical Changes Only — touch only what the request requires; (4) Goal-Driven Verification.`, he: `4 הכללים של קרפתי ל-CLAUDE.md, מצוטטים ישירות בחוברת: (1) לחשוב לפני קידוד — להגדיר קריטריוני הצלחה לפני כתיבת קוד; (2) לשמור על פשטות — מינימום קוד לפתרון הבעיה, בלי הפשטה ספקולטיבית; (3) שינויים כירורגיים בלבד — לגעת רק במה שהבקשה דורשת; (4) אימות מונחה-מטרה.` },
+          { en: `Keep CLAUDE.md under 200 lines — it loads in full every session, so it's a cost as well as a benefit.`, he: `לשמור על CLAUDE.md מתחת ל-200 שורות — הוא נטען במלואו בכל session, אז הוא עלות ולא רק תועלת.` },
+        ],
+      },
+      {
+        number: 'claude-03',
+        title: { en: 'Slash Commands — Session, Planning & Review', he: 'פקודות סלאש — Session, תכנון וסקירה' },
+        source: 'Dr. Zuari · "claude code workshop.pdf"',
+        points: [
+          { en: `\`/clear\` wipes context for a new task; \`/compact\` compresses history to free context; \`/resume\` picks up a previous session; \`/cost\` shows token usage and spend; \`/doctor\` runs a system health check; \`/help\` lists all commands.`, he: `\`/clear\` מנקה הקשר למשימה חדשה; \`/compact\` דוחס היסטוריה כדי לפנות הקשר; \`/resume\` ממשיך session קודם; \`/cost\` מציגה שימוש בטוקנים והוצאה; \`/doctor\` מריצה בדיקת תקינות מערכת; \`/help\` מציגה את כל הפקודות.` },
+          { en: `\`/plan\` enters read-only Plan Mode (also: Shift+Tab twice). \`/ultraplan <task>\` runs cloud planning in the browser, keeping the terminal free — best for 40+ file changes. \`/init\` creates CLAUDE.md for the project.`, he: `\`/plan\` נכנסת למצב תכנון לקריאה-בלבד (גם: Shift+Tab פעמיים). \`/ultraplan <task>\` מריצה תכנון בענן בדפדפן, ומשאירה את הטרמינל פנוי — הכי טוב לשינויים ב-40+ קבצים. \`/init\` יוצרת CLAUDE.md לפרויקט.` },
+          { en: `\`/code-review\` (alias \`/review\`) runs an AI-driven code review; \`/ultrareview\` runs a multi-agent cloud review.`, he: `\`/code-review\` (כינוי \`/review\`) מריצה סקירת קוד מונעת AI; \`/ultrareview\` מריצה סקירת ענן מרובת-סוכנים.` },
+        ],
+        keyTakeaway: {
+          en: `The golden workflow the deck repeats throughout: Plan → Code → Debug → Commit — enter Plan Mode, review the plan before a single file changes, then let it run.`,
+          he: `זרימת העבודה הזהובה שהחוברת חוזרת עליה לאורך כל הדרך: תכנון ← קוד ← ניפוי באגים ← קומיט — נכנסים למצב תכנון, בודקים את התוכנית לפני ששינוי אחד נעשה, ואז נותנים לזה לרוץ.`,
+        },
+      },
+      {
+        number: 'claude-04',
+        title: { en: 'Slash Commands — Model, Effort & Agentic', he: 'פקודות סלאש — מודל, מאמץ, וסוכניות' },
+        source: 'Dr. Zuari · "claude code workshop.pdf"',
+        points: [
+          { en: `\`/model\` opens an interactive model picker; \`/effort [level]\` sets low/medium/high/xhigh; \`/effort ultracode\` triggers xhigh plus Dynamic Workflows (hundreds of parallel subagents); \`/fast\` toggles Fast mode (~2.5× faster, ~3× cheaper).`, he: `\`/model\` פותחת בורר מודל אינטראקטיבי; \`/effort [level]\` קובעת low/medium/high/xhigh; \`/effort ultracode\` מפעילה xhigh בתוספת Dynamic Workflows (מאות תת-סוכנים במקביל); \`/fast\` מחליפה Fast mode (~פי 2.5 מהיר יותר, ~פי 3 זול יותר).` },
+          { en: `\`/goal <task>\` runs an autonomous multi-turn task; \`/background\` starts a background agent (or press Ctrl+B mid-task); \`/agents\` manages agent sessions (also opens the interactive sub-agent creator); \`/tasks\` views all running tasks; \`/batch\` runs parallel sub-tasks; \`/fork\` splits a session into branches.`, he: `\`/goal <task>\` מריצה משימה אוטונומית מרובת-תורות; \`/background\` מתחילה סוכן ברקע (או Ctrl+B באמצע משימה); \`/agents\` מנהלת sessions של סוכנים (גם פותחת את יוצר תת-הסוכנים האינטראקטיבי); \`/tasks\` מציגה את כל המשימות הרצות; \`/batch\` מריצה תת-משימות במקביל; \`/fork\` מפצלת session לענפים.` },
+          { en: `\`/workflows\` views active Dynamic Workflow runs. Every sub-agent — Dynamic Workflows or Ultraplan — starts with an empty, fresh context window; it does not inherit the parent session's history.`, he: `\`/workflows\` מציגה ריצות Dynamic Workflow פעילות. כל תת-סוכן — Dynamic Workflows או Ultraplan — מתחיל עם חלון הקשר ריק וטרי; הוא לא יורש את היסטוריית ה-session ההורה.` },
+        ],
+      },
+      {
+        number: 'claude-05',
+        title: { en: 'Slash Commands — Plugins, Skills, Config & Remote', he: 'פקודות סלאש — תוספים, מיומנויות, הגדרות, ומרחוק' },
+        source: 'Dr. Zuari · "claude code workshop.pdf"',
+        points: [
+          { en: `\`/plugin\` installs and manages plugins (e.g. \`/plugin install <name>@claude-plugins-official\`); \`/skills\` lists loaded skills; \`/reload-plugins\` hot-reloads after changes; \`/mcp\` manages MCP connections; \`/memory\` manages memory files.`, he: `\`/plugin\` מתקינה ומנהלת תוספים (למשל \`/plugin install <name>@claude-plugins-official\`); \`/skills\` מציגה מיומנויות טעונות; \`/reload-plugins\` טוענת מחדש אחרי שינויים; \`/mcp\` מנהלת חיבורי MCP; \`/memory\` מנהלת קבצי זיכרון.` },
+          { en: `\`/config\` opens the settings UI; \`/permissions\` manages allow/deny rules; \`/remote-control\` exposes the session to claude.ai; \`/install-github-app\` sets up GitHub Actions; \`/ide\` manages the VS Code/JetBrains connection; \`/release-notes\` shows what changed.`, he: `\`/config\` פותחת את ממשק ההגדרות; \`/permissions\` מנהלת כללי allow/deny; \`/remote-control\` חושפת את ה-session ל-claude.ai; \`/install-github-app\` מגדירה GitHub Actions; \`/ide\` מנהלת את החיבור ל-VS Code/JetBrains; \`/release-notes\` מציגה מה השתנה.` },
+          { en: `A skill is a single \`SKILL.md\` reusable instruction set (invoked with \`/skill-name\`); a plugin bundles skills + agents + hooks + MCP servers into one installable unit. Custom commands live in \`~/.claude/commands/name.md\`, invoked as \`/name\`.`, he: `מיומנות (skill) היא קובץ \`SKILL.md\` יחיד עם הוראות לשימוש חוזר (מופעל עם \`/skill-name\`); תוסף (plugin) אורז מיומנויות + סוכנים + hooks + שרתי MCP ליחידה אחת להתקנה. פקודות מותאמות אישית חיות ב-\`~/.claude/commands/name.md\`, מופעלות כ-\`/name\`.` },
+        ],
+      },
+    ],
+    attachments: [
+      { label: { en: 'Claude Code Workshop Deck (PDF)', he: 'חוברת סדנת Claude Code (PDF)' }, url: 'https://drive.google.com/file/d/1Il2GsqC7pxJbqUNGakgcl4dM-O_o1uzy/view' },
+    ],
+  },
 ];
