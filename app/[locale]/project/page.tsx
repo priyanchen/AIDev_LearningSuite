@@ -223,6 +223,50 @@ function HerbalArchitectureDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// The real user, straight from the repo's own README plus the screen flow walked through live —
+// not a hypothetical persona.
+function HerbalPersonaCard({ locale }: { locale: Locale }) {
+  const rows: { labelEn: string; labelHe: string; en: string; he: string }[] = [
+    {
+      labelEn: 'Who', labelHe: 'מי',
+      en: 'A cancer patient, or their caregiver — a family member (README + Session 22 screen flow)',
+      he: 'מטופלת סרטן, או המטפל/ת שלה — בן משפחה (README + זרימת המסך של מפגש 22)',
+    },
+    {
+      labelEn: 'Goal', labelHe: 'מטרה',
+      en: 'Check whether one specific herb genuinely helps with appetite improvement',
+      he: 'לבדוק אם צמח ספציפי אחד באמת עוזר לשיפור תיאבון',
+    },
+    {
+      labelEn: 'Blocked by', labelHe: 'חסומה על ידי',
+      en: 'Mixed, unsourced herbal claims online — no single place grades evidence AND has a human check it',
+      he: 'טענות צמחיות מעורבות וחסרות-מקור באינטרנט — אין מקום אחד שמדרג ראיות וגם יש בו בדיקה אנושית',
+    },
+    {
+      labelEn: 'Wants to feel', labelHe: 'רוצה להרגיש',
+      en: 'Confident the answer was actually reviewed by a person, not just an AI output',
+      he: 'בטוחה שהתשובה נבדקה בפועל על ידי אדם, לא רק פלט AI',
+    },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'הפרסונה האמיתית — README + מפגש 22' : 'The Real Persona — README + Session 22'}
+      </p>
+      <div className="border border-rule max-w-md mx-auto">
+        {rows.map((r, i) => (
+          <div key={i} className={`flex gap-3 px-4 py-2.5 ${i > 0 ? 'border-t border-rule' : ''}`}>
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-24">
+              {locale === 'he' ? r.labelHe : r.labelEn}
+            </span>
+            <span className="text-xs leading-relaxed">{locale === 'he' ? r.he : r.en}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // The real V1 boundary — a long live brainstorm narrowed down to one symptom, plus the README's own
 // explicit out-of-scope statement. Source: Session 22's chat/transcript + the repo's README.
 function HerbalMVPDiagram({ locale }: { locale: Locale }) {
@@ -602,6 +646,7 @@ export default async function ProjectPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number === 2 && <HerbalPersonaCard locale={locale} />}
                     {step.number === 3 && <HerbalMVPDiagram locale={locale} />}
                     {step.number === 4 && <HerbalUXFlowDiagram locale={locale} />}
                     {step.number === 5 && <HerbalUIDesignSystem locale={locale} />}
