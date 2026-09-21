@@ -1,6 +1,6 @@
 import type { Bilingual } from '@/lib/registry';
 
-export type RecommendationType = 'book' | 'person' | 'course' | 'dataset';
+export type RecommendationType = 'book' | 'person' | 'course' | 'dataset' | 'platform';
 
 export type RecommendationItem = {
   name: string;              // kept in its original language/script — not translated
@@ -190,6 +190,24 @@ export const recommendationCategories: RecommendationCategory[] = [
         editorial: true,
         links: [
           { label: 'Kaggle — Housing Prices EDA and Prediction', url: 'https://www.kaggle.com/code/ruchi798/housing-prices-eda-and-prediction' },
+        ],
+      },
+      {
+        name: 'Kaggle',
+        type: 'platform',
+        sessionNumber: 18,
+        bio: {
+          en: `A data-science community and platform hosting public datasets, competitions, and shared notebooks — the source of the housing-prices notebook above, and a general well of real, messy datasets to practice regression, evaluation, and EDA against beyond the course's own material.`,
+          he: `קהילה ופלטפורמה למדעי הנתונים המארחת מערכי נתונים ציבוריים, תחרויות, ומחברות משותפות — המקור של מחברת מחירי הדיור שלמעלה, ובאר כללית של מערכי נתונים אמיתיים ומבולגנים לתרגול רגרסיה, הערכה, ו-EDA מעבר לחומר של הקורס עצמו.`,
+        },
+        context: {
+          en: `Not something Dr. Zuari referenced live — added editorially as the general source behind the Kaggle notebook above, for anyone who wants to keep practicing on public datasets after the course.`,
+          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כמקור הכללי מאחורי מחברת ה-Kaggle שלמעלה, למי שרוצה להמשיך להתאמן על מערכי נתונים ציבוריים אחרי הקורס.`,
+        },
+        verified: true,
+        editorial: true,
+        links: [
+          { label: 'Kaggle', url: 'https://www.kaggle.com/' },
         ],
       },
     ],
