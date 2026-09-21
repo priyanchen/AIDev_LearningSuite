@@ -167,21 +167,20 @@ export const recommendationCategories: RecommendationCategory[] = [
         ],
       },
       {
-        name: 'W3Schools — Python Module Reference',
+        name: 'W3Schools — Python String Methods',
         type: 'reference',
-        sessionNumber: 12,
+        sessionNumber: 4,
         bio: {
-          en: `A reference listing of Python's built-in standard-library modules (\`random\`, \`os\`, \`sys\`, \`math\`, and the rest) with their functions and short examples — the same modules the course's own \`import random\` and \`import calc\` exercises draw on.`,
-          he: `רשימת עזר של המודולים המובנים בספריית התקן של פייתון (\`random\`, \`os\`, \`sys\`, \`math\`, והשאר) עם הפונקציות שלהם ודוגמאות קצרות — אותם מודולים שתרגילי \`import random\` ו-\`import calc\` של הקורס עצמו נשענים עליהם.`,
+          en: `A reference listing of Python's built-in string methods (\`.upper()\`, \`.count()\`, \`.replace()\`, and the rest) with short examples — the same territory as the course's own "02-Strings.ipynb" notebook from this session.`,
+          he: `רשימת עזר של מתודות המחרוזת המובנות בפייתון (\`.upper()\`, \`.count()\`, \`.replace()\`, והשאר) עם דוגמאות קצרות — אותו תחום כמו מחברת "02-Strings.ipynb" של הקורס עצמו ממפגש זה.`,
         },
         context: {
-          en: `Not something Dr. Zuari referenced live — added editorially as the standing reference for Session 12's "Import ≠ Use" distinction and every other session's standard-library imports, already linked from the Syntax page's Python section.`,
-          he: `לא משהו שד״ר זוארי הזכיר בשידור חי — נוסף באופן עריכתי כעזר קבוע להבחנה "ייבוא ≠ שימוש" של מפגש 12 ולייבואי ספריית התקן של כל שאר המפגשים, כבר מקושר מסעיף הפייתון בעמוד התחביר.`,
+          en: `Posted live in Session 4's Zoom chat while the class worked through string methods — quote-mark rules, \`.upper()\`, and \`.count()\` — confirmed directly from the session's own chat log.`,
+          he: `נשלח בשידור חי בצ׳אט הזום של מפגש 4 בזמן שהכיתה עבדה על מתודות מחרוזת — כללי גרשיים, \`.upper()\`, ו-\`.count()\` — מאושר ישירות מיומן הצ׳אט של המפגש עצמו.`,
         },
         verified: true,
-        editorial: true,
         links: [
-          { label: 'W3Schools — Python Module Reference', url: 'https://www.w3schools.com/python/python_ref_modules.asp' },
+          { label: 'W3Schools — Python String Methods', url: 'https://www.w3schools.com/python/python_ref_string.asp' },
         ],
       },
     ],
