@@ -326,3 +326,36 @@ export const projectPromptPath: PathStep[] = [
     },
   },
 ];
+
+// Honest reconstruction of what the characterization prompt actually specified — NOT the verbatim
+// prompt text. The real prompt lives at the ChatGPT link above; it could not be retrieved through any
+// automated method this session (direct fetch, backend API, and browser tooling were all blocked by
+// Cloudflare's bot protection or unavailable). Every point below is instead cross-referenced from two
+// independent real sources: the live chat log's decisions and Dr. Zuari's own spoken narration in the
+// VTT transcript — so it's accurate to what was decided, even though it isn't a direct quote.
+export const characterizationReconstruction: Bilingual[] = [
+  {
+    en: `Product: a plant-photo identification app — a user submits a photo of a plant plus the ailment they're hoping it addresses.`,
+    he: `מוצר: אפליקציית זיהוי צמחים מתמונה — משתמש שולח תמונה של צמח בתוספת המחלה שהוא מקווה שהוא עוזר לה.`,
+  },
+  {
+    en: `Core function: the system rates how evidence-based the claim "this plant helps with this condition" actually is — not a flat yes/no, a graded confidence with sources.`,
+    he: `פונקציה מרכזית: המערכת מדרגת עד כמה הטענה "הצמח הזה עוזר למצב הזה" באמת מבוססת ראיות — לא כן/לא שטוח, אלא רמת ביטחון מדורגת עם מקורות.`,
+  },
+  {
+    en: `Knowledge base scope: Traditional Chinese Medicine, Ayurveda, and homeopathy — three named traditions, deliberately not "all of alternative medicine."`,
+    he: `היקף מאגר הידע: רפואה סינית מסורתית, איירוודה, והומאופתיה — שלוש מסורות מוגדרות בשם, במכוון לא "כל הרפואה האלטרנטיבית."`,
+  },
+  {
+    en: `Target symptom categories for the MVP: cancer-adjacent support, winter illnesses, children's illnesses, immune support, pain, nausea, fatigue, appetite changes, sleep issues.`,
+    he: `קטגוריות תסמינים לתחום המוצר המינימלי: תמיכה בהקשר סרטן, מחלות חורף, מחלות ילדים, חיזוק מערכת החיסון, כאב, בחילה, עייפות, שינויים בתיאבון, בעיות שינה.`,
+  },
+  {
+    en: `Trust/validation layer: an AI "researcher" role drafts an evidence summary, but a human/expert must approve it before it's shown as a checked answer — content is explicitly split into "checked" vs. "pending review" states.`,
+    he: `שכבת אמון/אימות: תפקיד "חוקר" AI מכין טיוטת סיכום ראיות, אבל אדם/מומחה חייב לאשר אותה לפני שהיא מוצגת כתשובה נבדקת — התוכן מפוצל במפורש למצבי "נבדק" מול "ממתין לבדיקה."`,
+  },
+  {
+    en: `Explicit challenge instruction: don't let the model simply agree — if a suggested direction is weak, it should say so and push back with alternatives, rather than default to flattery.`,
+    he: `הוראת אתגור מפורשת: לא לתת למודל סתם להסכים — אם כיוון מוצע חלש, הוא צריך לומר את זה ולדחוף עם אלטרנטיבות, במקום ברירת מחדל של החנפה.`,
+  },
+];

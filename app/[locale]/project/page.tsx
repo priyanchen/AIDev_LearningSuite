@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { cardDecks } from '@/content/cards';
-import { projectPhases, projectSpokenExcerpts, projectPromptPath } from '@/content/project-guide';
+import {
+  projectPhases,
+  projectSpokenExcerpts,
+  projectPromptPath,
+  characterizationReconstruction,
+} from '@/content/project-guide';
 import { getSession } from '@/lib/registry';
 import Card from '@/components/Card';
 import type { Locale } from '@/i18n';
@@ -67,6 +72,11 @@ export default async function ProjectPage({
             ? 'לא שקפים — המילים שנאמרו בפועל, בזמן שד״ר זוארי הדגים "פרויקט לדוגמה" חי (אפליקציית זיהוי תרופות צמחיות) יחד עם הכיתה — אותה נקודת-ביקורת מעשית שמוזכרת בקשת הקורס של מפגש 1 למעלה, מול אותם שלבים שלמטה.'
             : 'Not slides — the words he actually said, live-demonstrating a "Sample Project" (a herbal-remedy identification app) with the class — the same practical checkpoint named in Session 1\'s course arc above, against the same steps documented below.'}
         </p>
+        <p className="text-center text-[10px] text-muted max-w-2xl mx-auto mb-8">
+          {locale === 'he'
+            ? 'תיקון רמה: נכון לעכשיו זהו המפגש האחרון הזמין באתר (מודול 5, ראייה ממוחשבת) — לפי קשת הקורס של מפגש 1, "פרויקט לדוגמה" מגיע רק אחרי ראייה ממוחשבת, ולפני LLM/RAG וסוכני AI. ההדגמה החיה הזו כבר כוללת אימות ראיות מבוסס-סוכן ותפקיד "חוקר" AI — מושגים ממודולים מאוחרים יותר שטרם נלמדו רשמית. זו לא הייתה תרגיל "רק ממה שלמדנו עד עכשיו" — זו הצצה מכוונת קדימה.'
+            : "Level correction: as of now, this is the last available session on the site (Module 5, Computer Vision) — per Session 1's own course arc, the \"Sample Project\" checkpoint comes only after Computer Vision, before the LLM/RAG and AI Agents modules. This live demo already involves agent-based evidence validation and an AI \"researcher\" role — concepts from later modules not yet formally taught. This wasn't a \"only what we've covered so far\" exercise — it was a deliberate look ahead."}
+        </p>
         <p className="text-center text-[10px] text-muted mb-8">
           {locale === 'he'
             ? 'מקור: תמליל כתוביות אוטומטי של הקלטת מפגש 22 — נוקה קלות מרעש זיהוי, לא נוסח מחדש.'
@@ -81,26 +91,53 @@ export default async function ProjectPage({
           ))}
         </div>
 
-        <h3 className="text-lg small-caps tracking-wide text-center mb-2">
-          {locale === 'he' ? 'הדרך — מסיעור מוחות לפרומפט' : 'The Path — From Brainstorm to Prompt'}
-        </h3>
-        <p className="text-center italic text-muted text-sm mb-6">
-          {locale === 'he'
-            ? 'משוחזר מיומן הצ׳אט החי של מפגש 22 עצמו (לא התמליל) — הרצף בפועל שהכיתה עברה. שמות סטודנטים הושמטו לפרטיות; PriYa N. Chen, מחברת האתר, מוזכרת במקומות שבהם ההודעות האמיתיות שלה בצ׳אט עיצבו החלטה.'
-            : "Reconstructed from Session 22's own live chat log (not the transcript) — the actual sequence the class worked through. Student names omitted for privacy; PriYa N. Chen, this site's own author, is named where her real chat messages shaped a decision."}
-        </p>
-        <div className="grid gap-4 mb-10">
-          {projectPromptPath.map((step, i) => (
-            <div key={i} className="flex gap-4">
-              <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-6 pt-0.5">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h4 className="small-caps tracking-wide text-sm mb-1">{step.title[locale]}</h4>
-                <p className="text-xs leading-relaxed text-muted">{step.body[locale]}</p>
+        {/* Card 1 — the end prompt, reconstructed (not verbatim; source blocked, see disclaimer) */}
+        <div className="mb-10 border border-rule p-6 bg-codebg/30">
+          <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {locale === 'he' ? 'כרטיס 1 — האפיון הסופי' : 'Card 1 — The End Characterization'}
+            </span>
+          </header>
+          <p className="text-xs italic text-muted mb-4 leading-relaxed">
+            {locale === 'he'
+              ? 'לא ציטוט מילולי — הפרומפט האמיתי חי בקישור ה-ChatGPT למטה, ולא ניתן היה לשלוף אותו בכלים אוטומטיים ב-session הזה (הדף נטען בצד-לקוח מאחורי הגנת Cloudflare). מה שלמטה משוחזר משני מקורות עצמאיים: יומן הצ׳אט החי ותמליל הכתוביות האוטומטי — מדויק להחלטות בפועל, גם אם הוא לא ציטוט ישיר.'
+              : "Not a verbatim quote — the real prompt lives at the ChatGPT link below, and couldn't be pulled through any automated tool this session (the page loads client-side behind Cloudflare). What follows is reconstructed from two independent sources instead: the live chat log and the auto-caption transcript — accurate to the actual decisions, even if not a direct quote."}
+          </p>
+          <ul className="grid gap-2">
+            {characterizationReconstruction.map((point, i) => (
+              <li key={i} className="text-sm leading-relaxed flex gap-2">
+                <span className="text-accent flex-shrink-0">·</span>
+                <span>{point[locale]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Card 2 — the questioning & decision process that produced Card 1 above */}
+        <div className="mb-10 border border-rule p-6 bg-codebg/30">
+          <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {locale === 'he' ? 'כרטיס 2 — השאלות וההחלטות' : 'Card 2 — The Questioning & Decisions'}
+            </span>
+          </header>
+          <p className="text-xs italic text-muted mb-4 leading-relaxed">
+            {locale === 'he'
+              ? 'משוחזר מיומן הצ׳אט החי של מפגש 22 עצמו (לא התמליל) — הרצף בפועל שהכיתה עברה כדי להגיע לכרטיס 1. שמות סטודנטים הושמטו לפרטיות; PriYa N. Chen, מחברת האתר, מוזכרת במקומות שבהם ההודעות האמיתיות שלה בצ׳אט עיצבו החלטה.'
+              : "Reconstructed from Session 22's own live chat log (not the transcript) — the actual sequence the class worked through to arrive at Card 1. Student names omitted for privacy; PriYa N. Chen, this site's own author, is named where her real chat messages shaped a decision."}
+          </p>
+          <div className="grid gap-4">
+            {projectPromptPath.map((step, i) => (
+              <div key={i} className="flex gap-4">
+                <span className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 w-6 pt-0.5">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 className="small-caps tracking-wide text-sm mb-1">{step.title[locale]}</h4>
+                  <p className="text-xs leading-relaxed text-muted">{step.body[locale]}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {branchCard && (
