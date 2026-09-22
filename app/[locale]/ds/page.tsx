@@ -2,7 +2,17 @@ import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { dsDiagramTopics } from '@/content/ds-diagrams';
 import { dsGlossary } from '@/content/ds-glossary';
-import { StandardDeviationDiagram, HistogramDiagram, BarChartDiagram, BoxplotDiagram } from '@/components/DsDiagrams';
+import {
+  StandardDeviationDiagram,
+  HistogramDiagram,
+  BarChartDiagram,
+  BoxplotDiagram,
+  CorrelationMatrixDiagram,
+  DendrogramDiagram,
+  ElbowPlotDiagram,
+  ConfusionMatrixDiagram,
+  RocCurveDiagram,
+} from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
 const diagramComponents: Record<string, (props: { locale: Locale }) => JSX.Element> = {
@@ -115,6 +125,31 @@ export default async function DsPage({
                     {t.term === 'Boxplot' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <BoxplotDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Correlation Matrix' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <CorrelationMatrixDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Dendrogram' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <DendrogramDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Elbow Plot / Curve' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <ElbowPlotDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'ROC Curve' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <RocCurveDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Confusion Matrix' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <ConfusionMatrixDiagram locale={locale} />
                       </div>
                     )}
                   </div>
