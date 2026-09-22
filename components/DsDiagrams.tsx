@@ -941,9 +941,45 @@ export function BaggingDiagram({ locale }: { locale: Locale }) {
 }
 
 // The real Random Forest flow diagram from the Ensemble Models deck (slide 13) — exact labels:
-// Dataset → Tree 1/Tree 2/Tree N (each with its own Result) → Majority Vote / Average → Final result.
+// Dataset → Tree 1/Tree 2/Tree N (each with its own Result) → Majority Vote / Average → Final
+// result — with each box drawn as an actual branching decision tree. The deck's own random-forest
+// demo (slide 14) is a live 2-class canvas with randomly generated points, so the specific split
+// features below are illustrative — but they follow its real point exactly: each tree considers a
+// different random subset of features, so they disagree, and the vote breaks the tie.
+const forestTrees = [
+  { id: 1, featureEn: 'age < 40?', featureHe: 'גיל < 40?', leafA: 'A', leafB: 'B', vote: 'A' as const },
+  { id: 2, featureEn: 'income < 60k?', featureHe: 'הכנסה < 60k?', leafA: 'A', leafB: 'B', vote: 'A' as const },
+  { id: 'N', featureEn: 'region = urban?', featureHe: 'אזור = עירוני?', leafA: 'B', leafB: 'A', vote: 'B' as const },
+];
+const forestLeafColor: Record<'A' | 'B', string> = { A: '#8b2a2a', B: '#1a1a1a' };
+
+function MiniDecisionTree({ tree, locale }: { tree: (typeof forestTrees)[number]; locale: Locale }) {
+  return (
+    <div className="border border-rule px-2 py-2 text-center">
+      <div className="text-[8px] tracking-brand uppercase text-accent font-sans font-semibold mb-1">
+        {locale === 'he' ? `עץ ${tree.id}` : `Tree ${tree.id}`}
+      </div>
+      <svg viewBox="0 0 90 62" className="w-full max-w-[90px] mx-auto block">
+        <g stroke="#1a1a1a" strokeWidth="1.2">
+          <line x1={45} y1={14} x2={20} y2={38} />
+          <line x1={45} y1={14} x2={70} y2={38} />
+        </g>
+        <text x={45} y={10} textAnchor="middle" fontSize="7.5" fontFamily="monospace" fill="#1a1a1a">
+          {locale === 'he' ? tree.featureHe : tree.featureEn}
+        </text>
+        <circle cx={20} cy={44} r={7} fill={forestLeafColor[tree.leafA as 'A' | 'B']} />
+        <text x={20} y={47} textAnchor="middle" fontSize="8" fontWeight="bold" fill="#faf8f3">{tree.leafA}</text>
+        <circle cx={70} cy={44} r={7} fill={forestLeafColor[tree.leafB as 'A' | 'B']} />
+        <text x={70} y={47} textAnchor="middle" fontSize="8" fontWeight="bold" fill="#faf8f3">{tree.leafB}</text>
+      </svg>
+      <div className="text-[8px] text-muted mt-1">
+        {locale === 'he' ? `תוצאה: ${tree.vote}` : `Result: ${tree.vote}`}
+      </div>
+    </div>
+  );
+}
+
 export function RandomForestDiagram({ locale }: { locale: Locale }) {
-  const trees = [1, 2, 'N'];
   return (
     <div>
       <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
@@ -955,22 +991,20 @@ export function RandomForestDiagram({ locale }: { locale: Locale }) {
         </div>
         <span className="text-accent hidden sm:inline">→</span>
         <div className="flex gap-2">
-          {trees.map((t) => (
-            <div key={t} className="border border-rule px-3 py-2 text-center">
-              <div className="text-[9px] font-mono">{locale === 'he' ? `עץ ${t}` : `Tree ${t}`}</div>
-              <div className="text-[8px] text-muted">{locale === 'he' ? `תוצאה ${t}` : `Result ${t}`}</div>
-            </div>
+          {forestTrees.map((t) => (
+            <MiniDecisionTree key={t.id} tree={t} locale={locale} />
           ))}
         </div>
         <span className="text-accent hidden sm:inline">→</span>
         <div className="border-2 border-accent px-3 py-2 text-center text-[9px] font-sans font-semibold uppercase tracking-brand text-accent">
           {locale === 'he' ? 'הצבעת רוב / ממוצע' : 'Majority Vote / Average'}
+          <div className="mt-1 font-mono normal-case text-[10px]">2 A · 1 B → A</div>
         </div>
       </div>
       <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
         {locale === 'he'
-          ? '"יער אקראי הוא bagging על עצי החלטה, עם תוספת אחת: בכל פיצול, כל עץ רשאי להתחשב רק בתת-קבוצה אקראית של תכונות." — משקף 13'
-          : '"A Random Forest is bagging on decision trees, with one extra twist: at every split each tree may only consider a random subset of features." — slide 13'}
+          ? '"יער אקראי הוא bagging על עצי החלטה, עם תוספת אחת: בכל פיצול, כל עץ רשאי להתחשב רק בתת-קבוצה אקראית של תכונות." — משקף 13. מכיוון שכל עץ רואה תכונות שונות, הם לפעמים חלוקים — וההצבעה מכריעה.'
+          : '"A Random Forest is bagging on decision trees, with one extra twist: at every split each tree may only consider a random subset of features." — slide 13. Because each tree sees different features, they sometimes disagree — the vote breaks the tie.'}
       </p>
     </div>
   );
