@@ -87,7 +87,19 @@ export default async function DsPage({
                       <span className="text-sm font-bold font-mono">{t.term}</span>
                       <div className="text-[9px] tracking-brand uppercase text-muted font-sans mt-0.5">{t.source}</div>
                     </div>
-                    <p className="text-sm leading-relaxed">{t.definition[locale]}</p>
+                    <div>
+                      <p className="text-sm leading-relaxed">{t.definition[locale]}</p>
+                      {t.link && (
+                        <a
+                          href={t.link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block mt-2 text-[9px] tracking-brand uppercase text-accent border border-accent px-2 py-1 hover:bg-accent hover:text-paper transition font-sans"
+                        >
+                          {t.link.label[locale]} ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>

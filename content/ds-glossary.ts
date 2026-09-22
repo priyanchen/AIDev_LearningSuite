@@ -6,6 +6,7 @@ export type GlossaryTerm = {
   term: string;
   definition: Bilingual;
   source: string;
+  link?: { url: string; label: Bilingual }; // a real, verified explainer — MIT/Harvard preferred, a highly-regarded YouTube channel (StatQuest) only where no MIT/Harvard match exists
 };
 
 // A dictionary of every plot type and data-science/statistics term found across the "3 - Data
@@ -24,6 +25,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מוצג עבור משתנים מספריים, כמקביל לתרשימי עמודות לנתונים קטגוריאליים; מתאר גם איך LightGBM מחלק תכונות רציפות לדליים בדידים לפני פיצול.',
         },
         source: 'Practical Statistics deck · Modern Boosters deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/resources/lecture-1-introduction-to-statistics/',
+          label: { en: 'MIT 18.650 — Lecture 1: Introduction to Statistics', he: 'MIT 18.650 — הרצאה 1: מבוא לסטטיסטיקה' },
+        },
       },
       {
         term: 'Bar Chart',
@@ -32,6 +37,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מוצג לצד נתונים קטגוריאליים/בינאריים בדיון על תדירות ושכיח במצגת עצמה.',
         },
         source: 'Practical Statistics deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-3-bar-charts-in-r-0/',
+          label: { en: 'MIT 15.071 — Video 3: Bar Charts in R', he: 'MIT 15.071 — סרטון 3: תרשימי עמודות ב-R' },
+        },
       },
       {
         term: 'Boxplot',
@@ -40,6 +49,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מוצג לצד פרצנטילים ככלי לקריאת הפיזור של משתנה; משמש בהמשך גם ככלי לזיהוי חריגים (boxplots / z-scores / IQR).',
         },
         source: 'Practical Statistics deck · Linear/Logistic Regression deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/res-6-009-how-to-process-analyze-and-visualize-data-january-iap-2012/resources/mitres_6_009iap12_lec2/',
+          label: { en: 'MIT RES.6-009 — Day 2: Visualizations (bar/line/box/scatter plots)', he: 'MIT RES.6-009 — יום 2: ויזואליזציות (תרשימי עמודות/קו/box/scatter)' },
+        },
       },
       {
         term: 'Correlation Matrix',
@@ -48,6 +61,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: "מוצג לצד היסטוגרמות תחת כותרת הסעיף \"התפלגות\" במצגת עצמה.",
         },
         source: 'Practical Statistics deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=xZ_z8KWkhXE',
+          label: { en: "StatQuest — Pearson's Correlation, Clearly Explained (no direct MIT/Harvard match found)", he: 'StatQuest — מתאם פירסון, מוסבר בבירור (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Dendrogram',
@@ -56,6 +73,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'הדגמה אינטראקטיבית של דנדרוגרם היררכי, שמייצגת את עץ המיזוג של אשכול היררכי — כל נקודה מתחילה לבד והזוגות מתמזגים כלפי מעלה.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-3-hierarchical-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 3: Hierarchical Clustering', he: 'MIT 15.071 — סרטון 3: אשכול היררכי' },
+        },
       },
       {
         term: 'Elbow Plot / Curve',
@@ -64,6 +85,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'משרטט inertia (WCSS) מול K כדי למצוא את נקודת ה"מרפק" — אותם שלבים שמקטינים את ה-inertia בכל סבב, עד למינימום.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-k-means-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 5: K-Means Clustering', he: 'MIT 15.071 — סרטון 5: אשכול K-Means' },
+        },
       },
       {
         term: 'ROC Curve',
@@ -72,6 +97,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'נבנה מאותם יחסי רגישות/סגוליות שמטריצת הבלבול מפיקה.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-6-roc-curves-0/',
+          label: { en: 'MIT 15.071 — Video 6: ROC Curves', he: 'MIT 15.071 — סרטון 6: עקומות ROC' },
+        },
       },
       {
         term: 'Confusion Matrix',
@@ -80,6 +109,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'לא בדיוק תרשים אלא רשת ויזואלית 2×2 — דוגמה מעובדת של 100 אנשים שנבדקו (45 חולים באמת, 55 בריאים באמת) מראה שכל תחזית נופלת לאחת מארבע תיבות.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-thresholding-0/',
+          label: { en: 'MIT 15.071 — Video 5: Thresholding (confusion matrix, sensitivity/specificity)', he: 'MIT 15.071 — סרטון 5: קביעת סף (מטריצת בלבול, רגישות/סגוליות)' },
+        },
       },
     ],
   },
