@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { dsDiagramTopics } from '@/content/ds-diagrams';
 import { dsGlossary } from '@/content/ds-glossary';
-import { StandardDeviationDiagram, HistogramDiagram } from '@/components/DsDiagrams';
+import { StandardDeviationDiagram, HistogramDiagram, BarChartDiagram } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
 const diagramComponents: Record<string, (props: { locale: Locale }) => JSX.Element> = {
@@ -105,6 +105,11 @@ export default async function DsPage({
                     {t.term === 'Histogram' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <HistogramDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Bar Chart' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <BarChartDiagram locale={locale} />
                       </div>
                     )}
                   </div>

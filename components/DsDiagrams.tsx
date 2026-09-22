@@ -167,3 +167,47 @@ export function HistogramDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real "causes of flight delays at Dallas/Fort Worth" bar chart from the Practical
+// Statistics deck (slide 24, "Bar Charts for Categories") — exact category shares.
+const flightDelayCauses = [
+  { causeEn: 'Late inbound', causeHe: 'הגעה מאוחרת', pct: 38 },
+  { causeEn: 'Carrier', causeHe: 'חברת תעופה', pct: 27 },
+  { causeEn: 'ATC system', causeHe: 'מערכת בקרת טיסה', pct: 22 },
+  { causeEn: 'Weather', causeHe: 'מזג אוויר', pct: 11 },
+  { causeEn: 'Security', causeHe: 'ביטחון', pct: 2 },
+];
+
+export function BarChartDiagram({ locale }: { locale: Locale }) {
+  const max = 40;
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'עיכובי טיסות בדאלאס/פורט וורת׳ לפי סיבה — משקף 24' : 'Delayed flights by cause, Dallas/Fort Worth — slide 24'}
+      </p>
+      <div className="flex items-end justify-center gap-3 sm:gap-4 h-40 border-b border-rule px-2">
+        {flightDelayCauses.map((d) => (
+          <div key={d.causeEn} className="flex flex-col items-center flex-1 h-full justify-end">
+            <span className="text-[9px] font-mono text-accent mb-1">{d.pct}%</span>
+            <div
+              className="w-full bg-accent"
+              style={{ height: `${(d.pct / max) * 100}%` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-3 sm:gap-4 px-2 mt-1.5">
+        {flightDelayCauses.map((d) => (
+          <div key={d.causeEn} className="flex-1 text-center">
+            <div className="text-[8px] leading-tight">{locale === 'he' ? d.causeHe : d.causeEn}</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"עמודות גדלות בכניסה. רחפו כדי לראות את החלק המדויק של העיכובים שמיוחס לכל סיבה." — משקף 24'
+          : '"Bars grow on entry. Hover for the exact share of delays attributed to each cause." — slide 24'}
+      </p>
+    </div>
+  );
+}
