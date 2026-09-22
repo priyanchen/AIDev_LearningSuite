@@ -39,11 +39,30 @@ export default async function ProjectRoadmapPage({
         <h1 className="text-2xl small-caps tracking-wide text-center mb-2">
           {locale === 'he' ? "הוראות ד״ר זוארי לבניית תוכנית פרויקט הצמחים" : "Dr. Zuari's Instructions for Building The Herbal Project Plan"}
         </h1>
-        <p className="text-center italic text-muted max-w-2xl mx-auto text-sm mb-12">
+        <p className="text-center italic text-muted max-w-2xl mx-auto text-sm mb-6">
           {locale === 'he'
             ? 'מפת דרכים בת 18 שלבים — מרעיון ועד פרודקשן — ממדריך "בניית פרויקט מאפס" של המרצה עצמו.'
             : 'An 18-step roadmap — idea to production — from the instructor\'s own "Building a Project from Scratch" deck.'}
         </p>
+
+        <div className="max-w-2xl mx-auto border border-accent p-4 mb-12 text-center">
+          <p className="text-xs leading-relaxed">
+            {locale === 'he'
+              ? 'כל 18 השלבים למטה נעקבים מול אותו פרויקט אמיתי אחד: '
+              : 'All 18 steps below are tracked against the same one real project: '}
+            <a
+              href="https://github.com/JonathanZouari/herbal-evidence"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline hover:no-underline font-mono"
+            >
+              herbal-evidence
+            </a>
+            {locale === 'he'
+              ? '. שלבים 1–9 כבר מציגים מה הפרויקט האמיתי עשה בפועל (תרשימים וציטוטים מהתיעוד שלו עצמו). שלבים 10–18 הם השלבים שהפרויקט האמיתי עדיין לא הגיע אליהם — נכון לרגע זה הוא עדיין שלד מונורפו בודד (commit יחיד) — כך שההליכה שם נשארת הדוגמה הכללית, עד שהפרויקט האמיתי יתקדם.'
+              : '. Steps 1–9 already show what the real project actually did (diagrams and quotes from its own docs). Steps 10–18 are the phases the real project hasn\'t reached yet — as of now it\'s still a single-commit monorepo skeleton — so the walkthrough there remains the generic example, until the real project progresses.'}
+          </p>
+        </div>
 
         <div className="grid gap-12">
           {projectPhases.map((phase) => (
@@ -71,6 +90,13 @@ export default async function ProjectRoadmapPage({
                         </li>
                       ))}
                     </ul>
+                    {step.number > 9 && (
+                      <p className="text-[10px] italic text-muted text-center mt-4 pt-3 border-t border-dashed border-rule">
+                        {locale === 'he'
+                          ? 'הפרויקט האמיתי (herbal-evidence) עדיין לא הגיע לשלב הזה — הדוגמה למעלה נשארת כללית.'
+                          : "The real project (herbal-evidence) hasn't reached this step yet — the example above remains generic."}
+                      </p>
+                    )}
                     {step.number === 1 && <HerbalProblemCallout locale={locale} />}
                     {step.number === 2 && <HerbalPersonaCard locale={locale} />}
                     {step.number === 3 && <HerbalMVPDiagram locale={locale} />}
