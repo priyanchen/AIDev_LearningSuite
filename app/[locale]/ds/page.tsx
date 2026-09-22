@@ -19,6 +19,10 @@ import {
   ZScoreDiagram,
   TrimmedMeanDiagram,
   BoostingDiagram,
+  BiasVarianceDiagram,
+  BaggingDiagram,
+  RandomForestDiagram,
+  GradientBoostingXgboostDiagram,
 } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
@@ -192,6 +196,26 @@ export default async function DsPage({
                     {t.term === 'Boosting' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <BoostingDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Bias–Variance Problem' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <BiasVarianceDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Bagging (Bootstrap Aggregating)' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <BaggingDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Random Forest' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <RandomForestDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Gradient Boosting / XGBoost' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <GradientBoostingXgboostDiagram locale={locale} />
                       </div>
                     )}
                   </div>

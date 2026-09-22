@@ -863,3 +863,146 @@ export function BoostingDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real decision-tree worked example from the Ensemble Models deck (slide 8: age < 55? → No
+// predicts $153; Yes → travel time < 1hr? → Yes predicts $20, else $87) shown twice — once as
+// trained, once with the age answer flipped — to demonstrate the deck's own real instability
+// quote from slide 9: "flip one attribute and the whole verdict can change."
+export function BiasVarianceDiagram({ locale }: { locale: Locale }) {
+  const panels = [
+    { id: 'before', labelEn: 'Original', labelHe: 'מקורי', ageUnder55: true, travelUnder1hr: true, result: '$20' },
+    { id: 'after', labelEn: 'One Attribute Flipped', labelHe: 'תכונה אחת הפוכה', ageUnder55: false, travelUnder1hr: true, result: '$153' },
+  ];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'עץ החלטה — "האם הלקוח מתחת לגיל 55?" · משקפים 8–9' : 'Decision tree — "Is the customer under 55?" · slides 8–9'}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {panels.map((p) => (
+          <div key={p.id} className="border border-rule p-3 text-center">
+            <p className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-2">{locale === 'he' ? p.labelHe : p.labelEn}</p>
+            <div className="text-[10px] font-mono space-y-1">
+              <div>{locale === 'he' ? 'גיל < 55?' : 'age < 55?'} <span className={p.ageUnder55 ? 'text-accent font-bold' : 'font-bold'}>{p.ageUnder55 ? 'Yes' : 'No'}</span></div>
+              {p.ageUnder55 && (
+                <div>{locale === 'he' ? 'זמן נסיעה < שעה?' : 'travel time < 1hr?'} <span className="text-accent font-bold">{p.travelUnder1hr ? 'Yes' : 'No'}</span></div>
+              )}
+            </div>
+            <div className="mt-3 border-t border-dashed border-rule pt-2">
+              <span className="font-mono text-lg font-bold text-accent">{p.result}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"הנתיב שלו שקוף — אבל הפוך תכונה אחת והפסק כולו יכול להשתנות, מה שהופך עצים בודדים ללא יציבים." — משקף 9. שינוי בתכונה אחת בלבד קפץ את התחזית מ-$20 ל-$153.'
+          : '"Its path is transparent — but flip one attribute and the whole verdict can change, which makes single trees unstable." — slide 9. Flipping a single attribute jumps the prediction from $20 to $153.'}
+      </p>
+    </div>
+  );
+}
+
+// The real bagging steps and demo description from the Ensemble Models deck (slide 11, "Bagging:
+// resample, train, average" + slide 12's live demo, "thin grey line is a shallow tree... the red
+// line is their average") — the demo itself fits to randomly regenerated data, so this redraws
+// the same structure (many jagged trees averaging into one smooth curve) schematically.
+export function BaggingDiagram({ locale }: { locale: Locale }) {
+  const jagged = [
+    'M10,60 L30,30 L50,50 L70,20 L90,45 L110,15 L130,40',
+    'M10,55 L30,45 L50,20 L70,50 L90,25 L110,48 L130,22',
+    'M10,45 L30,55 L50,35 L70,30 L90,55 L110,25 L130,45',
+  ];
+  const average = 'M10,53 L30,43 L50,35 L70,33 L90,42 L110,29 L130,36';
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he'
+          ? 'דוגמה להמחשה — מבנה תואם לדוגמת ה-Demo של המצגת (עצים על מדגמי bootstrap אקראיים) · משקפים 11–12'
+          : "Illustrative Example — Matches the Deck's Own Demo Structure (trees on random bootstrap resamples) · slides 11–12"}
+      </p>
+      <svg viewBox="0 0 140 75" className="w-full max-w-xs mx-auto block">
+        {jagged.map((d, i) => (
+          <path key={i} d={d} fill="none" stroke="#6b6b6b" strokeWidth="1" opacity="0.55" />
+        ))}
+        <path d={average} fill="none" stroke="#8b2a2a" strokeWidth="2.5" />
+      </svg>
+      <div className="flex justify-center gap-4 mt-2 text-[9px] font-sans">
+        <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-muted inline-block" />{locale === 'he' ? 'עץ בודד על bootstrap' : 'single bootstrap tree'}</span>
+        <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-accent inline-block" />{locale === 'he' ? 'ממוצע' : 'average'}</span>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"כל קו אפור דק הוא עץ רדוד שאומן על מדגם bootstrap אחד — משונן ולא יציב בפני עצמו. הקו האדום הוא הממוצע שלהם." — משקף 12'
+          : '"Each thin grey line is a shallow tree trained on one bootstrap resample — jagged and unstable on its own. The red line is their average." — slide 12'}
+      </p>
+    </div>
+  );
+}
+
+// The real Random Forest flow diagram from the Ensemble Models deck (slide 13) — exact labels:
+// Dataset → Tree 1/Tree 2/Tree N (each with its own Result) → Majority Vote / Average → Final result.
+export function RandomForestDiagram({ locale }: { locale: Locale }) {
+  const trees = [1, 2, 'N'];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'Bagging + אקראיות תכונות — משקף 13' : 'Bagging + feature randomness — slide 13'}
+      </p>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 flex-wrap">
+        <div className="border-2 border-ink px-3 py-2 text-center text-[9px] font-sans font-semibold uppercase tracking-brand">
+          {locale === 'he' ? 'מערך נתונים' : 'Dataset'}
+        </div>
+        <span className="text-accent hidden sm:inline">→</span>
+        <div className="flex gap-2">
+          {trees.map((t) => (
+            <div key={t} className="border border-rule px-3 py-2 text-center">
+              <div className="text-[9px] font-mono">{locale === 'he' ? `עץ ${t}` : `Tree ${t}`}</div>
+              <div className="text-[8px] text-muted">{locale === 'he' ? `תוצאה ${t}` : `Result ${t}`}</div>
+            </div>
+          ))}
+        </div>
+        <span className="text-accent hidden sm:inline">→</span>
+        <div className="border-2 border-accent px-3 py-2 text-center text-[9px] font-sans font-semibold uppercase tracking-brand text-accent">
+          {locale === 'he' ? 'הצבעת רוב / ממוצע' : 'Majority Vote / Average'}
+        </div>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"יער אקראי הוא bagging על עצי החלטה, עם תוספת אחת: בכל פיצול, כל עץ רשאי להתחשב רק בתת-קבוצה אקראית של תכונות." — משקף 13'
+          : '"A Random Forest is bagging on decision trees, with one extra twist: at every split each tree may only consider a random subset of features." — slide 13'}
+      </p>
+    </div>
+  );
+}
+
+// The real three-way XGBoost/LightGBM/CatBoost comparison from the Modern Boosters deck (slide
+// 3, "How they build each tree") — exact era, origin, and description for each.
+export function GradientBoostingXgboostDiagram({ locale }: { locale: Locale }) {
+  const cols = [
+    { name: 'XGBoost', era: '2014 · the baseline', eraHe: '2014 · הבסיס', descEn: 'Level-wise trees, pre-sorted splits. Rock-solid and widely supported.', descHe: 'עצים ברמה, פיצולים ממוינים-מראש. יציב ונתמך רחבות.' },
+    { name: 'LightGBM', era: 'Microsoft · 2016', eraHe: 'מיקרוסופט · 2016', descEn: 'Histogram binning + leaf-wise growth. Built for speed and huge datasets.', descHe: 'חלוקה להיסטוגרמה + גדילה leaf-wise. בנוי למהירות ומערכי נתונים ענקיים.' },
+    { name: 'CatBoost', era: 'Yandex · 2017', eraHe: 'יאנדקס · 2017', descEn: 'Ordered boosting + native categoricals. Built for categorical data with little tuning.', descHe: 'boosting מסודר + קטגוריאליות טבעית. בנוי לנתונים קטגוריאליים עם כוונון מועט.' },
+  ];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'איך כל אחד בונה עץ — משקף 3' : 'How they build each tree — slide 3'}
+      </p>
+      <div className="grid sm:grid-cols-3 gap-3">
+        {cols.map((c) => (
+          <div key={c.name} className={`border p-3 text-center ${c.name === 'XGBoost' ? 'border-2 border-accent' : 'border-rule'}`}>
+            <div className="text-[11px] font-mono font-bold">{c.name}</div>
+            <div className="text-[8px] tracking-brand uppercase text-muted font-sans mt-0.5">{locale === 'he' ? c.eraHe : c.era}</div>
+            <p className="text-[10px] leading-relaxed mt-2">{locale === 'he' ? c.descHe : c.descEn}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? 'XGBoost הוא הייחוס — עצים ברמה עם פיצולים ממוינים-מראש — שאליו המצגת משווה את LightGBM ו-CatBoost. — משקף 3'
+          : "XGBoost is the reference — level-wise trees with pre-sorted splits — that the deck compares LightGBM and CatBoost against. — slide 3"}
+      </p>
+    </div>
+  );
+}
