@@ -5,6 +5,7 @@ import {
   GitDiagrams,
   HerbalRepoStatusDiagram,
   HerbalBranchTreesDiagram,
+  FlaskExplainerCard,
   HerbalSetupDiagram,
   HerbalArchitectureDiagram,
   HerbalTechStackDiagram,
@@ -109,6 +110,7 @@ export default async function ProjectRoadmapPage({
                     {step.number === 9 && <GitDiagrams locale={locale} />}
                     {step.number === 9 && <HerbalRepoStatusDiagram locale={locale} />}
                     {step.number === 9 && <HerbalBranchTreesDiagram locale={locale} />}
+                    {step.number === 9 && <FlaskExplainerCard locale={locale} />}
                   </div>
                 ))}
               </div>

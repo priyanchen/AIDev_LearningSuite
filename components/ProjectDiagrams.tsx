@@ -343,6 +343,73 @@ export function HerbalBranchTreesDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// Flask itself — named live by Dr. Zuari in Session 22's characterization chat as part of the
+// generic reference stack ("I want it to — for it to be fast. Flask."). The real herbal-evidence
+// repo chose FastAPI instead (see the Real Stack diagram, Step 7) — this explains what was actually
+// named, not what shipped.
+export function FlaskExplainerCard({ locale }: { locale: Locale }) {
+  const concepts: { term: string; en: string; he: string }[] = [
+    {
+      term: 'Micro-framework',
+      en: "Lightweight — gives you the essentials without much extra overhead, so you're free to structure the rest of the app however you want.",
+      he: 'קליל — נותן את היסודות בלי הרבה עומס נוסף, כך שאת חופשייה לבנות את שאר האפליקציה איך שתרצי.',
+    },
+    {
+      term: 'Routes',
+      en: 'Map a URL to a Python function — when a user visits that URL, Flask runs the function and returns its response (e.g. the homepage route).',
+      he: 'ממפות כתובת URL לפונקציית פייתון — כשמשתמש מבקר בכתובת הזו, Flask מריצה את הפונקציה ומחזירה את התגובה שלה (למשל, ה-route של דף הבית).',
+    },
+    {
+      term: 'Templates (Jinja)',
+      en: "HTML with placeholders for dynamic content — lets you insert a Python variable straight into a web page.",
+      he: 'HTML עם placeholders לתוכן דינמי — מאפשר להכניס משתנה פייתון ישירות לתוך דף אינטרנט.',
+    },
+    {
+      term: 'Requests',
+      en: 'Handles HTTP requests — GET to retrieve data, POST to submit it (a form, for instance).',
+      he: 'מטפלת בבקשות HTTP — GET לשליפת נתונים, POST לשליחתם (טופס, למשל).',
+    },
+    {
+      term: 'Sessions',
+      en: "Remembers information about a user across pages — like whether they're logged in.",
+      he: 'זוכרת מידע על משתמש לאורך דפים — כמו אם היא מחוברת.',
+    },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'Flask — מה שנקרא בפועל, לא מה שנשלח' : 'Flask — What Was Actually Named, Not What Shipped'}
+      </p>
+      <blockquote className="border-s-2 border-accent ps-4 mb-4 max-w-md mx-auto">
+        <p dir="rtl" className="text-sm leading-relaxed mb-1">
+          "אני רוצה שיהיה — שזה יהיה מהיר. Flask."
+        </p>
+        <p dir="ltr" className="text-sm italic text-muted leading-relaxed">
+          "I want it to — for it to be fast. Flask."
+        </p>
+        <p className="text-[9px] tracking-brand uppercase text-muted font-sans mt-1">
+          — {locale === 'he' ? 'ד״ר זוארי, שיחת האפיון של מפגש 22' : "Dr. Zuari, Session 22's characterization chat"}
+        </p>
+      </blockquote>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {concepts.map((c) => (
+          <div key={c.term} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-2.5">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0 sm:w-32">
+              {c.term}
+            </span>
+            <span className="text-xs leading-relaxed">{locale === 'he' ? c.he : c.en}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-3 max-w-md mx-auto">
+        {locale === 'he'
+          ? 'ביחד הם מחברים את ה-front end (HTML/CSS) ללוגיקת ה-backend (Python) ולנתונים (בסיס נתונים) — אבל herbal-evidence האמיתי בחר ב-FastAPI במקום Flask (ראו שלב 7 למעלה).'
+          : 'Together they connect the front end (HTML/CSS) to back-end logic (Python) and data (a database) — but the real herbal-evidence repo chose FastAPI over Flask (see Step 7 above).'}
+      </p>
+    </div>
+  );
+}
+
 // Real architecture, pulled from the repo's own docs/decisions.md (a live engineering decision log,
 // not a placeholder — its docs/architecture.md is literally still a stub) — the actual stack, not the
 // generic Python/Flask reference example in the points above.
