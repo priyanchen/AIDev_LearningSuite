@@ -614,6 +614,23 @@ export const installGuide: InstallCategory[] = [
           ],
         },
       },
+      {
+        name: 'Flask',
+        officialUrl: 'https://flask.palletsprojects.com/en/stable/',
+        sessions: [22],
+        whatItDoes: {
+          en: `A lightweight Python web framework — a micro-framework, giving you the essentials without much extra overhead: routes (map a URL to a Python function that runs and returns a response), Jinja templates (HTML with placeholders for inserting Python variables), request handling (GET to retrieve data, POST to submit it — a form, for instance), and sessions (remembering something about a user, like whether they're logged in, across pages). Together they connect the front end (HTML/CSS) to back-end logic (Python) and data (a database).`,
+          he: `framework קליל של פייתון לבניית אתרים — micro-framework, נותן את היסודות בלי הרבה עומס נוסף: routes (מיפוי כתובת URL לפונקציית פייתון שרצה ומחזירה תגובה), תבניות Jinja (HTML עם placeholders להכנסת משתני פייתון), טיפול בבקשות (GET לשליפת נתונים, POST לשליחתם — טופס, למשל), ו-sessions (זכירת משהו על משתמש, כמו אם היא מחוברת, לאורך דפים). יחד הם מחברים את ה-front end (HTML/CSS) ללוגיקת ה-backend (פייתון) ולנתונים (בסיס נתונים).`,
+        },
+        tips: {
+          en: `Named live by Dr. Zuari in Session 22's own characterization chat as part of the generic reference stack — "I want it to — for it to be fast. Flask." (Python backend + Flask + HTML/CSS + Supabase). The real herbal-evidence repo that came out of that same conversation chose FastAPI instead (see the Real Stack diagram on the Project → Roadmap page, Step 7) — Flask and FastAPI solve the same problem, Flask trading some of FastAPI's built-in async speed and request validation for a smaller learning curve and more manual control.`,
+          he: `הוזכר בשידור חי על ידי ד״ר זוארי בשיחת האפיון של מפגש 22 עצמו כחלק מהערימה הכללית לדוגמה — "אני רוצה שיהיה — שזה יהיה מהיר. Flask." (backend ב-Python + Flask + HTML/CSS + Supabase). המאגר האמיתי של herbal-evidence שיצא מאותה שיחה בחר ב-FastAPI במקום (ראו את תרשים הערימה האמיתית בעמוד פרויקט ← מפת הדרכים, שלב 7) — Flask ו-FastAPI פותרים את אותה בעיה, כש-Flask מוותרת על חלק ממהירות ה-async ואימות הבקשות המובנים של FastAPI תמורת עקומת למידה קטנה יותר ושליטה ידנית רבה יותר.`,
+        },
+        commands: {
+          mac: ['pip3 install Flask', 'flask --version'],
+          windows: ['pip install Flask', 'flask --version'],
+        },
+      },
     ],
   },
   {
