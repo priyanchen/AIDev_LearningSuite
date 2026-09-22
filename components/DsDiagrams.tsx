@@ -211,3 +211,60 @@ export function BarChartDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real "anatomy of a boxplot" worked example from the Practical Statistics deck (slide 29,
+// "Reading a Boxplot") — its own five-number summary and outlier, redrawn as a horizontal
+// number-line boxplot in place of the deck's canvas demo.
+const boxplotAnatomy = { lo: 10, hi: 84, min: 16, q1: 22, median: 28, q3: 41, max: 64, outlier: 79 };
+
+export function BoxplotDiagram({ locale }: { locale: Locale }) {
+  const { lo, hi, min, q1, median, q3, max, outlier } = boxplotAnatomy;
+  const pct = (v: number) => ((v - lo) / (hi - lo)) * 100;
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'אנטומיה של boxplot — משקף 29' : 'Anatomy of a boxplot — slide 29'}
+      </p>
+      <div className="relative w-full h-16 mx-auto max-w-md">
+        {/* whiskers */}
+        <div
+          className="absolute top-1/2 h-px bg-ink -translate-y-1/2"
+          style={{ left: `${pct(min)}%`, width: `${pct(q1) - pct(min)}%` }}
+        />
+        <div
+          className="absolute top-1/2 h-px bg-ink -translate-y-1/2"
+          style={{ left: `${pct(q3)}%`, width: `${pct(max) - pct(q3)}%` }}
+        />
+        {[min, max].map((v) => (
+          <div key={v} className="absolute top-1/4 h-1/2 w-px bg-ink" style={{ left: `${pct(v)}%` }} />
+        ))}
+        {/* box */}
+        <div
+          className="absolute top-1/4 h-1/2 bg-accent/10 border-2 border-ink"
+          style={{ left: `${pct(q1)}%`, width: `${pct(q3) - pct(q1)}%` }}
+        />
+        {/* median */}
+        <div className="absolute top-1/4 h-1/2 w-0.5 bg-accent" style={{ left: `${pct(median)}%` }} />
+        {/* outlier */}
+        <div
+          className="absolute top-1/2 w-2 h-2 rounded-full bg-accent -translate-y-1/2 -translate-x-1/2"
+          style={{ left: `${pct(outlier)}%` }}
+        />
+        {/* labels */}
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(min)}%` }}>min</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(q1)}%` }}>Q1</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono text-accent -translate-x-1/2" style={{ left: `${pct(median)}%` }}>median</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(q3)}%` }}>Q3</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(max)}%` }}>max</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono text-accent -translate-x-1/2" style={{ left: `${pct(outlier)}%` }}>
+          {locale === 'he' ? 'חריג' : 'outlier'}
+        </div>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-8 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"boxplots דוחסים התפלגות שלמה לחמישה מספרים — מושלם לאיתור מהיר של פיזור וחריגים." — משקף 29'
+          : '"Boxplots compress a whole distribution into five numbers — perfect for spotting spread and outliers fast." — slide 29'}
+      </p>
+    </div>
+  );
+}
