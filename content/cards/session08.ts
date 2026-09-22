@@ -255,6 +255,7 @@ export const session08Cards: CardContent[] = [
       en: `An agent that reminds you of what you already understand is different from one that spares you from understanding it.`,
       he: `סוכן שמזכיר לך מה שאת כבר מבינה הוא שונה מאחד שחוסך ממך להבין את זה.`,
     },
+    exampleUrl: 'https://drive.google.com/drive/folders/1idc9jM-aVd4R1JhCmcKxb_zCHHcFKvYl',
   },
   {
     number: '09',
