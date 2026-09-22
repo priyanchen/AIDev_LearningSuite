@@ -126,6 +126,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מקובצת עם ממוצע, חציון, ממוצע מקוצץ וסטיית תקן תחת "מיקום ופיזור"; משמשת בהמשך גם ככלי לזיהוי חריגים לצד boxplots ו-z-scores.',
         },
         source: 'Practical Statistics deck · Linear/Logistic Regression deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=IFKQLDmRK0Y',
+          label: { en: 'StatQuest — Quantiles and Percentiles, Clearly Explained (no direct MIT/Harvard match found)', he: 'StatQuest — קוונטילים ופרצנטילים, מוסבר בבירור (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Skewness',
@@ -134,6 +138,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מוצגת לצד היסטוגרמות תחת הכותרת "התפלגות" — מתויגת, לא מוגדרת פורמלית בחומר שנתפס.',
         },
         source: 'Practical Statistics deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=NohAK72Dp1s',
+          label: { en: 'Statistics Basics — What Is Skewness? (no direct MIT/Harvard match found)', he: 'Statistics Basics — מהי אלכסוניות? (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Trimmed Mean',
@@ -179,6 +187,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'כותרת הסעיף המסגרת עבור כל מצגת Ensemble Models — הסיבה לקיומם של אנסמבלים, מוצגת דרך "עצים לא יציבים."',
         },
         source: 'Ensemble Models deck',
+        link: {
+          url: 'https://youtu.be/EuBBz3bI-aA',
+          label: { en: 'StatQuest — Machine Learning Fundamentals: Bias and Variance (no direct MIT/Harvard match found)', he: 'StatQuest — יסודות למידת מכונה: הטיה ושונות (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Bagging (Bootstrap Aggregating)',
@@ -187,6 +199,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'לדגום מחדש, לאמן, לממוצע — לשלוף מספר מערכי נתונים בדגימה אקראית עם החזרה, לאמן מודל נפרד על כל דגימה במקביל. Random Forest היא הדוגמה המעובדת.',
         },
         source: 'Ensemble Models deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=J4Wdy0Wc_xQ',
+          label: { en: 'StatQuest — Random Forests Part 1 (no direct MIT/Harvard match found)', he: 'StatQuest — Random Forests חלק 1 (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Boosting',
@@ -195,6 +211,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'ללמוד מהטעויות, בסדר — מתאמן ברצף, כל מודל חדש מתקן את הטעויות של המודלים שלפניו, ולדוגמאות קשות ניתן משקל גבוה יותר.',
         },
         source: 'Ensemble Models deck · Modern Boosters deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=OtD8wVaFm6E',
+          label: { en: 'StatQuest — XGBoost Part 1: Regression (no direct MIT/Harvard match found)', he: 'StatQuest — XGBoost חלק 1: רגרסיה (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Random Forest',
@@ -203,6 +223,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'הדוגמה המעובדת של המצגת ל-bagging בפועל.',
         },
         source: 'Ensemble Models deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-random-forests-0/',
+          label: { en: 'MIT 15.071 — Video 5: Random Forests', he: 'MIT 15.071 — סרטון 5: Random Forests' },
+        },
       },
       {
         term: 'Gradient Boosting / XGBoost',
@@ -211,6 +235,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'בונה פיצולים ממוינים-מראש — יישום הייחוס שהמצגת משווה אליו את LightGBM ו-CatBoost.',
         },
         source: 'Ensemble Models deck · Modern Boosters deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=OtD8wVaFm6E',
+          label: { en: 'StatQuest — XGBoost Part 1: Regression (no direct MIT/Harvard match found)', he: 'StatQuest — XGBoost חלק 1: רגרסיה (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'LightGBM',
@@ -251,6 +279,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'אל תסמכי על פיצול train/test בודד — ממצעת ביצועים על פני K פיצולים שונים: מפרישים סט בדיקה קודם, מפצלים את סט האימון ל-K קפלים שווים, וכל קפל מקבל תור כ-validation.',
         },
         source: 'Ensemble Models deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=fSytzGwwBVw',
+          label: { en: 'StatQuest — Machine Learning Fundamentals: Cross Validation (no direct MIT/Harvard match found)', he: 'StatQuest — יסודות למידת מכונה: Cross Validation (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'K-Means',
@@ -259,6 +291,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'אלגוריתם ממשפחת ה-clustering — המצגת מציינת K-Means, היררכי, ו-DBSCAN כאפשרויות "לפי הצורך."',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-k-means-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 5: K-Means Clustering', he: 'MIT 15.071 — סרטון 5: אשכול K-Means' },
+        },
       },
       {
         term: 'Inertia (WCSS)',
@@ -267,6 +303,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מודדת כמה רחוקה כל נקודה מהמרכז של האשכול שלה, מסוכמת יחד — אשכול צפוף נותן מספר קטן, אשכול טוב. המטרה הכוללת של K-Means היא לצמצם את המספר הזה; הוא בריבוע כדי שמרחקים גדולים "יכאבו" יותר.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-k-means-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 5: K-Means Clustering (covers WCSS/scree-plot selection)', he: 'MIT 15.071 — סרטון 5: אשכול K-Means (כולל בחירה לפי WCSS/scree plot)' },
+        },
       },
       {
         term: 'Silhouette Score',
@@ -283,6 +323,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'ה"אמצע" שממנו נמדד המרחק של כל נקודת אשכול ב-K-Means — מוצג ויזואלית כמרכזים מסומנים על ה-scatter הדו-ממדי אחרי האשכול.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-k-means-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 5: K-Means Clustering', he: 'MIT 15.071 — סרטון 5: אשכול K-Means' },
+        },
       },
       {
         term: 'DBSCAN',
@@ -291,6 +335,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'משמש לזיהוי אנומליות/הונאות: במקום ללמד את המודל איך הונאה נראית (שמשתנה כל הזמן), מלמדים אותו איך נורמלי נראה — כל מה שסוטה נבדק. רכישה ב-3 בלילה בחו"ל בסכום חריג רחוקה מכל אשכול — בדיוק מה ש-DBSCAN מסמן כרעש.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=RDZUdRSDOok',
+          label: { en: 'StatQuest — Clustering with DBSCAN, Clearly Explained (no direct MIT/Harvard match found)', he: 'StatQuest — אשכול עם DBSCAN, מוסבר בבירור (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Hierarchical Clustering',
@@ -299,6 +347,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'מודגם דרך הוויזואליזציה של עץ המיזוג הדנדרוגרמי.',
         },
         source: 'K-Means Clustering deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-3-hierarchical-clustering-0/',
+          label: { en: 'MIT 15.071 — Video 3: Hierarchical Clustering', he: 'MIT 15.071 — סרטון 3: אשכול היררכי' },
+        },
       },
       {
         term: 'Sigmoid Function',
@@ -307,6 +359,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'הסיגמואיד של רגרסיה לוגיסטית הופך ציון לינארי להסתברות חסומה.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-3-logistic-regression-0/',
+          label: { en: 'MIT 15.071 — Video 3: Logistic Regression', he: 'MIT 15.071 — סרטון 3: רגרסיה לוגיסטית' },
+        },
       },
       {
         term: 'Cross-Entropy / Log Loss',
@@ -315,6 +371,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'משמש במקום MSE לסיווג — נותן עונש זעיר כשהמודל צודק בביטחון, ועונש עצום כשהוא טועה בביטחון.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=6ArSys5qHAU',
+          label: { en: 'StatQuest — Neural Networks Part 6: Cross Entropy (no direct MIT/Harvard match found)', he: 'StatQuest — רשתות נוירונים חלק 6: Cross Entropy (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'One-Hot vs. Ordinal Encoding',
@@ -355,6 +415,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'החלק מהשונות שהמודל מסביר — 1.0 מושלם, 0 לא טוב יותר מניחוש הממוצע. R² מתוקנן גובה "דמי חבר" קטנים על כל תכונה שנוספת, כך ש-R² רגיל לא ניתן לרמות על ידי צבירת תכונות חסרות תועלת.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=2AQKmw14mHM',
+          label: { en: 'StatQuest — R-squared, Clearly Explained (no direct MIT/Harvard match found)', he: 'StatQuest — R-squared, מוסבר בבירור (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Confusion Matrix (TP/TN/FP/FN)',
@@ -363,6 +427,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'TP — חולה, נתפס נכון. TN — בריא, שוחרר נכון. FP — אזעקת שווא. FN — מקרה שהוחמץ. כל מדד סיווג הוא פשוט יחס בין ארבעת המספרים האלה.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-thresholding-0/',
+          label: { en: 'MIT 15.071 — Video 5: Thresholding', he: 'MIT 15.071 — סרטון 5: קביעת סף' },
+        },
       },
       {
         term: 'Accuracy Paradox',
@@ -379,6 +447,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: 'Precision = TP/(TP+FP), מענישה אזעקות שווא. Recall = TP/(TP+FN), מענישה מקרים שהוחמצו. F1 היא הממוצע ההרמוני של השניים — היא מסרבת לתגמל מודל לא מאוזן.',
         },
         source: 'Linear/Logistic Regression deck',
+        link: {
+          url: 'https://www.youtube.com/watch?v=vP06aMoz4v8',
+          label: { en: 'StatQuest — Machine Learning Fundamentals: Sensitivity and Specificity (no direct MIT/Harvard match found)', he: 'StatQuest — יסודות למידת מכונה: רגישות וסגוליות (לא נמצאה התאמה ישירה של MIT/הרווארד)' },
+        },
       },
       {
         term: 'Stratified Train/Test Split',
@@ -400,6 +472,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: '"כששני דברים נראים זהים, איך מבדילים ביניהם?" — הדוגמה המעובדת: שני נוסעים ששניהם נקראים דוד כהן, מובדלים רק לפי ה-id הייחודי שלהם.',
         },
         source: 'Airline CRM · Supabase deck',
+        link: {
+          url: 'https://cs50.harvard.edu/sql/weeks/1/',
+          label: { en: "Harvard CS50 SQL — Week 1: Relating (primary keys)", he: 'Harvard CS50 SQL — שבוע 1: יחסים (מפתחות ראשיים)' },
+        },
       },
       {
         term: 'Foreign Key',
@@ -408,6 +484,10 @@ export const dsGlossary: Record<GlossaryCategory, { label: Bilingual; terms: Glo
           he: '"שתי טבלאות נפרדות. איך מחברים לקוח לטיסה?" — נפתר דרך טבלת bookings שלישית שמחזיקה את שני ה-id-ים (customer_id, flight_id).',
         },
         source: 'Airline CRM · Supabase deck',
+        link: {
+          url: 'https://cs50.harvard.edu/sql/weeks/1/',
+          label: { en: 'Harvard CS50 SQL — Week 1: Relating (foreign keys)', he: 'Harvard CS50 SQL — שבוע 1: יחסים (מפתחות זרים)' },
+        },
       },
       {
         term: 'Authentication (auth.uid())',
