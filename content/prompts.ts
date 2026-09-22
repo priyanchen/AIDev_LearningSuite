@@ -1,8 +1,10 @@
 import type { Bilingual } from '@/lib/registry';
 
 export type PromptItem = {
-  sessionNumber: number;
-  sessionSlug: string;
+  sessionNumber?: number;
+  sessionSlug?: string;
+  sourceLabel?: Bilingual;   // for prompts not tied to a recorded session — which deck it's from
+  sourceUrl?: string;
   text: Bilingual;           // verbatim as typed (he/en), with a translation on the other side
   context: Bilingual;        // what it was demonstrating
   verbatim: 'he' | 'en';     // which side of `text` is the actual original, unaltered
@@ -226,6 +228,246 @@ export const promptModules: PromptModule[] = [
           he: `פרומפט מודלינג ארוך, מובנה, שלב-אחר-שלב — תואם בדיוק לתוכן הכרטיסים של מפגש 18 עצמו על R²/RMSE/R² מתוקנן.`,
         },
         verbatim: 'he',
+      },
+    ],
+  },
+  {
+    moduleId: 'ds-decks',
+    title: { en: 'DS — Newer Decks (Not Yet Session-Linked)', he: 'DS — מצגות חדשות (טרם מקושרות למפגש)' },
+    prompts: [
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Walk me through creating a new Supabase project with the CLI: supabase login, then supabase projects create <name> --org-id <id> --db-password <pw> --region <region>, then supabase link --project-ref <ref>.`,
+          he: `עברי איתי על יצירת פרויקט Supabase חדש דרך ה-CLI: supabase login, ואז supabase projects create <name> --org-id <id> --db-password <pw> --region <region>, ואז supabase link --project-ref <ref>.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Get started · project" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "מתחילים · פרויקט" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Create a .env file with SUPABASE_URL and SUPABASE_ANON_KEY, load it, and initialize the supabase-py client. Add a comment explaining that the service_role key must stay server-side only and never ship to the frontend.`,
+          he: `צרי קובץ .env עם SUPABASE_URL ו-SUPABASE_ANON_KEY, טעני אותו, ואתחלי את הלקוח supabase-py. הוסיפי הערה שמסבירה שמפתח ה-service_role חייב להישאר בצד השרת בלבד ולעולם לא להגיע לפרונטאנד.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Connect · keys" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "התחברות · מפתחות" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Create a Supabase migration that adds a \`customers\` table: id bigint primary key generated always as identity, name text, email text. Then run supabase db push.`,
+          he: `צרי migration ב-Supabase שמוסיפה טבלת \`customers\`: id bigint primary key generated always as identity, name text, email text. אחר כך הריצי supabase db push.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Database — create table" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Database — צור טבלה" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `In my Supabase schema, make sure every table has a primary key \`id bigint generated always as identity\`. Add it wherever it's missing and generate a migration.`,
+          he: `בסכימה של Supabase שלי, ודאי שלכל טבלה יש מפתח ראשי \`id bigint generated always as identity\`. הוסיפי אותו בכל מקום שחסר וצרי migration.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Primary Key" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Primary Key" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Add a \`flights\` table to my Supabase project: id (pk identity), destination text, depart_at timestamptz. Create the migration and push it.`,
+          he: `הוסיפי טבלת \`flights\` לפרויקט ה-Supabase שלי: id (pk identity), destination text, depart_at timestamptz. צרי את ה-migration ודחפי אותה.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Flights — table" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Flights — טבלה" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Create a \`bookings\` table linking customers and flights: id pk, customer_id bigint references customers(id), flight_id bigint references flights(id). Generate the migration.`,
+          he: `צרי טבלת \`bookings\` שמקשרת בין customers ל-flights: id pk, customer_id bigint references customers(id), flight_id bigint references flights(id). צרי את ה-migration.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Foreign Key" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Foreign Key" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Write a Python script using supabase-py that inserts a booking (customer_id, flight_id) and prints the created row.`,
+          he: `כתבי סקריפט פייתון עם supabase-py שמכניס הזמנה (customer_id, flight_id) ומדפיס את השורה שנוצרה.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "API — insert" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "API — Insert" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Write a supabase-py query that selects all flights where destination = 'Paris' and prints the results.`,
+          he: `כתבי שאילתת supabase-py שבוחרת את כל הטיסות שבהן destination = 'Paris' ומדפיסה את התוצאות.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Read & Filter" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Read & Filter" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Set up Supabase email/password auth and write a supabase-py sign_in_with_password function for a given email and password.`,
+          he: `הגדירי אימות email/password ב-Supabase וכתבי פונקציית supabase-py בשם sign_in_with_password עבור אימייל וסיסמה נתונים.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Authentication" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Authentication" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Add a \`role\` column (customer | agent | admin, default 'customer') to my profiles table and create the migration.`,
+          he: `הוסיפי עמודת \`role\` (customer | agent | admin, ברירת מחדל 'customer') לטבלת profiles שלי וצרי את ה-migration.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Users & Roles" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Users & Roles" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Enable RLS on the bookings table and add a policy so a user can only select rows where user_id = auth.uid(). Generate the SQL migration.`,
+          he: `הפעילי RLS על טבלת bookings והוסיפי policy כך שמשתמש יוכל לבחור רק שורות שבהן user_id = auth.uid(). צרי את ה-SQL migration.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "RLS" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "RLS" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Create a private Supabase Storage bucket named 'passports' and write a supabase-py function that uploads a PDF and saves its path to the customers table.`,
+          he: `צרי bucket פרטי ב-Supabase Storage בשם 'passports' וכתבי פונקציית supabase-py שמעלה PDF ושומרת את הנתיב שלו בטבלת customers.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Storage — passports" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Storage — דרכונים" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Generate supabase-py helper functions for create, read, update and delete on the bookings table.`,
+          he: `צרי פונקציות עזר ב-supabase-py ליצירה, קריאה, עדכון ומחיקה על טבלת bookings.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "CRUD" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "CRUD" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Show me how to subscribe to realtime INSERT events on the bookings table using the Supabase JS client.`,
+          he: `הראי לי איך להירשם לאירועי INSERT בזמן אמת על טבלת bookings באמצעות לקוח ה-JS של Supabase.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Realtime" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Realtime" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Airline CRM · Supabase from Scratch — Claude Code prompt library', he: 'CRM לחברת תעופה · Supabase מאפס — ספריית פרומפטים ל-Claude Code' },
+        sourceUrl: 'https://drive.google.com/file/d/1hVYWUjjPcTYIZdArYShf3a-iF6XvFMco/view',
+        text: {
+          en: `Scaffold a Supabase Edge Function (supabase functions new) that runs after a new booking and sends a confirmation email.`,
+          he: `בני שלד ל-Supabase Edge Function (supabase functions new) שרץ אחרי הזמנה חדשה ושולח אימייל אישור.`,
+        },
+        context: {
+          en: `Claude Code prompt library, "Edge Function" — from the Airline CRM · Supabase-from-scratch deck.`,
+          he: `ספריית פרומפטים ל-Claude Code, "Edge Function" — ממצגת CRM לחברת תעופה · Supabase מאפס.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'K-Means Clustering — interactive deck', he: 'אשכולות K-Means — מצגת אינטראקטיבית' },
+        sourceUrl: 'https://drive.google.com/file/d/1WRFcSLJ6r3rQjqbmt5rKfWGBGH06PP9O/view',
+        text: {
+          en: `Build a complete K-Means clustering pipeline in Python with\nscikit-learn for the dataset data.csv.\n\n1. Load the CSV with pandas; keep the numeric feature columns.\n2. Scale every feature with StandardScaler — K-Means is\n   distance-based, so unscaled features would dominate\n   (wrap the scaler + KMeans in a Pipeline).\n3. Choose K: for K = 2..10 compute the inertia (elbow) and the\n   silhouette score; plot both curves to pick the best K.\n4. Fit KMeans(n_clusters=K, n_init=10, random_state=42).\n5. Add the cluster label back to the dataframe.\n6. Visualize: a 2-D scatter coloured by cluster (reduce to 2-D\n   with PCA if there are more than 2 features), centroids marked.\n\nAlways scale before clustering; pick K from elbow + silhouette.`,
+          he: `בני pipeline מלא לאשכולות K-Means בפייתון עם scikit-learn עבור מערך הנתונים data.csv.\n\n1. טעני את ה-CSV עם pandas; שמרי את עמודות התכונות המספריות.\n2. קני מידה לכל תכונה עם StandardScaler — K-Means מבוסס מרחק, אז תכונות לא-קנויות-מידה ישלטו (עטפי את ה-scaler + KMeans ב-Pipeline).\n3. בחרי K: עבור K = 2..10 חשבי את ה-inertia (elbow) ואת ציון ה-silhouette; שרטטי את שתי העקומות כדי לבחור את ה-K הטוב ביותר.\n4. התאימי KMeans(n_clusters=K, n_init=10, random_state=42).\n5. הוסיפי את תווית האשכול בחזרה ל-dataframe.\n6. הדמיה: scatter דו-ממדי צבוע לפי אשכול (הפחיתי ל-2 ממדים עם PCA אם יש יותר מ-2 תכונות), עם סימון מרכזי-האשכולות.\n\nתמיד קני מידה לפני אשכול; בחרי K מ-elbow + silhouette.`,
+        },
+        context: {
+          en: `The deck's own "Claude Code Prompt" slide — the real prompt shown to turn the K-Means lesson into a working scikit-learn pipeline.`,
+          he: `השקף "Claude Code Prompt" של המצגת עצמה — הפרומפט האמיתי שמוצג כדי להפוך את שיעור ה-K-Means לצינור עבודה פעיל ב-scikit-learn.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Linear & Logistic Regression — interactive deck', he: 'רגרסיה לינארית ולוגיסטית — מצגת אינטראקטיבית' },
+        sourceUrl: 'https://drive.google.com/file/d/1aUNnOURtfszbvDo1rP0B3ZYMJ-s-dd8Z/view',
+        text: {
+          en: `Build a complete linear-regression pipeline in Python with\nscikit-learn for the dataset data.csv (target = "price").\n\n1. Load the CSV with pandas.\n2. Split features into numeric and categorical.\n3. Preprocess inside a ColumnTransformer:\n   • numeric      → SimpleImputer(median) + StandardScaler\n   • categorical  → SimpleImputer(most_frequent) + OneHotEncoder\n4. Put the ColumnTransformer + LinearRegression in one Pipeline.\n5. train_test_split 80/20, random_state=42.\n6. Fit on train only; predict on test.\n7. Report RMSE, MAE and R² on the test set.\n8. Print each feature's learned coefficient.\n\nKeep all preprocessing inside the Pipeline (no data leakage).`,
+          he: `בני pipeline מלא לרגרסיה לינארית בפייתון עם scikit-learn עבור מערך הנתונים data.csv (יעד = "price").\n\n1. טעני את ה-CSV עם pandas.\n2. פצלי את התכונות למספריות וקטגוריאליות.\n3. עבדי קדם-עיבוד בתוך ColumnTransformer:\n   • מספריות → SimpleImputer(median) + StandardScaler\n   • קטגוריאליות → SimpleImputer(most_frequent) + OneHotEncoder\n4. שימי את ה-ColumnTransformer + LinearRegression ב-Pipeline אחד.\n5. train_test_split ביחס 80/20, random_state=42.\n6. התאימי רק על ה-train; חזי על ה-test.\n7. דווחי RMSE, MAE ו-R² על סט הבדיקה.\n8. הדפיסי את המקדם שנלמד לכל תכונה.\n\nשמרי את כל קדם-העיבוד בתוך ה-Pipeline (בלי דליפת נתונים).`,
+        },
+        context: {
+          en: `The deck's own "Claude Code Prompt" slide for the linear-regression half of the lesson.`,
+          he: `השקף "Claude Code Prompt" של המצגת עצמה, עבור החצי של רגרסיה לינארית בשיעור.`,
+        },
+        verbatim: 'en',
+      },
+      {
+        sourceLabel: { en: 'Linear & Logistic Regression — interactive deck', he: 'רגרסיה לינארית ולוגיסטית — מצגת אינטראקטיבית' },
+        sourceUrl: 'https://drive.google.com/file/d/1aUNnOURtfszbvDo1rP0B3ZYMJ-s-dd8Z/view',
+        text: {
+          en: `Build a complete logistic-regression classifier in Python with\nscikit-learn for the dataset data.csv (binary target = "churn").\n\n1. Load the CSV with pandas.\n2. Split features into numeric and categorical.\n3. Preprocess inside a ColumnTransformer:\n   • numeric      → SimpleImputer(median) + StandardScaler\n   • categorical  → SimpleImputer(most_frequent) + OneHotEncoder\n4. Put the ColumnTransformer + LogisticRegression(max_iter=1000)\n   in one Pipeline.\n5. Stratified train_test_split 80/20, random_state=42.\n6. Fit on train only; predict on test.\n7. Report accuracy, precision, recall, F1, the confusion\n   matrix and ROC-AUC; plot the ROC curve.\n\nKeep all preprocessing inside the Pipeline (no data leakage).`,
+          he: `בני מסווג רגרסיה לוגיסטית מלא בפייתון עם scikit-learn עבור מערך הנתונים data.csv (יעד בינארי = "churn").\n\n1. טעני את ה-CSV עם pandas.\n2. פצלי את התכונות למספריות וקטגוריאליות.\n3. עבדי קדם-עיבוד בתוך ColumnTransformer:\n   • מספריות → SimpleImputer(median) + StandardScaler\n   • קטגוריאליות → SimpleImputer(most_frequent) + OneHotEncoder\n4. שימי את ה-ColumnTransformer + LogisticRegression(max_iter=1000) ב-Pipeline אחד.\n5. train_test_split מדורג ביחס 80/20, random_state=42.\n6. התאימי רק על ה-train; חזי על ה-test.\n7. דווחי accuracy, precision, recall, F1, מטריצת הבלבול ו-ROC-AUC; שרטטי את עקומת ה-ROC.\n\nשמרי את כל קדם-העיבוד בתוך ה-Pipeline (בלי דליפת נתונים).`,
+        },
+        context: {
+          en: `The deck's own "Claude Code Prompt" slide for the logistic-regression half of the lesson.`,
+          he: `השקף "Claude Code Prompt" של המצגת עצמה, עבור החצי של רגרסיה לוגיסטית בשיעור.`,
+        },
+        verbatim: 'en',
       },
     ],
   },

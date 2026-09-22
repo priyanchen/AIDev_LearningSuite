@@ -86,6 +86,17 @@ export default async function ModulePage({
         </div>
       </section>
 
+      {id === '04-intro-to-ds' && (
+        <section className="mb-12 text-center">
+          <Link
+            href={`/${locale}/ds`}
+            className="inline-block text-[10px] tracking-brand uppercase text-accent border border-accent px-4 py-2 hover:bg-accent hover:text-paper transition font-sans"
+          >
+            {locale === 'he' ? 'DS — מילון תרשימים תומך ↗' : 'DS — Supporting Diagram Dictionary ↗'}
+          </Link>
+        </section>
+      )}
+
       {resources?.sourceMaterials && resources.sourceMaterials.length > 0 && (
         <section className="mb-12 border border-rule p-6 bg-codebg/40">
           <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-3">

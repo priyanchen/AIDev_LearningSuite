@@ -40,24 +40,37 @@ export default async function PromptsPage({
 
           <div className="grid gap-6">
             {mod.prompts.map((p, i) => {
-              const s = getSession(p.sessionSlug);
-              const sessionLabel = `${locale === 'he' ? 'מפגש' : 'Session'} ${String(p.sessionNumber).padStart(2, '0')}`;
+              const s = p.sessionSlug ? getSession(p.sessionSlug) : undefined;
+              const sessionLabel = p.sessionNumber != null
+                ? `${locale === 'he' ? 'מפגש' : 'Session'} ${String(p.sessionNumber).padStart(2, '0')}`
+                : undefined;
               const promptDir = p.verbatim === 'he' ? 'rtl' : 'ltr';
               return (
-                <div key={`${p.sessionSlug}-${i}`} className="border border-rule p-6 bg-codebg/30">
+                <div key={`${p.sessionSlug ?? p.sourceUrl}-${i}`} className="border border-rule p-6 bg-codebg/30">
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
-                    {s ? (
-                      <Link
-                        href={`/${locale}/lessons/${s.slug}`}
+                    {sessionLabel ? (
+                      s ? (
+                        <Link
+                          href={`/${locale}/lessons/${s.slug}`}
+                          className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans border border-rule px-2 py-1"
+                        >
+                          {sessionLabel}
+                        </Link>
+                      ) : (
+                        <span className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-2 py-1">
+                          {sessionLabel}
+                        </span>
+                      )
+                    ) : p.sourceLabel && p.sourceUrl ? (
+                      <a
+                        href={p.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans border border-rule px-2 py-1"
                       >
-                        {sessionLabel}
-                      </Link>
-                    ) : (
-                      <span className="text-[9px] tracking-brand uppercase text-muted font-sans border border-rule px-2 py-1">
-                        {sessionLabel}
-                      </span>
-                    )}
+                        {p.sourceLabel[locale]} ↗
+                      </a>
+                    ) : null}
                   </div>
 
                   <blockquote
@@ -82,7 +95,7 @@ export default async function PromptsPage({
 
                   <div className="flex justify-end mt-3">
                     <PrintButton
-                      title={sessionLabel}
+                      title={sessionLabel ?? p.sourceLabel?.[locale] ?? mod.title[locale]}
                       subtitle={mod.title[locale]}
                       sections={[
                         { heading: locale === 'he' ? 'פרומפט' : 'Prompt', body: p.text[p.verbatim] },

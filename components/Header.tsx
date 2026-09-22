@@ -44,6 +44,9 @@ export default function Header({ locale }: { locale: string }) {
           <Link href={`/${locale}/prompts`} className="hover:text-accent transition">
             {t('prompts')}
           </Link>
+          <Link href={`/${locale}/ds`} className="hover:text-accent transition">
+            {t('ds')}
+          </Link>
           <Link href={`/${locale}/project`} className="hover:text-accent transition">
             {t('project')}
           </Link>
