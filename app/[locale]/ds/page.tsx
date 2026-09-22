@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { dsDiagramTopics } from '@/content/ds-diagrams';
+import { dsGlossary } from '@/content/ds-glossary';
 import { StandardDeviationDiagram } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
@@ -61,6 +62,38 @@ export default async function DsPage({
             </section>
           );
         })}
+      </div>
+
+      <div className="mt-20 pt-12 border-t border-rule">
+        <h2 className="text-2xl small-caps tracking-wide text-center mb-2">
+          {locale === 'he' ? 'מילון מונחים' : 'Glossary'}
+        </h2>
+        <p className="text-center italic text-muted max-w-2xl mx-auto text-sm mb-12">
+          {locale === 'he'
+            ? 'כל סוגי התרשימים ומונחי מדעי הנתונים/סטטיסטיקה שנמצאו לאורך תיקיית "3 - Data Science" — סטטיסטיקה, Pandas, SQLite ו-Supabase, ולמידת מכונה — מוגדרים כפי שהמקור עצמו מסביר או משתמש בהם, לא הגדרות ספר לימוד גנריות.'
+            : 'Every plot type and data-science/statistics term found across the "3 - Data Science" folder — Statistics, Pandas, SQLite & Supabase, and Machine Learning — defined the way the source itself explains or uses it, not generic textbook definitions.'}
+        </p>
+
+        <div className="grid gap-12">
+          {Object.entries(dsGlossary).map(([key, group]) => (
+            <div key={key}>
+              <h3 className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold border-b border-rule pb-2 mb-6">
+                {group.label[locale]}
+              </h3>
+              <div className="border border-rule divide-y divide-rule">
+                {group.terms.map((t) => (
+                  <div key={t.term} className="p-4 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
+                    <div className="mb-1 sm:mb-0">
+                      <span className="text-sm font-bold font-mono">{t.term}</span>
+                      <div className="text-[9px] tracking-brand uppercase text-muted font-sans mt-0.5">{t.source}</div>
+                    </div>
+                    <p className="text-sm leading-relaxed">{t.definition[locale]}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
