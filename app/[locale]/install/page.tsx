@@ -213,6 +213,19 @@ export default async function InstallGuidePage({
                   </div>
                 )}
 
+                {item.mitLectureUrl && (
+                  <div className="mt-3">
+                    <a
+                      href={item.mitLectureUrl.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] tracking-brand uppercase text-ink border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition font-sans"
+                    >
+                      {item.mitLectureUrl.label[locale]} ↗
+                    </a>
+                  </div>
+                )}
+
                 <div className="flex justify-end mt-4">
                   <PrintButton
                     title={item.name}

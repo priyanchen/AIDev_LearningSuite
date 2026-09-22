@@ -21,6 +21,7 @@ export type InstallItem = {
   commands?: InstallCommands; // actual install commands, one array entry per terminal line
   steps?: { mac: InstallStep[]; windows: InstallStep[] }; // full numbered walkthrough, platform-specific
   videoUrl?: string;           // a real walkthrough recording of this exact install, when one exists
+  mitLectureUrl?: { url: string; label: Bilingual }; // a genuinely relevant MIT (OCW/Missing Semester) lecture — only added where one actually exists, never a weak or padded fit
 };
 
 export type InstallCategory = {
@@ -38,6 +39,10 @@ export const installGuide: InstallCategory[] = [
         id: 'python',
         name: 'Python',
         officialUrl: 'https://www.python.org/downloads/',
+        mitLectureUrl: {
+          url: 'https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-1-what-is-computation/',
+          label: { en: 'MIT 6.0001 — Lecture 1: What Is Computation?', he: 'MIT 6.0001 — הרצאה 1: מהי חישוביות?' },
+        },
         sessions: [3],
         whatItDoes: {
           en: `Not a single thing — it's an interpreter (a program that reads Python code and executes it) plus a standard library of built-in tools.`,
@@ -132,6 +137,10 @@ export const installGuide: InstallCategory[] = [
         id: 'venv',
         name: 'venv',
         officialUrl: 'https://docs.python.org/3/library/venv.html',
+        mitLectureUrl: {
+          url: 'https://missing.csail.mit.edu/2020/metaprogramming/',
+          label: { en: 'MIT Missing Semester — Metaprogramming (Build Systems & Dependency Management)', he: 'MIT Missing Semester — מטא-תכנות (מערכות בנייה וניהול תלויות)' },
+        },
         sessions: [3, 12, 19],
         whatItDoes: {
           en: `An isolated, per-project Python installation — so package versions never collide across projects.`,
@@ -197,6 +206,10 @@ export const installGuide: InstallCategory[] = [
       {
         name: 'pip',
         officialUrl: 'https://pip.pypa.io/en/stable/installation/',
+        mitLectureUrl: {
+          url: 'https://missing.csail.mit.edu/2020/metaprogramming/',
+          label: { en: 'MIT Missing Semester — Metaprogramming (Build Systems & Dependency Management)', he: 'MIT Missing Semester — מטא-תכנות (מערכות בנייה וניהול תלויות)' },
+        },
         sessions: [12, 19],
         whatItDoes: {
           en: `Installs third-party packages into whichever Python environment is currently active.`,
@@ -247,6 +260,10 @@ export const installGuide: InstallCategory[] = [
       {
         name: 'Git & GitHub Desktop',
         officialUrl: 'https://desktop.github.com/',
+        mitLectureUrl: {
+          url: 'https://missing.csail.mit.edu/2020/version-control/',
+          label: { en: 'MIT Missing Semester — Version Control (Git)', he: 'MIT Missing Semester — בקרת גרסאות (Git)' },
+        },
         sessions: [7, 8],
         whatItDoes: {
           en: `Version control. GitHub Desktop is the GUI the course walks through, rather than raw git commands.`,
@@ -268,6 +285,10 @@ export const installGuide: InstallCategory[] = [
       {
         name: 'GitHub CLI (gh)',
         officialUrl: 'https://cli.github.com/',
+        mitLectureUrl: {
+          url: 'https://missing.csail.mit.edu/2020/version-control/',
+          label: { en: 'MIT Missing Semester — Version Control (Git)', he: 'MIT Missing Semester — בקרת גרסאות (Git)' },
+        },
         sessions: [16],
         whatItDoes: {
           en: `Lets an agent authenticate and push to GitHub from the terminal without a browser.`,
@@ -415,6 +436,10 @@ export const installGuide: InstallCategory[] = [
       {
         name: 'scikit-learn',
         officialUrl: 'https://scikit-learn.org/stable/install.html',
+        mitLectureUrl: {
+          url: 'https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/',
+          label: { en: 'MIT 6.034 — Artificial Intelligence (the algorithmic foundations these models implement)', he: 'MIT 6.034 — בינה מלאכותית (היסודות האלגוריתמיים שהמודלים האלה מיישמים)' },
+        },
         sessions: [18, 19],
         whatItDoes: {
           en: `Supplies ready-made model classes like LinearRegression — the straight-line formula, the cost function, and gradient descent all collapse into importing the class, creating an instance, and calling \`.fit()\`.`,
