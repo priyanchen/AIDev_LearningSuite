@@ -25,13 +25,22 @@ export default async function ProjectDirectoryPage({
       index: '1',
       title: { en: "In Dr. Zuari's Own Words — Live From Session 22", he: 'בקולו של ד״ר זוארי — הליכה חיה במפגש 22' },
       note: {
-        en: 'The real characterization chat, its full verbatim script, the questioning that produced it, and the git submission walkthrough.',
-        he: 'שיחת האפיון האמיתית, התסריט המלא שלה, השאלות שהובילו אליה, וההליכה בהגשת הפרויקט ל-Git.',
+        en: 'The real characterization chat, its full verbatim script, the reconstructed development prompt, and the questioning that produced it.',
+        he: 'שיחת האפיון האמיתית, התסריט המלא שלה, פרומפט הפיתוח המשוחזר, והשאלות שהובילו אליה.',
+      },
+    },
+    {
+      href: `/${locale}/project/git-upload`,
+      index: '2',
+      title: { en: 'Uploading to Git', he: 'העלאה ל-Git' },
+      note: {
+        en: 'Isolating work on a branch before merging, then Session 22\'s own live walkthrough of actually submitting the project — staging vs. production, and the push → merge flow.',
+        he: 'בידוד עבודה בענף לפני מיזוג, ואז ההליכה החיה של מפגש 22 בהגשת הפרויקט בפועל — staging מול production, וזרימת ה-push ← merge.',
       },
     },
     {
       href: `/${locale}/project/roadmap`,
-      index: '2',
+      index: '3',
       title: { en: "Dr. Zuari's Instructions for Building a Project Plan", he: 'הוראות ד״ר זוארי ליצירת תוכנית פרויקט' },
       note: {
         en: 'An 18-step roadmap — idea to production — from the instructor\'s own "Building a Project from Scratch" deck.',
@@ -49,8 +58,8 @@ export default async function ProjectDirectoryPage({
 
       <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
         {locale === 'he'
-          ? 'שלושה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס.'
-          : 'Three parts, each significant on its own — from where the arc begins to the full instructions for building a project from scratch.'}
+          ? 'ארבעה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס.'
+          : 'Four parts, each significant on its own — from where the arc begins to the full instructions for building a project from scratch.'}
       </p>
 
       <div className="grid gap-4">

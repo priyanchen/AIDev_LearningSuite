@@ -110,7 +110,7 @@ export default async function ProjectRoadmapPage({
 
       <div className="flex justify-center">
         <Link
-          href={`/${locale}/project/session-22`}
+          href={`/${locale}/project/git-upload`}
           className="text-[9px] tracking-brand uppercase text-muted hover:text-accent font-sans"
         >
           {locale === 'he' ? '← הקודם' : '← Previous'}
