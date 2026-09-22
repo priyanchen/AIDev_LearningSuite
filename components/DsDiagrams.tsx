@@ -491,3 +491,80 @@ export function RocCurveDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real mean/median/mode ordering rule from the Practical Statistics deck's own skewness
+// slide (23, "Morphing distribution") — the deck's demo is a live drag-to-morph canvas with no
+// fixed dataset, so the three curve shapes below are schematic, but the mean/median/mode
+// positions follow its own stated rule exactly.
+const skewPanels = [
+  {
+    id: 'left',
+    labelEn: 'Left-Skew',
+    labelHe: 'הטיה שמאלה',
+    path: 'M10,95 C30,92 60,90 90,75 C110,60 120,20 145,20 C170,20 170,90 190,90',
+    marks: [
+      { key: 'mean', x: 105 },
+      { key: 'median', x: 125 },
+      { key: 'mode', x: 148 },
+    ],
+  },
+  {
+    id: 'symmetric',
+    labelEn: 'Symmetric',
+    labelHe: 'סימטרי',
+    path: 'M10,90 C40,90 70,20 100,20 C130,20 160,90 190,90',
+    marks: [
+      { key: 'mean', x: 100 },
+      { key: 'median', x: 100 },
+      { key: 'mode', x: 100 },
+    ],
+  },
+  {
+    id: 'right',
+    labelEn: 'Right-Skew',
+    labelHe: 'הטיה ימינה',
+    path: 'M10,90 C30,90 30,20 55,20 C80,20 90,60 110,75 C140,92 170,95 190,95',
+    marks: [
+      { key: 'mode', x: 52 },
+      { key: 'median', x: 75 },
+      { key: 'mean', x: 95 },
+    ],
+  },
+] as const;
+
+const skewMarkColor: Record<string, string> = { mean: '#8b2a2a', median: '#1a1a1a', mode: '#6b6b6b' };
+
+export function SkewnessDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'התפלגות מורפית — משקף 23' : 'Morphing distribution — slide 23'}
+      </p>
+      <div className="grid sm:grid-cols-3 gap-4">
+        {skewPanels.map((panel) => (
+          <div key={panel.id} className="border border-rule p-3">
+            <svg viewBox="0 0 200 100" className="w-full block">
+              <path d={panel.path} fill="rgba(139,42,42,0.08)" stroke="#8b2a2a" strokeWidth="2" />
+              {panel.marks.map((m) => (
+                <line key={m.key} x1={m.x} y1={10} x2={m.x} y2={95} stroke={skewMarkColor[m.key]} strokeWidth="1.5" strokeDasharray={m.key === 'median' ? '0' : '3,2'} />
+              ))}
+            </svg>
+            <p className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold text-center mt-2">
+              {locale === 'he' ? panel.labelHe : panel.labelEn}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-4 mt-3 text-[9px] font-sans">
+        <span className="flex items-center gap-1"><span className="w-2 h-2 inline-block" style={{ backgroundColor: skewMarkColor.mean }} />{locale === 'he' ? 'ממוצע' : 'Mean'}</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 inline-block" style={{ backgroundColor: skewMarkColor.median }} />{locale === 'he' ? 'חציון' : 'Median'}</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 inline-block" style={{ backgroundColor: skewMarkColor.mode }} />{locale === 'he' ? 'שכיח' : 'Mode'}</span>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"הטיה ימינה: ממוצע > חציון > שכיח (זנב ימני ארוך). הטיה שמאלה: ההפך. סימטרי: שלושתם חופפים." — משקף 23'
+          : '"Right-skew: mean > median > mode (long right tail). Left-skew: the reverse. Symmetric: all three coincide." — slide 23'}
+      </p>
+    </div>
+  );
+}
