@@ -568,3 +568,58 @@ export function SkewnessDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// Reuses the real "anatomy of a boxplot" worked example from slide 29 (min 16, Q1 22, median 28,
+// Q3 41, max 64, outlier 79) but through the IQR/outlier-fence lens: the deck's own rule is
+// "whiskers reach 1.5×IQR; anything beyond is an outlier" — the fences and the real outlier both
+// check out against that rule (79 sits past the upper fence at 69.5).
+const iqrAnatomy = { lo: -10, hi: 85, q1: 22, q3: 41, outlier: 79 };
+
+export function IqrDiagram({ locale }: { locale: Locale }) {
+  const { lo, hi, q1, q3, outlier } = iqrAnatomy;
+  const iqr = q3 - q1;
+  const lowerFence = q1 - 1.5 * iqr;
+  const upperFence = q3 + 1.5 * iqr;
+  const pct = (v: number) => ((v - lo) / (hi - lo)) * 100;
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'IQR וגדרות חריגים — משקף 29' : 'IQR and outlier fences — slide 29'}
+      </p>
+      <div className="relative w-full h-16 mx-auto max-w-md">
+        <div className="absolute top-1/2 h-px bg-rule -translate-y-1/2" style={{ left: '0%', width: '100%' }} />
+        {/* IQR box */}
+        <div
+          className="absolute top-1/4 h-1/2 bg-accent/15 border-2 border-ink"
+          style={{ left: `${pct(q1)}%`, width: `${pct(q3) - pct(q1)}%` }}
+        />
+        {/* fences */}
+        {[lowerFence, upperFence].map((f) => (
+          <div key={f} className="absolute top-1/4 h-1/2 w-px border-l border-dashed border-muted" style={{ left: `${pct(f)}%` }} />
+        ))}
+        {/* outlier */}
+        <div
+          className="absolute top-1/2 w-2 h-2 rounded-full bg-accent -translate-y-1/2 -translate-x-1/2"
+          style={{ left: `${pct(outlier)}%` }}
+        />
+        {/* labels */}
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(q1)}%` }}>Q1</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono -translate-x-1/2" style={{ left: `${pct(q3)}%` }}>Q3</div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono text-muted -translate-x-1/2 whitespace-nowrap" style={{ left: `${pct(lowerFence)}%` }}>
+          {locale === 'he' ? 'גדר תחתונה' : 'lower fence'}
+        </div>
+        <div className="absolute top-full mt-1 text-[8px] font-mono text-muted -translate-x-1/2 whitespace-nowrap" style={{ left: `${pct(upperFence)}%` }}>
+          {locale === 'he' ? 'גדר עליונה' : 'upper fence'}
+        </div>
+        <div className="absolute top-full mt-4 text-[8px] font-mono text-accent -translate-x-1/2 whitespace-nowrap" style={{ left: `${pct(outlier)}%` }}>
+          {locale === 'he' ? `חריג (${outlier})` : `outlier (${outlier})`}
+        </div>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-8 max-w-md mx-auto">
+        {locale === 'he'
+          ? `IQR = Q3 − Q1 = 41 − 22 = 19. גדרות ב-Q1 − 1.5×IQR (${lowerFence.toFixed(1)}) ו-Q3 + 1.5×IQR (${upperFence.toFixed(1)}) — כל מה שמעבר הוא חריג. "whiskers מגיעים ל-1.5×IQR; כל מה שמעבר הוא חריג." — משקף 29`
+          : `IQR = Q3 − Q1 = 41 − 22 = 19. Fences sit at Q1 − 1.5×IQR (${lowerFence.toFixed(1)}) and Q3 + 1.5×IQR (${upperFence.toFixed(1)}) — anything beyond is an outlier. "Whiskers reach 1.5×IQR; anything beyond is an outlier." — slide 29`}
+      </p>
+    </div>
+  );
+}
