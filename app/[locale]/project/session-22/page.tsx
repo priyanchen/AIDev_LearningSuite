@@ -122,11 +122,129 @@ export default async function ProjectSession22Page({
           </div>
         </div>
 
-        {/* Card 3 — the questioning & decision process that produced Card 1 above */}
+        {/* Card 3 — the final development prompt, reconstructed in English from Card 2's own
+            specification (the actual .md file lived in ChatGPT's ephemeral sandbox and was never
+            printed into the chat itself — only its filename and a one-line description were, in
+            turns 68 and 80 of Card 2 above). Every requirement below is traceable to a specific
+            turn already shown verbatim in Card 2; nothing here is invented. */}
         <div className="mb-10 border border-rule p-6 bg-codebg/30">
           <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
             <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
-              {locale === 'he' ? 'כרטיס 3 — השאלות וההחלטות' : 'Card 3 — The Questioning & Decisions'}
+              {locale === 'he' ? 'כרטיס 3 — פרומפט הפיתוח (אנגלית, משוחזר)' : 'Card 3 — The Development Prompt (English, Reconstructed)'}
+            </span>
+          </header>
+          <p className="text-xs italic text-muted mb-4 leading-relaxed">
+            {locale === 'he'
+              ? 'לא הקובץ המילולי — herbal_evidence_project_prompt_en.md נוצר בתוך ה-sandbox הזמני של ChatGPT (כרטיס 2, תור 80 למעלה) ולעולם לא הודפס לתוך הצ׳אט עצמו, רק שמו ותיאור שורה אחת שלו. מה שלמטה משוחזר במלואו מהאפיון שכבר מופיע מילה במילה בכרטיס 2 למעלה — כל דרישה ניתנת לאיתור לתור ספציפי שם.'
+              : "Not the literal file — herbal_evidence_project_prompt_en.md was generated inside ChatGPT's ephemeral sandbox (Card 2, turn 80 above) and was never printed into the chat itself, only its filename and a one-line description were. What follows is fully reconstructed from the specification already shown verbatim in Card 2 above — every requirement is traceable to a specific turn there."}
+          </p>
+          <div className="border border-rule p-5 bg-paper" dir="ltr">
+            <pre className="text-xs leading-relaxed whitespace-pre-wrap font-mono">
+{`# Herbal Evidence — Development Prompt
+
+## 1. Product Characterization
+Build a web application where users submit a single herb (plus optional
+preparation type) to check whether its claimed benefit for appetite
+improvement in people with cancer is supported by research evidence.
+
+- Required input: herb name.
+- Optional input: preparation type (e.g. tea, powder, extract — "don't
+  know" is a valid option), cancer type, current treatment.
+- The system does not choose a herb for the user and does not
+  recommend whether to use it.
+
+## 2. Evidence Sources & Researcher Workflow
+- Maintain a bank of team-approved evidence reviews, supplemented by
+  live literature search for gaps.
+- Include human studies as the primary evidence; include lab/animal
+  studies separately, never presented as proof of benefit in humans.
+- Include studies available only as abstracts, clearly marked as such;
+  let a researcher attach full text before approval.
+- AI prepares a full draft review per request: extracts data, proposes
+  a conclusion, and links every claim to its source and the supporting
+  passage.
+- One researcher edits and approves every personal answer before
+  publication — including answers that reuse an existing approved
+  review.
+- No guaranteed turnaround time. Before approval, the user sees a
+  waiting status only (no automatic interim summary).
+- Record the approving researcher's identity, the approval date, and
+  the sources used, on every published answer.
+- Review updates are team-initiated only; show the literature-check
+  date on every review — never imply "current" just because approved.
+- Assigning incoming requests to researchers: default to manual
+  assignment by a team lead for the pilot (still an open/proposed
+  default, not finalized — see Section 8).
+
+## 3. Answer Structure
+Each personal answer includes:
+- A main conclusion on appetite improvement, stating explicitly
+  whether suitable human studies exist:
+    - If yes: findings, certainty level, and limitations.
+    - If no: "Not enough evidence in humans to assess benefit."
+- An explanation of how relevant the evidence is to this request.
+- An expansion: population, preparation, dosage, and duration studied;
+  lab/animal studies shown separately; relevant safety information and
+  information gaps.
+- Dosages shown only as a description of what was studied — never as
+  usage instructions.
+- No personal recommendation on whether to take the herb.
+
+## 4. User Accounts & Request Flow
+- Mandatory user account, with request history and status tracking.
+- Flow: sign up / log in -> submit a request (herb name required;
+  preparation type, cancer type, treatment optional) -> brief
+  clarification only if ambiguous -> request enters the researcher
+  queue (deduplicated) -> user sees a waiting-status screen while the
+  AI prepares a draft from the approved-review bank plus supplementary
+  search -> one researcher reviews the draft (revise or approve) ->
+  approved answer published to the user's account, versioned and
+  saved for a future update.
+
+## 5. Pilot Plan
+- Participants: patients dealing with decreased appetite, and family
+  members/caregivers — measured separately per group.
+- Method: collect real questions from participants in advance, have
+  the team approve reviews for them, then have participants read the
+  reviews and measure understanding before vs. after reading.
+- Primary success metric: researcher time saved preparing and
+  approving a review, without hurting quality — every new answer
+  depends on researcher work, so this bounds what the service can
+  sustain.
+
+## 6. Tech Stack
+- Backend/scripting: Python
+- Frontend: HTML, CSS
+- Database, auth, API: Supabase
+- Hosting: Railway
+- UX/UI design: Google Stitch
+
+## 7. Infrastructure — Railway
+Create two environments, each with two services (frontend + backend):
+
+| Environment | Branch           | Services            |
+|-------------|------------------|----------------------|
+| dev         | new \`dev\` branch | frontend + backend  |
+| Production  | \`main\`           | frontend + backend  |
+
+- Keep the dev and Production databases separate.
+- Use the Supabase CLI and Railway CLI to provision and manage these
+  environments.
+- Use the Google Stitch MCP for the UX/UI design work.
+
+## 8. Explicitly Open / Proposed Defaults
+Flagged as defaults for the pilot, not final decisions:
+- Manual assignment of incoming requests to a researcher by a team
+  lead.`}
+            </pre>
+          </div>
+        </div>
+
+        {/* Card 4 — the questioning & decision process that produced Card 1 above */}
+        <div className="mb-10 border border-rule p-6 bg-codebg/30">
+          <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
+            <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {locale === 'he' ? 'כרטיס 4 — השאלות וההחלטות' : 'Card 4 — The Questioning & Decisions'}
             </span>
           </header>
           <p className="text-xs italic text-muted mb-4 leading-relaxed">
@@ -169,11 +287,11 @@ export default async function ProjectSession22Page({
           </div>
         )}
 
-        {/* Card 4 — his own live walkthrough of actually submitting/deploying the Herbal project */}
+        {/* Card 5 — his own live walkthrough of actually submitting/deploying the Herbal project */}
         <div className="mb-10 border border-rule p-6 bg-codebg/30">
           <header className="flex items-baseline justify-between border-b border-ink pb-3 mb-4">
             <span className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
-              {locale === 'he' ? 'כרטיס 4 — הגשת הפרויקט ל-Git, בשלבים' : 'Card 4 — Submitting the Project to Git, Staged'}
+              {locale === 'he' ? 'כרטיס 5 — הגשת הפרויקט ל-Git, בשלבים' : 'Card 5 — Submitting the Project to Git, Staged'}
             </span>
           </header>
           <p className="text-xs italic text-muted mb-4 leading-relaxed">
