@@ -623,3 +623,135 @@ export function IqrDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real "bimodal U-curve" of online-review ratings from the Practical Statistics deck (slide
+// 34, "Self-Selection Bias") — same curve shape and star labels as the deck's own illustration.
+export function SelectionBiasDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'ביקורות אונליין — עקומת U דו-שיאית · משקף 34' : 'Online reviews — bimodal "U-curve" · slide 34'}
+      </p>
+      <svg viewBox="0 0 450 200" className="w-full max-w-md mx-auto block">
+        <line x1={40} y1={160} x2={410} y2={160} stroke="#d4d0c8" strokeWidth="1.5" />
+        <line x1={40} y1={40} x2={40} y2={160} stroke="#d4d0c8" strokeWidth="1.5" />
+        <path
+          d="M 40,70 C 100,70 120,150 225,150 C 330,150 350,70 410,70 L 410,160 L 40,160 Z"
+          fill="rgba(139,42,42,0.12)"
+        />
+        <path d="M 40,70 C 100,70 120,150 225,150 C 330,150 350,70 410,70" fill="none" stroke="#8b2a2a" strokeWidth="2.5" />
+        <text x={50} y={178} fontSize="10" fontWeight="bold" fill="#8b2a2a" textAnchor="middle">1★</text>
+        <text x={50} y={191} fontSize="8" fill="#6b6b6b" textAnchor="middle">{locale === 'he' ? 'חריגים זועמים' : 'Furious Outliers'}</text>
+        <text x={225} y={178} fontSize="10" fontWeight="bold" fill="#6b6b6b" textAnchor="middle">3★</text>
+        <text x={225} y={191} fontSize="8" fill="#6b6b6b" textAnchor="middle">{locale === 'he' ? 'הרוב השקט' : 'Silent Majority'}</text>
+        <text x={400} y={178} fontSize="10" fontWeight="bold" fill="#8b2a2a" textAnchor="middle">5★</text>
+        <text x={400} y={191} fontSize="8" fill="#6b6b6b" textAnchor="middle">{locale === 'he' ? 'חריגים נלהבים' : 'Ecstatic Outliers'}</text>
+      </svg>
+      <p className="text-[10px] italic text-muted text-center mt-2 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"אנשים שמניע אותם לכתוב חוו חוויות יוצאות דופן (טובות או רעות) — המדגם שונה מהאוכלוסייה באופן משמעותי ולא-אקראי." — משקף 34'
+          : '"People motivated to write may have had unusually poor (or good) experiences — the sample differs from the population in a meaningful, non-random way." — slide 34'}
+      </p>
+    </div>
+  );
+}
+
+// The real 1936 Literary Digest vs. Gallup poll comparison from the Practical Statistics deck
+// (slide 33, "Quantity ≠ Quality") — exact sample sizes, methods, and outcomes.
+export function StratifiedSamplingDiagram({ locale }: { locale: Locale }) {
+  const panels = [
+    {
+      id: 'digest',
+      nameEn: 'Literary Digest',
+      nameHe: 'Literary Digest',
+      n: '10,000,000',
+      methodEn: 'Phone / Auto Lists (Biased)',
+      methodHe: 'רשימות טלפון/רכב (מוטות)',
+      resultEn: '✗ Predicted Landon — 19.3% mismatch',
+      resultHe: '✗ ניבא את Landon — פער של 19.3%',
+      good: false,
+    },
+    {
+      id: 'gallup',
+      nameEn: 'George Gallup',
+      nameHe: 'George Gallup',
+      n: '2,000',
+      methodEn: 'Random Stratified Sample',
+      methodHe: 'מדגם אקראי מדורג',
+      resultEn: '✓ Predicted Roosevelt — correct',
+      resultHe: '✓ ניבא את Roosevelt — נכון',
+      good: true,
+    },
+  ];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'בחירות 1936 — Literary Digest מול Gallup · משקף 33' : '1936 Election — Literary Digest vs. Gallup · slide 33'}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {panels.map((p) => (
+          <div key={p.id} className={`border-2 p-4 text-center ${p.good ? 'border-accent' : 'border-rule'}`}>
+            <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-1">
+              {locale === 'he' ? p.nameHe : p.nameEn}
+            </div>
+            <div className="font-mono text-2xl font-bold">{p.n}</div>
+            <div className="text-[9px] text-muted mt-1">{locale === 'he' ? p.methodHe : p.methodEn}</div>
+            <div className={`text-[10px] font-sans font-semibold mt-3 ${p.good ? 'text-accent' : 'text-muted'}`}>
+              {locale === 'he' ? p.resultHe : p.resultEn}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"ה-Digest רדף אחרי הגודל והתעלם מהבחירה — המקרה הקלאסי של הטיית מדגם." — משקף 33'
+          : '"The Digest chased size and ignored selection — the textbook case of sample bias." — slide 33'}
+      </p>
+    </div>
+  );
+}
+
+// z-score reuses the same worked example already established for Standard Deviation on this
+// page (values 2,4,4,4,5,5,7,9 — illustrative, not the deck's literal numbers) since the
+// Linear/Logistic Regression deck names z-scores only as a one-line outlier-detection method
+// ("Detect with boxplots / z-scores / IQR" — slide 18) with no worked example of its own.
+const zScoreValues = [2, 4, 4, 4, 5, 5, 7, 9];
+
+export function ZScoreDiagram({ locale }: { locale: Locale }) {
+  const mean = zScoreValues.reduce((a, b) => a + b, 0) / zScoreValues.length;
+  const variance = zScoreValues.reduce((a, b) => a + (b - mean) ** 2, 0) / zScoreValues.length;
+  const std = Math.sqrt(variance);
+  const zScores = zScoreValues.map((v) => (v - mean) / std);
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'דוגמה להמחשה — לא הנתונים המילוליים של המצגת' : "Illustrative Example — Not the Deck's Literal Numbers"}
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs border-collapse">
+          <thead>
+            <tr className="border-b border-ink">
+              <th className="text-start py-1.5 pe-3 font-sans text-[9px] tracking-brand uppercase text-accent">{locale === 'he' ? 'ערך' : 'Value'}</th>
+              {zScoreValues.map((v, i) => (
+                <th key={i} className="text-center py-1.5 px-1.5 font-mono font-normal">{v}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="py-1.5 pe-3 font-sans text-[9px] tracking-brand uppercase text-accent">z = (x − x̄) / σ</td>
+              {zScores.map((z, i) => (
+                <td key={i} className={`text-center py-1.5 px-1.5 font-mono ${Math.abs(z) >= 2 ? 'text-accent font-bold' : ''}`}>{z.toFixed(2)}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? `ממוצע = ${mean.toFixed(2)}, σ = ${std.toFixed(2)}. כלל אצבע נפוץ: |z| ≥ 2 מסומן כחריג — הערך 9 (מודגש) בדיוק בגבול. "נקודה קיצונית אחת יכולה למשוך קו רגרסיה. אתרו עם boxplots / z-scores / IQR." — משקף 18`
+          : `Mean = ${mean.toFixed(2)}, σ = ${std.toFixed(2)}. A common rule of thumb flags |z| ≥ 2 as an outlier — the value 9 (bold) sits right at that line. "A single extreme point can yank a regression line. Detect with boxplots / z-scores / IQR." — slide 18`}
+      </p>
+    </div>
+  );
+}

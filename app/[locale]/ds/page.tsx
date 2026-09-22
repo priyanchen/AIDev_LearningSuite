@@ -14,6 +14,9 @@ import {
   RocCurveDiagram,
   SkewnessDiagram,
   IqrDiagram,
+  SelectionBiasDiagram,
+  StratifiedSamplingDiagram,
+  ZScoreDiagram,
 } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
@@ -162,6 +165,21 @@ export default async function DsPage({
                     {t.term === 'IQR (Interquartile Range)' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <IqrDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Selection Bias (Self-Selection Bias)' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <SelectionBiasDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Stratified Sampling' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <StratifiedSamplingDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'z-score' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <ZScoreDiagram locale={locale} />
                       </div>
                     )}
                   </div>
