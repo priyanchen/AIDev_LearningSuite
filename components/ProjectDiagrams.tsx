@@ -263,6 +263,86 @@ export function HerbalSetupDiagram({ locale }: { locale: Locale }) {
   );
 }
 
+// Both branches' folder trees, pulled live from the GitHub API — same file layout on main and dev,
+// but dev's docs/design/stitch.md is genuinely ahead: a real Stitch MCP screen-generation log with
+// session ids, timestamps, and an explicit "don't claim success without a confirmed payload" note.
+export function HerbalBranchTreesDiagram({ locale }: { locale: Locale }) {
+  const treeNodes = (
+    <>
+      <TreeLine label="herbal-evidence/" />
+      <TreeLine depth={1} label="frontend/" />
+      <TreeLine depth={1} label="backend/" />
+      <TreeLine depth={2} label="app/" />
+      <TreeLine depth={3} label="ai/ api/ auth/ domain/ jobs/ research/ services/" />
+      <TreeLine depth={2} label="tests/" />
+      <TreeLine depth={1} label="supabase/" />
+      <TreeLine depth={1} label="docs/" note={locale === 'he' ? 'כולל design/stitch.md' : 'incl. design/stitch.md'} />
+      <TreeLine depth={1} label="README.md" />
+      <TreeLine depth={1} label=".gitignore" />
+    </>
+  );
+  const screens: { en: string; he: string; status: 'ok' | 'timeout' | 'none' }[] = [
+    { en: 'Landing page', he: 'עמוד נחיתה', status: 'ok' },
+    { en: 'Authentication', he: 'אימות', status: 'ok' },
+    { en: 'User dashboard "My Requests"', he: 'דשבורד משתמש "הבקשות שלי"', status: 'ok' },
+    { en: 'New request form', he: 'טופס בקשה חדשה', status: 'timeout' },
+    { en: 'Waiting status + clarification', he: 'סטטוס המתנה + בירור', status: 'timeout' },
+    { en: 'Approved response view + 5 more', he: 'תצוגת תשובה מאושרת + 5 נוספים', status: 'none' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'main מול dev — מה באמת שם' : "main vs. dev — What's Actually There"}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'שני העצים נמשכו חי מ-GitHub — אותו מבנה תיקיות בדיוק בשני הענפים; ההבדל האמיתי חבוי בתוך docs/design/stitch.md.'
+          : "Both trees pulled live from GitHub — the exact same folder layout on both branches; the real difference is hidden inside docs/design/stitch.md."}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="border border-rule p-4 bg-paper">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans font-semibold mb-2 text-center">
+            main — b247759
+          </p>
+          <div className="grid gap-1">{treeNodes}</div>
+        </div>
+        <div className="border border-rule p-4 bg-paper">
+          <p className="text-[8px] tracking-brand uppercase text-accent font-sans font-semibold mb-2 text-center">
+            dev — 048f084
+          </p>
+          <div className="grid gap-1">{treeNodes}</div>
+        </div>
+      </div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mt-4 mb-2 text-center">
+        {locale === 'he' ? 'docs/design/stitch.md ב-dev — לוג יצירת מסכי Stitch, 2026-09-16' : 'docs/design/stitch.md on dev — Stitch screen-generation log, 2026-09-16'}
+      </p>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {screens.map((s) => (
+          <div key={s.en} className="flex items-center justify-between gap-3 px-4 py-1.5">
+            <span className="text-xs">{s[locale]}</span>
+            <span
+              className={`text-[9px] tracking-brand uppercase font-sans font-semibold ${
+                s.status === 'ok' ? 'text-accent' : s.status === 'timeout' ? 'text-muted' : 'text-muted opacity-60'
+              }`}
+            >
+              {s.status === 'ok'
+                ? (locale === 'he' ? 'נוצר' : 'Generated')
+                : s.status === 'timeout'
+                  ? (locale === 'he' ? 'תם הזמן' : 'Timed out')
+                  : (locale === 'he' ? 'טרם התבקש' : 'Not requested')}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-3 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"שום דבר למעלה לא טוען שמסך קיים אלא אם כלי היצירה החזיר payload מאושר." — ציטוט ישיר מ-docs/design/stitch.md על dev'
+          : '"Nothing above claims a screen exists unless the generation tool returned a success payload." — a direct quote from docs/design/stitch.md on dev'}
+      </p>
+    </div>
+  );
+}
+
 // Real architecture, pulled from the repo's own docs/decisions.md (a live engineering decision log,
 // not a placeholder — its docs/architecture.md is literally still a stub) — the actual stack, not the
 // generic Python/Flask reference example in the points above.

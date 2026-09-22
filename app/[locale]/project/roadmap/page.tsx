@@ -4,6 +4,7 @@ import { projectPhases } from '@/content/project-guide';
 import {
   GitDiagrams,
   HerbalRepoStatusDiagram,
+  HerbalBranchTreesDiagram,
   HerbalSetupDiagram,
   HerbalArchitectureDiagram,
   HerbalTechStackDiagram,
@@ -107,6 +108,7 @@ export default async function ProjectRoadmapPage({
                     {step.number === 8 && <HerbalSetupDiagram locale={locale} />}
                     {step.number === 9 && <GitDiagrams locale={locale} />}
                     {step.number === 9 && <HerbalRepoStatusDiagram locale={locale} />}
+                    {step.number === 9 && <HerbalBranchTreesDiagram locale={locale} />}
                   </div>
                 ))}
               </div>
