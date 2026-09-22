@@ -30,7 +30,7 @@ export default async function ProjectSession22Page({
 
       <section className="max-w-3xl mx-auto">
         <h1 className="text-2xl small-caps tracking-wide text-center mb-2">
-          {locale === 'he' ? 'בקולו של ד״ר זוארי — הליכה חיה במפגש 22' : "In Dr. Zuari's Own Words — Live From Session 22"}
+          {locale === 'he' ? 'בקולו של ד״ר זוארי — פרומפט חי ממפגש 22' : "In Dr. Zuari's Own Words — Live Prompt From Session 22"}
         </h1>
         <p className="text-center italic text-muted text-sm mb-2">
           {locale === 'he'

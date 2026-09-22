@@ -14,7 +14,7 @@ export default async function ProjectDirectoryPage({
     {
       href: `/${locale}/project/intro`,
       index: '0',
-      title: { en: 'Where the Course Arc Begins', he: 'איפה קשת הקורס מתחילה' },
+      title: { en: 'Herbal Project Demo', he: 'הדגמת פרויקט הצמחים' },
       note: {
         en: 'Card 02, sourced from Session 01: The German Tank Problem — What Five Numbers Can Honestly Tell You.',
         he: 'כרטיס 02, נלקח ממפגש 01: בעיית הטנק הגרמני — מה חמישה מספרים באמת יכולים לגלות.',
@@ -23,7 +23,7 @@ export default async function ProjectDirectoryPage({
     {
       href: `/${locale}/project/session-22`,
       index: '1',
-      title: { en: "In Dr. Zuari's Own Words — Live From Session 22", he: 'בקולו של ד״ר זוארי — הליכה חיה במפגש 22' },
+      title: { en: "In Dr. Zuari's Own Words — Live Prompt From Session 22", he: 'בקולו של ד״ר זוארי — פרומפט חי ממפגש 22' },
       note: {
         en: 'The real characterization chat, its full verbatim script, the reconstructed development prompt, and the questioning that produced it.',
         he: 'שיחת האפיון האמיתית, התסריט המלא שלה, פרומפט הפיתוח המשוחזר, והשאלות שהובילו אליה.',
@@ -41,7 +41,7 @@ export default async function ProjectDirectoryPage({
     {
       href: `/${locale}/project/roadmap`,
       index: '3',
-      title: { en: "Dr. Zuari's Instructions for Building a Project Plan", he: 'הוראות ד״ר זוארי ליצירת תוכנית פרויקט' },
+      title: { en: "Dr. Zuari's Instructions for Building The Herbal Project Plan", he: 'הוראות ד״ר זוארי לבניית תוכנית פרויקט הצמחים' },
       note: {
         en: 'An 18-step roadmap — idea to production — from the instructor\'s own "Building a Project from Scratch" deck.',
         he: 'מפת דרכים בת 18 שלבים — מרעיון ועד פרודקשן — ממדריך "בניית פרויקט מאפס" של המרצה עצמו.',

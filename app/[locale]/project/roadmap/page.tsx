@@ -37,7 +37,7 @@ export default async function ProjectRoadmapPage({
 
       <section className="mb-16">
         <h1 className="text-2xl small-caps tracking-wide text-center mb-2">
-          {locale === 'he' ? "הוראות ד״ר זוארי ליצירת תוכנית פרויקט" : "Dr. Zuari's Instructions for Building a Project Plan"}
+          {locale === 'he' ? "הוראות ד״ר זוארי לבניית תוכנית פרויקט הצמחים" : "Dr. Zuari's Instructions for Building The Herbal Project Plan"}
         </h1>
         <p className="text-center italic text-muted max-w-2xl mx-auto text-sm mb-12">
           {locale === 'he'
