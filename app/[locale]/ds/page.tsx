@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { dsDiagramTopics } from '@/content/ds-diagrams';
 import { dsGlossary } from '@/content/ds-glossary';
-import { StandardDeviationDiagram } from '@/components/DsDiagrams';
+import { StandardDeviationDiagram, HistogramDiagram } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
 const diagramComponents: Record<string, (props: { locale: Locale }) => JSX.Element> = {
@@ -82,24 +82,31 @@ export default async function DsPage({
               </h3>
               <div className="border border-rule divide-y divide-rule">
                 {group.terms.map((t) => (
-                  <div key={t.term} className="p-4 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
-                    <div className="mb-1 sm:mb-0">
-                      <span className="text-sm font-bold font-mono">{t.term}</span>
-                      <div className="text-[9px] tracking-brand uppercase text-muted font-sans mt-0.5">{t.source}</div>
+                  <div key={t.term} className="p-4">
+                    <div className="sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
+                      <div className="mb-1 sm:mb-0">
+                        <span className="text-sm font-bold font-mono">{t.term}</span>
+                        <div className="text-[9px] tracking-brand uppercase text-muted font-sans mt-0.5">{t.source}</div>
+                      </div>
+                      <div>
+                        <p className="text-sm leading-relaxed">{t.definition[locale]}</p>
+                        {t.link && (
+                          <a
+                            href={t.link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block mt-2 text-[9px] tracking-brand uppercase text-accent border border-accent px-2 py-1 hover:bg-accent hover:text-paper transition font-sans"
+                          >
+                            {t.link.label[locale]} ↗
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm leading-relaxed">{t.definition[locale]}</p>
-                      {t.link && (
-                        <a
-                          href={t.link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block mt-2 text-[9px] tracking-brand uppercase text-accent border border-accent px-2 py-1 hover:bg-accent hover:text-paper transition font-sans"
-                        >
-                          {t.link.label[locale]} ↗
-                        </a>
-                      )}
-                    </div>
+                    {t.term === 'Histogram' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <HistogramDiagram locale={locale} />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

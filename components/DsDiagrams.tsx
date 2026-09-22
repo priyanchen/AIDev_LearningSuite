@@ -119,3 +119,51 @@ export function StandardDeviationDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real Titanic-ages histogram from the Practical Statistics deck (slide 22, "Frequency
+// Tables & Histograms") — exact frequency table and caption, redrawn as CSS bars in place of
+// the deck's own canvas chart.
+const titanicAgeBins = [
+  { range: '0–10', freq: 76, pct: 8.4 },
+  { range: '11–20', freq: 123, pct: 13.7 },
+  { range: '21–30', freq: 285, pct: 31.7 },
+  { range: '31–40', freq: 187, pct: 20.8 },
+  { range: '41–50', freq: 121, pct: 13.5 },
+  { range: '51–60', freq: 67, pct: 7.4 },
+  { range: '61+', freq: 39, pct: 4.3 },
+];
+
+export function HistogramDiagram({ locale }: { locale: Locale }) {
+  const max = Math.max(...titanicAgeBins.map((b) => b.freq));
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'גילאי נוסעי הטיטאניק — היסטוגרמה · משקף 22' : 'Titanic ages — histogram · slide 22'}
+      </p>
+      <div className="flex items-end justify-center gap-2 sm:gap-3 h-40 border-b border-rule px-2">
+        {titanicAgeBins.map((b) => (
+          <div key={b.range} className="flex flex-col items-center flex-1 h-full justify-end">
+            <span className="text-[9px] font-mono text-accent mb-1">{b.freq}</span>
+            <div
+              className="w-full bg-accent"
+              style={{ height: `${(b.freq / max) * 100}%` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-2 sm:gap-3 px-2 mt-1.5">
+        {titanicAgeBins.map((b) => (
+          <div key={b.range} className="flex-1 text-center">
+            <div className="text-[9px] font-mono">{b.range}</div>
+            <div className="text-[8px] text-muted">{b.pct}%</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"רוב הנוסעים היו בגילאי 21–40." — משקף 22'
+          : '"Most passengers were 21–40." — slide 22'}
+      </p>
+    </div>
+  );
+}
