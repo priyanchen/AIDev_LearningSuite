@@ -755,3 +755,62 @@ export function ZScoreDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// The real US-state-population worked example from the Practical Statistics deck (slide 17,
+// "Population & Murder Rates," 2010 Census) — exact sample rows and the deck's own computed
+// Full Mean / Trimmed Mean (10%) / Median across all 50 states.
+const trimmedMeanStates = [
+  { state: 'Alabama', pop: 4779736 },
+  { state: 'Alaska', pop: 710231 },
+  { state: 'Arizona', pop: 6392017 },
+  { state: 'California', pop: 37253956 },
+  { state: 'Colorado', pop: 5029196 },
+];
+
+export function TrimmedMeanDiagram({ locale }: { locale: Locale }) {
+  const stats = [
+    { key: 'mean', labelEn: 'Full Mean', labelHe: 'ממוצע מלא', v: 6162876 },
+    { key: 'trimmed', labelEn: 'Trimmed Mean (10%)', labelHe: 'ממוצע מקוצץ (10%)', v: 4783697 },
+    { key: 'median', labelEn: 'Median', labelHe: 'חציון', v: 4436370 },
+  ];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'אוכלוסיית מדינות ארה"ב — מפקד 2010 · משקף 17' : 'US state populations — 2010 Census · slide 17' }
+      </p>
+      <div className="overflow-x-auto mb-4">
+        <table className="w-full text-xs border-collapse max-w-sm mx-auto">
+          <thead>
+            <tr className="border-b border-ink">
+              <th className="text-start py-1 font-sans text-[9px] tracking-brand uppercase text-accent">{locale === 'he' ? 'מדינה' : 'State'}</th>
+              <th className="text-end py-1 font-sans text-[9px] tracking-brand uppercase text-accent">{locale === 'he' ? 'אוכלוסייה' : 'Population'}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {trimmedMeanStates.map((s) => (
+              <tr key={s.state} className="border-b border-rule">
+                <td className="py-1 font-mono">{s.state}</td>
+                <td className="py-1 font-mono text-end">{s.pop.toLocaleString()}{s.state === 'California' && (locale === 'he' ? ' ← חריג' : ' ← outlier')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="flex flex-wrap justify-center gap-3">
+        {stats.map((s) => (
+          <div key={s.key} className={`border px-4 py-2 text-center ${s.key === 'trimmed' ? 'border-2 border-accent' : 'border-rule'}`}>
+            <div className={`text-[9px] tracking-brand uppercase font-sans ${s.key === 'trimmed' ? 'text-accent font-semibold' : 'text-muted'}`}>
+              {locale === 'he' ? s.labelHe : s.labelEn}
+            </div>
+            <div className="font-mono text-sm">{s.v.toLocaleString()}</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"ממוצע > מקוצץ > חציון ⟶ התפלגות מוטה חיובית." — משקף 17. קליפורניה, כחריגה, מושכת את הממוצע המלא כלפי מעלה; הקיצוץ מרחיק אותה.'
+          : '"Mean > Trimmed > Median ⟶ a positively skewed distribution." — slide 17. California, as the outlier, pulls the full mean upward; trimming pulls it back out.'}
+      </p>
+    </div>
+  );
+}
