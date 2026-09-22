@@ -32,7 +32,7 @@ export default async function ProjectIntroPage({
       </nav>
 
       <h1 className="text-4xl small-caps tracking-wide mb-2 text-center">
-        {locale === 'he' ? 'הדגמת פרויקט הצמחים' : 'Herbal Project Demo'}
+        {locale === 'he' ? 'פרויקט' : 'Project'}
       </h1>
       <div className="ornament text-xl text-accent text-center mb-8"></div>
 
