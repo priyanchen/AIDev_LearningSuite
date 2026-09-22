@@ -814,3 +814,52 @@ export function TrimmedMeanDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// An illustrative sequential-weighting diagram matching the Ensemble Models deck's own real
+// algorithm description (slide 16, "Boosting: learn from your mistakes, in order") — the deck's
+// own gradient-boosting demo (slide 18) is a live canvas fit to a randomly generated U-shape, so
+// the dot positions here are schematic, but the growing-weight structure follows its exact steps.
+const boostingRounds = [
+  { round: 1, weights: [1, 1, 2, 1, 1, 1] },
+  { round: 2, weights: [1, 1, 4, 1, 2.5, 1] },
+  { round: 3, weights: [1, 1, 6, 1, 4, 1] },
+];
+
+export function BoostingDiagram({ locale }: { locale: Locale }) {
+  const xs = [20, 55, 90, 125, 160, 195];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he'
+          ? 'דוגמה להמחשה — מבנה תואם לאלגוריתם עצמו (ה-Demo של המצגת מתאים ל-U-shape אקראי) · משקף 16'
+          : "Illustrative Example — Matches the Algorithm's Own Structure (the deck's own demo fits a random U-shape) · slide 16"}
+      </p>
+      <div className="grid sm:grid-cols-4 gap-3 items-center">
+        {boostingRounds.map((r) => (
+          <div key={r.round} className="border border-rule p-3">
+            <svg viewBox="0 0 220 50" className="w-full block">
+              <line x1={10} y1={40} x2={210} y2={40} stroke="#d4d0c8" strokeWidth="1" />
+              {xs.map((x, i) => (
+                <circle key={i} cx={x} cy={40} r={4 * Math.sqrt(r.weights[i])} fill={r.weights[i] > 1.5 ? '#8b2a2a' : '#1a1a1a'} opacity={r.weights[i] > 1.5 ? 0.85 : 0.5} />
+              ))}
+            </svg>
+            <p className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold text-center mt-1">
+              {locale === 'he' ? `סבב ${r.round}` : `Round ${r.round}`}
+            </p>
+          </div>
+        ))}
+        <div className="border-2 border-accent p-3 text-center">
+          <div className="text-lg">Σ</div>
+          <p className="text-[9px] tracking-brand uppercase text-accent font-sans font-semibold">
+            {locale === 'he' ? 'סכום משוקלל' : 'Weighted Sum'}
+          </p>
+        </div>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"מתחילים במודל חלש אחד. כל מודל חדש מתקן את הטעויות של קודמיו. דוגמאות קשות (בעיגול אדום גדל) מקבלות משקל גבוה יותר בסבב הבא. המודל הסופי הוא סכום משוקלל של כל הרצף." — משקף 16'
+          : '"Start with one simple, weak model. Each new model corrects the errors of the models before it. Hard examples (growing red circles) get more weight in the next round. The final model is a weighted sum of the whole sequence." — slide 16'}
+      </p>
+    </div>
+  );
+}

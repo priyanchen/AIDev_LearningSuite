@@ -18,6 +18,7 @@ import {
   StratifiedSamplingDiagram,
   ZScoreDiagram,
   TrimmedMeanDiagram,
+  BoostingDiagram,
 } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
@@ -186,6 +187,11 @@ export default async function DsPage({
                     {t.term === 'Trimmed Mean' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <TrimmedMeanDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Boosting' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <BoostingDiagram locale={locale} />
                       </div>
                     )}
                   </div>
