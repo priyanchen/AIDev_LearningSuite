@@ -47,6 +47,15 @@ export default async function ProjectDirectoryPage({
         he: 'מפת דרכים בת 18 שלבים — מרעיון ועד פרודקשן — ממדריך "בניית פרויקט מאפס" של המרצה עצמו.',
       },
     },
+    {
+      href: `/${locale}/project/pr-homeopathy-proposal`,
+      index: '4',
+      title: { en: 'PR #1 — Homeopathy Oncology Evidence Proposal', he: 'PR #1 — פרופוזל ראיות הומאופתיה באונקולוגיה' },
+      note: {
+        en: 'A real, open, unmerged pull request on herbal-evidence — 14 files, 13 evidence cards, 21 classified sources, and a dual-approval gate.',
+        he: 'pull request אמיתי, פתוח ולא ממוזג ב-herbal-evidence — 14 קבצים, 13 כרטיסי ראיות, 21 מקורות מסווגים, ושער אישור כפול.',
+      },
+    },
   ];
 
   return (
@@ -58,8 +67,8 @@ export default async function ProjectDirectoryPage({
 
       <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
         {locale === 'he'
-          ? 'ארבעה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס.'
-          : 'Four parts, each significant on its own — from where the arc begins to the full instructions for building a project from scratch.'}
+          ? 'חמישה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס, ועד ל-pull request אמיתי ופתוח.'
+          : 'Five parts, each significant on its own — from where the arc begins, through the full instructions for building a project from scratch, to a real, open pull request.'}
       </p>
 
       <div className="grid gap-4">

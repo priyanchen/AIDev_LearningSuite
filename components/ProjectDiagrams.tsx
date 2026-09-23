@@ -731,3 +731,258 @@ export function HerbalUIDesignSystem({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// Everything below is real, pulled live via the GitHub API from
+// github.com/JonathanZouari/herbal-evidence/pull/1 (head sha 9c97a52, opened 2026-09-16 by
+// priyanchen) — a real, open, unmerged proposal PR: a new "supportive_care_evidence" module for
+// homeopathy-oncology evidence education. Nothing here is patient-visible or clinically approved;
+// the PR's own explicit point is that no card in it can pass its publish gate yet.
+
+export function PrOverviewDiagram({ locale }: { locale: Locale }) {
+  const stats = [
+    { labelEn: 'Files changed', labelHe: 'קבצים שהשתנו', v: '14' },
+    { labelEn: 'Additions', labelHe: 'הוספות', v: '+1,832' },
+    { labelEn: 'Deletions', labelHe: 'מחיקות', v: '0' },
+    { labelEn: 'Commits', labelHe: 'קומיטים', v: '1' },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'PR #1 — פרופוזל: מודול ראיות ובטיחות הומאופתיה באונקולוגיה' : 'PR #1 — Proposal: Homeopathy Oncology Evidence and Safety Module'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he'
+          ? 'נפתח ב-2026-09-16 על ידי priyanchen · main ← proposal/homeopathy-oncology-evidence · עדיין פתוח, לא ממוזג'
+          : 'Opened 2026-09-16 by priyanchen · main ← proposal/homeopathy-oncology-evidence · still open, unmerged'}
+      </p>
+      <div className="flex flex-wrap justify-center gap-3">
+        {stats.map((s) => (
+          <div key={s.labelEn} className="border border-rule px-4 py-2 text-center">
+            <div className="text-[9px] tracking-brand uppercase text-muted font-sans">{locale === 'he' ? s.labelHe : s.labelEn}</div>
+            <div className="font-mono text-sm">{s.v}</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? 'תוספת בלבד (לא תכונה חיה): הומאופתיה מוסברת חינוכית באונקולוגיה, לעולם לא המלצה על תרופה. הראיות האמינות הנוכחיות (NCCIH, Cancer Research UK, Macmillan, FDA, וסקירות שיטתיות משנת 2006 ו-2022) לא מראות שהומאופתיה מונעת, מטפלת, שולטת, מכווצת או מרפאה סרטן.'
+          : 'Additive only (not a live feature): homeopathy explained educationally in oncology, never a remedy recommendation. Current reliable evidence (NCCIH, Cancer Research UK, Macmillan, FDA, and 2006/2022 systematic reviews) does not show that homeopathy prevents, treats, controls, shrinks, or cures cancer.'}
+      </p>
+    </div>
+  );
+}
+
+export function PrFileTreeDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'כל 14 הקבצים שהשתנו — מ-GitHub, לא מודגם' : 'All 14 changed files — from GitHub, not staged'}
+      </p>
+      <div className="border border-rule p-4 bg-paper grid gap-1 max-w-lg mx-auto">
+        <TreeLine label="README.md" note={locale === 'he' ? 'שונה, +4' : 'modified, +4'} />
+        <TreeLine label="docs/decisions.md" note={locale === 'he' ? 'שונה, +1' : 'modified, +1'} />
+        <TreeLine label="docs/proposals/homeopathy-oncology-evidence/" />
+        <TreeLine depth={1} label="README.md" note="+44" />
+        <TreeLine depth={1} label="clinical-evidence-map.md" note="+21" />
+        <TreeLine depth={1} label="evidence-and-safety.md" note="+60" />
+        <TreeLine depth={1} label="implementation-phases.md" note="+15" />
+        <TreeLine depth={1} label="integration-plan.md" note="+42" />
+        <TreeLine depth={1} label="interview-decisions.md" note="+27" />
+        <TreeLine depth={1} label="review-request-for-jonathan.md" note="+25" />
+        <TreeLine depth={1} label="source-assessment.md" note="+75" />
+        <TreeLine label="knowledge/homeopathy-oncology/" />
+        <TreeLine depth={1} label="example_evidence_cards.json" note={locale === 'he' ? '13 כרטיסי ראיות, +518' : '13 evidence cards, +518'} />
+        <TreeLine depth={1} label="source_registry.json" note={locale === 'he' ? '21 מקורות, +296' : '21 sources, +296'} />
+        <TreeLine label="scripts/validate_homeopathy_proposal.py" note="+426" />
+        <TreeLine label="backend/tests/test_homeopathy_knowledge_contract.py" note="+278" />
+      </div>
+    </div>
+  );
+}
+
+const evidenceCardStates = [
+  { key: 'research_only', labelEn: 'research_only', n: 4 },
+  { key: 'insufficient_evidence', labelEn: 'insufficient_evidence', n: 4 },
+  { key: 'avoid', labelEn: 'avoid', n: 2 },
+  { key: 'blocked_unsupported', labelEn: 'blocked_unsupported', n: 1 },
+  { key: 'blocked_integrity', labelEn: 'blocked_integrity', n: 1 },
+  { key: 'blocked_no_results', labelEn: 'blocked_no_results', n: 1 },
+];
+
+export function PrEvidenceCardsDiagram({ locale }: { locale: Locale }) {
+  const max = 4;
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? '13 כרטיסי ראיות לדוגמה, לפי מצב — knowledge/homeopathy-oncology/example_evidence_cards.json' : '13 example evidence cards, by state — knowledge/homeopathy-oncology/example_evidence_cards.json'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he' ? 'שמונה מצבים מותרים מוגדרים; רק שישה בשימוש בפועל בדוגמאות. אין אף כרטיס במצב clinician_discussion_only או general_education.' : 'Eight allowed states are defined; only six are actually used in the examples. No card is in clinician_discussion_only or general_education.'}
+      </p>
+      <div className="space-y-1.5 max-w-md mx-auto">
+        {evidenceCardStates.map((s) => (
+          <div key={s.key} className="flex items-center gap-2">
+            <span className="text-[9px] font-mono w-40 flex-shrink-0 text-end">{s.labelEn}</span>
+            <div className="flex-1 bg-codebg/40 h-4 relative">
+              <div className="bg-accent h-4" style={{ width: `${(s.n / max) * 100}%` }} />
+            </div>
+            <span className="text-[9px] font-mono w-4">{s.n}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? 'שני הכרטיסים במצב "avoid" הם מקרים תיעודיים (החלפת טיפול גרורתי, סדרת מקרים ב-Psorinum) — לא טענות תועלת. אין אף כרטיס "מומלץ" — המצב הזה לא קיים ברשימת המצבים המותרים כלל.'
+          : 'The two "avoid" cards are documented instances (a metastatic treatment substitution, a Psorinum case series) — not benefit claims. There is no "recommended" state at all — it doesn\'t exist in the allowed-states list.'}
+      </p>
+    </div>
+  );
+}
+
+const sourceEligibility = [
+  { key: 'eligible', labelEn: 'eligible', n: 10 },
+  { key: 'context_only', labelEn: 'context_only', n: 5 },
+  { key: 'safety_signal_only', labelEn: 'safety_signal_only', n: 2 },
+  { key: 'ineligible_retracted', labelEn: 'ineligible_retracted', n: 1 },
+  { key: 'ineligible_withdrawn_no_results', labelEn: 'ineligible_withdrawn_no_results', n: 1 },
+  { key: 'ineligible_pending_verification', labelEn: 'ineligible_pending_verification', n: 1 },
+  { key: 'out_of_scope', labelEn: 'out_of_scope', n: 1 },
+];
+
+export function PrSourceRegistryDiagram({ locale }: { locale: Locale }) {
+  const max = 10;
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? '21 מקורות, לפי כשירות ראייתית — knowledge/homeopathy-oncology/source_registry.json' : '21 sources, by evidence eligibility — knowledge/homeopathy-oncology/source_registry.json'}
+      </p>
+      <div className="space-y-1.5 max-w-md mx-auto">
+        {sourceEligibility.map((s) => (
+          <div key={s.key} className="flex items-center gap-2">
+            <span className="text-[9px] font-mono w-52 flex-shrink-0 text-end">{s.labelEn}</span>
+            <div className="flex-1 bg-codebg/40 h-4 relative">
+              <div className={`h-4 ${s.key === 'eligible' ? 'bg-accent' : 'bg-muted'}`} style={{ width: `${(s.n / max) * 100}%` }} />
+            </div>
+            <span className="text-[9px] font-mono w-4">{s.n}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? 'מקור החומרה הכפולה (Milazzo, Russell & Ernst 2006), שסופק דרך שני URL-ים שונים של מו״לים, נפתר לרשומה קנונית אחת עם שתי המופעים נשמרים בשובל הביקורת.'
+          : 'The duplicate-publication source (Milazzo, Russell & Ernst 2006), supplied via two different publisher URLs, is resolved to one canonical record with both occurrences preserved in the audit trail.'}
+      </p>
+    </div>
+  );
+}
+
+const prPhases = [
+  { n: 1, titleEn: 'Repository reconciliation & source-integrity audit', titleHe: 'התאמת המאגר וביקורת שלמות מקורות', reviewEn: 'Jonathan Zouari product/merge confirmation', reviewHe: 'אישור מוצר/מיזוג של Jonathan Zouari', built: true },
+  { n: 2, titleEn: 'Durable machine-readable contracts (DB foundation)', titleHe: 'חוזים קריאים-למכונה עמידים (יסוד DB)', reviewEn: 'Engineering review of schema/migration safety', reviewHe: 'סקירת הנדסה לבטיחות schema/migration', built: false },
+  { n: 3, titleEn: 'Source intake, AI-assisted extraction to draft rows only', titleHe: 'קליטת מקורות, חילוץ בסיוע AI לשורות טיוטה בלבד', reviewEn: 'Confirm AI drafts cannot reach published without human action', reviewHe: 'אישור שטיוטות AI לא יכולות להגיע לפרסום ללא פעולה אנושית', built: false },
+  { n: 4, titleEn: 'Evidence & safety review, dual-approval gate', titleHe: 'סקירת ראיות ובטיחות, שער אישור כפול', reviewEn: 'Confirm the dual-approval gate cannot be bypassed', reviewHe: 'אישור שלא ניתן לעקוף את שער האישור הכפול', built: false },
+  { n: 5, titleEn: 'Staff review experience', titleHe: 'חוויית סקירת צוות', reviewEn: 'Confirm staff cannot mistake a domain review for approval', reviewHe: 'אישור שהצוות לא יכול לטעות בסקירת תחום כאישור', built: false },
+  { n: 6, titleEn: 'Restricted patient education', titleHe: 'חינוך מטופלים מוגבל', reviewEn: 'Clinical + product review of actual rendered patient copy', reviewHe: 'סקירה קלינית ומוצרית של התוכן המוצג בפועל', built: false },
+  { n: 7, titleEn: 'Surveillance & release validation', titleHe: 'מעקב ואימות שחרור', reviewEn: 'Final go/no-go before the feature flag is ever turned on', reviewHe: 'החלטת go/no-go סופית לפני הפעלת דגל התכונה', built: false },
+];
+
+export function PrPhasesDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'שבעה שלבי הטמעה — docs/proposals/homeopathy-oncology-evidence/implementation-phases.md' : 'Seven implementation phases — docs/proposals/homeopathy-oncology-evidence/implementation-phases.md'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he' ? 'שלב 1 הוא היחיד שממומש ב-PR הזה. שלבים 2–7 מתוארים אך לא נבנו — שום תכונת פרודקשן לא ממומשת בענף הזה.' : 'Phase 1 is the only phase this branch implements. Phases 2–7 are described but not built — no production feature is implemented on this branch.'}
+      </p>
+      <div className="border border-rule max-w-2xl mx-auto divide-y divide-rule">
+        {prPhases.map((p) => (
+          <div key={p.n} className={`flex items-start gap-3 px-4 py-2 ${p.built ? 'bg-accent/10' : ''}`}>
+            <span className={`text-[10px] font-mono font-bold flex-shrink-0 w-5 ${p.built ? 'text-accent' : 'text-muted'}`}>{p.n}</span>
+            <div className="flex-1">
+              <div className={`text-[10px] font-sans ${p.built ? 'font-semibold text-accent' : ''}`}>{locale === 'he' ? p.titleHe : p.titleEn}</div>
+              <div className="text-[9px] italic text-muted mt-0.5">{locale === 'he' ? p.reviewHe : p.reviewEn}</div>
+            </div>
+            {p.built && (
+              <span className="text-[8px] tracking-brand uppercase text-accent font-sans font-semibold flex-shrink-0">
+                {locale === 'he' ? 'בנוי' : 'built'}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function PrIntegrityDiagram({ locale }: { locale: Locale }) {
+  const cases = [
+    {
+      key: 'frass',
+      titleEn: 'Frass et al. 2020 — NSCLC / add-on homeopathy survival',
+      titleHe: 'Frass ואחרים 2020 — הישרדות NSCLC / הומאופתיה תוספת',
+      stateEn: 'blocked_integrity',
+      detailEn: 'Retracted 2025-11-24 — data falsification finding by the Austrian Agency for Research Integrity.',
+      detailHe: 'נמשך ב-2025-11-24 — ממצא זיוף נתונים מטעם הסוכנות האוסטרית לשלמות מחקר.',
+    },
+    {
+      key: 'banerji',
+      titleEn: 'NCT02190539 — Banerji-protocol advanced-breast-cancer trial',
+      titleHe: 'NCT02190539 — ניסוי פרוטוקול Banerji לסרטן שד מתקדם',
+      stateEn: 'blocked_no_results',
+      detailEn: 'Withdrawn with zero enrollment and no results.',
+      detailHe: 'נסוג עם אפס גיוס ואפס תוצאות.',
+    },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'נמשך ונסוג — מאומת חי, לא לפי אמונה' : 'Retracted and withdrawn — verified live, not taken on faith'}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+        {cases.map((c) => (
+          <div key={c.key} className="border-2 border-accent p-3">
+            <div className="text-[10px] font-sans font-semibold">{locale === 'he' ? c.titleHe : c.titleEn}</div>
+            <div className="text-[9px] font-mono text-accent mt-1">{c.stateEn}</div>
+            <p className="text-[9px] text-muted mt-1.5 leading-relaxed">{locale === 'he' ? c.detailHe : c.detailEn}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? 'Frass ו-Frenkel כל אחד מופיע גם כמקור "חיובי" מצוטט וגם כנושא ממצא שלמות/נסיגה שאומת באופן עצמאי במקום אחר בספרות — ריכוז חוקר שנרשם במפורש.'
+          : 'Frass and Frenkel each appear as both a cited "positive" source and the subject of an independently verified integrity/withdrawal finding elsewhere in the literature — an investigator-concentration finding, explicitly logged.'}
+      </p>
+    </div>
+  );
+}
+
+const prOpenItems = [
+  { id: 'H-001', en: 'Staff-only vs. patient-education launch scope not yet decided.', he: 'היקף השקה staff-only מול חינוך מטופלים עדיין לא הוחלט.' },
+  { id: 'H-002', en: 'Launch jurisdiction(s) not yet decided.', he: 'שיפוט(י) השקה עדיין לא הוחלטו.' },
+  { id: 'H-004', en: 'Reviewer identities for the two required approval roles undefined.', he: 'זהויות הסוקרים עבור שני תפקידי האישור הנדרשים לא מוגדרות.' },
+  { id: 'H-007', en: 'Six-plus literature items remain pending_manual_verification, cited for no claim.', he: 'שישה+ פריטי ספרות נותרים pending_manual_verification, לא מצוטטים לאף טענה.' },
+  { id: 'H-009', en: 'No jurisdiction/regulatory-claims framework chosen.', he: 'לא נבחר מסגרת שיפוט/טענות רגולטוריות.' },
+  { id: 'H-010', en: 'Credentialing process for the two review roles undefined.', he: 'תהליך ההסמכה עבור שני תפקידי הסקירה לא מוגדר.' },
+];
+
+export function PrOpenItemsDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'פריטים פתוחים — docs/proposals/homeopathy-oncology-evidence/interview-decisions.md' : 'Open items — docs/proposals/homeopathy-oncology-evidence/interview-decisions.md'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mb-4">
+        {locale === 'he' ? 'אף אחד מהם לא חוסם את השלמת שלב 1 — נרשמו לתשומת לב ד״ר זוארי ולסוקרים עתידיים.' : "None of these block Phase 1 completion — recorded for Dr. Zuari's and future reviewers' attention."}
+      </p>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {prOpenItems.map((item) => (
+          <div key={item.id} className="flex items-start gap-3 px-4 py-2">
+            <span className="text-[9px] font-mono text-accent flex-shrink-0 w-12">{item.id}</span>
+            <span className="text-[10px] leading-relaxed">{locale === 'he' ? item.he : item.en}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
