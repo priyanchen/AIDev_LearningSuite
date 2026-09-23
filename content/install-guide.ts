@@ -615,6 +615,23 @@ export const installGuide: InstallCategory[] = [
         },
       },
       {
+        name: 'Railway CLI',
+        officialUrl: 'https://docs.railway.com/cli',
+        sessions: [],
+        whatItDoes: {
+          en: `Deploys and manages services, environments, and variables in a Railway account from the terminal. The \`agents.railway.com\` installer also wires up agent skills and an MCP server for Claude Code, Codex, Cursor, and GitHub Copilot, so an agent can create projects, provision services, and deploy — not just a human.`,
+          he: `פורס ומנהל שירותים, סביבות, ומשתנים בחשבון Railway מהטרמינל. מתקין ה-\`agents.railway.com\` גם מחווט מיומנויות סוכן ושרת MCP עבור Claude Code, Codex, Cursor, ו-GitHub Copilot, כך שסוכן יכול ליצור פרויקטים, לספק שירותים, ולפרוס — לא רק בן אדם.`,
+        },
+        tips: {
+          en: `Real herbal-evidence project usage: Railway CLI is logged as installed and authenticated (\`v5.30.1\`) at the very start of the real build, in the same environment check as Python and Supabase CLI. Phase 5 (Infrastructure) then provisions a real Railway project — two environments (\`staging\` on branch \`dev\`, \`production\` on branch \`main\`), each with its own frontend and backend service and its own domain, built straight from each service's Dockerfile. See the full walkthrough on the Project → Phases page.`,
+          he: `שימוש אמיתי בפרויקט herbal-evidence: Railway CLI נרשם כמותקן ומאומת (\`v5.30.1\`) כבר בתחילת הבנייה האמיתית, באותה בדיקת סביבה כמו Python ו-Supabase CLI. שלב 5 (תשתית) מספק אז פרויקט Railway אמיתי — שתי סביבות (\`staging\` על ענף \`dev\`, \`production\` על ענף \`main\`), כל אחת עם שירות frontend ו-backend משלה ודומיין משלה, נבנות ישירות מה-Dockerfile של כל שירות. ראו את ההליכה המלאה בעמוד פרויקט ← שלבים.`,
+        },
+        commands: {
+          mac: ['curl -fsSL agents.railway.com | sh', 'railway login'],
+          windows: ['scoop install railway', 'railway login'],
+        },
+      },
+      {
         name: 'Flask',
         officialUrl: 'https://flask.palletsprojects.com/en/stable/',
         sessions: [22],
