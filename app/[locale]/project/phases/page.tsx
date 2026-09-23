@@ -46,6 +46,36 @@ export default async function ProjectPhasesPage({
         <BuildPhasesInfraDiagram locale={locale} />
         <BuildPhasesOpenItemsDiagram locale={locale} />
 
+        <div className="mt-4 pt-4 border-t border-dashed border-rule">
+          <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+            {locale === 'he' ? 'קוד המקור האמיתי — main, אחרי מיזוג dev → main (PR #4)' : "Dr. Zuari's real source code — main, after the dev → main merge (PR #4)"}
+          </p>
+          <p className="text-[10px] italic text-muted text-center mb-4">
+            {locale === 'he' ? '101 קבצים ב-main, נכון להיום — לא שלד, קוד שרץ ונבדק בפועל.' : '101 files on main as of today — not a skeleton, code that actually runs and is actually tested.'}
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+            {[
+              { href: 'https://github.com/JonathanZouari/herbal-evidence', labelEn: 'Full Repo (main)', labelHe: 'המאגר המלא (main)' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/backend/app', labelEn: 'backend/app — FastAPI', labelHe: 'backend/app — FastAPI' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/backend/app/jobs', labelEn: 'backend/app/jobs — Research Worker', labelHe: 'backend/app/jobs — Research Worker' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/frontend', labelEn: 'frontend — Hebrew RTL', labelHe: 'frontend — עברית RTL' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/backend/tests', labelEn: 'backend/tests — 78 Tests', labelHe: 'backend/tests — 78 בדיקות' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/supabase', labelEn: 'supabase — Migrations', labelHe: 'supabase — Migrations' },
+              { href: 'https://github.com/JonathanZouari/herbal-evidence/tree/main/docs', labelEn: 'docs — Architecture & Decisions', labelHe: 'docs — ארכיטקטורה והחלטות' },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[9px] tracking-brand uppercase text-accent border border-accent px-3 py-1.5 hover:bg-accent hover:text-paper transition font-sans"
+              >
+                {locale === 'he' ? l.labelHe : l.labelEn} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-12 border border-accent p-4 max-w-2xl mx-auto text-center">
           <p className="text-xs leading-relaxed">
             {locale === 'he'
