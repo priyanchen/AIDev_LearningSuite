@@ -986,3 +986,176 @@ export function PrOpenItemsDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// Everything below is real, pulled live (2026-09-23) from Dr. Zuari's own build-log folder — six
+// phase notes (Phase 0–5) tracking the actual herbal-evidence project's progress far past the
+// "single-commit monorepo skeleton" the roadmap page describes: a real Supabase database, a real
+// FastAPI backend, a real PubMed/Europe PMC research worker, a real Hebrew RTL frontend, and a
+// real dev→main merge to Railway staging + production, all logged the same day.
+
+const buildPhases = [
+  {
+    n: 0, name: 'Foundation', date: '2026-09-16', status: 'done-pending-review',
+    goalEn: 'Repo, branches, monorepo skeleton, decisions record, Stitch design system + screens.',
+    goalHe: 'מאגר, ענפים, שלד מונורפו, רשומת החלטות, מערכת עיצוב Stitch + מסכים.',
+  },
+  {
+    n: 1, name: 'Database', date: '2026-09-23', status: 'done-pending-review',
+    goalEn: 'Schema, Auth wiring, RLS, private Storage bucket, job-queue SQL, MOCK seed, permission tests.',
+    goalHe: 'Schema, חיווט Auth, RLS, bucket אחסון פרטי, SQL לתור עבודות, seed מדומה, בדיקות הרשאה.',
+  },
+  {
+    n: 2, name: 'Backend Core', date: '2026-09-23', status: 'done-pending-review',
+    goalEn: 'FastAPI backend: JWT auth, role guards, /api/v1 request lifecycle, herb ID, rate limits, Dockerfile.',
+    goalHe: 'backend ב-FastAPI: אימות JWT, שומרי תפקידים, מחזור חיי בקשה /api/v1, זיהוי צמח, הגבלות קצב, Dockerfile.',
+  },
+  {
+    n: 3, name: 'Research and AI', date: '2026-09-23', status: 'done-pending-review',
+    goalEn: 'Worker searches PubMed/Europe PMC, produces an AI draft or reuses an approved review.',
+    goalHe: 'Worker מחפש ב-PubMed/Europe PMC, מפיק טיוטת AI או משתמש בסקירה מאושרת קיימת.',
+  },
+  {
+    n: 4, name: 'Frontend', date: '2026-09-23', status: 'done-pending-review',
+    goalEn: 'Hebrew RTL static site, no build step — landing through publishing workspace, full a11y.',
+    goalHe: 'אתר סטטי עברי RTL, ללא שלב build — מדף הנחיתה ועד סביבת הפרסום, נגישות מלאה.',
+  },
+  {
+    n: 5, name: 'Infrastructure (Railway)', date: '2026-09-23', status: 'in-progress',
+    goalEn: 'Railway staging + production, dev→main merge (PR #4), DB connected, 78/78 tests passing.',
+    goalHe: 'Railway staging + production, מיזוג dev→main (PR #4), DB מחובר, 78/78 בדיקות עוברות.',
+  },
+];
+
+export function BuildPhasesTimelineDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'שישה שלבי בנייה אמיתיים — כולם מתועדים ב-2026-09-23' : 'Six real build phases — all logged as of 2026-09-23'}
+      </p>
+      <div className="border border-rule max-w-2xl mx-auto divide-y divide-rule">
+        {buildPhases.map((p) => (
+          <div key={p.n} className="flex items-start gap-3 px-4 py-2.5">
+            <span className="text-[10px] font-mono font-bold text-accent flex-shrink-0 w-5">{p.n}</span>
+            <div className="flex-1">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="text-[10px] font-sans font-semibold small-caps tracking-wide">{p.name}</span>
+                <span className="text-[8px] font-mono text-muted">{p.date}</span>
+                <span className={`text-[8px] tracking-brand uppercase font-sans font-semibold ${p.status === 'in-progress' ? 'text-accent' : 'text-muted'}`}>
+                  {p.status}
+                </span>
+              </div>
+              <p className="text-[10px] leading-relaxed mt-0.5">{locale === 'he' ? p.goalHe : p.goalEn}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const buildTestCounts = [
+  { key: 'p1', labelEn: 'Phase 1 — permissions.sql', n: null, note: 'all_tests_passed' },
+  { key: 'p2', labelEn: 'Phase 2 — pytest', n: 21 },
+  { key: 'p3', labelEn: 'Phase 3 — pytest (unit only)', n: 52 },
+  { key: 'p5', labelEn: 'Phase 5 — pytest (unit + 26 DB integration)', n: 78 },
+];
+
+export function BuildPhasesTestGrowthDiagram({ locale }: { locale: Locale }) {
+  const max = 78;
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'גידול חבילת הבדיקות — לפי שלב' : 'Test suite growth — by phase'}
+      </p>
+      <div className="space-y-1.5 max-w-md mx-auto">
+        {buildTestCounts.map((t) => (
+          <div key={t.key} className="flex items-center gap-2">
+            <span className="text-[9px] font-mono w-56 flex-shrink-0 text-end">{t.labelEn}</span>
+            <div className="flex-1 bg-codebg/40 h-4 relative">
+              {t.n != null && <div className="bg-accent h-4" style={{ width: `${(t.n / max) * 100}%` }} />}
+            </div>
+            <span className="text-[9px] font-mono w-16">{t.n != null ? `${t.n}${t.key === 'p5' ? '/78' : ''}` : t.note}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? '"uv run pytest: 78/78 עברו, כולל כל 26 בדיקות האינטגרציה מול ה-DB (worker, API, reuse, lease, outages)." — Phase 5, אחרי חיבור ה-DB'
+          : '"uv run pytest: 78/78 passed, including all 26 DB integration tests (worker, API, reuse, lease, outages)." — Phase 5, after the DB was connected'}
+      </p>
+    </div>
+  );
+}
+
+export function BuildPhasesInfraDiagram({ locale }: { locale: Locale }) {
+  const envs = [
+    {
+      key: 'staging', labelEn: 'staging', branch: 'dev',
+      frontend: 'frontend-staging-1151.up.railway.app',
+      backend: 'backend-staging-ba03.up.railway.app',
+      statusEn: 'frontend 200 · backend 502 until DATABASE_URL, then health 200',
+      statusHe: 'frontend 200 · backend 502 עד DATABASE_URL, ואז health 200',
+    },
+    {
+      key: 'production', labelEn: 'production', branch: 'main',
+      frontend: 'frontend-production-f7b1.up.railway.app',
+      backend: 'backend-production-af6a3.up.railway.app',
+      statusEn: 'both images build from main · containers exit at startup — no Supabase prod project yet (by design)',
+      statusHe: 'שתי התמונות נבנות מ-main · המכולות יוצאות באתחול — עדיין אין פרויקט Supabase לפרודקשן (בכוונה)',
+    },
+  ];
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'פרויקט Railway — herbal-evidence, שתי סביבות' : 'Railway project — herbal-evidence, two environments'}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+        {envs.map((e) => (
+          <div key={e.key} className="border border-rule p-3">
+            <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold">
+              {e.labelEn} <span className="text-muted normal-case">(branch: {e.branch})</span>
+            </div>
+            <div className="text-[9px] font-mono mt-2 break-all">frontend: {e.frontend}</div>
+            <div className="text-[9px] font-mono mt-1 break-all">backend: {e.backend}</div>
+            <p className="text-[9px] italic text-muted mt-2 leading-relaxed">{locale === 'he' ? e.statusHe : e.statusEn}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? '"מיזגתי: dev → main דרך PR #4 (b3ebd88), בתוספת PR #7 לתיעוד (a73214d). main ו-dev זהים כעת בתוכן." — עדכון 2026-09-23'
+          : '"Merge: dev → main through PR #4 (b3ebd88), plus a docs PR #7 (a73214d). main and dev are now identical in content." — update, 2026-09-23'}
+      </p>
+    </div>
+  );
+}
+
+const buildOpenItems = [
+  { id: 'B-3', en: 'A Supabase production project not yet created — may require a plan upgrade.', he: 'פרויקט Supabase לפרודקשן עדיין לא נוצר — עשוי לדרוש שדרוג תוכנית.' },
+  { id: 'B-8', en: 'Whether Railway actually sends the X-Real-IP header (used by the rate limiter) not yet verified.', he: 'האם Railway אכן שולח את כותרת X-Real-IP (בשימוש מגביל הקצב) עדיין לא אומת.' },
+  { id: 'B-9', en: 'A new sb_secret_ key not yet created — the legacy service_role JWT is still in use.', he: 'מפתח sb_secret_ חדש עדיין לא נוצר — ה-JWT הישן של service_role עדיין בשימוש.' },
+  { id: 'B-12', en: 'Auth redirect URLs for staging, production, and localhost not yet configured.', he: 'כתובות הפניית Auth עבור staging, production ו-localhost עדיין לא הוגדרו.' },
+];
+
+export function BuildPhasesOpenItemsDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-dashed border-rule">
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-1 text-center">
+        {locale === 'he' ? 'עדיין פתוח, נכון ל-2026-09-23' : 'Still open, as of 2026-09-23'}
+      </p>
+      <div className="border border-rule max-w-lg mx-auto divide-y divide-rule">
+        {buildOpenItems.map((item) => (
+          <div key={item.id} className="flex items-start gap-3 px-4 py-2">
+            <span className="text-[9px] font-mono text-accent flex-shrink-0 w-10">{item.id}</span>
+            <span className="text-[10px] leading-relaxed">{locale === 'he' ? item.he : item.en}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-lg mx-auto">
+        {locale === 'he'
+          ? 'לשם השוואה: B-7 (בניית Docker) ו-B-10 (סיסמת DB) נסגרו באותו יום — נרשם כדוגמה לתהליך העבודה האמיתי, לא רק לתוצאה.'
+          : 'For comparison: B-7 (Docker build) and B-10 (DB password) were both closed the same day — logged as an example of the real working process, not just the outcome.'}
+      </p>
+    </div>
+  );
+}

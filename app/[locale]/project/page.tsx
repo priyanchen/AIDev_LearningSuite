@@ -56,6 +56,15 @@ export default async function ProjectDirectoryPage({
         he: 'pull request אמיתי, פתוח ולא ממוזג ב-herbal-evidence — 14 קבצים, 13 כרטיסי ראיות, 21 מקורות מסווגים, ושער אישור כפול.',
       },
     },
+    {
+      href: `/${locale}/project/phases`,
+      index: '5',
+      title: { en: "Phases — The Real Build Log", he: 'שלבים — יומן הבנייה האמיתי' },
+      note: {
+        en: "Six real Phase files from Dr. Zuari's own log — database, backend, research worker, frontend, and a real dev → main merge to Railway.",
+        he: 'שישה קובצי Phase אמיתיים מהיומן של ד״ר זוארי עצמו — בסיס נתונים, backend, worker מחקר, frontend, ומיזוג dev → main אמיתי ל-Railway.',
+      },
+    },
   ];
 
   return (
@@ -67,8 +76,8 @@ export default async function ProjectDirectoryPage({
 
       <p className="text-center italic text-muted max-w-2xl mx-auto mb-16">
         {locale === 'he'
-          ? 'חמישה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס, ועד ל-pull request אמיתי ופתוח.'
-          : 'Five parts, each significant on its own — from where the arc begins, through the full instructions for building a project from scratch, to a real, open pull request.'}
+          ? 'שישה חלקים, כל אחד עומד בפני עצמו — מהיכן הקשת מתחילה, ועד להוראות המלאות לבניית פרויקט מאפס, ועד ל-pull request אמיתי ופתוח ויומן הבנייה בפועל.'
+          : 'Six parts, each significant on its own — from where the arc begins, through the full instructions for building a project from scratch, to a real, open pull request and the actual build log.'}
       </p>
 
       <div className="grid gap-4">
