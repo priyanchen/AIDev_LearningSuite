@@ -1040,3 +1040,217 @@ export function GradientBoostingXgboostDiagram({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+// A level-wise (balanced) tree, drawn to the Modern Boosters deck's own real description (slide
+// 11, "Level-wise vs. leaf-wise"): "grow the tree one full level at a time... produces a balanced,
+// symmetric tree." The deck's own comparison is a live "press Grow" canvas demo, so exact node
+// counts are illustrative — but the balanced-vs-lopsided shape contrast is the deck's real point.
+function LevelWiseTree() {
+  return (
+    <svg viewBox="0 0 140 70" className="w-full max-w-[160px] mx-auto block">
+      <g stroke="#1a1a1a" strokeWidth="1.2">
+        <line x1={70} y1={10} x2={35} y2={30} />
+        <line x1={70} y1={10} x2={105} y2={30} />
+        <line x1={35} y1={30} x2={17} y2={52} />
+        <line x1={35} y1={30} x2={53} y2={52} />
+        <line x1={105} y1={30} x2={87} y2={52} />
+        <line x1={105} y1={30} x2={123} y2={52} />
+      </g>
+      {[70].map((x) => <circle key={x} cx={x} cy={10} r={4} fill="#1a1a1a" />)}
+      {[35, 105].map((x) => <circle key={x} cx={x} cy={30} r={4} fill="#1a1a1a" />)}
+      {[17, 53, 87, 123].map((x) => <circle key={x} cx={x} cy={52} r={4} fill="#8b2a2a" />)}
+    </svg>
+  );
+}
+
+// A leaf-wise (unbalanced) tree, per the same slide 11: "split the single leaf that reduces error
+// the most — some branches grow very deep while others stay shallow."
+function LeafWiseTree() {
+  return (
+    <svg viewBox="0 0 140 70" className="w-full max-w-[160px] mx-auto block">
+      <g stroke="#1a1a1a" strokeWidth="1.2">
+        <line x1={40} y1={10} x2={20} y2={28} />
+        <line x1={40} y1={10} x2={60} y2={28} />
+        <line x1={20} y1={28} x2={12} y2={46} />
+        <line x1={20} y1={28} x2={32} y2={46} />
+        <line x1={12} y1={46} x2={8} y2={62} />
+        <line x1={12} y1={46} x2={20} y2={62} />
+      </g>
+      <circle cx={40} cy={10} r={4} fill="#1a1a1a" />
+      <circle cx={20} cy={28} r={4} fill="#1a1a1a" />
+      <circle cx={60} cy={28} r={4} fill="#8b2a2a" />
+      <circle cx={12} cy={46} r={4} fill="#1a1a1a" />
+      <circle cx={32} cy={46} r={4} fill="#8b2a2a" />
+      <circle cx={8} cy={62} r={4} fill="#8b2a2a" />
+      <circle cx={20} cy={62} r={4} fill="#8b2a2a" />
+    </svg>
+  );
+}
+
+export function LeafVsLevelWiseDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'Level-wise מול Leaf-wise — משקף 11' : 'Level-wise vs. leaf-wise — slide 11'}
+      </p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="border border-rule p-3 text-center">
+          <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-1">Level-wise</div>
+          <div className="text-[8px] text-muted mb-2">{locale === 'he' ? 'ברירת המחדל של XGBoost' : 'XGBoost default'}</div>
+          <LevelWiseTree />
+          <p className="text-[9px] text-muted mt-2">{locale === 'he' ? 'עץ מאוזן וסימטרי' : 'Balanced, symmetric tree'}</p>
+        </div>
+        <div className="border border-rule p-3 text-center">
+          <div className="text-[10px] tracking-brand uppercase text-accent font-sans font-semibold mb-1">Leaf-wise</div>
+          <div className="text-[8px] text-muted mb-2">LightGBM</div>
+          <LeafWiseTree />
+          <p className="text-[9px] text-muted mt-2">{locale === 'he' ? 'ענף אחד עמוק מאוד, אחרים רדודים' : 'One branch very deep, others shallow'}</p>
+        </div>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"בכל שלב, מפצלים את העלה היחיד שמפחית הכי הרבה שגיאה — ורק אותו." — משקף 11. יותר מדויק באזורים קשים — אך עלול להתאים יתר על המידה אם העומק לא מוגבל.'
+          : '"At each step, split the single leaf that reduces error the most — and only that one." — slide 11. More accurate in hard regions — but can overfit if depth is left unbounded.'}
+      </p>
+    </div>
+  );
+}
+
+// LightGBM's own leaf-wise tree shape, reused from the shared comparison above — the deck's real
+// distinguishing feature (slide 11) paired with its own "five advantages" framing (slide 5).
+export function LightGbmDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'גדילת Leaf-wise — משקף 11' : 'Leaf-wise growth — slide 11'}
+      </p>
+      <LeafWiseTree />
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"LightGBM היא מסגרת gradient-boosting בעלת למידה מבוססת-עצים, שתוכננה להיות מבוזרת ויעילה." המצגת פותחת בחמישה יתרונות: אימון מהיר יותר, זיכרון נמוך יותר, דיוק טוב יותר, מקבילי/GPU, נתונים בקנה מידה גדול. — משקף 5'
+          : '"LightGBM is a gradient-boosting framework using tree-based learning, designed to be distributed and efficient." Its documentation leads with five advantages: faster training, lower memory, better accuracy, parallel/GPU, large-scale data. — slide 5'}
+      </p>
+    </div>
+  );
+}
+
+// CatBoost's real "symmetric oblivious trees" (slide 15, comparison card: "Balanced 'oblivious'
+// trees: fast to score and resistant to overfitting") — every node at a given depth shares the
+// same split condition, drawn schematically since the deck names the property without a worked
+// numeric example.
+export function CatBoostDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'עצים סימטריים "אובליביוס" — משקף 15' : 'Symmetric "oblivious" trees — slide 15'}
+      </p>
+      <svg viewBox="0 0 140 70" className="w-full max-w-[160px] mx-auto block">
+        <g stroke="#1a1a1a" strokeWidth="1.2">
+          <line x1={70} y1={10} x2={35} y2={30} />
+          <line x1={70} y1={10} x2={105} y2={30} />
+          <line x1={35} y1={30} x2={17} y2={52} />
+          <line x1={35} y1={30} x2={53} y2={52} />
+          <line x1={105} y1={30} x2={87} y2={52} />
+          <line x1={105} y1={30} x2={123} y2={52} />
+        </g>
+        <text x={70} y={7} textAnchor="middle" fontSize="6" fontFamily="monospace" fill="#8b2a2a">f1?</text>
+        <text x={35} y={27} textAnchor="middle" fontSize="6" fontFamily="monospace" fill="#8b2a2a">f2?</text>
+        <text x={105} y={27} textAnchor="middle" fontSize="6" fontFamily="monospace" fill="#8b2a2a">f2?</text>
+        <circle cx={70} cy={10} r={4} fill="#1a1a1a" />
+        <circle cx={35} cy={30} r={4} fill="#1a1a1a" />
+        <circle cx={105} cy={30} r={4} fill="#1a1a1a" />
+        {[17, 53, 87, 123].map((x) => <circle key={x} cx={x} cy={52} r={4} fill="#8b2a2a" />)}
+      </svg>
+      <p className="text-[9px] text-muted text-center mt-1">
+        {locale === 'he' ? 'אותו תנאי פיצול (f2?) בכל צומת באותה רמה' : 'Same split condition (f2?) at every node on the same level'}
+      </p>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"עצים \'אובליביוס\' מאוזנים: מהירים לניקוד ועמידים בפני התאמת יתר." — משקף 15. יחד עם קטגוריות טבעיות ו-ordered boosting.'
+          : '"Balanced \'oblivious\' trees: fast to score and resistant to overfitting." — slide 15. Paired with native categoricals and ordered boosting.'}
+      </p>
+    </div>
+  );
+}
+
+// The real decision-tree example (slide 8: age < 55 splits first, then travel time < 1hr) shown
+// as a feature-importance bar chart — the deck itself doesn't attach numeric importance scores,
+// but its own real quote (slide "Feature Importance") explains what the bars would measure: how
+// much each feature contributed to the tree splits.
+const featureImportanceRows = [
+  { key: 'age', labelEn: 'age', labelHe: 'גיל', score: 0.62 },
+  { key: 'travel', labelEn: 'travel time', labelHe: 'זמן נסיעה', score: 0.31 },
+  { key: 'other', labelEn: 'other features', labelHe: 'תכונות אחרות', score: 0.07 },
+];
+
+export function FeatureImportanceDiagram({ locale }: { locale: Locale }) {
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he'
+          ? 'דוגמה להמחשה על עץ ההחלטה האמיתי (משקף 8) — למצגת אין ציוני חשיבות מספריים משלה'
+          : "Illustrative Example on the Deck's Real Decision Tree (slide 8) — it names the metric but attaches no numeric scores of its own"}
+      </p>
+      <div className="max-w-sm mx-auto space-y-2">
+        {featureImportanceRows.map((r) => (
+          <div key={r.key} className="flex items-center gap-2">
+            <span className="text-[9px] font-mono w-24 flex-shrink-0 text-end">{locale === 'he' ? r.labelHe : r.labelEn}</span>
+            <div className="flex-1 bg-codebg/40 h-4 relative">
+              <div className="bg-accent h-4" style={{ width: `${r.score * 100}%` }} />
+            </div>
+            <span className="text-[9px] font-mono w-10">{r.score.toFixed(2)}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"XGBoost יכולה לתת ציון לכמה כל תכונה תרמה לפיצולי העץ." age הוא הפיצול הראשון (ה-root) בעץ האמיתי של המצגת — ולכן מוצג כאן כתכונה החשובה ביותר.'
+          : '"XGBoost can score how much each feature contributed to the tree splits." age is the first (root) split in the deck\'s own real tree — shown here as the most important feature accordingly.'}
+      </p>
+    </div>
+  );
+}
+
+// The real K-Fold Cross-Validation steps and worked example (slide 26: "Don't trust a single
+// train/test split... Split the training set into K equal folds (e.g. K = 10)") — shown at K=5,
+// matching the deck's own live demo's default slider value.
+export function KFoldDiagram({ locale }: { locale: Locale }) {
+  const k = 5;
+  const rounds = [0, 1, 2];
+  return (
+    <div>
+      <p className="text-[9px] tracking-brand uppercase text-muted font-sans mb-3 text-center">
+        {locale === 'he' ? 'K = 5 (ברירת המחדל של ה-Demo); הטקסט של המצגת נותן דוגמה עם K = 10 — משקף 26' : "K = 5 (the deck's own demo default); its text example uses K = 10 — slide 26"}
+      </p>
+      <div className="space-y-2 max-w-sm mx-auto">
+        {rounds.map((r) => (
+          <div key={r} className="flex items-center gap-2">
+            <span className="text-[8px] font-mono w-16 text-muted">{locale === 'he' ? `סבב ${r + 1}` : `Round ${r + 1}`}</span>
+            <div className="flex flex-1 gap-0.5">
+              {Array.from({ length: k }).map((_, i) => (
+                <div key={i} className={`flex-1 h-5 ${i === r ? 'bg-accent' : 'bg-codebg border border-rule'}`} />
+              ))}
+            </div>
+          </div>
+        ))}
+        <div className="flex items-center gap-2">
+          <span className="text-[8px] font-mono w-16 text-muted">…</span>
+          <div className="flex flex-1 gap-0.5">
+            {Array.from({ length: k }).map((_, i) => (
+              <div key={i} className="flex-1 h-5 bg-codebg border border-dashed border-rule" />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center gap-4 mt-2 text-[9px] font-sans">
+        <span className="flex items-center gap-1"><span className="w-3 h-3 bg-accent inline-block" />{locale === 'he' ? 'ולידציה' : 'validation'}</span>
+        <span className="flex items-center gap-1"><span className="w-3 h-3 bg-codebg border border-rule inline-block" />{locale === 'he' ? 'אימון' : 'train'}</span>
+      </div>
+      <p className="text-[10px] italic text-muted text-center mt-4 max-w-md mx-auto">
+        {locale === 'he'
+          ? '"מפרישים סט בדיקה קודם — נשמר בצד ונוגעים בו רק בסוף. מפצלים את סט האימון ל-K קפלים שווים. בכל סבב, קפל אחד מקבל תור כ-validation בזמן שה-K−1 האחרים מתאמנים." — משקף 26'
+          : '"Hold out a test set first — it is kept aside and only touched at the very end. Split the training set into K equal folds. Loop K times: each fold takes a turn as validation while the other K−1 folds train." — slide 26'}
+      </p>
+    </div>
+  );
+}

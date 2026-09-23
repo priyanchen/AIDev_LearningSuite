@@ -23,6 +23,11 @@ import {
   BaggingDiagram,
   RandomForestDiagram,
   GradientBoostingXgboostDiagram,
+  LeafVsLevelWiseDiagram,
+  LightGbmDiagram,
+  CatBoostDiagram,
+  FeatureImportanceDiagram,
+  KFoldDiagram,
 } from '@/components/DsDiagrams';
 import type { Locale } from '@/i18n';
 
@@ -216,6 +221,31 @@ export default async function DsPage({
                     {t.term === 'Gradient Boosting / XGBoost' && (
                       <div className="mt-4 pt-4 border-t border-dashed border-rule">
                         <GradientBoostingXgboostDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'LightGBM' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <LightGbmDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'CatBoost' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <CatBoostDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Leaf-Wise vs. Level-Wise Tree Growth' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <LeafVsLevelWiseDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'Feature Importance' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <FeatureImportanceDiagram locale={locale} />
+                      </div>
+                    )}
+                    {t.term === 'K-Fold Cross-Validation' && (
+                      <div className="mt-4 pt-4 border-t border-dashed border-rule">
+                        <KFoldDiagram locale={locale} />
                       </div>
                     )}
                   </div>
